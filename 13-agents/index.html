@@ -803,68 +803,158 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-what-is-an-llm-agent-and-what-strategies-exist-to-implement-one" class="md-nav__link">
+  <a href="#q1-what-is-the-fundamental-architecture-of-an-autonomous-llm-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. What is an LLM agent and what strategies exist to implement one?
+        Q1. What is the fundamental architecture of an Autonomous LLM Agent?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1. What is the fundamental architecture of an Autonomous LLM Agent?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-why-do-we-need-agents-and-what-are-the-common-implementation-strategies" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#related-questions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Why do we need agents and what are the common implementation strategies?
+        Related Questions
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#3-explain-react-prompting-with-a-code-example-and-its-advantages" class="md-nav__link">
+  <a href="#q2-how-does-react-reasoning-and-acting-actually-work-under-the-hood" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Explain ReAct prompting with a code example and its advantages.
+        Q2. How does ReAct (Reasoning and Acting) actually work under the hood?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2. How does ReAct (Reasoning and Acting) actually work under the hood?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-how-does-the-plan-and-execute-strategy-work" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. How does the Plan-and-Execute strategy work?
+        Related Questions
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#5-how-do-openai-function-calling-tool-use-work" class="md-nav__link">
+  <a href="#q3-native-function-calling-vs-prompt-based-tool-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. How do OpenAI function calling / tool use work?
+        Q3. Native Function Calling vs Prompt-based Tool Use?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3. Native Function Calling vs Prompt-based Tool Use?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-what-are-the-key-differences-between-openai-function-calling-and-langchain-agents" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. What are the key differences between OpenAI function calling and LangChain Agents?
+        Related Questions
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4-what-is-the-state-graph-paradigm-for-multi-agent-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4. What is the State Graph paradigm for Multi-Agent systems?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4. What is the State Graph paradigm for Multi-Agent systems?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -990,286 +1080,144 @@
 
 <h1 id="agent-based-systems">Agent-Based Systems<a class="headerlink" href="#agent-based-systems" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>Agents extend LLMs from question-answering to autonomous multi-step task execution.</p>
+<p>Moving from stateless chatbots to autonomous reasoning engines. Agents are the bridge between generating text and taking action in the real world. Answers are calibrated for a <strong>Google L5 Senior AI/ML Engineer</strong> interview bar.</p>
 </blockquote>
 <hr>
-<h2 id="1-what-is-an-llm-agent-and-what-strategies-exist-to-implement-one">1. What is an LLM agent and what strategies exist to implement one?<a class="headerlink" href="#1-what-is-an-llm-agent-and-what-strategies-exist-to-implement-one" title="Permanent link">¶</a></h2>
-<p>An <strong>LLM agent</strong> is a system where an LLM acts as a reasoning engine that dynamically decides which actions to take to accomplish a goal — rather than producing a single response.</p>
-<p><strong>Core components:</strong>
-- <strong>Brain (LLM):</strong> Decides what to do next
-- <strong>Tools:</strong> Functions the agent can call (search, calculator, code executor, APIs)
-- <strong>Memory:</strong> Short-term (conversation history) and long-term (vector store)
-- <strong>Orchestrator:</strong> Loop that runs LLM → action → observation → LLM</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Goal: "Find the current stock price of Apple and compare to last year"
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LLM thinks: "I need to search for AAPL current price"
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  ↓ [Tool: web_search("AAPL stock price")]
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Observation: "$189.50"
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  ↓
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>LLM thinks: "Now I need last year's price"
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  ↓ [Tool: web_search("AAPL stock price June 2023")]
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Observation: "$179.21"
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  ↓
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>LLM thinks: "I have both, I can compute and answer"
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  ↓
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Final answer: "Apple stock is $189.50 today, up ~5.7% from $179.21 a year ago"
-</span></code></pre></div>
-<hr>
-<h2 id="2-why-do-we-need-agents-and-what-are-the-common-implementation-strategies">2. Why do we need agents and what are the common implementation strategies?<a class="headerlink" href="#2-why-do-we-need-agents-and-what-are-the-common-implementation-strategies" title="Permanent link">¶</a></h2>
-<p><strong>Why agents:</strong> Most real-world tasks require multiple steps, dynamic information, external tool use, or decisions that depend on intermediate results — all beyond what a single LLM call can do.</p>
-<p><strong>Common strategies:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Strategy</th>
-<th>Description</th>
-<th>Best for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>ReAct</strong></td>
-<td>Interleave Reasoning + Acting in natural language</td>
-<td>General purpose agents</td>
-</tr>
-<tr>
-<td><strong>Plan-and-Execute</strong></td>
-<td>Plan all steps upfront, then execute each</td>
-<td>Complex multi-step tasks</td>
-</tr>
-<tr>
-<td><strong>OpenAI Functions / Tool Use</strong></td>
-<td>Structured JSON tool calls</td>
-<td>Production reliability</td>
-</tr>
-<tr>
-<td><strong>Self-Critique / Reflexion</strong></td>
-<td>Agent evaluates its own output and retries</td>
-<td>Error-prone tasks</td>
-</tr>
-<tr>
-<td><strong>Multi-agent</strong></td>
-<td>Multiple specialized agents collaborate</td>
-<td>Complex workflows</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="3-explain-react-prompting-with-a-code-example-and-its-advantages">3. Explain ReAct prompting with a code example and its advantages.<a class="headerlink" href="#3-explain-react-prompting-with-a-code-example-and-its-advantages" title="Permanent link">¶</a></h2>
-<p><strong>ReAct (Reasoning + Acting)</strong> interleaves thinking and tool use in a loop: the model writes a <code>Thought</code>, takes an <code>Action</code>, receives an <code>Observation</code>, and repeats.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentExecutor</span><span class="p">,</span> <span class="n">create_react_agent</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain</span><span class="w"> </span><span class="kn">import</span> <span class="n">hub</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nd">@tool</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculator</span><span class="p">(</span><span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="sd">"""Evaluate a mathematical expression. Input: a math expression string."""</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">expression</span><span class="p">))</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nd">@tool</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">web_search</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="sd">"""Search the web for information."""</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="c1"># In production: call real search API</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"Search results for: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculator</span><span class="p">,</span> <span class="n">web_search</span><span class="p">]</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># ReAct prompt structures the Thought/Action/Observation loop</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">prompt</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="s2">"hwchase17/react"</span><span class="p">)</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">tools</span><span class="p">,</span> <span class="n">prompt</span><span class="p">)</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="n">agent_executor</span> <span class="o">=</span> <span class="n">AgentExecutor</span><span class="p">(</span><span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="n">result</span> <span class="o">=</span> <span class="n">agent_executor</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"What is 15</span><span class="si">% o</span><span class="s2">f Apple's 2023 revenue of $383.3 billion?"</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">})</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1"># Model internally generates:</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="c1"># Thought: I need to calculate 15% of 383.3 billion</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="c1"># Action: calculator</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="c1"># Action Input: 383.3 * 0.15</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="c1"># Observation: 57.495</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="c1"># Thought: I have the answer</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="c1"># Final Answer: 15% of Apple's 2023 revenue is approximately $57.5 billion</span>
-</span></code></pre></div>
-<p><strong>Advantages of ReAct:</strong>
-- Transparent reasoning — you can see every thought step
-- Dynamic tool selection based on context
-- Self-correcting — bad observation leads to revised reasoning
-- No upfront planning needed — adapts to intermediate results</p>
-<p><strong>Limitation:</strong> Can get stuck in loops or make too many tool calls for simple tasks.</p>
-<hr>
-<h2 id="4-how-does-the-plan-and-execute-strategy-work">4. How does the Plan-and-Execute strategy work?<a class="headerlink" href="#4-how-does-the-plan-and-execute-strategy-work" title="Permanent link">¶</a></h2>
-<p>Plan-and-Execute separates planning from execution:</p>
+<h2 id="q1-what-is-the-fundamental-architecture-of-an-autonomous-llm-agent">Q1. What is the fundamental architecture of an Autonomous LLM Agent?<a class="headerlink" href="#q1-what-is-the-fundamental-architecture-of-an-autonomous-llm-agent" title="Permanent link">¶</a></h2>
+<h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
+<p>A standard LLM is a stateless text generator. An <strong>LLM Agent</strong> is a systemic architecture that elevates the LLM to function as a central "Brain." The agent dynamically decides <em>which</em> steps to take, <em>when</em> to execute external tools, and <em>how</em> to adapt when things fail.</p>
+<p>An Agent consists of four critical components:
+1. <strong>The Brain (LLM):</strong> Parses the goal, generates a multi-step plan, and evaluates intermediate results.
+2. <strong>Tools (Functions):</strong> Deterministic APIs that allow the agent to affect the outside world (e.g., Python REPL, SQL database query, Web Search API).
+3. <strong>Memory:</strong> Short-term memory (the rolling context window of the current execution loop) and Long-term memory (a Vector DB to recall past actions across sessions).
+4. <strong>The Orchestrator:</strong> The deterministic code (e.g., Python <code>while</code> loop, LangGraph state machine) that intercepts the LLM's tool-call, executes the actual code, and feeds the <code>Observation</code> back into the LLM.</p>
+<h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li><strong>Planner LLM:</strong> Given the goal, generates a complete multi-step plan</li>
-<li><strong>Executor:</strong> Executes each step in order, often using a separate (cheaper) LLM</li>
+<li>What is the difference between ReAct and Plan-and-Execute architectures?</li>
+<li>How do Agents solve the "Context Window Degradation" problem?</li>
+<li>Why are standard LLMs bad at tool selection, and how does Fine-Tuning fix it?</li>
+<li>What is the role of an Orchestrator framework?</li>
 </ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_experimental.plan_and_execute</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlanAndExecute</span><span class="p">,</span> <span class="n">load_agent_executor</span><span class="p">,</span> <span class="n">load_chat_planner</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">planner</span> <span class="o">=</span> <span class="n">load_chat_planner</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">executor</span> <span class="o">=</span> <span class="n">load_agent_executor</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">tools</span><span class="p">)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">PlanAndExecute</span><span class="p">(</span><span class="n">planner</span><span class="o">=</span><span class="n">planner</span><span class="p">,</span> <span class="n">executor</span><span class="o">=</span><span class="n">executor</span><span class="p">)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"Research the top 3 AI companies by valuation and create a comparison table"</span><span class="p">)</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># Internally:</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># PLAN:</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">#   Step 1: Search for top AI companies by valuation</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1">#   Step 2: Find valuation of company 1</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">#   Step 3: Find valuation of company 2</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1">#   Step 4: Find valuation of company 3</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">#   Step 5: Create comparison table</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">#</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1"># EXECUTE: Run each step sequentially</span>
-</span></code></pre></div>
-<p><strong>Best for:</strong> Tasks with a clear structure that can be planned upfront — research tasks, document creation, multi-step data processing.</p>
-<p><strong>Weakness:</strong> The plan is fixed — if step 2 returns unexpected results, the plan doesn't adapt (unlike ReAct which adapts dynamically).</p>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. ReAct vs Plan-and-Execute?</strong>
+<strong>ReAct</strong> is highly dynamic. The agent thinks one step ahead, takes an action, sees the result, and decides the next step. It is great for unpredictable tasks but prone to infinite loops. <strong>Plan-and-Execute</strong> uses a Planner LLM to write a 10-step rigid to-do list upfront, and an Executor LLM simply blindly runs the steps. It is vastly cheaper and faster, but if Step 2 fails, Step 3 through 10 will likely crash.</p>
+<p><strong>2. Context Window Degradation?</strong>
+If an agent runs for 50 iterations, the context window fills up with thousands of tokens of tool outputs (e.g., massive JSON API responses). The self-attention mechanism becomes diluted, and the LLM "forgets" the original goal. Advanced agents use <strong>Context Compression</strong>: every 5 steps, a secondary LLM summarizes the raw tool outputs into a dense paragraph and clears the raw JSON from the active prompt.</p>
+<p><strong>3. Fine-Tuning for Tool Use?</strong>
+Base LLMs struggle to output perfectly formatted JSON strings matching a tool's API schema. Modern models (like GPT-4 and Claude-3) are explicitly fine-tuned on millions of synthetic Tool-Calling datasets. They learn special control tokens that signal "I am invoking a function now," which dramatically reduces syntax errors compared to relying purely on prompt engineering.</p>
+<p><strong>4. The Orchestrator?</strong>
+The LLM does not execute code. When an LLM outputs <code>search("AAPL")</code>, the LLM stops. The Orchestrator (your Python code) parses that string, makes the actual HTTP request to Google, takes the HTML result, and appends it to the LLM's prompt as <code>Observation: [Apple is at $150]</code>. The Orchestrator manages the infinite loop.</p>
+</details>
 <hr>
-<h2 id="5-how-do-openai-function-calling-tool-use-work">5. How do OpenAI function calling / tool use work?<a class="headerlink" href="#5-how-do-openai-function-calling-tool-use-work" title="Permanent link">¶</a></h2>
-<p>Instead of generating tool calls in natural language (like ReAct), OpenAI function calling outputs <strong>structured JSON</strong> — more reliable and parseable.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Define tools with JSON schemas</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">{</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"function"</span><span class="p">,</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="s2">"function"</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"get_weather"</span><span class="p">,</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"Get current weather for a city"</span><span class="p">,</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"object"</span><span class="p">,</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>                <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>                    <span class="s2">"city"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span> <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"City name"</span><span class="p">},</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>                    <span class="s2">"unit"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span> <span class="s2">"enum"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"celsius"</span><span class="p">,</span> <span class="s2">"fahrenheit"</span><span class="p">]}</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                <span class="p">},</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>                <span class="s2">"required"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"city"</span><span class="p">]</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>            <span class="p">}</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="p">}</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="p">}</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">]</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1"># First call: LLM decides to call a tool</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"What's the weather in Tokyo?"</span><span class="p">}],</span>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>    <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    <span class="n">tool_choice</span><span class="o">=</span><span class="s2">"auto"</span>
-</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="p">)</span>
-</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
-</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="c1"># Extract tool call</span>
-</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="n">tool_call</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="n">function_name</span> <span class="o">=</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span>      <span class="c1"># "get_weather"</span>
-</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="n">arguments</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>  <span class="c1"># {"city": "Tokyo"}</span>
-</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
-</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="c1"># Execute the actual function</span>
-</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="n">weather_result</span> <span class="o">=</span> <span class="n">get_weather</span><span class="p">(</span><span class="o">**</span><span class="n">arguments</span><span class="p">)</span>
-</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>
-</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="c1"># Second call: feed result back to LLM</span>
-</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"What's the weather in Tokyo?"</span><span class="p">},</span>
-</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>    <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>  <span class="c1"># Assistant's tool call message</span>
-</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>    <span class="p">{</span>
-</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>        <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"tool"</span><span class="p">,</span>
-</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>        <span class="s2">"tool_call_id"</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>        <span class="s2">"content"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">weather_result</span><span class="p">)</span>
-</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>    <span class="p">}</span>
-</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="p">]</span>
-</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>
-</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="n">final_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>    <span class="n">messages</span><span class="o">=</span><span class="n">messages</span>
-</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="p">)</span>
-</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="nb">print</span><span class="p">(</span><span class="n">final_response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-</span></code></pre></div>
-<p><strong>Key advantage:</strong> Structured JSON output is predictable and doesn't require parsing natural language — far more reliable for production.</p>
+<h2 id="q2-how-does-react-reasoning-and-acting-actually-work-under-the-hood">Q2. How does ReAct (Reasoning and Acting) actually work under the hood?<a class="headerlink" href="#q2-how-does-react-reasoning-and-acting-actually-work-under-the-hood" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
+<p><strong>ReAct</strong> is the foundational prompt engineering technique that enabled the first generation of Agents. </p>
+<p>The core mathematical insight of ReAct is that you must force the LLM to emit a <strong>Thought</strong> <em>before</em> it emits an <strong>Action</strong>. Because Transformers are autoregressive, the next token is conditioned on all previous tokens. If the LLM generates the reasoning tokens first, its attention heads lock onto that logic, mathematically forcing the subsequent <code>Action</code> to be highly accurate. If it generates the <code>Action</code> immediately without thinking, it often guesses the wrong tool.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["User Goal: 'What is Apple's revenue divided by its employee count?'"] --&gt; B["Agent Loop Starts"]
+
+    B --&gt; C["LLM Generates THOUGHT"]
+    C -.-&gt;|"Thought: 'I need Apple's revenue first. I will search the web.'"| D["LLM Generates ACTION"]
+
+    D -.-&gt;|"Action: WebSearch(query='Apple 2023 revenue')"| E{"Orchestrator Intercepts"}
+
+    E --&gt; F["Execute Web Search API"]
+    F --&gt; G["Return OBSERVATION"]
+
+    G -.-&gt;|"Observation: '$383 Billion'"| H{"Goal Reached?"}
+
+    H --&gt;|"No"| C
+    H --&gt;|"Yes (Calculated final number)"| I["LLM Generates FINAL ANSWER"]</code></pre>
+<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why does ReAct suffer from the "Infinite Loop" problem?</li>
+<li>How do you implement early stopping or budget constraints in ReAct?</li>
+<li>What is Reflexion (Self-Critique)?</li>
+<li>How does ReAct handle multi-tool dependencies?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. The Infinite Loop?</strong>
+If the Web Search tool returns "Error 404", the LLM might generate: <em>Thought: The search failed. I will try again. Action: WebSearch(query='Apple 2023 revenue')</em>. It will do this indefinitely. Because LLMs lack a sense of absolute time or iteration count, they easily get trapped in localized logical loops if an observation fails to push their internal state forward.</p>
+<p><strong>2. Budget Constraints?</strong>
+The Orchestrator must enforce a <code>max_iterations</code> counter (usually 10-15). If the loop hits the limit, the Orchestrator injects a forced system prompt: <em>"SYSTEM WARNING: You have reached the maximum allowed steps. You must output the FINAL ANSWER immediately based on your current knowledge, or say you failed."</em></p>
+<p><strong>3. Reflexion?</strong>
+Reflexion is a variant of ReAct where you add an explicit self-critique step. After receiving an Observation, the LLM must generate a <code>Critique</code> token: <em>"Did my previous action succeed? If not, why?"</em> This forces the model to evaluate its own failure before attempting a new action, breaking the infinite loop phenomenon.</p>
+<p><strong>4. Multi-Tool Dependencies?</strong>
+In standard ReAct, tools are executed sequentially. If an agent needs to search for Apple and Microsoft, it takes two full iterations (Thought -&gt; Search Apple -&gt; Observe -&gt; Thought -&gt; Search MSFT -&gt; Observe). This is incredibly slow and expensive.</p>
+</details>
 <hr>
-<h2 id="6-what-are-the-key-differences-between-openai-function-calling-and-langchain-agents">6. What are the key differences between OpenAI function calling and LangChain Agents?<a class="headerlink" href="#6-what-are-the-key-differences-between-openai-function-calling-and-langchain-agents" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>OpenAI Function Calling</th>
-<th>LangChain Agents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Output format</strong></td>
-<td>Structured JSON (reliable)</td>
-<td>Natural language + structured (varies)</td>
-</tr>
-<tr>
-<td><strong>Provider lock-in</strong></td>
-<td>OpenAI / Anthropic specific</td>
-<td>Provider-agnostic</td>
-</tr>
-<tr>
-<td><strong>Flexibility</strong></td>
-<td>Lower — must use their schema format</td>
-<td>Higher — supports custom agents</td>
-</tr>
-<tr>
-<td><strong>Reliability</strong></td>
-<td>High — deterministic JSON parsing</td>
-<td>Lower — natural language parsing can fail</td>
-</tr>
-<tr>
-<td><strong>Abstraction</strong></td>
-<td>Low-level — you manage the loop</td>
-<td>High-level — loop managed by LangChain</td>
-</tr>
-<tr>
-<td><strong>Multi-step loops</strong></td>
-<td>Manual — you implement the agent loop</td>
-<td>Automatic — <code>AgentExecutor</code> handles it</td>
-</tr>
-<tr>
-<td><strong>Debugging</strong></td>
-<td>More transparent</td>
-<td>Can be opaque</td>
-</tr>
-</tbody>
-</table>
-<p><strong>When to use OpenAI function calling:</strong> Production systems where reliability matters, simple tool-use scenarios.</p>
-<p><strong>When to use LangChain Agents:</strong> Rapid prototyping, complex multi-agent systems, provider flexibility needed.</p>
-<p><strong>In production, prefer function calling</strong> — the structured output eliminates parsing failures that plague ReAct-style agents.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Production pattern: explicit tool loop with function calling</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_agent</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">user_message</span><span class="p">}]</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>            <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>            <span class="n">tool_choice</span><span class="o">=</span><span class="s2">"auto"</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="p">)</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="c1"># If no tool calls, we're done</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>            <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">content</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="c1"># Execute all tool calls</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">execute_tool</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">))</span>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>                <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"tool"</span><span class="p">,</span>
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>                <span class="s2">"tool_call_id"</span><span class="p">:</span> <span class="n">tc</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>                <span class="s2">"content"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="p">})</span>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
-</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>    <span class="k">return</span> <span class="s2">"Max iterations reached"</span>
-</span></code></pre></div>
+<h2 id="q3-native-function-calling-vs-prompt-based-tool-use">Q3. Native Function Calling vs Prompt-based Tool Use?<a class="headerlink" href="#q3-native-function-calling-vs-prompt-based-tool-use" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
+<p>Early Agent frameworks (like old LangChain) relied on <strong>Prompt-based Tool Use</strong>. You had to inject a massive system prompt describing all tools, and beg the model to output a specific string format (e.g., <code>Action: Calculator, Input: {"eq": "2+2"}</code>). The LLM frequently hallucinated the JSON syntax, crashing the agent.</p>
+<p>Modern systems use <strong>Native Function Calling</strong> (OpenAI/Anthropic tool schemas). You define your tools using strictly typed JSON Schemas (or Python Pydantic models) and pass them to the API via a dedicated <code>tools=[]</code> parameter. </p>
+<p>The LLM provider's backend is explicitly fine-tuned to recognize this schema. Instead of generating natural language text, the API pauses and returns a highly deterministic, syntactically perfect JSON object representing the tool call.</p>
+<h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>How do you define a Tool Schema using Pydantic?</li>
+<li>How do you force a model to use a specific tool?</li>
+<li>What is Parallel Function Calling?</li>
+<li>Why should you avoid LangChain's generic <code>AgentExecutor</code> in production?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Pydantic Tool Schemas?</strong>
+Instead of writing raw JSON schema, production Python systems use Pydantic. You define a class <code>class WeatherRequest(BaseModel): city: str = Field(..., description="The city name")</code>. Libraries like Instructor or LangChain automatically compile this Pydantic class into the exact JSON schema OpenAI expects, guaranteeing type safety in your Python orchestrator.</p>
+<p><strong>2. Forcing Tool Use?</strong>
+APIs expose a <code>tool_choice</code> parameter. By default, it is set to <code>"auto"</code> (the LLM decides). If you set <code>tool_choice={"type": "function", "function": {"name": "get_weather"}}</code>, you mathematically force the LLM's first output to be that specific tool call, entirely bypassing its decision-making process.</p>
+<p><strong>3. Parallel Function Calling?</strong>
+Modern function calling supports emitting arrays of tool calls. If the user asks for the weather in Tokyo, London, and New York, the LLM can output a single array containing three separate JSON tool-calls. The Orchestrator executes all three HTTP requests asynchronously in parallel, collapsing three ReAct iterations into one.</p>
+<p><strong>4. LangChain <code>AgentExecutor</code> in Production?</strong>
+LangChain's generic <code>AgentExecutor</code> hides the ReAct <code>while</code> loop behind a massive wall of opaque abstractions. When the agent fails, it is incredibly difficult to debug the exact prompt that was sent or inject custom failure-recovery logic. Production systems either write the <code>while</code> loop from scratch in pure Python, or use state-machine frameworks like LangGraph.</p>
+</details>
+<hr>
+<h2 id="q4-what-is-the-state-graph-paradigm-for-multi-agent-systems">Q4. What is the State Graph paradigm for Multi-Agent systems?<a class="headerlink" href="#q4-what-is-the-state-graph-paradigm-for-multi-agent-systems" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
+<p>Single agents fail at complex, long-running tasks (like writing a software application). The context window becomes a messy soup of conflicting thoughts, code snippets, and API errors, causing the single LLM to completely lose track of the goal.</p>
+<p><strong>Multi-Agent State Graphs</strong> (e.g., LangGraph, AutoGen) solve this by abandoning the massive single <code>while</code> loop. Instead, you define distinct, highly specialized Agents (e.g., a <em>Researcher</em>, a <em>Coder</em>, and a <em>Reviewer</em>). </p>
+<p>These agents are modeled as <strong>Nodes</strong> in a cyclical Graph. You define a strict, typed <strong>State Object</strong>. The State Object is passed from Node to Node. The <em>Coder</em> node only sees the specific variables in the State it needs, writes the code, updates the State, and routes to the <em>Reviewer</em> node.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["User Request"] --&gt; B("Researcher Node (Agent)")
+
+    B --&gt;|"Updates State with Research Docs"| C("Coder Node (Agent)")
+
+    C --&gt;|"Updates State with Python Code"| D("Reviewer Node (Agent)")
+
+    D --&gt; E{"Passes Tests?"}
+
+    E --&gt;|"No (Updates State with Errors)"| C
+    E --&gt;|"Yes"| F["Final Output"]</code></pre>
+<h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is the difference between a Sequential Chain and a State Graph?</li>
+<li>How does AutoGen handle Conversational Multi-Agent architectures?</li>
+<li>What is the "Lost in the Middle" problem in Multi-Agent memory?</li>
+<li>When should you use a Multi-Agent system versus a Single Agent with many tools?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Chain vs Graph?</strong>
+A Chain (like <code>LLMChain</code>) is a strictly linear DAG (Directed Acyclic Graph). Step A -&gt; Step B -&gt; Step C. It cannot loop. A State Graph allows cyclical routing. If the Reviewer rejects the code, the graph routes <em>backward</em> to the Coder node, creating a dynamic <code>while</code> loop governed by explicit edge logic rather than LLM guesswork.</p>
+<p><strong>2. Conversational AutoGen?</strong>
+AutoGen (by Microsoft) treats agents as simulated human conversants. Instead of passing a rigid State object, the agents "chat" with each other in a group thread. The Coder posts a message, the Reviewer reads the message and posts a critique. This is easier to prototype but heavily prone to hallucination because it relies on unstructured natural language parsing to maintain state.</p>
+<p><strong>3. "Lost in the Middle"?</strong>
+If the Coder and Reviewer loop 20 times, the State Object (or chat thread) becomes massive. LLMs suffer from the "Lost in the Middle" phenomenon—they pay heavy attention to the very beginning and very end of a prompt, but completely ignore facts buried in the middle of a massive context window. You must explicitly truncate or summarize the State Object at each node boundary.</p>
+<p><strong>4. Multi-Agent vs Single-Agent?</strong>
+If the task requires less than 5 steps and uses 3 tools, use a Single Agent with Function Calling. It is faster, cheaper, and easier to debug. If the task requires distinct personas, conflicting validation (a creator vs a critic), or takes hundreds of steps (like autonomous software engineering), you must use a Multi-Agent State Graph to isolate the context windows and enforce strict routing.</p>
+</details>
 <hr>
 <p><em>Next: <a href="../14-prompt-hacking/">Prompt Hacking →</a></em></p>
 
