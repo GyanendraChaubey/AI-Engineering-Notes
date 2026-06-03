@@ -55,24 +55,24 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Home: README.md
+  - Home: index.md
   - Topics:
-    - 01. Prompt Engineering & LLM Basics: docs/01-prompt-engineering/README.md
-    - 02. Retrieval Augmented Generation: docs/02-rag/README.md
-    - 03. Document Digitization & Chunking: docs/03-chunking/README.md
-    - 04. Embedding Models: docs/04-embeddings/README.md
-    - 05. Vector Databases: docs/05-vector-databases/README.md
-    - 06. Advanced Search Algorithms: docs/06-search-algorithms/README.md
-    - 07. Language Models Internal Working: docs/07-language-models/README.md
-    - 08. Supervised Fine-Tuning: docs/08-fine-tuning/README.md
-    - 09. Preference Alignment (RLHF/DPO): docs/09-preference-alignment/README.md
-    - 10. LLM Evaluation: docs/10-evaluation/README.md
-    - 11. Hallucination Control: docs/11-hallucination/README.md
-    - 12. LLM Deployment & Inference: docs/12-deployment/README.md
-    - 13. Agent-Based Systems: docs/13-agents/README.md
-    - 14. Prompt Hacking & Security: docs/14-prompt-hacking/README.md
-    - 15. Miscellaneous Advanced Topics: docs/15-miscellaneous/README.md
-    - 16. Case Studies: docs/16-case-studies/README.md
+    - 01. Prompt Engineering & LLM Basics: 01-prompt-engineering/README.md
+    - 02. Retrieval Augmented Generation: 02-rag/README.md
+    - 03. Document Digitization & Chunking: 03-chunking/README.md
+    - 04. Embedding Models: 04-embeddings/README.md
+    - 05. Vector Databases: 05-vector-databases/README.md
+    - 06. Advanced Search Algorithms: 06-search-algorithms/README.md
+    - 07. Language Models Internal Working: 07-language-models/README.md
+    - 08. Supervised Fine-Tuning: 08-fine-tuning/README.md
+    - 09. Preference Alignment (RLHF/DPO): 09-preference-alignment/README.md
+    - 10. LLM Evaluation: 10-evaluation/README.md
+    - 11. Hallucination Control: 11-hallucination/README.md
+    - 12. LLM Deployment & Inference: 12-deployment/README.md
+    - 13. Agent-Based Systems: 13-agents/README.md
+    - 14. Prompt Hacking & Security: 14-prompt-hacking/README.md
+    - 15. Miscellaneous Advanced Topics: 15-miscellaneous/README.md
+    - 16. Case Studies: 16-case-studies/README.md
 
 extra:
   social:
