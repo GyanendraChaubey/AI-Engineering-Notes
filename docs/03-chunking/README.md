@@ -219,15 +219,15 @@ A production ingestion pipeline must handle failures, duplicates, rate limits, a
 
 ```mermaid
 flowchart TD
-    A[S3 Bucket / Document Drop] --> B[Hash Calculation (SHA-256)]
-    B --> C{Hash exists in Metadata DB?}
-    C -->|Yes| D[Skip / Idempotent Exit]
-    C -->|No| E[Async Queue (Kafka / Celery)]
-    E --> F[Document Intelligence Parsing]
-    F --> G[Chunking & Metadata Enrichment]
-    G --> H[Batch Embedding with Exponential Backoff]
-    H --> I[Vector DB Upsert]
-    I --> J[Update Metadata DB]
+    A["S3 Bucket / Document Drop"] --> B["Hash Calculation (SHA-256)"]
+    B --> C{"Hash exists in Metadata DB?"}
+    C -->|Yes| D["Skip / Idempotent Exit"]
+    C -->|No| E["Async Queue (Kafka / Celery)"]
+    E --> F["Document Intelligence Parsing"]
+    F --> G["Chunking & Metadata Enrichment"]
+    G --> H["Batch Embedding with Exponential Backoff"]
+    H --> I["Vector DB Upsert"]
+    I --> J["Update Metadata DB"]
 ```
 
 **Key Production Requirements:**

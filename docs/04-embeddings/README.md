@@ -94,14 +94,14 @@ Standard dense embeddings (Bi-Encoders) compress all tokens into a single vector
 
 ```mermaid
 flowchart LR
-    subgraph Dense Bi-Encoder
+    subgraph DenseBiEncoder ["Dense Bi-Encoder"]
         A1[Query] --> B1[Encoder] --> C1[Single Vector]
         A2[Doc] --> B2[Encoder] --> C2[Single Vector]
         C1 --> D1[Dot Product]
         C2 --> D1
     end
     
-    subgraph ColBERT Late Interaction
+    subgraph ColBERTLateInteraction ["ColBERT Late Interaction"]
         E1[Query] --> F1[Encoder] --> G1[N Token Vectors]
         E2[Doc] --> F2[Encoder] --> G2[M Token Vectors]
         G1 --> H1[MaxSim Matrix]
@@ -181,7 +181,7 @@ flowchart TD
     C --> E
     D --> E
     E --> F[Calculate Margin Ranking Loss]
-    F --> G[Backpropagate & Update Weights]
+    F --> G["Backpropagate & Update Weights"]
 ```
 
 The standard approach uses **Multiple Negatives Ranking (MNR) Loss**, maximizing the dot product of positive pairs while minimizing the dot product against all other in-batch examples.
