@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#case-studies" class="md-skip">
+        <a href="#case-studies-in-llm-system-design" class="md-skip">
           Skip to content
         </a>
       
@@ -885,22 +885,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#case-study-1-llm-chat-assistant-with-dynamic-context-based-on-query" class="md-nav__link">
+  <a href="#case-study-1-dynamic-context-llm-assistant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Case Study 1: LLM Chat Assistant with Dynamic Context Based on Query
+        Case Study 1: Dynamic Context LLM Assistant
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Case Study 1: LLM Chat Assistant with Dynamic Context Based on Query">
+    <nav class="md-nav" aria-label="Case Study 1: Dynamic Context LLM Assistant">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#system-design" class="md-nav__link">
+  <a href="#the-system-design-answer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        System Design
+        The System Design Answer
       
     </span>
   </a>
@@ -908,10 +908,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#python-implementation-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Python Implementation Architecture
       
     </span>
   </a>
@@ -919,32 +919,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#intent-classifier" class="md-nav__link">
+  <a href="#related-questions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Intent Classifier
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-design-decisions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Design Decisions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#evaluation-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluation Metrics
+        Related Questions
       
     </span>
   </a>
@@ -957,22 +935,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#case-study-2-prompting-techniques-in-practice" class="md-nav__link">
+  <a href="#case-study-2-high-yield-llm-data-extraction-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Case Study 2: Prompting Techniques in Practice
+        Case Study 2: High-Yield LLM Data Extraction Pipeline
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Case Study 2: Prompting Techniques in Practice">
+    <nav class="md-nav" aria-label="Case Study 2: High-Yield LLM Data Extraction Pipeline">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#naive-approach-fails" class="md-nav__link">
+  <a href="#the-system-design-answer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Naive Approach (fails)
+        The System Design Answer
       
     </span>
   </a>
@@ -980,10 +958,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-by-step-improvement" class="md-nav__link">
+  <a href="#python-implementation-architecture_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step-by-Step Improvement
+        Python Implementation Architecture
       
     </span>
   </a>
@@ -991,21 +969,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#results-comparison" class="md-nav__link">
+  <a href="#related-questions_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Results Comparison
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lessons-learned" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lessons Learned
+        Related Questions
       
     </span>
   </a>
@@ -1053,319 +1020,188 @@
   
 
 
-<h1 id="case-studies">Case Studies<a class="headerlink" href="#case-studies" title="Permanent link">¶</a></h1>
+<h1 id="case-studies-in-llm-system-design">Case Studies in LLM System Design<a class="headerlink" href="#case-studies-in-llm-system-design" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>Applying everything together in realistic system design scenarios.</p>
+<p>Applying the underlying mathematics, architecture, and prompting theory to realistic production scenarios. Answers are calibrated for a <strong>Google L5 Senior AI/ML Engineer</strong> system design interview.</p>
 </blockquote>
 <hr>
-<h2 id="case-study-1-llm-chat-assistant-with-dynamic-context-based-on-query">Case Study 1: LLM Chat Assistant with Dynamic Context Based on Query<a class="headerlink" href="#case-study-1-llm-chat-assistant-with-dynamic-context-based-on-query" title="Permanent link">¶</a></h2>
-<p><strong>Problem:</strong> Build a production chat assistant for a large e-commerce platform that handles customer queries about orders, products, policies, and general questions — using the right information source for each query type.</p>
-<h3 id="system-design">System Design<a class="headerlink" href="#system-design" title="Permanent link">¶</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>User Message
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>     │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Intent Classifier] ──── routes to ────►  Chitchat Handler (no retrieval needed)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>     │                                 ►  Order Lookup (structured DB query)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>     │                                 ►  Policy RAG (vector retrieval)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>     │                                 ►  Product Search (hybrid retrieval)
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>     │
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>[Context Builder] ──── assembles prompt with appropriate context
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>     │
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>[LLM (GPT-4o)] ──── generates grounded response
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>     │
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>[Safety Filter] ──── checks output before returning
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>     │
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>[Response + Citations]
+<h2 id="case-study-1-dynamic-context-llm-assistant">Case Study 1: Dynamic Context LLM Assistant<a class="headerlink" href="#case-study-1-dynamic-context-llm-assistant" title="Permanent link">¶</a></h2>
+<p><strong>The Problem:</strong> Design a production chat assistant for a large e-commerce platform. It must handle customer queries about orders, products, return policies, and general chitchat. It must use the correct information source for each query type and have a near-zero hallucination rate for order tracking.</p>
+<h3 id="the-system-design-answer">The System Design Answer<a class="headerlink" href="#the-system-design-answer" title="Permanent link">¶</a></h3>
+<p>You cannot solve this with a generic RAG pipeline or a massive monolithic system prompt. You must use <strong>Semantic Intent Routing</strong>. </p>
+<p>A fast, cheap classifier (e.g., Llama-3-8B or a fine-tuned BERT model) sits at the entry point. It classifies the user's intent and deterministically routes the query to a specialized sub-system. 
+- Order status queries hit a strict SQL database.
+- Policy queries hit a Dense Vector database.
+- Product queries hit a Hybrid (BM25 + Dense) database.</p>
+<p>Only after the specialized sub-system retrieves the deterministic data is the expensive frontier LLM invoked to generate the final natural language response.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["User Message"] --&gt; B["Intent Classifier (Fast LLM)"]
+
+    B --&gt;|"Intent: Chitchat"| C["No Retrieval"]
+    B --&gt;|"Intent: Order Status"| D["SQL Database (Deterministic)"]
+    B --&gt;|"Intent: Policy"| E["Dense RAG (Vector DB)"]
+    B --&gt;|"Intent: Product Search"| F["Hybrid RAG (BM25 + Vector)"]
+
+    C --&gt; G["Context Builder"]
+    D --&gt; G
+    E --&gt; G
+    F --&gt; G
+
+    G --&gt; H["Generation (Frontier LLM)"]
+    H --&gt; I["Safety &amp; Hallucination Filter"]
+    I --&gt; J["Response + Citations"]</code></pre>
+<h3 id="python-implementation-architecture">Python Implementation Architecture<a class="headerlink" href="#python-implementation-architecture" title="Permanent link">¶</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">QueryIntent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">CHITCHAT</span> <span class="o">=</span> <span class="s2">"chitchat"</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">ORDER_STATUS</span> <span class="o">=</span> <span class="s2">"order_status"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">POLICY</span> <span class="o">=</span> <span class="s2">"policy"</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">PRODUCT</span> <span class="o">=</span> <span class="s2">"product"</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nd">@dataclass</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Context</span><span class="p">:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">intent</span><span class="p">:</span> <span class="n">QueryIntent</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">data</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">sources</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">class</span><span class="w"> </span><span class="nc">SmartChatAssistant</span><span class="p">:</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">IntentClassifier</span><span class="p">()</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">order_db</span> <span class="o">=</span> <span class="n">OrderDatabase</span><span class="p">()</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">policy_rag</span> <span class="o">=</span> <span class="n">PolicyRAG</span><span class="p">()</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">product_search</span> <span class="o">=</span> <span class="n">ProductSearch</span><span class="p">()</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Low temp for factual grounding</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">respond</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="c1"># 1. Classify Intent (Fast)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="n">intent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="c1"># 2. Deterministic Routing</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">ORDER_STATUS</span><span class="p">:</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            <span class="c1"># 100% accurate, no hallucination possible</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="n">order_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">order_db</span><span class="o">.</span><span class="n">get_recent_orders</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">order_data</span><span class="p">),</span> <span class="p">[</span><span class="s2">"Order DB"</span><span class="p">])</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">POLICY</span><span class="p">:</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>            <span class="c1"># Semantic RAG</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>            <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_rag</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">),</span> <span class="p">[</span><span class="s2">"Policy Docs"</span><span class="p">])</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">PRODUCT</span><span class="p">:</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            <span class="c1"># Hybrid Search</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_search</span><span class="o">.</span><span class="n">hybrid_search</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>            <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">format_products</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="p">[</span><span class="s2">"Product Catalog"</span><span class="p">])</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>            <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="p">[])</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>        <span class="c1"># 3. Grounded Generation</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_prompt</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"response"</span><span class="p">:</span> <span class="n">response</span><span class="p">,</span> <span class="s2">"sources"</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">sources</span><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">QueryIntent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">CHITCHAT</span> <span class="o">=</span> <span class="s2">"chitchat"</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">ORDER_STATUS</span> <span class="o">=</span> <span class="s2">"order_status"</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">POLICY</span> <span class="o">=</span> <span class="s2">"policy"</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">PRODUCT</span> <span class="o">=</span> <span class="s2">"product"</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="s2">"unknown"</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nd">@dataclass</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">Context</span><span class="p">:</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">intent</span><span class="p">:</span> <span class="n">QueryIntent</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">data</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">sources</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">class</span><span class="w"> </span><span class="nc">SmartChatAssistant</span><span class="p">:</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">IntentClassifier</span><span class="p">()</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">order_db</span> <span class="o">=</span> <span class="n">OrderDatabase</span><span class="p">()</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">policy_rag</span> <span class="o">=</span> <span class="n">PolicyRAG</span><span class="p">()</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">product_search</span> <span class="o">=</span> <span class="n">ProductSearch</span><span class="p">()</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">respond</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        <span class="c1"># Step 1: Classify intent</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        <span class="n">intent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="c1"># Step 2: Fetch appropriate context</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">user_message</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>        <span class="c1"># Step 3: Build prompt</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>        <span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_prompt</span><span class="p">(</span><span class="n">user_message</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>        <span class="c1"># Step 4: Generate</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>        <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>            <span class="s2">"response"</span><span class="p">:</span> <span class="n">response</span><span class="p">,</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>            <span class="s2">"sources"</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>            <span class="s2">"intent"</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">value</span>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>        <span class="p">}</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
-</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="n">QueryIntent</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
-</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>        <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">ORDER_STATUS</span><span class="p">:</span>
-</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>            <span class="c1"># Structured lookup — exact, no hallucination possible</span>
-</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>            <span class="n">order_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">order_db</span><span class="o">.</span><span class="n">get_recent_orders</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
-</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">order_data</span><span class="p">),</span> <span class="p">[</span><span class="s2">"Order Database"</span><span class="p">])</span>
-</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
-</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>        <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">POLICY</span><span class="p">:</span>
-</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>            <span class="c1"># RAG over policy documents</span>
-</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>            <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_rag</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>            <span class="n">context_text</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">---</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">)</span>
-</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>            <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"doc_title"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">]</span>
-</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">context_text</span><span class="p">,</span> <span class="n">sources</span><span class="p">)</span>
-</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>
-</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>        <span class="k">elif</span> <span class="n">intent</span> <span class="o">==</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">PRODUCT</span><span class="p">:</span>
-</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>            <span class="c1"># Hybrid search: semantic + keyword</span>
-</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>            <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_search</span><span class="o">.</span><span class="n">hybrid_search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>            <span class="n">context_text</span> <span class="o">=</span> <span class="n">format_products</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">context_text</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Product Catalog"</span><span class="p">])</span>
-</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>
-</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>            <span class="k">return</span> <span class="n">Context</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="p">[])</span>  <span class="c1"># No retrieval for chitchat</span>
-</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>
-</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_build_prompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>        <span class="n">base_system</span> <span class="o">=</span> <span class="s2">"""You are a helpful customer service assistant for ShopCo.</span>
-</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="s2">        Answer based on the provided context. If you don't have enough information,</span>
-</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="s2">        say so honestly. Never make up order details, prices, or policies."""</span>
-</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>
-</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>            <span class="k">return</span> <span class="sa">f</span><span class="s2">"""</span><span class="si">{</span><span class="n">base_system</span><span class="si">}</span>
-</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>
-</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="s2">Context (</span><span class="si">{</span><span class="n">context</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">):</span>
-</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="si">{</span><span class="n">context</span><span class="o">.</span><span class="n">data</span><span class="si">}</span>
-</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>
-</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="s2">Customer question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"""</span>
-</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>            <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_system</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Customer: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span>
-</span></code></pre></div>
-<h3 id="intent-classifier">Intent Classifier<a class="headerlink" href="#intent-classifier" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">IntentClassifier</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o-mini"</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryIntent</span><span class="p">:</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""Classify this customer message into one category:</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s2">- order_status: asking about their order, tracking, delivery</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s2">- policy: asking about returns, refunds, shipping policy, terms</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s2">- product: asking about products, availability, specs, prices</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s2">- chitchat: greetings, thanks, general conversation</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s2">Message: "</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s2">Return only the category name."""</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="k">return</span> <span class="n">QueryIntent</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="k">return</span> <span class="n">QueryIntent</span><span class="o">.</span><span class="n">UNKNOWN</span>
-</span></code></pre></div>
-<h3 id="key-design-decisions">Key Design Decisions<a class="headerlink" href="#key-design-decisions" title="Permanent link">¶</a></h3>
-<table>
-<thead>
-<tr>
-<th>Decision</th>
-<th>Rationale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Intent classification first</td>
-<td>Different intents need different data sources</td>
-</tr>
-<tr>
-<td>Structured DB for orders</td>
-<td>100% accuracy needed; no hallucination tolerable</td>
-</tr>
-<tr>
-<td>RAG for policies</td>
-<td>Documents change; don't bake into model weights</td>
-</tr>
-<tr>
-<td>Hybrid search for products</td>
-<td>Exact product names (BM25) + semantic (dense)</td>
-</tr>
-<tr>
-<td>Low temperature (0.3)</td>
-<td>Customer service needs consistent, factual tone</td>
-</tr>
-<tr>
-<td>Always return sources</td>
-<td>Builds trust; enables human verification</td>
-</tr>
-</tbody>
-</table>
-<h3 id="evaluation-metrics">Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Task completion rate</strong> — did the user get their question answered?</li>
-<li><strong>Hallucination rate</strong> — factual errors per 1000 queries</li>
-<li><strong>Retrieval precision</strong> — were retrieved chunks relevant?</li>
-<li><strong>Response latency</strong> — p95 &lt; 3 seconds</li>
-<li><strong>CSAT score</strong> — customer satisfaction rating</li>
-</ul>
-<hr>
-<h2 id="case-study-2-prompting-techniques-in-practice">Case Study 2: Prompting Techniques in Practice<a class="headerlink" href="#case-study-2-prompting-techniques-in-practice" title="Permanent link">¶</a></h2>
-<p><strong>Problem:</strong> A legal tech company wants to extract structured information from contracts — parties involved, key dates, payment terms, and obligations — at high accuracy.</p>
-<h3 id="naive-approach-fails">Naive Approach (fails)<a class="headerlink" href="#naive-approach-fails" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># BAD: Too open-ended, inconsistent output format</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Extract important information from this contract: </span><span class="si">{</span><span class="n">contract_text</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Output: varies wildly between runs, hard to parse programmatically</span>
-</span></code></pre></div>
-<h3 id="step-by-step-improvement">Step-by-Step Improvement<a class="headerlink" href="#step-by-step-improvement" title="Permanent link">¶</a></h3>
-<p><strong>Iteration 1: Define output schema</strong>
-</p><div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""Extract the following from this contract and return as JSON:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s2">- parties (list of party names and their roles)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s2">- effective_date</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s2">- expiration_date</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s2">- payment_terms</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s2">- key_obligations (list, max 5)</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s2">Contract:</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="si">{</span><span class="n">contract_text</span><span class="si">}</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s2">Return valid JSON only, no other text."""</span>
-</span></code></pre></div><p></p>
-<p><strong>Iteration 2: Add Chain-of-Thought for complex clauses</strong>
-</p><div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""You are a legal analyst extracting structured data from contracts.</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">First, read the contract carefully and identify:</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s2">1. All named parties and their roles</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s2">2. All dates mentioned and their significance</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s2">3. All payment-related clauses</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s2">4. The key obligations of each party</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s2">Then, based on your analysis, return a JSON object with:</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="se">{{</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s2">  "parties": [</span><span class="se">{{</span><span class="s2">"name": "...", "role": "...", "address": "..."</span><span class="se">}}</span><span class="s2">],</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s2">  "effective_date": "YYYY-MM-DD or null",</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s2">  "expiration_date": "YYYY-MM-DD or null",</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s2">  "payment_terms": </span><span class="se">{{</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s2">    "amount": "...", </span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s2">    "frequency": "...", </span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="s2">    "due_date": "...",</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s2">    "late_penalty": "..."</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s2">  </span><span class="se">}}</span><span class="s2">,</span>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="s2">  "obligations": [</span><span class="se">{{</span><span class="s2">"party": "...", "obligation": "...", "deadline": "..."</span><span class="se">}}</span><span class="s2">],</span>
-</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s2">  "governing_law": "..."</span>
-</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="se">}}</span>
-</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
-</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s2">Contract:</span>
-</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="si">{</span><span class="n">contract_text</span><span class="si">}</span>
-</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
-</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="s2">Think through each field carefully before outputting the JSON."""</span>
-</span></code></pre></div><p></p>
-<p><strong>Iteration 3: Add validation and self-correction</strong>
-</p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_with_validation</span><span class="p">(</span><span class="n">contract_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_retries</span><span class="p">):</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">extraction_prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract</span><span class="o">=</span><span class="n">contract_text</span><span class="p">))</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>            <span class="c1"># Validate required fields</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>            <span class="k">assert</span> <span class="s2">"parties"</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"parties"</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>            <span class="k">assert</span> <span class="s2">"effective_date"</span> <span class="ow">in</span> <span class="n">data</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>            <span class="c1"># Validate date format</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>            <span class="k">for</span> <span class="n">date_field</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"effective_date"</span><span class="p">,</span> <span class="s2">"expiration_date"</span><span class="p">]:</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>                <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">date_field</span><span class="p">):</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>                    <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">date_field</span><span class="p">],</span> <span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">)</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>            <span class="k">return</span> <span class="n">data</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="k">except</span> <span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">,</span> <span class="ne">AssertionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>            <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">max_retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>                <span class="c1"># Self-correction: tell the model what went wrong</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>                <span class="n">correction_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="s2">Your previous extraction had an error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s2">Previous output: </span><span class="si">{</span><span class="n">response</span><span class="si">}</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="s2">Please fix the error and return corrected valid JSON.</span>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="s2">Contract: </span><span class="si">{</span><span class="n">contract_text</span><span class="si">}</span>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="s2">"""</span>
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>                <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">correction_prompt</span><span class="p">)</span>
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
-</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Could not extract valid data after retries"</span><span class="p">)</span>
-</span></code></pre></div><p></p>
-<p><strong>Iteration 4: Few-shot examples for edge cases</strong>
-</p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">few_shot_examples</span> <span class="o">=</span> <span class="s2">"""</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s2">EXAMPLE 1:</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s2">Contract snippet: "This Agreement is entered into as of January 1, 2024 between </span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s2">ACME Corp ("Buyer") and XYZ Ltd ("Seller")..."</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s2">Extracted: {"parties": [{"name": "ACME Corp", "role": "Buyer"}, {"name": "XYZ Ltd", "role": "Seller"}], </span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s2">             "effective_date": "2024-01-01"}</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s2">EXAMPLE 2 (amendment — no new effective date):</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s2">Contract snippet: "This Amendment No. 2 hereby modifies the Agreement dated March 15, 2023..."</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s2">Extracted: {"parties": [...], "effective_date": null, </span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s2">             "notes": "This is an amendment to existing agreement dated 2023-03-15"}</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s2">"""</span>
-</span></code></pre></div><p></p>
-<h3 id="results-comparison">Results Comparison<a class="headerlink" href="#results-comparison" title="Permanent link">¶</a></h3>
-<table>
-<thead>
-<tr>
-<th>Approach</th>
-<th>JSON parse success</th>
-<th>Field accuracy</th>
-<th>Time per contract</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Naive</td>
-<td>60%</td>
-<td>70%</td>
-<td>2s</td>
-</tr>
-<tr>
-<td>Schema + CoT</td>
-<td>90%</td>
-<td>88%</td>
-<td>3s</td>
-</tr>
-<tr>
-<td>+ Validation/retry</td>
-<td>98%</td>
-<td>88%</td>
-<td>4s avg</td>
-</tr>
-<tr>
-<td>+ Few-shot</td>
-<td>98%</td>
-<td>94%</td>
-<td>4s avg</td>
-</tr>
-</tbody>
-</table>
-<h3 id="lessons-learned">Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permanent link">¶</a></h3>
+<h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li><strong>Schema definition is non-negotiable</strong> for structured extraction — free-form output is unparseable at scale</li>
-<li><strong>CoT dramatically improves complex clause interpretation</strong> — the model "thinks" before committing to values</li>
-<li><strong>Validation + retry is cheap insurance</strong> — most failures self-correct on second attempt</li>
-<li><strong>Few-shot examples handle edge cases</strong> that instructions alone miss</li>
-<li><strong>Evaluation drives improvement</strong> — without the accuracy table above, you'd be flying blind</li>
+<li>Why use Semantic Intent Routing instead of an Autonomous Agent with Tools?</li>
+<li>How do you handle multi-intent queries (e.g., "Where is my order and what is your return policy?")?</li>
 </ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Routing vs Agents?</strong>
+An Autonomous Agent (ReAct) requires the LLM to dynamically reason about which tool to use, making sequential API calls. This results in incredibly high latency (e.g., 5-10 seconds) and non-deterministic behavior. Intent Routing is $O(1)$ in LLM calls, deterministic, and easily hits a sub-1s latency budget. Agents are for complex open-ended workflows; Routers are for strict consumer APIs.</p>
+<p><strong>2. Multi-Intent Queries?</strong>
+The Intent Classifier must be upgraded to support Multi-Label Classification (outputting an array like <code>["ORDER_STATUS", "POLICY"]</code>). The Orchestrator then forks the execution, executing the SQL lookup and the Vector lookup in parallel asynchronously, concatenates both results into the Context Builder, and sends them to the final LLM.</p>
+</details>
+<hr>
+<h2 id="case-study-2-high-yield-llm-data-extraction-pipeline">Case Study 2: High-Yield LLM Data Extraction Pipeline<a class="headerlink" href="#case-study-2-high-yield-llm-data-extraction-pipeline" title="Permanent link">¶</a></h2>
+<p><strong>The Problem:</strong> A legal tech company wants to extract highly structured JSON information (parties, dates, payment terms) from massive, unstructured legal contracts. A simple prompt like <em>"Extract data into JSON"</em> results in frequent syntax errors and hallucinated clauses.</p>
+<h3 id="the-system-design-answer_1">The System Design Answer<a class="headerlink" href="#the-system-design-answer_1" title="Permanent link">¶</a></h3>
+<p>Reliable data extraction requires a multi-stage pipeline:
+1. <strong>Schema Definition:</strong> Use Pydantic to strictly type the required JSON output.
+2. <strong>Chain-of-Thought (CoT):</strong> Force the LLM to write out its reasoning <em>before</em> generating the JSON.
+3. <strong>Few-Shot Examples:</strong> Provide explicit edge-case examples.
+4. <strong>Self-Correction Loop:</strong> Catch JSON parsing errors in Python, and feed the error string back to the LLM so it can fix its own mistake.</p>
+<h3 id="python-implementation-architecture_1">Python Implementation Architecture<a class="headerlink" href="#python-implementation-architecture_1" title="Permanent link">¶</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># The Prompt uses CoT (Think first) and Few-Shot examples</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">extraction_prompt</span> <span class="o">=</span> <span class="s2">"""</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s2">You are a legal analyst extracting structured data.</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s2">First, read the contract and WRITE YOUR ANALYSIS:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s2">1. Identify all named parties.</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s2">2. Identify all dates and payment clauses.</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s2">Then, return a STRICT JSON object:</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s2">{</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s2">  "parties": [{"name": "...", "role": "..."}],</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s2">  "effective_date": "YYYY-MM-DD",</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s2">  "payment_terms": {"amount": "...", "due_date": "..."}</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s2">}</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s2">EXAMPLE EDGE CASE:</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s2">Snippet: "This Amendment modifies the Agreement dated March 15, 2023."</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s2">Extraction: {"effective_date": null, "notes": "Amendment to 2023-03-15 agreement"}</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s2">Contract:</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="si">{contract}</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s2">"""</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_with_validation</span><span class="p">(</span><span class="n">contract_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_retries</span><span class="p">):</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">extraction_prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract</span><span class="o">=</span><span class="n">contract_text</span><span class="p">))</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>            <span class="c1"># 1. Attempt to parse JSON (must strip markdown blocktags first)</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>            <span class="n">json_str</span> <span class="o">=</span> <span class="n">extract_json_from_markdown</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>            <span class="c1"># 2. Validate application logic</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>            <span class="k">assert</span> <span class="s2">"parties"</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"parties"</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"effective_date"</span><span class="p">):</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>                <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"effective_date"</span><span class="p">],</span> <span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>            <span class="k">return</span> <span class="n">data</span> <span class="c1"># Success!</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>        <span class="k">except</span> <span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">,</span> <span class="ne">AssertionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>            <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">max_retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>                <span class="c1"># 3. Automated Self-Correction Loop</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>                <span class="n">correction_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="s2">                Your previous extraction failed validation: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="s2">                Previous output: </span><span class="si">{</span><span class="n">response</span><span class="si">}</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="s2">                Analyze why it failed and return the CORRECTED JSON.</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="s2">                """</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>                <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">correction_prompt</span><span class="p">)</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Catastrophic extraction failure after maximum retries."</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why does Chain-of-Thought (CoT) mathematically improve extraction accuracy?</li>
+<li>Why not just use OpenAI Native Function Calling / Tool Use for extraction?</li>
+<li>How do you handle contracts that exceed the LLM's context window?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Mathematics of CoT?</strong>
+LLMs are autoregressive; the next token is mathematically conditioned on all preceding tokens in the context window. If the LLM generates the JSON value immediately, it is guessing. If you force the LLM to write out its reasoning first (e.g., <em>"The contract mentions two dates, Jan 1 and Feb 1. Jan 1 is the signing date..."</em>), the attention mechanism locks onto those reasoning tokens, guaranteeing the subsequent JSON generation is highly accurate.</p>
+<p><strong>2. Native Function Calling vs CoT?</strong>
+OpenAI Function Calling guarantees perfect JSON syntax, but it forces the model to generate the JSON <em>immediately</em> without a Chain-of-Thought reasoning pad. For complex extractions (like resolving conflicting legal clauses), Function Calling often results in syntactically perfect JSON containing completely hallucinated data. Best practice: Use Function Calling, but add a <code>reasoning_trace: str</code> field as the very first variable in the JSON schema to force CoT.</p>
+<p><strong>3. Context Window Limits?</strong>
+If a contract is 200,000 tokens, do not feed it all at once (due to the "Lost in the Middle" phenomenon). Use a Map-Reduce architecture: chunk the contract by section headings. Run the extraction prompt on every section in parallel (Map). Then, feed all the partial JSON extracts into a final LLM call to synthesize the master JSON object (Reduce).</p>
+</details>
 <hr>
 <p><em>Back to <a href="../../README.md">Home</a></em></p>
 
