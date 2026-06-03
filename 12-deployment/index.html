@@ -775,33 +775,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-why-doesnt-quantization-significantly-degrade-llm-accuracy" class="md-nav__link">
+  <a href="#q1-what-is-the-fundamental-bottleneck-in-llm-inference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Why doesn't quantization significantly degrade LLM accuracy?
+        Q1. What is the fundamental bottleneck in LLM Inference?
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-what-techniques-improve-llm-inference-throughput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. What techniques improve LLM inference throughput?
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. What techniques improve LLM inference throughput?">
+    <nav class="md-nav" aria-label="Q1. What is the fundamental bottleneck in LLM Inference?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-continuous-batching-dynamic-batching" class="md-nav__link">
+  <a href="#core-answer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Continuous Batching (Dynamic Batching)
+        Core Answer
       
     </span>
   </a>
@@ -809,54 +798,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-pagedattention-vllm" class="md-nav__link">
+  <a href="#related-questions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. PagedAttention (vLLM)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-speculative-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Speculative Decoding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-grouped-query-attention-gqa-multi-query-attention-mqa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Grouped Query Attention (GQA) / Multi-Query Attention (MQA)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-flash-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Flash Attention
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-tensor-parallelism-pipeline-parallelism" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Tensor Parallelism / Pipeline Parallelism
+        Related Questions
       
     </span>
   </a>
@@ -869,22 +814,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-how-do-you-speed-up-inference-without-architectural-changes-like-gqa" class="md-nav__link">
+  <a href="#q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. How do you speed up inference without architectural changes like GQA?
+        Q2. How does PagedAttention solve KV Cache memory fragmentation?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. How do you speed up inference without architectural changes like GQA?">
+    <nav class="md-nav" aria-label="Q2. How does PagedAttention solve KV Cache memory fragmentation?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kv-cache-quantization" class="md-nav__link">
+  <a href="#core-answer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        KV Cache Quantization
+        Core Answer
       
     </span>
   </a>
@@ -892,10 +837,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prefix-caching" class="md-nav__link">
+  <a href="#related-questions_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prefix Caching
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-how-does-quantization-speed-up-inference-without-destroying-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3. How does Quantization speed up inference without destroying accuracy?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3. How does Quantization speed up inference without destroying accuracy?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
@@ -903,10 +876,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prompt-compression" class="md-nav__link">
+  <a href="#related-questions_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prompt Compression
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4. How does Speculative Decoding break the autoregressive speed limit?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4. How does Speculative Decoding break the autoregressive speed limit?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
@@ -914,21 +915,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#response-streaming" class="md-nav__link">
+  <a href="#related-questions_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Response Streaming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#batched-offline-inference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Batched Offline Inference
+        Related Questions
       
     </span>
   </a>
@@ -1090,169 +1080,156 @@
 
 <h1 id="llm-deployment-inference-optimization">LLM Deployment &amp; Inference Optimization<a class="headerlink" href="#llm-deployment-inference-optimization" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>Production LLMs must be fast, cost-efficient, and reliable. Here's how to get there.</p>
+<p>Serving an LLM is easy. Serving an LLM efficiently, securely, and cheaply at scale is one of the hardest infrastructure problems in modern engineering. Answers are calibrated for a <strong>Google L5 Senior AI/ML Engineer</strong> interview bar.</p>
 </blockquote>
 <hr>
-<h2 id="1-why-doesnt-quantization-significantly-degrade-llm-accuracy">1. Why doesn't quantization significantly degrade LLM accuracy?<a class="headerlink" href="#1-why-doesnt-quantization-significantly-degrade-llm-accuracy" title="Permanent link">¶</a></h2>
-<p>Quantization reduces the numerical precision of model weights (e.g., FP32 → INT8 → INT4). Intuitively, you'd expect significant accuracy loss — but in practice, LLMs are remarkably robust to this.</p>
-<p><strong>Why LLMs tolerate quantization:</strong></p>
+<h2 id="q1-what-is-the-fundamental-bottleneck-in-llm-inference">Q1. What is the fundamental bottleneck in LLM Inference?<a class="headerlink" href="#q1-what-is-the-fundamental-bottleneck-in-llm-inference" title="Permanent link">¶</a></h2>
+<h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
+<p>To optimize an LLM, you must understand that Inference is split into two entirely different computational regimes:</p>
 <ol>
-<li>
-<p><strong>Redundancy in large models:</strong> LLMs have billions of parameters with significant redundancy. Many weights contribute minimally to outputs — losing precision on them has negligible effect.</p>
-</li>
-<li>
-<p><strong>Smooth weight distributions:</strong> LLM weight distributions are roughly Gaussian and well-behaved, making them amenable to uniform quantization.</p>
-</li>
-<li>
-<p><strong>Outlier handling:</strong> Modern quantization methods (GPTQ, AWQ) identify and protect the small percentage of "outlier" weights that are critical to accuracy.</p>
-</li>
-<li>
-<p><strong>Compensating activations:</strong> When weights are quantized, the model's learned representations can partially compensate through the remaining full-precision computations.</p>
-</li>
+<li><strong>Pre-fill Phase (Processing the Prompt):</strong> The GPU processes all input tokens simultaneously in a massive parallel matrix multiplication. This phase is <strong>Compute-Bound</strong> (limited by the GPU's teraFLOPS).</li>
+<li><strong>Decode Phase (Generating the Output):</strong> The GPU generates one token at a time autoregressively. To generate a single token, the GPU must load the <em>entire multi-gigabyte weight matrix</em> from High-Bandwidth Memory (HBM) into the compute cores (SRAM). This phase is <strong>Memory Bandwidth-Bound</strong>. The compute cores sit idle 90% of the time waiting for weights to transfer across the silicon.</li>
 </ol>
-<p><strong>Quantization types and accuracy impact:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Precision</th>
-<th>Memory (7B model)</th>
-<th>Speed</th>
-<th>Accuracy vs FP16</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FP32</td>
-<td>28 GB</td>
-<td>1×</td>
-<td>Baseline</td>
-</tr>
-<tr>
-<td>BF16</td>
-<td>14 GB</td>
-<td>~2×</td>
-<td>~identical</td>
-</tr>
-<tr>
-<td>INT8</td>
-<td>7 GB</td>
-<td>~2–3×</td>
-<td>&lt;0.5% degradation</td>
-</tr>
-<tr>
-<td>INT4 (NF4)</td>
-<td>3.5 GB</td>
-<td>~3–4×</td>
-<td>1–3% degradation</td>
-</tr>
-<tr>
-<td>INT2</td>
-<td>1.75 GB</td>
-<td>~5×</td>
-<td>Significant degradation</td>
-</tr>
-</tbody>
-</table>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># GPTQ quantization (post-training, calibration-based)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">GPTQConfig</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">gptq_config</span> <span class="o">=</span> <span class="n">GPTQConfig</span><span class="p">(</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">bits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">dataset</span><span class="o">=</span><span class="s2">"c4"</span><span class="p">,</span>         <span class="c1"># Calibration dataset</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="s2">"meta-llama/Llama-3-8B"</span><span class="p">,</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">quantization_config</span><span class="o">=</span><span class="n">gptq_config</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Weights quantized to 4-bit, activations remain float16</span>
-</span></code></pre></div>
+<p>Because generating tokens is entirely gated by memory bandwidth, throwing a "faster" GPU at the problem rarely helps unless that GPU also has faster memory transfer speeds.</p>
+<h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is the difference between TTFT and TPOT?</li>
+<li>How does Batching convert a Memory-Bound process into a Compute-Bound process?</li>
+<li>Why does standard Static Batching fail for LLMs?</li>
+<li>What is Continuous Batching (ORCA)?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. TTFT vs TPOT?</strong>
+<strong>Time-To-First-Token (TTFT)</strong> is the time it takes to complete the Pre-fill phase. Users are highly sensitive to TTFT; if it exceeds 1 second, they think the app is broken. <strong>Time-Per-Output-Token (TPOT)</strong> is the speed of the Decode phase. Humans read at about 5-8 tokens per second. As long as your TPOT yields &gt;10 tokens per second, the user experiences a smooth stream.</p>
+<p><strong>2. The Math of Batching?</strong>
+If you generate 1 token for 1 user, you load 15GB of weights to perform a tiny mathematical operation. If you batch 64 users together, you load the <em>exact same 15GB of weights once</em>, but apply them to 64 different requests simultaneously. The memory transfer cost is amortized across 64 users, dramatically increasing overall throughput (Tokens Per Second).</p>
+<p><strong>3. Static Batching Failures?</strong>
+In standard CV/NLP models, you wait for 64 requests, batch them, and run them. However, LLM outputs have variable lengths. If Request A finishes in 10 tokens, and Request B finishes in 500 tokens, Request A's slot in the GPU batch sits completely idle for 490 iterations while waiting for B to finish, wasting massive compute.</p>
+<p><strong>4. Continuous Batching (Iteration-Level Scheduling)?</strong>
+Continuous batching (pioneered by the ORCA paper, used in vLLM/TGI) solves this. The scheduler operates at the token iteration level. As soon as Request A finishes token 10 and exits, the scheduler immediately pulls Request C from the queue and inserts it into Request A's vacant slot on the very next token iteration. The GPU is kept at 100% batch saturation at all times.</p>
+</details>
 <hr>
-<h2 id="2-what-techniques-improve-llm-inference-throughput">2. What techniques improve LLM inference throughput?<a class="headerlink" href="#2-what-techniques-improve-llm-inference-throughput" title="Permanent link">¶</a></h2>
-<h3 id="1-continuous-batching-dynamic-batching">1. Continuous Batching (Dynamic Batching)<a class="headerlink" href="#1-continuous-batching-dynamic-batching" title="Permanent link">¶</a></h3>
-<p>Traditional: wait for all requests in a batch to finish before starting new ones.<br>
-Continuous: insert new requests as soon as a sequence finishes — GPUs stay fully utilized.</p>
-<p></p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Static batching:    [Req1████░░░░░][Req2████████] → wait for both
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Continuous batching: [Req1████] → immediately start [Req3] in that slot
-</span></code></pre></div>
-<strong>Result:</strong> 2–4× throughput improvement. Used by vLLM, TGI by default.<p></p>
-<h3 id="2-pagedattention-vllm">2. PagedAttention (vLLM)<a class="headerlink" href="#2-pagedattention-vllm" title="Permanent link">¶</a></h3>
-<p>KV cache management inspired by OS virtual memory paging. Eliminates memory fragmentation, enabling larger batches.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLM</span><span class="p">,</span> <span class="n">SamplingParams</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"meta-llama/Llama-3-8B-Instruct"</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">sampling_params</span> <span class="o">=</span> <span class="n">SamplingParams</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">outputs</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">([</span><span class="s2">"Hello, tell me about AI."</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">sampling_params</span><span class="p">)</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Handles 100 concurrent requests efficiently via PagedAttention</span>
-</span></code></pre></div>
-<h3 id="3-speculative-decoding">3. Speculative Decoding<a class="headerlink" href="#3-speculative-decoding" title="Permanent link">¶</a></h3>
-<p>Use a small "draft" model to generate candidate tokens, then verify in parallel with the large model — net speedup of 2–3×.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Small model generates:  ["The", "cat", "sat", "on", "the"] (5 tokens in 1 step)
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Large model verifies:   ✓ ✓ ✓ ✗ → accept 3 tokens, reject from position 4
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Net: 3 tokens in the time it takes to run the large model once
-</span></code></pre></div>
-<h3 id="4-grouped-query-attention-gqa-multi-query-attention-mqa">4. Grouped Query Attention (GQA) / Multi-Query Attention (MQA)<a class="headerlink" href="#4-grouped-query-attention-gqa-multi-query-attention-mqa" title="Permanent link">¶</a></h3>
-<p>Reduces KV cache size by sharing keys/values across attention heads:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Multi-Head Attention:   Q₁K₁V₁, Q₂K₂V₂, ..., Q₃₂K₃₂V₃₂  (32 KV heads)
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Grouped Query Attention: Q₁..Q₄→K₁V₁, Q₅..Q₈→K₂V₂, ...  (8 KV heads)
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Multi-Query Attention:  All Qₙ → K₁V₁                     (1 KV head)
-</span></code></pre></div>
-<p>GQA reduces KV cache by 4–8× with minimal quality loss — used in Llama 3, Mistral.</p>
-<h3 id="5-flash-attention">5. Flash Attention<a class="headerlink" href="#5-flash-attention" title="Permanent link">¶</a></h3>
-<p>Rewrites attention computation to minimize GPU HBM reads/writes using tiling — 3–8× speedup for attention layers.</p>
-<h3 id="6-tensor-parallelism-pipeline-parallelism">6. Tensor Parallelism / Pipeline Parallelism<a class="headerlink" href="#6-tensor-parallelism-pipeline-parallelism" title="Permanent link">¶</a></h3>
-<p>Split model across multiple GPUs for large models that don't fit on one GPU.</p>
+<h2 id="q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation">Q2. How does PagedAttention solve KV Cache memory fragmentation?<a class="headerlink" href="#q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
+<p>During the Decode phase, the LLM must "remember" all previous tokens to generate the next one. Instead of re-calculating everything from scratch, the GPU stores the intermediate Keys and Values in VRAM. This is the <strong>KV Cache</strong>.</p>
+<p>The KV cache grows dynamically with every generated token. Historically, inference engines had to statically pre-allocate contiguous memory for the maximum possible sequence length (e.g., 4096 tokens per request) just in case the model generated a long response. If the model only generated 10 tokens, the remaining 4086 tokens of VRAM were permanently locked and wasted (Internal Fragmentation). This limited batch sizes to tiny numbers.</p>
+<p><strong>PagedAttention</strong> (the core of the <code>vLLM</code> engine) borrows OS Virtual Memory paging. It chops the KV cache into small, fixed-size blocks (e.g., 16 tokens). It dynamically allocates physical blocks on the fly only when the model actually needs them, mapping them together via a logical page table.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Logical_KV_Space ["Logical View (Contiguous)"]
+        A["Block 0 (Tokens 1-16)"]
+        B["Block 1 (Tokens 17-32)"]
+        C["Block 2 (Tokens 33-48)"]
+    end
+
+    subgraph Block_Table ["Block Mapping Table"]
+        D["Logical 0 -&gt; Physical 5"]
+        E["Logical 1 -&gt; Physical 2"]
+        F["Logical 2 -&gt; Physical 8"]
+    end
+
+    subgraph Physical_VRAM ["Physical GPU VRAM (Fragmented)"]
+        P1["Physical 1"]
+        P2["Physical 2 (Block 1)"]
+        P3["Physical 3"]
+        P4["Physical 4"]
+        P5["Physical 5 (Block 0)"]
+        P8["Physical 8 (Block 2)"]
+    end
+
+    Logical_KV_Space -.-&gt; Block_Table
+    Block_Table -.-&gt; Physical_VRAM</code></pre>
+<p>By eliminating memory fragmentation, PagedAttention allows the GPU to fit 3x to 4x more requests into the batch, linearly scaling throughput.</p>
+<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>How does PagedAttention enable automatic Prefix Caching?</li>
+<li>What happens when the physical KV cache runs out during generation?</li>
+<li>How do MQA and GQA reduce KV Cache pressure architecturally?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Prefix Caching?</strong>
+Because PagedAttention separates logical mapping from physical memory, multiple requests can point to the <em>exact same physical block</em>. If 1,000 users all send requests with the same massive 2,000-token System Prompt, vLLM only computes the System Prompt's KV cache once, stores it in physical memory, and maps all 1,000 requests to those shared blocks, slashing TTFT to near zero.</p>
+<p><strong>2. KV Cache Exhaustion (Preemption)?</strong>
+If the batch is full and outputs are longer than expected, physical VRAM runs out. vLLM uses Swapping. It temporarily halts a request, copies its KV blocks from GPU HBM to CPU RAM over PCIe, and frees the GPU memory for other requests. When space opens up, it swaps the KV cache back to the GPU and resumes generation.</p>
+<p><strong>3. Multi-Query Attention (MQA)?</strong>
+Standard Multi-Head Attention creates a distinct Key and Value matrix for every single Query head (e.g., 32 Q heads, 32 K heads, 32 V heads). MQA forces all 32 Query heads to mathematically share a <em>single</em> Key and Value head. This shrinks the total size of the KV cache in VRAM by up to 96%, allowing massive context windows and giant batch sizes without OOM errors.</p>
+</details>
 <hr>
-<h2 id="3-how-do-you-speed-up-inference-without-architectural-changes-like-gqa">3. How do you speed up inference without architectural changes like GQA?<a class="headerlink" href="#3-how-do-you-speed-up-inference-without-architectural-changes-like-gqa" title="Permanent link">¶</a></h2>
-<p>When you can't change the model architecture, these techniques apply:</p>
-<h3 id="kv-cache-quantization">KV Cache Quantization<a class="headerlink" href="#kv-cache-quantization" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Quantize KV cache to INT8 (reduces KV memory by 2×)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># vLLM supports this natively</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span> <span class="n">kv_cache_dtype</span><span class="o">=</span><span class="s2">"fp8"</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="prefix-caching">Prefix Caching<a class="headerlink" href="#prefix-caching" title="Permanent link">¶</a></h3>
-<p>If many requests share a common system prompt, cache the KV states for that prefix — skip recomputing it for every request.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># vLLM automatic prefix caching</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span> <span class="n">enable_prefix_caching</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># All requests with the same system prompt reuse cached KV</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">requests</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="s2">"[SYSTEM] You are a helpful assistant. [USER] "</span> <span class="o">+</span> <span class="n">question</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">for</span> <span class="n">question</span> <span class="ow">in</span> <span class="n">user_questions</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">]</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># System prompt KV computed once, reused for all requests</span>
-</span></code></pre></div>
-<h3 id="prompt-compression">Prompt Compression<a class="headerlink" href="#prompt-compression" title="Permanent link">¶</a></h3>
-<p>Compress long contexts to fewer tokens before sending to the LLM:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">llmlingua</span><span class="w"> </span><span class="kn">import</span> <span class="n">PromptCompressor</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">compressor</span> <span class="o">=</span> <span class="n">PromptCompressor</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank"</span><span class="p">)</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">compressed</span> <span class="o">=</span> <span class="n">compressor</span><span class="o">.</span><span class="n">compress_prompt</span><span class="p">(</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">long_context</span><span class="p">,</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">rate</span><span class="o">=</span><span class="mf">0.5</span>  <span class="c1"># Compress to 50% of original length</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="response-streaming">Response Streaming<a class="headerlink" href="#response-streaming" title="Permanent link">¶</a></h3>
-<p>Don't wait for full generation — stream tokens to the client. Improves perceived latency (time-to-first-token) even if total time is the same.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">openai</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">stream</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Explain attention mechanisms"</span><span class="p">}],</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">stream</span><span class="o">=</span><span class="kc">True</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">)</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="batched-offline-inference">Batched Offline Inference<a class="headerlink" href="#batched-offline-inference" title="Permanent link">¶</a></h3>
-<p>For non-interactive workloads, batch all requests and process with maximum GPU utilization:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLM</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span> <span class="n">max_num_seqs</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># Process 256 sequences simultaneously</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">outputs</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">all_prompts</span><span class="p">)</span>  <span class="c1"># Fully batched</span>
-</span></code></pre></div>
+<h2 id="q3-how-does-quantization-speed-up-inference-without-destroying-accuracy">Q3. How does Quantization speed up inference without destroying accuracy?<a class="headerlink" href="#q3-how-does-quantization-speed-up-inference-without-destroying-accuracy" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
+<p><strong>Quantization</strong> compresses the neural network weights from 16-bit floats (BF16/FP16) down to 8-bit or 4-bit integers. </p>
+<p>Because the Decode phase is strictly <strong>Memory Bandwidth-Bound</strong>, reducing a 7B model from 14GB (FP16) down to 3.5GB (INT4) means the GPU can transfer the entire model across the silicon 4x faster. <strong>Quantization doesn't increase compute speed; it removes the data transfer bottleneck.</strong></p>
+<p>LLMs tolerate extreme quantization because they are massively over-parameterized. The weight distributions form tight Gaussian bell curves, meaning rounding them to the nearest INT4 bin rarely shifts the overall mathematical direction of the forward pass. </p>
+<p>The primary danger in Quantization is <strong>Outliers</strong>—specific activation channels that are 100x larger than the mean. If you quantize an outlier blindly, the clipping error cascades through the network, destroying accuracy.</p>
+<h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is the difference between AWQ/GPTQ and SmoothQuant?</li>
+<li>Does Quantization impact the Pre-fill phase?</li>
+<li>What is the trade-off with KV-Cache Quantization (FP8)?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. AWQ vs SmoothQuant?</strong>
+<strong>AWQ (Activation-aware Weight Quantization)</strong> is a Weight-Only technique. It runs a calibration dataset to find the 1% of "salient" weights (the ones connected to massive outliers) and keeps them in FP16 while crushing the remaining 99% to INT4. <strong>SmoothQuant</strong> tackles Activation Quantization (W8A8). It mathematically pushes the outlier magnitude from the dynamic activations down into the static weights, allowing both to be quantized safely.</p>
+<p><strong>2. Quantization in Pre-fill?</strong>
+During Pre-fill, the GPU processes thousands of tokens in parallel, saturating the compute cores (Compute-Bound). Because the memory bandwidth is no longer the bottleneck, loading INT4 weights doesn't speed things up. In fact, it actually <em>slows down</em> the Pre-fill phase, because the GPU has to burn compute cycles de-quantizing the INT4 weights back to FP16 before performing the matrix multiplication.</p>
+<p><strong>3. FP8 KV Cache?</strong>
+Just like weights, the KV cache can be quantized. Crushing the KV cache to 8-bit floating point (FP8) cuts memory usage in half, allowing you to double your batch size (massive throughput gain). However, unlike static weights, the KV cache is highly dynamic. Heavy KV quantization on complex reasoning tasks often leads to "attention degradation," where the model forgets specific details from the middle of the prompt.</p>
+</details>
+<hr>
+<h2 id="q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit">Q4. How does Speculative Decoding break the autoregressive speed limit?<a class="headerlink" href="#q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
+<p>Standard LLM generation is strictly sequential. To generate Token 3, you must finish calculating Token 2. You cannot parallelize autoregressive decoding.</p>
+<p><strong>Speculative Decoding</strong> bypasses this constraint by pairing a massive, slow "Target Model" (e.g., Llama-3-70B) with a tiny, lightning-fast "Draft Model" (e.g., Llama-3-8B).</p>
+<ol>
+<li>The Draft model rapidly hallucinates the next $K$ tokens (e.g., $K=4$).</li>
+<li>These 4 tokens are appended to the prompt.</li>
+<li>The Target model runs a <strong>single parallel forward pass</strong> (Pre-fill mode) on all 4 draft tokens simultaneously to check their probabilities.</li>
+<li>If the Target model's mathematical probabilities agree with the Draft model's choices, all 4 tokens are instantly accepted.</li>
+</ol>
+<p>You just generated 4 tokens in the time it normally takes to generate 1, effectively doubling or tripling your Tokens-Per-Second without altering the final output quality.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Input Prompt"] --&gt; B["Tiny Draft Model (8B)"]
+
+    B --&gt;|"Rapidly guesses 3 tokens"| C["['The', 'cat', 'sat']"]
+
+    C -.-&gt;|"Append to Input"| D["Massive Target Model (70B)"]
+
+    D --&gt; E{"Parallel Verification"}
+
+    E --&gt;|"Agree: 'The', 'cat', 'sat'"| F["Accept all 3 tokens instantly"]
+    E --&gt;|"Reject at 'sat' (prefers 'ran')"| G["Accept 'The cat', output 'ran', discard 'sat'"]
+
+    F --&gt; H["Loop back to Draft Model"]
+    G --&gt; H</code></pre>
+<h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why does the Target Model evaluate the Draft Model's tokens in parallel?</li>
+<li>Does Speculative Decoding change the final output probabilities?</li>
+<li>How do you construct a good Draft Model?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Parallel Verification?</strong>
+Because the Draft model already guessed the tokens, the Target model treats them as if they were part of the input prompt. Processing a prompt is a Pre-fill operation (Compute-bound parallel matrix multiplication). The Target model can evaluate 1 token or 4 tokens in the exact same amount of time, allowing it to verify the entire sequence "for free."</p>
+<p><strong>2. Mathematical Equivalence?</strong>
+No, it does not change the output. Speculative decoding guarantees mathematically identical outputs to the Target model. If the Draft model makes a bad guess, the Target model simply rejects it and overwrites it with its own true autoregressive calculation. The worst-case scenario is that you fall back to standard generation speed.</p>
+<p><strong>3. Draft Model Construction?</strong>
+The Draft model must share the exact same Tokenizer vocabulary as the Target model. It must be tiny (so it runs 10x faster) but highly aligned with the Target model's writing style. Often, companies will distill the Target model or use an early checkpoint from the Target model's pre-training phase as the Draft model to maximize the Acceptance Rate.</p>
+</details>
 <hr>
 <p><em>Next: <a href="../13-agents/">Agent-Based Systems →</a></em></p>
 
