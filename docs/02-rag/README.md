@@ -66,14 +66,14 @@ A production RAG system is much more than an API call; it is a complex data engi
 
 ```mermaid
 flowchart LR
-    subgraph Offline Ingestion
+    subgraph OfflineIngestion ["Offline Ingestion"]
         A[Raw Documents] --> B[Document Parsers]
         B --> C[Chunkers / Splitters]
         C --> D[Embedding Model]
         D --> E[(Vector Store)]
     end
     
-    subgraph Online Generation
+    subgraph OnlineGeneration ["Online Generation"]
         F[User Query] --> G[Query Encoder]
         G --> H{ANN Search}
         E <--> H
@@ -166,7 +166,7 @@ Naive RAG (Chunk -> Embed -> Top-K Search -> Prompt) works for simple factual lo
 
 ```mermaid
 flowchart TD
-    subgraph Advanced RAG (Modular)
+    subgraph AdvancedRAG ["Advanced RAG (Modular)"]
         A[User Query] --> B[Query Rewriting / Expansion]
         B --> C[Routing]
         C -->|SQL| D[(Relational DB)]
