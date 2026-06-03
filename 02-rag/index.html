@@ -1212,14 +1212,14 @@ If an attacker hides instructions in a document (e.g., a resume that says "Ignor
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
 <p>A production RAG system is much more than an API call; it is a complex data engineering pipeline split into offline ingestion and online retrieval.</p>
 <pre class="mermaid"><code>flowchart LR
-    subgraph Offline Ingestion
+    subgraph OfflineIngestion ["Offline Ingestion"]
         A[Raw Documents] --&gt; B[Document Parsers]
         B --&gt; C[Chunkers / Splitters]
         C --&gt; D[Embedding Model]
         D --&gt; E[(Vector Store)]
     end
 
-    subgraph Online Generation
+    subgraph OnlineGeneration ["Online Generation"]
         F[User Query] --&gt; G[Query Encoder]
         G --&gt; H{ANN Search}
         E &lt;--&gt; H
@@ -1327,7 +1327,7 @@ Fine-tuning requires massive, clean datasets and expensive GPU clusters for hour
 2. <strong>Multi-hop reasoning:</strong> "Compare the revenue of Apple and Microsoft." (Naive RAG might only retrieve Apple data if the vector aligns closer to Apple).
 3. <strong>Precision vs Recall:</strong> Large chunks dilute semantic meaning; small chunks lose context.</p>
 <pre class="mermaid"><code>flowchart TD
-    subgraph Advanced RAG (Modular)
+    subgraph AdvancedRAG ["Advanced RAG (Modular)"]
         A[User Query] --&gt; B[Query Rewriting / Expansion]
         B --&gt; C[Routing]
         C --&gt;|SQL| D[(Relational DB)]
