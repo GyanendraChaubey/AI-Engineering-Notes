@@ -1869,14 +1869,13 @@
 <h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
 <p><strong>Discriminative models</strong> learn the conditional distribution <strong>P(Y|X)</strong> — given input X, predict label Y. They draw a decision boundary between classes. Examples: logistic regression, SVM, BERT with a classification head.</p>
 <p><strong>Generative models</strong> learn the joint distribution <strong>P(X)</strong> (or P(X,Y)) — they model how data is generated and can <em>synthesize new data</em>. LLMs learn P(token_t | token_1, ..., token_{t-1}) — the probability of the next token given all previous tokens.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph LR
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    subgraph Discriminative["Discriminative AI - Models P(Y|X)"]
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        A[Input X] --&gt; B["Decision Boundary"] --&gt; C[Label Y]
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    end
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    subgraph Generative["Generative AI - Models P(X)"]
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        D["Learned Distribution\nP(X)"] --&gt; E["Sampling"] --&gt; F["New Synthetic X"]
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    end
-</span></code></pre></div>
+<pre class="mermaid"><code>graph LR
+    subgraph Discriminative["Discriminative AI - Models P(Y|X)"]
+        A[Input X] --&gt; B["Decision Boundary"] --&gt; C[Label Y]
+    end
+    subgraph Generative["Generative AI - Models P(X)"]
+        D["Learned Distribution\nP(X)"] --&gt; E["Sampling"] --&gt; F["New Synthetic X"]
+    end</code></pre>
 <h3 id="deep-dive-key-differences">Deep-Dive: Key Differences<a class="headerlink" href="#deep-dive-key-differences" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -1947,34 +1946,33 @@
 <h2 id="q2-what-is-a-large-language-model-and-how-is-it-trained">Q2. What is a Large Language Model and how is it trained?<a class="headerlink" href="#q2-what-is-a-large-language-model-and-how-is-it-trained" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
 <p>An LLM is a transformer-based neural network with billions of parameters trained on massive text corpora to model language probability distributions. The training pipeline has three stages:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>flowchart LR
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    A["Raw Text\nTrillions of tokens\nC4, Common Crawl\nGitHub, Books"] --&gt;|"Stage 1\nSelf-supervised CLM"| B["Base Model\nPre-trained weights\nWorld knowledge\nLanguage understanding"]
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    B --&gt;|"Stage 2\nInstruction tuning SFT"| C["Chat Model\nFollows instructions\nStructured responses"]
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    C --&gt;|"Stage 3\nRLHF or DPO"| D["Aligned Model\nHelpful + Harmless\nHonest responses"]
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    style A fill:#1a3a5c,color:#fff
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    style B fill:#1d5c8a,color:#fff
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    style C fill:#2980b9,color:#fff
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    style D fill:#3498db,color:#fff
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    A["Raw Text\nTrillions of tokens\nC4, Common Crawl\nGitHub, Books"] --&gt;|"Stage 1\nSelf-supervised CLM"| B["Base Model\nPre-trained weights\nWorld knowledge\nLanguage understanding"]
+    B --&gt;|"Stage 2\nInstruction tuning SFT"| C["Chat Model\nFollows instructions\nStructured responses"]
+    C --&gt;|"Stage 3\nRLHF or DPO"| D["Aligned Model\nHelpful + Harmless\nHonest responses"]
+    style A fill:#1a3a5c,color:#fff
+    style B fill:#1d5c8a,color:#fff
+    style C fill:#2980b9,color:#fff
+    style D fill:#3498db,color:#fff</code></pre>
 <h3 id="stage-1-pre-training-causal-language-modeling">Stage 1: Pre-Training (Causal Language Modeling)<a class="headerlink" href="#stage-1-pre-training-causal-language-modeling" title="Permanent link">¶</a></h3>
 <p>Self-supervised learning on internet-scale data. Objective is <strong>next-token prediction</strong>:</p>
 <p>$$\mathcal{L}<em>{CLM} = -\frac{1}{T}\sum</em>{t=1}^{T} \log P_\theta(x_t \mid x_1, ..., x_{t-1})$$</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Simplified pre-training loop</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">"input_ids"</span><span class="p">]</span>             <span class="c1"># shape: [B, T]</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">labels</span>    <span class="o">=</span> <span class="n">input_ids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>       <span class="c1"># shift: predict next token</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">logits</span>    <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>       <span class="c1"># shape: [B, T-1, vocab_size]</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># Standard cross-entropy loss</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">logits</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">),</span>        <span class="c1"># [B*(T-1), vocab_size]</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="n">labels</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>                    <span class="c1"># [B*(T-1)]</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="n">ignore_index</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span>    <span class="c1"># ignore padding</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="p">)</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Simplified pre-training loop</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">"input_ids"</span><span class="p">]</span>             <span class="c1"># shape: [B, T]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">labels</span>    <span class="o">=</span> <span class="n">input_ids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>       <span class="c1"># shift: predict next token</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">logits</span>    <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>       <span class="c1"># shape: [B, T-1, vocab_size]</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># Standard cross-entropy loss</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">logits</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">),</span>        <span class="c1"># [B*(T-1), vocab_size]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">labels</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>                    <span class="c1"># [B*(T-1)]</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">ignore_index</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span>    <span class="c1"># ignore padding</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="p">)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </span></code></pre></div>
 <p><strong>Scale at Google/OpenAI:</strong>
 - <strong>Parameters</strong>: 7B (small) → 70B (large) → 1T+ (frontier)
@@ -1983,15 +1981,15 @@
 - <strong>Distributed training</strong>: Tensor parallelism (split attention heads) + Pipeline parallelism (split layers) + Data parallelism (split batches)</p>
 <h3 id="stage-2-supervised-fine-tuning-sft">Stage 2: Supervised Fine-Tuning (SFT)<a class="headerlink" href="#stage-2-supervised-fine-tuning-sft" title="Permanent link">¶</a></h3>
 <p>Train on high-quality <code>(instruction, response)</code> pairs. Critical: <strong>loss is computed only on assistant tokens</strong>, not user/system tokens.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># SFT data format (OpenAI-style)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"You are a helpful assistant."</span><span class="p">},</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Explain gradient descent."</span><span class="p">},</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"assistant"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Gradient descent minimizes loss by..."</span><span class="p">}</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  <span class="p">]</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># During training: mask out system + user tokens in the loss computation</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># SFT data format (OpenAI-style)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"You are a helpful assistant."</span><span class="p">},</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Explain gradient descent."</span><span class="p">},</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"assistant"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Gradient descent minimizes loss by..."</span><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  <span class="p">]</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># During training: mask out system + user tokens in the loss computation</span>
 </span></code></pre></div>
 <h3 id="stage-3-preference-alignment">Stage 3: Preference Alignment<a class="headerlink" href="#stage-3-preference-alignment" title="Permanent link">¶</a></h3>
 <ul>
@@ -2017,11 +2015,10 @@
 <h2 id="q3-what-exactly-is-a-token-in-the-context-of-language-models">Q3. What exactly is a "token" in the context of language models?<a class="headerlink" href="#q3-what-exactly-is-a-token-in-the-context-of-language-models" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>A token is the <strong>atomic unit of text</strong> that an LLM processes — not a word, not a character. Tokenization converts raw text into integer IDs from a fixed vocabulary. The model operates entirely in token space.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flowchart LR
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    A["Raw text:\n'unbelievable AI'"] --&gt; B["Tokenizer\nBPE Algorithm"] --&gt; C["Token strings:\n['un','believ','able',' AI']\nToken IDs: [1234, 5678, 9012, 4321]"]
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    C --&gt; D["Embedding Layer\nlookup table [V x d_model]"] --&gt; E["Dense vectors\nshape: [T, d_model]"]
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    E --&gt; F["Transformer\nProcessing"]
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    A["Raw text:\n'unbelievable AI'"] --&gt; B["Tokenizer\nBPE Algorithm"] --&gt; C["Token strings:\n['un','believ','able',' AI']\nToken IDs: [1234, 5678, 9012, 4321]"]
+    C --&gt; D["Embedding Layer\nlookup table [V x d_model]"] --&gt; E["Dense vectors\nshape: [T, d_model]"]
+    E --&gt; F["Transformer\nProcessing"]</code></pre>
 <h3 id="tokenization-algorithms">Tokenization Algorithms<a class="headerlink" href="#tokenization-algorithms" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2055,33 +2052,33 @@
 </tbody>
 </table>
 <h3 id="bpe-algorithm-step-by-step">BPE Algorithm Step-by-Step<a class="headerlink" href="#bpe-algorithm-step-by-step" title="Permanent link">¶</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Initial character vocab: {u, n, b, e, l, i, v, a, ...}
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Training corpus: "unbelievable" appears 10,000 times
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Iteration 1: Count all adjacent pairs
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  ('u','n') → 10,000, ('n','b') → 10,000, ('b','e') → 25,000 ← most frequent
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  Merge: 'b'+'e' → 'be'  →  vocab now has 'be'
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>Iteration 2: ('be','l') → 15,000, ('l','i') → 22,000 ← most frequent
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>  Merge: 'l'+'i' → 'li'
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>... after thousands of iterations:
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>Final: ['un', 'believ', 'able'] with IDs [1234, 5678, 9012]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Initial character vocab: {u, n, b, e, l, i, v, a, ...}
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Training corpus: "unbelievable" appears 10,000 times
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Iteration 1: Count all adjacent pairs
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  ('u','n') → 10,000, ('n','b') → 10,000, ('b','e') → 25,000 ← most frequent
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  Merge: 'b'+'e' → 'be'  →  vocab now has 'be'
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Iteration 2: ('be','l') → 15,000, ('l','i') → 22,000 ← most frequent
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  Merge: 'l'+'i' → 'li'
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>... after thousands of iterations:
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>Final: ['un', 'believ', 'able'] with IDs [1234, 5678, 9012]
 </span></code></pre></div>
 <h3 id="critical-engineering-implications">Critical Engineering Implications<a class="headerlink" href="#critical-engineering-implications" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tiktoken</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">enc</span> <span class="o">=</span> <span class="n">tiktoken</span><span class="o">.</span><span class="n">encoding_for_model</span><span class="p">(</span><span class="s2">"gpt-4"</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">examples</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="s2">"hello"</span><span class="p">:</span>         <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">),</span>           <span class="c1"># 1 token</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="s2">"unbelievable"</span><span class="p">:</span>  <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"unbelievable"</span><span class="p">),</span>     <span class="c1"># 3-4 tokens</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="s2">" AI"</span><span class="p">:</span>           <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">" AI"</span><span class="p">),</span>              <span class="c1"># 1 token (note: leading space!)</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="s2">"AI"</span><span class="p">:</span>            <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"AI"</span><span class="p">),</span>               <span class="c1"># DIFFERENT token ID than " AI"</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="s2">"🚀"</span><span class="p">:</span>            <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"🚀"</span><span class="p">),</span>               <span class="c1"># 1-2 tokens (emoji)</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="s2">"Gyanendra"</span><span class="p">:</span>     <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"Gyanendra"</span><span class="p">),</span>        <span class="c1"># rare name → multiple tokens</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="s2">"def __init__"</span><span class="p">:</span>  <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"def __init__"</span><span class="p">),</span>     <span class="c1"># code-friendly tokenization</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="s2">"中文"</span><span class="p">:</span>          <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"中文"</span><span class="p">),</span>              <span class="c1"># CJK: ~2-3 tokens per character</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">}</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tiktoken</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">enc</span> <span class="o">=</span> <span class="n">tiktoken</span><span class="o">.</span><span class="n">encoding_for_model</span><span class="p">(</span><span class="s2">"gpt-4"</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">examples</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">"hello"</span><span class="p">:</span>         <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">),</span>           <span class="c1"># 1 token</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">"unbelievable"</span><span class="p">:</span>  <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"unbelievable"</span><span class="p">),</span>     <span class="c1"># 3-4 tokens</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">" AI"</span><span class="p">:</span>           <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">" AI"</span><span class="p">),</span>              <span class="c1"># 1 token (note: leading space!)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s2">"AI"</span><span class="p">:</span>            <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"AI"</span><span class="p">),</span>               <span class="c1"># DIFFERENT token ID than " AI"</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="s2">"🚀"</span><span class="p">:</span>            <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"🚀"</span><span class="p">),</span>               <span class="c1"># 1-2 tokens (emoji)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s2">"Gyanendra"</span><span class="p">:</span>     <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"Gyanendra"</span><span class="p">),</span>        <span class="c1"># rare name → multiple tokens</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="s2">"def __init__"</span><span class="p">:</span>  <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"def __init__"</span><span class="p">),</span>     <span class="c1"># code-friendly tokenization</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="s2">"中文"</span><span class="p">:</span>          <span class="n">enc</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"中文"</span><span class="p">),</span>              <span class="c1"># CJK: ~2-3 tokens per character</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><strong>Why "strawberry" letter-counting fails:</strong></p>
 <p>LLMs cannot reliably count letters in words because they see <code>["straw", "berry"]</code> — 2 tokens — not individual characters. The <code>r</code> in <code>straw</code> and <code>r</code> in <code>berry</code> appear in different tokens.</p>
@@ -2102,8 +2099,8 @@
 <h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
 <p>Cost modeling is a critical engineering discipline.</p>
 <h3 id="api-based-cost-model">API-Based Cost Model<a class="headerlink" href="#api-based-cost-model" title="Permanent link">¶</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Total Cost = (input_tokens × price_in) + (output_tokens × price_out)
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>           + (cached_input_tokens × price_cached)  ← if using prompt caching
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Total Cost = (input_tokens × price_in) + (output_tokens × price_out)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>           + (cached_input_tokens × price_cached)  ← if using prompt caching
 </span></code></pre></div>
 <p><strong>Representative pricing (mid-2025):</strong></p>
 <table>
@@ -2155,13 +2152,12 @@
 </tbody>
 </table>
 <h3 id="self-hosted-cost-model">Self-Hosted Cost Model<a class="headerlink" href="#self-hosted-cost-model" title="Permanent link">¶</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>flowchart TD
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    A["Model Selection\n7B / 13B / 70B"] --&gt; B["Quantization\nfp16: 2 bytes/param\nint8: 1 byte/param\nint4: 0.5 byte/param"]
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    B --&gt; C["GPU Memory Needed\nLlama-3 70B fp16: ~140GB\nLlama-3 70B int4: ~35GB"]
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    C --&gt; D["GPU Selection\nA10G 24GB: $1.5/hr\nA100 80GB: $3/hr\nH100 80GB: $6/hr"]
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    D --&gt; E["Throughput\ntokens/sec per GPU"]
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    E --&gt; F["Cost per 1M tokens\n= GPU_$/hr × GPUs / tokens_per_hr × 1M"]
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    A["Model Selection\n7B / 13B / 70B"] --&gt; B["Quantization\nfp16: 2 bytes/param\nint8: 1 byte/param\nint4: 0.5 byte/param"]
+    B --&gt; C["GPU Memory Needed\nLlama-3 70B fp16: ~140GB\nLlama-3 70B int4: ~35GB"]
+    C --&gt; D["GPU Selection\nA10G 24GB: $1.5/hr\nA100 80GB: $3/hr\nH100 80GB: $6/hr"]
+    D --&gt; E["Throughput\ntokens/sec per GPU"]
+    E --&gt; F["Cost per 1M tokens\n= GPU_$/hr × GPUs / tokens_per_hr × 1M"]</code></pre>
 <h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -2181,15 +2177,14 @@
 <p>Temperature <strong>τ</strong> controls randomness in token sampling by scaling the logits before applying softmax. It reshapes the probability distribution over the entire vocabulary.</p>
 <p>$$P(x_i) = \frac{\exp(z_i / \tau)}{\sum_{j=1}^{V} \exp(z_j / \tau)}$$</p>
 <p>where $z_i$ is the raw logit for token $i$ and $\tau$ is the temperature.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>graph TD
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    A["Raw Logits z\n[2.1, 0.5, -0.3, 1.8]"] --&gt; B{"Temperature τ"}
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    B --&gt;|"τ → 0\nGreedy / Deterministic"| C["Prob ≈ [0.999, 0.000, 0.000, 0.001]\nAlways picks argmax"]
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    B --&gt;|"τ = 1.0\nDefault / Neutral"| D["Prob = [0.52, 0.11, 0.05, 0.32]\nRaw softmax distribution"]
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    B --&gt;|"τ &gt; 1.0\nMore Random"| E["Prob ≈ [0.34, 0.22, 0.18, 0.26]\nMore uniform / creative"]
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    style C fill:#c0392b,color:#fff
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    style D fill:#27ae60,color:#fff
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    style E fill:#8e44ad,color:#fff
-</span></code></pre></div>
+<pre class="mermaid"><code>graph TD
+    A["Raw Logits z\n[2.1, 0.5, -0.3, 1.8]"] --&gt; B{"Temperature τ"}
+    B --&gt;|"τ → 0\nGreedy / Deterministic"| C["Prob ≈ [0.999, 0.000, 0.000, 0.001]\nAlways picks argmax"]
+    B --&gt;|"τ = 1.0\nDefault / Neutral"| D["Prob = [0.52, 0.11, 0.05, 0.32]\nRaw softmax distribution"]
+    B --&gt;|"τ &gt; 1.0\nMore Random"| E["Prob ≈ [0.34, 0.22, 0.18, 0.26]\nMore uniform / creative"]
+    style C fill:#c0392b,color:#fff
+    style D fill:#27ae60,color:#fff
+    style E fill:#8e44ad,color:#fff</code></pre>
 <h3 id="production-configuration-guide">Production Configuration Guide<a class="headerlink" href="#production-configuration-guide" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2247,14 +2242,13 @@
 <h2 id="q6-what-are-the-different-strategies-for-selecting-output-tokens-decoding-strategies">Q6. What are the different strategies for selecting output tokens (decoding strategies)?<a class="headerlink" href="#q6-what-are-the-different-strategies-for-selecting-output-tokens-decoding-strategies" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_5">Core Answer<a class="headerlink" href="#core-answer_5" title="Permanent link">¶</a></h3>
 <p>Decoding strategy is how the model selects the next token from the probability distribution at each generation step. This choice has significant effects on output quality, diversity, and speed.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>flowchart TD
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    A["Model Output\nLogits over V=100K+ tokens"] --&gt; B{"Decoding\nStrategy"}
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    B --&gt; C["Greedy\nargmax — always top-1"]
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    B --&gt; D["Beam Search\nk candidate sequences\nexpand + prune"]
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    B --&gt; E["Top-K Sampling\nSample from top-K\nhighest-prob tokens"]
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    B --&gt; F["Top-P Nucleus\nSample from smallest\nset with P(cumulative) ≥ p"]
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    B --&gt; G["Temperature +\nTop-P Combined\nProduction default"]
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    A["Model Output\nLogits over V=100K+ tokens"] --&gt; B{"Decoding\nStrategy"}
+    B --&gt; C["Greedy\nargmax — always top-1"]
+    B --&gt; D["Beam Search\nk candidate sequences\nexpand + prune"]
+    B --&gt; E["Top-K Sampling\nSample from top-K\nhighest-prob tokens"]
+    B --&gt; F["Top-P Nucleus\nSample from smallest\nset with P(cumulative) ≥ p"]
+    B --&gt; G["Temperature +\nTop-P Combined\nProduction default"]</code></pre>
 <h3 id="strategy-comparison">Strategy Comparison<a class="headerlink" href="#strategy-comparison" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2323,24 +2317,24 @@
 <h3 id="1-eos-token-most-natural-stopping">1. EOS Token (Most Natural Stopping)<a class="headerlink" href="#1-eos-token-most-natural-stopping" title="Permanent link">¶</a></h3>
 <p>Every model has a special end-of-sequence token (<code>&lt;|endoftext|&gt;</code>, <code>&lt;/s&gt;</code>, <code>&lt;|im_end|&gt;</code>). The model learns during training to generate this when it's naturally done.</p>
 <h3 id="2-max-tokens-hard-safety-cap">2. Max Tokens (Hard Safety Cap)<a class="headerlink" href="#2-max-tokens-hard-safety-cap" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>  <span class="c1"># Hard cap: never exceed this</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">)</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># CRITICAL: Always check why generation stopped</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">finish_reason</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">finish_reason</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="k">if</span> <span class="n">finish_reason</span> <span class="o">==</span> <span class="s2">"length"</span><span class="p">:</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Response truncated. Consider increasing max_tokens."</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>  <span class="c1"># Hard cap: never exceed this</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># CRITICAL: Always check why generation stopped</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">finish_reason</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">finish_reason</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">if</span> <span class="n">finish_reason</span> <span class="o">==</span> <span class="s2">"length"</span><span class="p">:</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Response truncated. Consider increasing max_tokens."</span><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="3-stop-sequences">3. Stop Sequences<a class="headerlink" href="#3-stop-sequences" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Use case: Extract only SQL, stop before any explanation</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Convert to SQL: Show all users over 30</span><span class="se">\n</span><span class="s2">SQL:"</span><span class="p">}],</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Explanation:"</span><span class="p">,</span> <span class="s2">"Note:"</span><span class="p">],</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Use case: Extract only SQL, stop before any explanation</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4o"</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Convert to SQL: Show all users over 30</span><span class="se">\n</span><span class="s2">SQL:"</span><span class="p">}],</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Explanation:"</span><span class="p">,</span> <span class="s2">"Note:"</span><span class="p">],</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="related-questions_6">Related Questions<a class="headerlink" href="#related-questions_6" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -2359,23 +2353,23 @@
 <p>Stop sequences are string patterns that — when generated — immediately terminate output. <strong>The matching sequence is NOT included in the response.</strong> They are essential for reliable structured extraction and prompt chaining.</p>
 <h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">¶</a></h3>
 <h4 id="use-case-1-controlled-list-generation">Use Case 1: Controlled List Generation<a class="headerlink" href="#use-case-1-controlled-list-generation" title="Permanent link">¶</a></h4>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Without stop: model generates items 4, 5, 6, 7...</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># With stop: reliably returns exactly 3 items</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">prompt</span> <span class="o">=</span> <span class="s2">"List exactly 3 benefits of RAG:</span><span class="se">\n</span><span class="s2">1."</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"4."</span><span class="p">],</span>      <span class="c1"># Stop when model tries to generate item 4</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Without stop: model generates items 4, 5, 6, 7...</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># With stop: reliably returns exactly 3 items</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">prompt</span> <span class="o">=</span> <span class="s2">"List exactly 3 benefits of RAG:</span><span class="se">\n</span><span class="s2">1."</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"4."</span><span class="p">],</span>      <span class="c1"># Stop when model tries to generate item 4</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
 </span></code></pre></div>
 <h4 id="use-case-2-sql-code-extraction">Use Case 2: SQL / Code Extraction<a class="headerlink" href="#use-case-2-sql-code-extraction" title="Permanent link">¶</a></h4>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Extract clean SQL without trailing explanation</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Convert to SQL: </span><span class="si">{</span><span class="n">user_question</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">SQL:</span><span class="se">\n</span><span class="s2">"</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Explanation:"</span><span class="p">,</span> <span class="s2">"Note:"</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">],</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Extract clean SQL without trailing explanation</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Convert to SQL: </span><span class="si">{</span><span class="n">user_question</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">SQL:</span><span class="se">\n</span><span class="s2">"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">stop</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"Explanation:"</span><span class="p">,</span> <span class="s2">"Note:"</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">],</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="related-questions_7">Related Questions<a class="headerlink" href="#related-questions_7" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -2391,34 +2385,34 @@
 <h2 id="q9-what-is-the-foundational-structure-of-a-well-designed-prompt">Q9. What is the foundational structure of a well-designed prompt?<a class="headerlink" href="#q9-what-is-the-foundational-structure-of-a-well-designed-prompt" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_8">Core Answer<a class="headerlink" href="#core-answer_8" title="Permanent link">¶</a></h3>
 <p>A production-grade prompt is structured like a well-designed API payload. It separates instructions, context, and data to prevent confusion and prompt injection.</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[System Context / Persona]
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>You are a senior PostgreSQL database administrator.
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>[Task Description]
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Your job is to review the following SQL query and optimize it for performance.
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>[Rules / Constraints]
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="k">-</span><span class="w"> </span>Do not change the result set.
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="k">-</span><span class="w"> </span>Focus on index utilization and avoiding sequential scans.
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="k">-</span><span class="w"> </span>Respond ONLY with a JSON object.
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>[Output Format]
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>{
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>  "original_cost": number,
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>  "optimized_sql": string,
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>  "explanation": string
-</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>}
-</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
-</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>[Examples (Few-Shot)]
-</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>&lt;example&gt;
-</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>  &lt;input&gt;SELECT * FROM users WHERE age = 30&lt;/input&gt;
-</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>  &lt;output&gt;{"original_cost": 100, "optimized_sql": "SELECT id, name FROM users WHERE age = 30", "explanation": "Avoid SELECT *"}&lt;/output&gt;
-</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>&lt;/example&gt;
-</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
-</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>[Input Data]
-</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>&lt;query&gt;
-</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>{user_input}
-</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>&lt;/query&gt;
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>[System Context / Persona]
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>You are a senior PostgreSQL database administrator.
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>[Task Description]
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Your job is to review the following SQL query and optimize it for performance.
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>[Rules / Constraints]
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">-</span><span class="w"> </span>Do not change the result set.
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">-</span><span class="w"> </span>Focus on index utilization and avoiding sequential scans.
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">-</span><span class="w"> </span>Respond ONLY with a JSON object.
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>[Output Format]
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>{
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>  "original_cost": number,
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>  "optimized_sql": string,
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>  "explanation": string
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>}
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>[Examples (Few-Shot)]
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>&lt;example&gt;
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>  &lt;input&gt;SELECT * FROM users WHERE age = 30&lt;/input&gt;
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>  &lt;output&gt;{"original_cost": 100, "optimized_sql": "SELECT id, name FROM users WHERE age = 30", "explanation": "Avoid SELECT *"}&lt;/output&gt;
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>&lt;/example&gt;
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>[Input Data]
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>&lt;query&gt;
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>{user_input}
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>&lt;/query&gt;
 </span></code></pre></div>
 <h3 id="why-this-structure-works">Why This Structure Works<a class="headerlink" href="#why-this-structure-works" title="Permanent link">¶</a></h3>
 <ol>
@@ -2440,12 +2434,11 @@
 <h2 id="q10-what-is-in-context-learning-and-why-is-it-powerful">Q10. What is in-context learning and why is it powerful?<a class="headerlink" href="#q10-what-is-in-context-learning-and-why-is-it-powerful" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_9">Core Answer<a class="headerlink" href="#core-answer_9" title="Permanent link">¶</a></h3>
 <p>In-context learning (ICL) is the ability of LLMs to learn a new task purely from examples provided in the prompt, <strong>without any weight updates (gradient descent)</strong>. The model infers the pattern and applies it to the query.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>graph LR
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    A["Pre-training\n(Weight Updates)"] --&gt; B["Base Model"]
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    B --&gt; C["Prompt:\n'A -&gt; 1'\n'B -&gt; 2'\n'C -&gt; ?'"]
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    C --&gt; D["In-Context Learning\n(No Weight Updates)"]
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    D --&gt; E["Output: 3"]
-</span></code></pre></div>
+<pre class="mermaid"><code>graph LR
+    A["Pre-training\n(Weight Updates)"] --&gt; B["Base Model"]
+    B --&gt; C["Prompt:\n'A -&gt; 1'\n'B -&gt; 2'\n'C -&gt; ?'"]
+    C --&gt; D["In-Context Learning\n(No Weight Updates)"]
+    D --&gt; E["Output: 3"]</code></pre>
 <h3 id="mechanism">Mechanism<a class="headerlink" href="#mechanism" title="Permanent link">¶</a></h3>
 <p>During pre-training, the model saw millions of examples of "pattern completion" (e.g., lists, sequences, formatting). When given few-shot examples in a prompt, the attention heads act as a dynamic lookup mechanism, comparing the new input to the provided examples to infer the latent task mapping.</p>
 <h3 id="why-its-powerful">Why It's Powerful<a class="headerlink" href="#why-its-powerful" title="Permanent link">¶</a></h3>
@@ -2516,16 +2509,16 @@
 </table>
 <h3 id="deep-dive-react-reason-act">Deep-Dive: ReAct (Reason + Act)<a class="headerlink" href="#deep-dive-react-reason-act" title="Permanent link">¶</a></h3>
 <p>ReAct is the foundation of Agentic AI.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Question: What is the weather in the capital of France?
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>Thought: I need to find the capital of France first.
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>Action: Search[Capital of France]
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>Observation: Paris
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Thought: Now I need to find the weather in Paris.
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>Action: GetWeather[Paris]
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>Observation: 72F and sunny
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>Thought: I have the answer.
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>Final Answer: The weather in Paris is 72F and sunny.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Question: What is the weather in the capital of France?
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Thought: I need to find the capital of France first.
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Action: Search[Capital of France]
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Observation: Paris
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Thought: Now I need to find the weather in Paris.
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>Action: GetWeather[Paris]
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>Observation: 72F and sunny
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>Thought: I have the answer.
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>Final Answer: The weather in Paris is 72F and sunny.
 </span></code></pre></div>
 <h3 id="related-questions_10">Related Questions<a class="headerlink" href="#related-questions_10" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -2571,9 +2564,9 @@
 <li><strong>Give the model "space" to think</strong>: Ask the model to generate a <code>&lt;scratchpad&gt;</code> or <code>&lt;reasoning&gt;</code> section before generating the final JSON output.</li>
 </ol>
 <h3 id="the-thinking-space-pattern">The "Thinking Space" Pattern<a class="headerlink" href="#the-thinking-space-pattern" title="Permanent link">¶</a></h3>
-<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Analyze the user's intent. 
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>First, write your thought process inside &lt;scratchpad&gt; tags.
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Then, output the final JSON inside &lt;result&gt; tags.
+<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Analyze the user's intent. 
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>First, write your thought process inside &lt;scratchpad&gt; tags.
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Then, output the final JSON inside &lt;result&gt; tags.
 </span></code></pre></div>
 <em>Why this works: LLMs cannot "think" silently. If forced to output JSON immediately, they must guess the answer on the first token. Giving them a scratchpad allows them to use tokens for computation.</em><p></p>
 <h3 id="related-questions_12">Related Questions<a class="headerlink" href="#related-questions_12" title="Permanent link">¶</a></h3>
