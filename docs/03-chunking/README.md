@@ -226,8 +226,8 @@ flowchart TD
     E --> F[Document Intelligence Parsing]
     F --> G[Chunking & Metadata Enrichment]
     G --> H[Batch Embedding with Exponential Backoff]
-    H --> I[(Vector DB Upsert)]
-    I --> J[(Update Metadata DB)]
+    H --> I[Vector DB Upsert]
+    I --> J[Update Metadata DB]
 ```
 
 **Key Production Requirements:**
