@@ -747,22 +747,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-what-are-the-different-forms-of-hallucination-in-llms" class="md-nav__link">
+  <a href="#q1-what-is-the-fundamental-mechanism-behind-llm-hallucinations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. What are the different forms of hallucination in LLMs?
+        Q1. What is the fundamental mechanism behind LLM Hallucinations?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. What are the different forms of hallucination in LLMs?">
+    <nav class="md-nav" aria-label="Q1. What is the fundamental mechanism behind LLM Hallucinations?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#types-by-origin" class="md-nav__link">
+  <a href="#core-answer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Types by Origin
+        Core Answer
       
     </span>
   </a>
@@ -770,10 +770,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#types-by-cause" class="md-nav__link">
+  <a href="#related-questions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Types by Cause
+        Related Questions
       
     </span>
   </a>
@@ -786,22 +786,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-how-do-you-control-hallucinations-at-each-layer-of-the-system" class="md-nav__link">
+  <a href="#q2-how-do-you-implement-robust-hallucination-control-at-the-prompt-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. How do you control hallucinations at each layer of the system?
+        Q2. How do you implement robust Hallucination Control at the Prompt Layer?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. How do you control hallucinations at each layer of the system?">
+    <nav class="md-nav" aria-label="Q2. How do you implement robust Hallucination Control at the Prompt Layer?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#layer-1-prompt-level" class="md-nav__link">
+  <a href="#core-answer_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layer 1: Prompt Level
+        Core Answer
       
     </span>
   </a>
@@ -809,10 +809,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#layer-2-retrieval-level" class="md-nav__link">
+  <a href="#related-questions_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layer 2: Retrieval Level
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-how-do-you-detect-hallucinations-post-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3. How do you detect Hallucinations Post-Generation?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3. How do you detect Hallucinations Post-Generation?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
@@ -820,10 +848,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#layer-3-generation-level" class="md-nav__link">
+  <a href="#related-questions_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layer 3: Generation Level
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4-how-do-knowledge-graphs-prevent-entity-hallucinations-graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4. How do Knowledge Graphs prevent Entity Hallucinations (GraphRAG)?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4. How do Knowledge Graphs prevent Entity Hallucinations (GraphRAG)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
       
     </span>
   </a>
@@ -831,21 +887,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#layer-4-post-generation-verification" class="md-nav__link">
+  <a href="#related-questions_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layer 4: Post-Generation Verification
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-5-system-design-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Layer 5: System Design Level
+        Related Questions
       
     </span>
   </a>
@@ -1035,159 +1080,148 @@
 
 <h1 id="hallucination-control-techniques">Hallucination Control Techniques<a class="headerlink" href="#hallucination-control-techniques" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>Hallucination is the #1 reliability problem in production LLM systems. Here's how to fight it at every layer.</p>
+<p>Hallucination is the primary barrier preventing Generative AI from achieving full autonomy in production. Controlling it requires systemic interventions across the entire architecture. Answers are calibrated for a <strong>Google L5 Senior AI/ML Engineer</strong> interview bar.</p>
 </blockquote>
 <hr>
-<h2 id="1-what-are-the-different-forms-of-hallucination-in-llms">1. What are the different forms of hallucination in LLMs?<a class="headerlink" href="#1-what-are-the-different-forms-of-hallucination-in-llms" title="Permanent link">¶</a></h2>
-<p><strong>Hallucination</strong> is when an LLM produces confident, fluent content that is factually incorrect, unsupported, or fabricated.</p>
-<h3 id="types-by-origin">Types by Origin<a class="headerlink" href="#types-by-origin" title="Permanent link">¶</a></h3>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Factual hallucination</strong></td>
-<td>Wrong facts presented as true</td>
-<td>"The Eiffel Tower was built in 1901" (it was 1889)</td>
-</tr>
-<tr>
-<td><strong>Source hallucination</strong></td>
-<td>Fabricated citations, papers, URLs</td>
-<td>"According to Smith et al. (2019)..." — paper doesn't exist</td>
-</tr>
-<tr>
-<td><strong>Entity hallucination</strong></td>
-<td>Made-up people, companies, events</td>
-<td>"As CEO Jane Doe said in the 2022 earnings call..."</td>
-</tr>
-<tr>
-<td><strong>Numerical hallucination</strong></td>
-<td>Wrong numbers, dates, statistics</td>
-<td>Revenue of $2.3B (actual: $1.1B)</td>
-</tr>
-<tr>
-<td><strong>Instruction following hallucination</strong></td>
-<td>Appears to follow instructions but subtly doesn't</td>
-<td>Returns JSON with wrong field names</td>
-</tr>
-<tr>
-<td><strong>Context hallucination</strong></td>
-<td>Answer contradicts provided context</td>
-<td>RAG answer that ignores retrieved document</td>
-</tr>
-</tbody>
-</table>
-<h3 id="types-by-cause">Types by Cause<a class="headerlink" href="#types-by-cause" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Knowledge gap:</strong> Model doesn't know → fills in plausibly</li>
-<li><strong>Conflicting training data:</strong> Multiple facts conflict → picks one incorrectly</li>
-<li><strong>Sycophancy:</strong> User's premise is false → model agrees rather than corrects</li>
-<li><strong>Overthinking:</strong> Chain-of-thought reasons itself into a wrong conclusion</li>
-</ul>
+<h2 id="q1-what-is-the-fundamental-mechanism-behind-llm-hallucinations">Q1. What is the fundamental mechanism behind LLM Hallucinations?<a class="headerlink" href="#q1-what-is-the-fundamental-mechanism-behind-llm-hallucinations" title="Permanent link">¶</a></h2>
+<h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
+<p>To control hallucinations, you must first understand that <strong>hallucination is not a bug; it is the model working exactly as designed.</strong></p>
+<p>An LLM does not possess a database of facts; it possesses a statistical map of token probabilities. It is fundamentally an interpolator. If a user asks a factual question that the model has seen millions of times (e.g., "What is the capital of France?"), the probability pathway to "Paris" is mathematically dominant. </p>
+<p>If the user asks an obscure question, there is no dominant factual pathway in the weights. The LLM does not halt; it seamlessly falls back to lower-probability paths that are <em>linguistically and grammatically plausible</em>. It fabricates a fluent response because the objective function (Cross-Entropy Loss) optimizes for fluency and sequence probability, not factual truth.</p>
+<h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is the difference between Extrinsic and Intrinsic Hallucinations?</li>
+<li>How does temperature scaling impact hallucination rates?</li>
+<li>Why do LLMs hallucinate URLs and citations so frequently?</li>
+<li>What is the "Snowball Effect" in autoregressive hallucination?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Extrinsic vs Intrinsic?</strong>
+<strong>Intrinsic Hallucination</strong> occurs when the LLM's output directly contradicts the source material provided in the prompt (e.g., Context says "Revenue is $5M", LLM says "Revenue is $10M").
+<strong>Extrinsic Hallucination</strong> occurs when the LLM adds plausible but unverified information that is <em>not</em> in the source material (e.g., Context says "Revenue is $5M", LLM says "Revenue is $5M, which is a record high for the company").</p>
+<p><strong>2. Temperature and Hallucination?</strong>
+Temperature controls the entropy of the output probability distribution. $T=0$ forces the model to strictly pick the single most mathematically probable next token (ArgMax), which minimizes hallucinations but makes the text sound robotic. $T=0.8$ flattens the distribution, allowing the model to pick the 3rd or 4th most probable token. This vastly increases creativity but mathematically guarantees that the model will eventually veer off the factual pathway into a hallucination.</p>
+<p><strong>3. URL and Citation Hallucination?</strong>
+Pre-training data (the internet) is filled with academic papers formatted as <code>(Author, Year)</code> and URLs formatted as <code>https://domain.com/path</code>. The LLM perfectly learns the <em>syntax</em> of a URL, but it does not know if a specific path actually exists on a server. It will generate a syntactically flawless URL that yields a 404 error because it's just predicting plausible URL tokens.</p>
+<p><strong>4. The Autoregressive Snowball Effect?</strong>
+LLMs generate text one token at a time. The next token is conditioned on <em>all previously generated tokens</em>. If the model hallucinates a single incorrect date early in the response, that hallucination enters the context window. The model's self-attention mechanism locks onto it, and the model is now mathematically forced to generate subsequent tokens that justify and align with the original lie.</p>
+</details>
 <hr>
-<h2 id="2-how-do-you-control-hallucinations-at-each-layer-of-the-system">2. How do you control hallucinations at each layer of the system?<a class="headerlink" href="#2-how-do-you-control-hallucinations-at-each-layer-of-the-system" title="Permanent link">¶</a></h2>
-<h3 id="layer-1-prompt-level">Layer 1: Prompt Level<a class="headerlink" href="#layer-1-prompt-level" title="Permanent link">¶</a></h3>
+<h2 id="q2-how-do-you-implement-robust-hallucination-control-at-the-prompt-layer">Q2. How do you implement robust Hallucination Control at the Prompt Layer?<a class="headerlink" href="#q2-how-do-you-implement-robust-hallucination-control-at-the-prompt-layer" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
+<p>Simply prompting a model with <em>"Do not hallucinate"</em> is highly ineffective because the model does not conceptually know when it is lying. You must implement rigid, structural constraints.</p>
+<p>The most effective technique is <strong>Citation Enforcement</strong>. You force the model to output the exact substring from the context that justifies its answer, heavily biasing the attention mechanism toward the provided text rather than its internal weights.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">"""</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s2">You are a factual assistant with the following rules:</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s2">1. ONLY answer from the provided context below.</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s2">2. If the context doesn't contain the answer, say: "I don't have enough information."</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s2">3. Never make up facts, dates, names, or numbers.</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s2">4. If uncertain, explicitly say "I'm not certain, but..."</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s2">5. After your answer, cite the specific sentence from the context you used.</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s2">You are a strict factual extractor. You will answer the User Query using ONLY the provided Context.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s2">RULES:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s2">1. If the Context does not contain the answer, you must output EXACTLY: "INSUFFICIENT_CONTEXT".</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s2">2. You must append a citation to every claim you make.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s2">3. The citation must be an exact, verbatim quote from the Context wrapped in brackets.</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s2">Context:</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="si">{context}</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s2">"""</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s2">Example Output:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s2">The company's revenue grew by 20% [Revenue increased by 20</span><span class="si">% i</span><span class="s2">n Q3].</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s2">Context:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="si">{retrieved_context}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">"""</span>
 </span></code></pre></div>
-<ul>
-<li>Ground responses in retrieved context (RAG)</li>
-<li>Add uncertainty quantification instructions</li>
-<li>Use low temperature for factual tasks (0.0–0.2)</li>
-<li>Add self-check instructions ("verify your answer before responding")</li>
-</ul>
-<h3 id="layer-2-retrieval-level">Layer 2: Retrieval Level<a class="headerlink" href="#layer-2-retrieval-level" title="Permanent link">¶</a></h3>
-<p>Better retrieval = less hallucination because the model has more relevant context to work from.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Multi-source verification</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">retrieve_with_verification</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">retrievers</span><span class="p">):</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="sd">"""Retrieve from multiple sources and check consistency."""</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">all_chunks</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">for</span> <span class="n">retriever</span> <span class="ow">in</span> <span class="n">retrievers</span><span class="p">:</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">chunks</span> <span class="o">=</span> <span class="n">retriever</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="n">all_chunks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="c1"># Check if retrieved chunks agree with each other</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">consistency_check</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s2">    Do these passages agree or contradict each other?</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s2">    </span><span class="si">{</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">all_chunks</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s2">    Return: </span><span class="se">{{</span><span class="s2">"consistent": true/false, "contradictions": [...]</span><span class="se">}}</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s2">    """</span><span class="p">)</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="k">return</span> <span class="n">all_chunks</span><span class="p">,</span> <span class="n">consistency_check</span>
-</span></code></pre></div>
-<h3 id="layer-3-generation-level">Layer 3: Generation Level<a class="headerlink" href="#layer-3-generation-level" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Chain of Verification (CoVe):</strong> Generate → verify → revise</li>
-<li><strong>Self-consistency:</strong> Sample 5 answers at temperature=0.7, take majority vote</li>
-<li><strong>Citation enforcement:</strong> Force model to cite source sentences</li>
-<li><strong>Constrained decoding:</strong> Restrict output to validated formats (especially for structured data)</li>
-</ul>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Self-consistency for factual questions</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">self_consistent_answer</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="n">llm</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># Find most common answer</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">vote_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s2">    These are </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> independent answers to the same question.</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s2">    Identify the most common answer and return it.</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s2">    Answers: </span><span class="si">{</span><span class="n">answers</span><span class="si">}</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s2">    Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s2">    """</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">return</span> <span class="n">llm</span><span class="p">(</span><span class="n">vote_prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span></code></pre></div>
-<h3 id="layer-4-post-generation-verification">Layer 4: Post-Generation Verification<a class="headerlink" href="#layer-4-post-generation-verification" title="Permanent link">¶</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">verify_factual_claims</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">source_context</span><span class="p">):</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">"""Use an LLM to check if every claim in the answer is supported by context."""</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">verification</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s2">    Check each factual claim in the answer against the source context.</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s2">    Answer: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s2">    Source context: </span><span class="si">{</span><span class="n">source_context</span><span class="si">}</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s2">    For each claim, determine: SUPPORTED, UNSUPPORTED, or CONTRADICTED.</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s2">    Return JSON: </span><span class="se">{{</span><span class="s2">"claims": [</span><span class="se">{{</span><span class="s2">"claim": "...", "status": "...", "evidence": "..."</span><span class="se">}}</span><span class="s2">]</span><span class="se">}}</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s2">    """</span><span class="p">)</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">claims</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">verification</span><span class="p">)</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">unsupported</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">claims</span><span class="p">[</span><span class="s2">"claims"</span><span class="p">]</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"SUPPORTED"</span><span class="p">]</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">if</span> <span class="n">unsupported</span><span class="p">:</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="c1"># Trigger regeneration or flag for human review</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="k">return</span> <span class="n">revise_answer</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">unsupported</span><span class="p">)</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="k">return</span> <span class="n">answer</span>
-</span></code></pre></div>
-<h3 id="layer-5-system-design-level">Layer 5: System Design Level<a class="headerlink" href="#layer-5-system-design-level" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Human-in-the-loop:</strong> Flag low-confidence answers for human review</li>
-<li><strong>Confidence scoring:</strong> Train a classifier to detect likely hallucinations</li>
-<li><strong>Knowledge graph grounding:</strong> Validate entities against a knowledge graph</li>
-<li><strong>Output monitoring:</strong> Track hallucination rate in production, alert on spikes</li>
-</ul>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Hallucination detection classifier</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">hallucination_detector</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s2">"text-classification"</span><span class="p">,</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">model</span><span class="o">=</span><span class="s2">"vectara/hallucination_evaluation_model"</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">score</span> <span class="o">=</span> <span class="n">hallucination_detector</span><span class="p">(</span><span class="sa">f</span><span class="s2">"premise: </span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="s2"> hypothesis: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># {"label": "HALLUCINATION", "score": 0.87} → flag for review</span>
-</span></code></pre></div>
+<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>How do System Prompts fail to prevent "Sycophancy"?</li>
+<li>Why is "I don't know" an unnatural state for pre-trained LLMs?</li>
+<li>How does Few-Shot prompting anchor the model against hallucinations?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Sycophancy?</strong>
+Sycophancy is when the LLM agrees with a false premise provided by the user. If a user asks, <em>"Why did Abraham Lincoln invent the airplane?"</em>, a standard model will invent a historical fiction to satisfy the user's premise. The prompt must explicitly instruct the model: <em>"You are an adversarial truth-checker. If the user's premise is factually flawed, correct the premise before answering."</em></p>
+<p><strong>2. The Unnatural "I don't know"?</strong>
+During pre-training, the model reads billions of internet forums, articles, and books. It rarely encounters text where the author explicitly states "I don't know." The internet is full of confident assertions. Therefore, the probability of the tokens "I do not know" is extremely low. You must use Supervised Fine-Tuning (SFT) to artificially increase the probability of refusal pathways.</p>
+<p><strong>3. Few-Shot Anchoring?</strong>
+Providing 3 examples of (Context, Query, Answer) inside the prompt is vastly superior to Zero-Shot instructions. The model's self-attention heads map the exact syntactic relationship between the Context and the Answer in your examples, allowing it to mathematically replicate that exact extraction pattern for the live query, drastically reducing hallucination risk.</p>
+</details>
+<hr>
+<h2 id="q3-how-do-you-detect-hallucinations-post-generation">Q3. How do you detect Hallucinations Post-Generation?<a class="headerlink" href="#q3-how-do-you-detect-hallucinations-post-generation" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
+<p>Even with perfect RAG and strict prompting, models will occasionally hallucinate. Production systems must implement a <strong>Post-Generation Detection Gate</strong> using Natural Language Inference (NLI).</p>
+<p>NLI models (often fine-tuned Cross-Encoder BERT models) are explicitly trained to detect if one sentence logically supports another. You pass the Retrieved Context as the <em>Premise</em> and the LLM's Answer as the <em>Hypothesis</em>. The NLI model outputs a probability: <strong>Entailment</strong> (Supported), <strong>Neutral</strong> (Unrelated), or <strong>Contradiction</strong> (Hallucination).</p>
+<pre class="mermaid"><code>flowchart TD
+    A["User Query"] --&gt; B["Vector DB Retrieval"]
+    B --&gt; C["Retrieved Context (Premise)"]
+
+    C --&gt; D["LLM Generation"]
+    D --&gt; E["Generated Answer (Hypothesis)"]
+
+    C --&gt; F["NLI Cross-Encoder Model"]
+    E --&gt; F
+
+    F --&gt; G{"Classification"}
+    G --&gt;|"Entailment (&gt;0.9)"| H["Return Answer to User"]
+    G --&gt;|"Contradiction / Neutral"| I["Block Output / Trigger Fallback"]</code></pre>
+<h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is the Vectara Hughes Hallucination Evaluation Model (HHEM)?</li>
+<li>What is the difference between an NLI Cross-Encoder and an LLM Judge?</li>
+<li>How does the SelfCheckGPT method detect hallucinations without external context?</li>
+<li>What do you do if a hallucination is detected post-generation?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Vectara HHEM?</strong>
+HHEM is an open-source, specialized Cross-Encoder model built specifically for RAG hallucination detection. It is smaller and drastically faster than an LLM, making it feasible to run in real-time in the critical path of a production request. It outputs a score from 0.0 to 1.0 indicating the factual consistency between the context and the generated response.</p>
+<p><strong>2. Cross-Encoder vs LLM Judge?</strong>
+An LLM Judge uses a massive 8B+ parameter model and a complex prompt to grade the answer, which adds 1-2 seconds of latency and high cost. A Cross-Encoder is a tiny ~300M parameter model that only does one thing: classification. It runs in milliseconds and is cheap enough to execute on every single user request.</p>
+<p><strong>3. SelfCheckGPT?</strong>
+If you are generating text <em>without</em> RAG (no context to check against), how do you know if it's a hallucination? SelfCheckGPT leverages the fact that hallucinations are random. You ask the LLM the same question 5 times at a high temperature. If the LLM knows the fact, all 5 answers will contain the same core information. If the LLM is hallucinating, the fabricated details will vary wildly across the 5 samples. High variance = Hallucination.</p>
+<p><strong>4. Handling Detected Hallucinations?</strong>
+If the NLI gate flags a contradiction, you never show the bad answer to the user. You have two options:
+1. <strong>Regenerate:</strong> Pass the flagged output back to the LLM with the prompt <em>"Your previous answer contradicted the context. Fix it."</em> (Self-Correction).
+2. <strong>Graceful Degradation:</strong> Return a hardcoded fallback: <em>"I'm sorry, I cannot confidently answer that based on the available documents."</em></p>
+</details>
+<hr>
+<h2 id="q4-how-do-knowledge-graphs-prevent-entity-hallucinations-graphrag">Q4. How do Knowledge Graphs prevent Entity Hallucinations (GraphRAG)?<a class="headerlink" href="#q4-how-do-knowledge-graphs-prevent-entity-hallucinations-graphrag" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
+<p>Standard Vector RAG retrieves paragraphs of text based on semantic similarity. If a user asks <em>"Who is the CEO of Acme Corp?"</em>, the Vector DB might return a chunk saying <em>"Acme Corp announced John Smith as CTO, while Jane Doe stepped down."</em> The LLM might become confused by the linguistic proximity of the names and hallucinate the CEO role.</p>
+<p><strong>Knowledge Graphs (KGs)</strong> store data deterministically as Triples: <code>[Subject] -&gt; [Predicate] -&gt; [Object]</code>. 
+Example: <code>[Acme Corp] -&gt; [HAS_CEO] -&gt; [Unknown/Null]</code>.</p>
+<p>In <strong>GraphRAG</strong>, you translate the user's natural language query into a strict graph database query (like Cypher for Neo4j). The graph returns rigid, structured facts. Because the relationships are mathematically hardcoded, the LLM cannot hallucinate the relationships between entities.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Query: Who is CEO of Acme?"] --&gt; B["LLM translates to Cypher Query"]
+    B --&gt; C["MATCH (c:Company {name: 'Acme'})-[:HAS_CEO]-&gt;(p:Person) RETURN p.name"]
+
+    C --&gt; D[("Knowledge Graph (Neo4j)")]
+
+    D --&gt;|"Returns: 'Alice'"| E["LLM Formats Response"]
+    E --&gt; F["Response: Alice is the CEO of Acme."]</code></pre>
+<h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why do LLMs struggle with multi-hop reasoning without a Knowledge Graph?</li>
+<li>Can you combine Vector Search and Knowledge Graphs (Hybrid RAG)?</li>
+<li>What is the main engineering bottleneck of GraphRAG?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Multi-hop Reasoning?</strong>
+Question: <em>"Who is the mother of the founder of Microsoft?"</em> A standard Vector DB fails because there is likely no single paragraph containing both "Microsoft Founder" and "Mary Maxwell Gates". A Knowledge Graph easily traverses the nodes: <code>[Microsoft] &lt;-[FOUNDED_BY]- [Bill Gates] -[HAS_MOTHER]-&gt; [Mary Maxwell Gates]</code>.</p>
+<p><strong>2. Hybrid RAG?</strong>
+Yes. Standard text (like a policy document) is stored in a Vector DB. Entities (Companies, People, Products) are stored in a Knowledge Graph. When a user asks a question, the system queries both databases simultaneously, injecting both the semantic paragraphs and the rigid graph triples into the LLM's prompt window, providing the ultimate defense against hallucinations.</p>
+<p><strong>3. GraphRAG Bottlenecks?</strong>
+Building and maintaining the Knowledge Graph is incredibly difficult. You have to run Information Extraction (Named Entity Recognition and Relation Extraction) pipelines over millions of documents to populate the graph. If the extraction pipeline makes an error, the graph is permanently poisoned with a false hardcoded fact.</p>
+</details>
 <hr>
 <p><em>Next: <a href="../12-deployment/">LLM Deployment →</a></em></p>
 
