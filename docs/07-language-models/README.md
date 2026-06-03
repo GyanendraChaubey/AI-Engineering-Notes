@@ -1,310 +1,216 @@
 # Language Models — Internal Working
 
-> Understanding transformers from the ground up — attention, positional encoding, architecture variants, and scaling challenges.
+> A deep dive into the mathematical mechanics, memory constraints, and architectural evolutions of modern Transformer-based LLMs. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
 
 ---
 
-## 1. Can you give a detailed explanation of self-attention?
+## Q1. How does the Self-Attention mechanism mathematically function?
 
-Self-attention allows each token in a sequence to attend to (gather information from) every other token. It computes three projections per token: **Query (Q)**, **Key (K)**, and **Value (V)**.
+### Core Answer
 
-```
-Attention(Q, K, V) = softmax(QKᵀ / √dₖ) × V
-```
+The core innovation of the Transformer is the **Scaled Dot-Product Self-Attention** mechanism. It allows the model to dynamically weigh the importance of every token in the sequence relative to the current token being processed.
 
-**Step-by-step:**
+For every token, the model projects its embedding into three vectors: **Query ($Q$)**, **Key ($K$)**, and **Value ($V$)**. 
 
-```python
-import torch
-import torch.nn.functional as F
+$$ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$
 
-def self_attention(X, W_Q, W_K, W_V):
-    # X: (batch, seq_len, d_model)
-    Q = X @ W_Q   # (batch, seq, d_k)
-    K = X @ W_K
-    V = X @ W_V
-
-    d_k = Q.shape[-1]
-    scores = Q @ K.transpose(-2, -1) / (d_k ** 0.5)  # (batch, seq, seq)
+```mermaid
+flowchart TD
+    A["Input Embedding (X)"] --> B["Linear Projections"]
+    B --> C["Query Matrix (Q)"]
+    B --> D["Key Matrix (K)"]
+    B --> E["Value Matrix (V)"]
     
-    # Causal mask for decoder (optional)
-    # mask upper triangle to -inf so future tokens are invisible
+    C --> F["Dot Product (Q · K^T)"]
+    D --> F
     
-    weights = F.softmax(scores, dim=-1)  # Attention weights
-    output = weights @ V                  # (batch, seq, d_v)
-    return output, weights
+    F --> G["Scale by 1/sqrt(d_k)"]
+    G --> H["Apply Causal Mask (Decoder Only)"]
+    H --> I["Softmax (Attention Weights)"]
+    
+    I --> J["Multiply by Value Matrix (V)"]
+    E --> J
+    J --> K["Output Representation"]
 ```
 
-**Intuition:** For each token, the query asks "what do I need?", keys answer "what do I have?", and values provide the actual content. The dot product Q·K measures relevance; softmax normalizes it into a probability distribution; V is then weighted-summed to produce the output.
+**Intuition:** 
+- The **Query** asks: *"What semantic information am I looking for?"*
+- The **Key** answers: *"What semantic information do I contain?"*
+- The dot product ($Q \cdot K^T$) measures how well the Keys match the Queries across the entire sequence.
+- The **Value** is the actual contextual payload that gets summed up based on the resulting attention weights.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Why is the attention score divided by the square root of the head dimension ($\sqrt{d_k}$)?
+    2. What is the difference between Self-Attention and Cross-Attention?
+    3. How does the Causal Mask prevent future-looking in Decoder models?
+    4. What is the computational complexity of the Self-Attention mechanism?
+
+??? success "View Answers"
+    **1. Why scale by $\sqrt{d_k}$?**
+    If the dimension $d_k$ is large, the dot products of random vectors grow extremely large in magnitude. When these large values are passed into the softmax function, it pushes the softmax into regions where the gradients are almost zero (vanishing gradients), halting training. Scaling by $\sqrt{d_k}$ forces the variance of the dot product to remain close to 1, keeping the gradients stable.
+
+    **2. Self vs Cross Attention?**
+    In Self-Attention, $Q$, $K$, and $V$ all come from the exact same input sequence (e.g., the user's prompt). In Cross-Attention (found in Encoder-Decoder models like T5), $Q$ comes from the Decoder (the translation being generated), while $K$ and $V$ come from the Encoder (the original source text).
+
+    **3. Causal Masking?**
+    During training, we process the entire sequence in parallel. Without a mask, token $t$ could simply "look ahead" at token $t+1$ to predict the next word, completely cheating the objective. The causal mask is a matrix of $-\infty$ applied to the upper triangle of the $QK^T$ matrix before the softmax. Since $\text{softmax}(-\infty) = 0$, it mathematically prevents any token from assigning attention weight to future tokens.
+
+    **4. Computational Complexity?**
+    The matrix multiplication $QK^T$ requires calculating the dot product between every token and every other token. This results in $O(N^2 \cdot d)$ time and memory complexity, where $N$ is the sequence length. This quadratic scaling is the fundamental reason why processing a 100K context window is exceptionally difficult.
 
 ---
 
-## 2. What are the limitations of self-attention and how are they addressed?
+## Q2. What are the memory bottlenecks of the Transformer during inference?
 
-| Limitation | Problem | Solution |
-|---|---|---|
-| **Quadratic complexity** | O(n²) memory/compute in sequence length | Sparse attention, Flash Attention, linear attention |
-| **Fixed context window** | Can't attend beyond the window size | RoPE/ALiBi positional encoding, sliding window attention |
-| **No inherent order** | Attention is permutation-invariant | Positional encoding |
-| **Uniform attention** | All positions treated equally before softmax | Relative positional biases |
-| **Memory during training** | Storing attention matrices is expensive | Flash Attention (recomputes from SRAM, no HBM storage) |
+### Core Answer
 
-**Flash Attention** (the most impactful fix):
-```
-Standard: Store full (n×n) attention matrix in GPU HBM → O(n²) memory
-Flash Attention: Compute in tiles within SRAM → O(n) memory, 3-8× speedup
-```
+Inference memory is fundamentally different from training memory. During autoregressive generation (inference), the largest bottleneck is not the model weights—it is the **KV Cache**.
 
----
+To predict token $t$, the model needs the Key and Value vectors for all previous tokens $(0 \dots t-1)$. Recomputing these vectors at every step would require $O(N^3)$ compute. Instead, we cache them in VRAM.
 
-## 3. What is positional encoding and why is it needed?
+**KV Cache Memory Formula per Token:**
+$2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})$
 
-Transformers process all tokens in parallel — unlike RNNs, they have no built-in sense of order. Without positional encoding, "The cat chased the dog" and "The dog chased the cat" would produce identical representations.
+For a 70B model with a 32K context window and a batch size of 16, the KV Cache can consume over 80GB of VRAM—more memory than the model weights themselves!
 
-### Sinusoidal Positional Encoding (original Transformer)
-```python
-import numpy as np
+### Related Questions
 
-def sinusoidal_encoding(seq_len, d_model):
-    PE = np.zeros((seq_len, d_model))
-    for pos in range(seq_len):
-        for i in range(0, d_model, 2):
-            PE[pos, i]   = np.sin(pos / 10000 ** (i / d_model))
-            PE[pos, i+1] = np.cos(pos / 10000 ** (i / d_model))
-    return PE  # Added to token embeddings
-```
+!!! question "Follow-up Interview Questions"
+    1. How do Multi-Query Attention (MQA) and Grouped-Query Attention (GQA) reduce memory?
+    2. How does FlashAttention reduce memory overhead during training?
+    3. What is the difference between the Prefill Phase and Decode Phase?
+    4. Why do larger context windows exponentially increase Time-To-First-Token (TTFT)?
 
-### Rotary Position Embedding (RoPE) — used in Llama, GPT-NeoX
-RoPE encodes position by rotating the Q and K vectors in the complex plane. Benefits:
-- Relative positions are captured naturally
-- Can generalize to sequences longer than seen during training (with extensions like YaRN)
+??? success "View Answers"
+    **1. MQA and GQA?**
+    Standard Multi-Head Attention creates separate $Q, K, V$ heads. MQA forces all Query heads to share a single $K$ and $V$ head, shrinking the KV Cache size by $H$ times (e.g., 8x smaller). GQA is a compromise: it groups a few Query heads (e.g., 4) to share a single $K$ and $V$ head. GQA (used in Llama 3) perfectly balances the memory savings of MQA with the performance quality of standard attention.
 
-### ALiBi — linear position bias added to attention scores
-```
-scores[i][j] -= slope × |i - j|
-```
-Simple, extrapolates well to longer contexts at inference.
+    **2. FlashAttention?**
+    During training, standard attention materializes the massive $N \times N$ attention matrix in the GPU's slow High Bandwidth Memory (HBM). FlashAttention fuses the operations, computing the softmax in blocks (tiling) entirely within the GPU's ultra-fast SRAM. This prevents writing the $N \times N$ matrix to HBM, saving massive memory and achieving up to a 4x speedup.
+
+    **3. Prefill vs Decode?**
+    **Prefill:** The user submits a prompt. The LLM processes all tokens in the prompt simultaneously in parallel to populate the initial KV Cache. This is heavily compute-bound (matrix multiplications).
+    **Decode:** The LLM generates tokens autoregressively, one by one. It reads the massive KV Cache from memory to compute just a single token. This is heavily memory-bandwidth bound.
+
+    **4. TTFT Context Scaling?**
+    Time-To-First-Token is determined by the Prefill phase. Because attention is $O(N^2)$, doubling the context window from 16K to 32K means the prefill compute doesn't double—it quadruples. Without hardware optimization (like RingAttention), massive contexts result in unacceptable user latency before the first word is even printed.
 
 ---
 
-## 4. Describe the Transformer architecture in detail.
+## Q3. How do Positional Encodings work, and why is RoPE the industry standard?
 
-```
-Input Text
-    │
-[Token Embedding] + [Positional Encoding]
-    │
-    ┌──────────────────────────────────┐
-    │     Transformer Block × N       │
-    │                                  │
-    │  [Multi-Head Self-Attention]     │
-    │  [Add & Layer Norm]              │
-    │  [Feed-Forward Network]          │
-    │  [Add & Layer Norm]             │
-    └──────────────────────────────────┘
-    │
-[Linear Projection → Vocabulary size]
-[Softmax → Token probabilities]
-```
+### Core Answer
 
-**Key components:**
+A mathematical dot product has no concept of order; without intervention, a Transformer sees a sentence as a "Bag of Words." We must inject positional information into the embeddings.
 
-```python
-class TransformerBlock(nn.Module):
-    def __init__(self, d_model, n_heads, d_ff, dropout=0.1):
-        super().__init__()
-        self.attn = MultiHeadAttention(d_model, n_heads)
-        self.ff   = nn.Sequential(
-            nn.Linear(d_model, d_ff),
-            nn.GELU(),
-            nn.Linear(d_ff, d_model)
-        )
-        self.norm1 = nn.LayerNorm(d_model)
-        self.norm2 = nn.LayerNorm(d_model)
-        self.dropout = nn.Dropout(dropout)
+The modern standard is **RoPE (Rotary Position Embedding)**. Instead of adding a static vector to the input embedding, RoPE mathematically rotates the $Q$ and $K$ vectors in the complex plane by an angle proportional to their position index.
 
-    def forward(self, x, mask=None):
-        # Pre-norm (modern LLMs use pre-norm, not post-norm)
-        x = x + self.dropout(self.attn(self.norm1(x), mask))
-        x = x + self.dropout(self.ff(self.norm2(x)))
-        return x
-```
+The brilliance of RoPE is that the dot product of two rotated vectors depends strictly on the *relative distance* between them ($m - n$), allowing the model to perfectly capture relative phrasing (e.g., "not good" vs "good not").
 
-**Multi-Head Attention:** Run H independent attention heads, each with reduced dimension d_k = d_model/H. Concatenate outputs → project to d_model. Each head can learn different relationships.
+### Related Questions
 
-**FFN:** Two linear layers with a non-linearity. d_ff is typically 4× d_model. This is where most factual knowledge is believed to be stored.
+!!! question "Follow-up Interview Questions"
+    1. How does RoPE differ from Sinusoidal Absolute Positional Encoding?
+    2. What is ALiBi and why does it extrapolate well to unseen context lengths?
+    3. How does Position Interpolation (PI) extend context length after pre-training?
+    4. Why do we apply RoPE *after* the linear projections of Q and K?
+
+??? success "View Answers"
+    **1. RoPE vs Absolute Encoding?**
+    The original "Attention is All You Need" paper used Absolute encoding: it created a static sinusoidal vector for position $t$ and added it to the input word embedding. The problem is that the attention between position $1$ and $5$ looked mathematically different from position $101$ and $105$. RoPE encodes *relative* distance mathematically, so the distance between $(1, 5)$ and $(101, 105)$ yields the exact same attention penalty.
+
+    **2. ALiBi (Attention with Linear Biases)?**
+    ALiBi doesn't touch the embeddings at all. Instead, it subtracts a linear penalty directly from the final attention scores right before the softmax. The penalty is proportional to the distance between tokens: $Penalty = m \times |i - j|$. Because the penalty is just a linear subtraction, it naturally extrapolates to sequences much longer than the model was trained on.
+
+    **3. Position Interpolation (PI)?**
+    If a model is trained on 4K tokens, its RoPE angles only know how to rotate up to position 4,000. If you pass in 8,000 tokens, the model collapses due to unseen angles. PI compresses the sequence: it tells the model that position 8,000 is actually position 4,000, and position 1 is 0.5. By squishing the indices to fit within the trained 0-4K domain, the model can instantly handle 8K context with minimal fine-tuning.
+
+    **4. Why apply after projection?**
+    If we applied rotation to the raw word embedding *before* the linear projections ($W_q, W_k$), the linear transformation matrix would distort the precise geometric angles. By applying RoPE *after* creating $Q$ and $K$, we guarantee that the relative dot product $Q \cdot K^T$ strictly preserves the rotary math.
 
 ---
 
-## 5. Why are transformers better than LSTMs for most NLP tasks?
+## Q4. How does the Mixture of Experts (MoE) architecture work?
 
-| Aspect | LSTM | Transformer |
-|---|---|---|
-| **Parallelization** | Sequential — can't parallelize training | Fully parallel — all tokens processed simultaneously |
-| **Long-range dependencies** | Vanishing gradients degrade over distance | Direct attention between any two positions |
-| **Training speed** | Slow (sequential) | Fast (GPUs fully utilized) |
-| **Scalability** | Hard to scale | Scales to billions of parameters |
-| **Context** | Limited by hidden state size | Explicit via context window |
+### Core Answer
 
-The key advantage: transformers can train 100× faster on modern GPU hardware because every position can be processed in parallel, while LSTMs must process token-by-token.
+In a standard dense Transformer, every parameter in the Feed-Forward Network (FFN) is multiplied for every single token. As models scale to trillions of parameters, this becomes too computationally expensive.
+
+**Mixture of Experts (MoE)** (used in Mixtral and GPT-4) solves this by replacing the massive dense FFN with multiple smaller FFNs (Experts) and a **Router**.
+
+```mermaid
+flowchart TD
+    A["Token Representation from Attention"] --> B["Router / Gating Network"]
+    
+    B -->|"Probability 0.8"| C["Expert 1 (e.g. Coding)"]
+    B -->|"Probability 0.0"| D["Expert 2 (e.g. History)"]
+    B -->|"Probability 0.15"| E["Expert 3 (e.g. Math)"]
+    B -->|"Probability 0.0"| F["Expert 4 (e.g. Grammar)"]
+    
+    C --> G["Weighted Sum based on Routing Probabilities"]
+    E --> G
+    G --> H["Output to Next Layer"]
+```
+
+For every token, the Router calculates probabilities and selects only the Top-K experts (usually Top-2 out of 8). Only those 2 experts are executed, saving massive amounts of compute (FLOPs).
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. What is the "Expert Load Balancing" problem during training?
+    2. Why is VRAM usage higher in MoE despite lower inference FLOPs?
+    3. Are experts explicitly trained for specific domains (e.g., one for Math)?
+    4. What is the Router/Gating Network mathematically?
+
+??? success "View Answers"
+    **1. Expert Load Balancing?**
+    During early training, the Router might accidentally prefer Expert 1. Expert 1 gets more gradients, becomes "smarter," causing the Router to route *more* tokens to Expert 1, creating a runaway feedback loop. The other 7 experts die. We fix this by adding an "Auxiliary Loss" (Load Balancing Loss) to the training objective, mathematically penalizing the model if it doesn't distribute tokens equally across all experts in a batch.
+
+    **2. VRAM vs FLOPs in MoE?**
+    A model like Mixtral 8x7B has 47 Billion total parameters. Because only 2 experts are active per token, it executes at the speed of a ~14B parameter model (low FLOPs). However, *all 47B parameters must be loaded into GPU VRAM* because the Router could choose any expert at any time. Thus, it requires the massive RAM of a 47B model, but the compute hardware of a 14B model.
+
+    **3. Are experts domain-specific?**
+    No. We do not explicitly label Expert 1 as "Math" and Expert 2 as "French". The routing behavior emerges completely organically during backpropagation. Upon post-training analysis, researchers often find that experts specialize in syntax, punctuation, or abstract concepts rather than clean human subjects.
+
+    **4. The Router Math?**
+    The Router is just a simple linear layer. We multiply the token embedding by a weight matrix $W_r$, which outputs an 8-dimensional vector (for 8 experts). We apply a Softmax function to turn this into a probability distribution, and pick the Top-2 highest probabilities.
 
 ---
 
-## 6. What is the difference between local attention and global attention?
+## Q5. What is the difference between Encoder-Only, Decoder-Only, and Encoder-Decoder architectures?
 
-**Local attention:** Each token attends to only a fixed window of neighboring tokens (e.g., ±256 tokens). O(n × window_size) complexity — much cheaper for long sequences.
+### Core Answer
 
-**Global attention:** Every token attends to every other token. O(n²) complexity. Standard transformer behavior.
+The original Transformer (2017) was an **Encoder-Decoder** designed for translation. Since then, the architecture has bifurcated.
 
-**Longformer** combines both:
-- Most tokens: local sliding window attention
-- Special `[CLS]` tokens or question tokens: global attention
+| Architecture | Attention Type | Primary Use Case | Leading Models |
+|---|---|---|---|
+| **Encoder-Only** | Bidirectional | Text Classification, Dense Embeddings | BERT, RoBERTa |
+| **Decoder-Only** | Causal (Unidirectional) | Autoregressive Text Generation (Chatbots) | GPT-4, Llama 3, Claude |
+| **Encoder-Decoder**| Bidirectional + Cross | Translation, Summarization | T5, BART |
 
-```
-Local:  Token 500 attends to tokens 400–600 only
-Global: Token [CLS] attends to ALL tokens
-```
+### Related Questions
 
-This allows efficient processing of documents with 4K–16K tokens on standard hardware.
+!!! question "Follow-up Interview Questions"
+    1. Why did the industry standardize on Decoder-Only models for general AI?
+    2. Why are Encoder-Only models strictly better for dense vector embeddings?
+    3. What happens if you try to use a Decoder-Only model for text classification?
+    4. How does the Cross-Attention block work in an Encoder-Decoder model?
 
----
+??? success "View Answers"
+    **1. The dominance of Decoder-Only?**
+    Decoder-only models (GPT) predict the next token based *only* on previous tokens. Researchers discovered that next-token prediction over massive internet-scale data forces the model to learn world models, syntax, logic, and facts. Because they are causal, they can generate text indefinitely. Encoders require a fixed input and cannot generate text cleanly without complex modifications.
 
-## 7. What makes transformers computationally and memory intensive?
+    **2. Encoders for Embeddings?**
+    If you want an embedding that represents the word "bank" in the sentence "I sat on the river bank", the model *must* be able to look ahead at the word "river". An Encoder uses Bidirectional attention, allowing every token to look at every other token simultaneously. A Decoder-only model reading "I sat on the river bank" processes "bank" without being able to look ahead, creating a mathematically inferior contextual representation.
 
-**The quadratic bottleneck:**
+    **3. Decoders for Classification?**
+    You can use a Decoder for classification (e.g., Prompt: "Classify this sentiment: 'I love it.' Sentiment: "). However, because it only uses unidirectional attention, it is incredibly inefficient. A 110M parameter BERT (Encoder) will routinely outperform a 7B parameter Llama (Decoder) at pure classification tasks while using 1/60th of the compute.
 
-```
-Attention matrix: (batch × heads × seq_len × seq_len) floats
-At seq_len=4096: 4096² × 4 bytes = 64MB per head per batch item
-GPT-3 (96 heads): ~6GB just for attention matrices at seq_len=4096
-```
-
-**Memory breakdown for a large LLM:**
-1. Model weights: 2 bytes/param for float16
-2. Activations: ~4× model size during training
-3. Optimizer states: 8 bytes/param for Adam (3× model size)
-4. KV Cache at inference: grows linearly with sequence length and batch size
-
-**Solutions:**
-- **Flash Attention** — compute attention in tiles without materializing the full matrix
-- **Gradient checkpointing** — recompute activations on backward pass instead of storing them
-- **Mixed precision (BF16/FP8)** — halve memory vs FP32
-- **KV Cache compression** — Multi-Query Attention (MQA), Grouped Query Attention (GQA)
-
----
-
-## 8. How do you increase the context length of a pre-trained LLM?
-
-The challenge: models trained on 4K context have learned positional encodings only up to position 4K. Longer sequences → out-of-distribution positions → degraded performance.
-
-**Techniques:**
-
-1. **Position Interpolation (PI):** Compress positional indices to fit within the trained range
-   ```
-   Original: pos = [0, 1, 2, ..., 32768]
-   PI to 2×:  pos = [0, 0.5, 1, ..., 16384]  → scale by 1/2
-   ```
-
-2. **YaRN (Yet another RoPE extension):** Combines NTK-aware scaling with attention temperature adjustment — state-of-the-art for extending RoPE models
-
-3. **LongLoRA:** Fine-tune with shift short attention + LoRA — enables 100K+ context with minimal compute
-
-4. **Sliding window attention (Mistral):** Never attend beyond a fixed window, but cache KV from old tokens
-
-5. **Full fine-tuning:** Fine-tune on long documents — expensive but most reliable
-
----
-
-## 9. You have a vocabulary of 100K words. How do you optimize the transformer for this?
-
-Large vocabularies create two bottlenecks:
-1. **Embedding layer:** 100K × d_model = 100K × 4096 = 409M parameters just for embeddings
-2. **Output projection:** Same size + softmax over 100K classes is expensive
-
-**Optimizations:**
-
-1. **Adaptive Embedding / Adaptive Softmax:**
-   - Frequent tokens: full dimension (d_model)
-   - Rare tokens: reduced dimension (d_model/4)
-   - 50% of vocabulary → rare; sparse access patterns
-
-2. **Tied embeddings:** Share input embedding weights with output projection matrix (reduces parameters by ~50%)
-
-3. **Hierarchical softmax:** Two-level prediction (cluster → word)
-
-4. **Sampled softmax during training:** Only compute loss over a random subset of negative vocabulary items
-
-```python
-# Tied embeddings in PyTorch
-self.embedding = nn.Embedding(vocab_size, d_model)
-self.output_proj = nn.Linear(d_model, vocab_size, bias=False)
-self.output_proj.weight = self.embedding.weight  # Tie weights
-```
-
----
-
-## 10. What is the best tokenization strategy to balance vocabulary size vs. coverage?
-
-**Too large vocabulary:**
-- Expensive embedding/output layers
-- Rare tokens are undertrained
-
-**Too small vocabulary:**
-- Out-of-vocabulary (OOV) issues
-- Long tokenization → more tokens per sentence → shorter effective context
-
-**Solution: Byte-Pair Encoding (BPE) or SentencePiece** at 32K–100K tokens:
-
-```
-BPE algorithm:
-1. Start with character-level vocabulary
-2. Repeatedly merge the most frequent adjacent pair
-3. Stop at desired vocabulary size
-
-"unbelievable" → ["un", "believ", "able"] (3 tokens, not 13 chars)
-"API" → ["API"] (1 token, seen frequently)
-"gyanendra" → ["gy", "an", "end", "ra"] (4 tokens, rare name)
-```
-
-BPE naturally handles:
-- Common words → single token
-- Rare words → broken into subword pieces (never OOV)
-- Code → operators and keywords as single tokens
-
-**Practical choice:** 32K–64K BPE vocabulary is the sweet spot for English + multilingual + code.
-
----
-
-## 11. What are the different LLM architecture types and which is best for which task?
-
-### Encoder-Only (e.g., BERT, RoBERTa)
-- Bidirectional attention — sees full context
-- No generation capability
-- Best for: Classification, NER, sentence similarity, embedding
-
-### Decoder-Only (e.g., GPT, Llama, Mistral)
-- Causal (left-to-right) attention
-- Generative — produces text autoregressively
-- Best for: Chat, code generation, summarization, completion
-- **Dominant architecture today for LLMs**
-
-### Encoder-Decoder (e.g., T5, BART, mT5)
-- Encoder processes input; decoder generates output
-- Cross-attention between encoder and decoder
-- Best for: Translation, structured summarization, question answering with structured output
-
-### Mixture of Experts (MoE) (e.g., Mixtral, GPT-4)
-- Only K of N expert FFN layers activated per token
-- Scales model capacity without proportional compute increase
-- Best for: Large-scale models where parameter count matters more than FLOPs
-
-| Task | Best Architecture |
-|---|---|
-| Text classification | Encoder-only (BERT) |
-| Semantic search / embeddings | Encoder-only |
-| Open-ended generation | Decoder-only |
-| Translation | Encoder-decoder |
-| Large-scale general assistant | Decoder-only or MoE |
+    **4. Cross-Attention in Encoder-Decoder?**
+    In translation (French to English), the Encoder processes the entire French sentence bidirectionally and outputs a matrix of hidden states. The Decoder generates the English sentence word-by-word. During generation, the Decoder uses Cross-Attention: its Queries ($Q$) come from the currently generated English words, but its Keys ($K$) and Values ($V$) come directly from the Encoder's French hidden states, allowing it to "look back" at the source text.
 
 ---
 
