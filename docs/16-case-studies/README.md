@@ -1,38 +1,48 @@
-# Case Studies
+# Case Studies in LLM System Design
 
-> Applying everything together in realistic system design scenarios.
+> Applying the underlying mathematics, architecture, and prompting theory to realistic production scenarios. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** system design interview.
 
 ---
 
-## Case Study 1: LLM Chat Assistant with Dynamic Context Based on Query
+## Case Study 1: Dynamic Context LLM Assistant
 
-**Problem:** Build a production chat assistant for a large e-commerce platform that handles customer queries about orders, products, policies, and general questions — using the right information source for each query type.
+**The Problem:** Design a production chat assistant for a large e-commerce platform. It must handle customer queries about orders, products, return policies, and general chitchat. It must use the correct information source for each query type and have a near-zero hallucination rate for order tracking.
 
-### System Design
+### The System Design Answer
 
+You cannot solve this with a generic RAG pipeline or a massive monolithic system prompt. You must use **Semantic Intent Routing**. 
+
+A fast, cheap classifier (e.g., Llama-3-8B or a fine-tuned BERT model) sits at the entry point. It classifies the user's intent and deterministically routes the query to a specialized sub-system. 
+- Order status queries hit a strict SQL database.
+- Policy queries hit a Dense Vector database.
+- Product queries hit a Hybrid (BM25 + Dense) database.
+
+Only after the specialized sub-system retrieves the deterministic data is the expensive frontier LLM invoked to generate the final natural language response.
+
+```mermaid
+flowchart TD
+    A["User Message"] --> B["Intent Classifier (Fast LLM)"]
+    
+    B -->|"Intent: Chitchat"| C["No Retrieval"]
+    B -->|"Intent: Order Status"| D["SQL Database (Deterministic)"]
+    B -->|"Intent: Policy"| E["Dense RAG (Vector DB)"]
+    B -->|"Intent: Product Search"| F["Hybrid RAG (BM25 + Vector)"]
+    
+    C --> G["Context Builder"]
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H["Generation (Frontier LLM)"]
+    H --> I["Safety & Hallucination Filter"]
+    I --> J["Response + Citations"]
 ```
-User Message
-     │
-[Intent Classifier] ──── routes to ────►  Chitchat Handler (no retrieval needed)
-     │                                 ►  Order Lookup (structured DB query)
-     │                                 ►  Policy RAG (vector retrieval)
-     │                                 ►  Product Search (hybrid retrieval)
-     │
-[Context Builder] ──── assembles prompt with appropriate context
-     │
-[LLM (GPT-4o)] ──── generates grounded response
-     │
-[Safety Filter] ──── checks output before returning
-     │
-[Response + Citations]
-```
 
-### Implementation
+### Python Implementation Architecture
 
 ```python
 from enum import Enum
 from dataclasses import dataclass
-from typing import Optional
 import json
 
 class QueryIntent(Enum):
@@ -40,7 +50,6 @@ class QueryIntent(Enum):
     ORDER_STATUS = "order_status"
     POLICY = "policy"
     PRODUCT = "product"
-    UNKNOWN = "unknown"
 
 @dataclass
 class Context:
@@ -54,236 +63,140 @@ class SmartChatAssistant:
         self.order_db = OrderDatabase()
         self.policy_rag = PolicyRAG()
         self.product_search = ProductSearch()
-        self.llm = LLMClient(model="gpt-4o", temperature=0.3)
+        self.llm = LLMClient(model="gpt-4o", temperature=0.1) # Low temp for factual grounding
     
     def respond(self, user_message: str, user_id: str) -> dict:
-        # Step 1: Classify intent
+        # 1. Classify Intent (Fast)
         intent = self.classifier.classify(user_message)
         
-        # Step 2: Fetch appropriate context
-        context = self._get_context(intent, user_message, user_id)
-        
-        # Step 3: Build prompt
+        # 2. Deterministic Routing
+        if intent == QueryIntent.ORDER_STATUS:
+            # 100% accurate, no hallucination possible
+            order_data = self.order_db.get_recent_orders(user_id)
+            context = Context(intent, json.dumps(order_data), ["Order DB"])
+            
+        elif intent == QueryIntent.POLICY:
+            # Semantic RAG
+            chunks = self.policy_rag.retrieve(user_message, k=3)
+            context = Context(intent, "\n".join(c.text for c in chunks), ["Policy Docs"])
+            
+        elif intent == QueryIntent.PRODUCT:
+            # Hybrid Search
+            results = self.product_search.hybrid_search(user_message, k=5)
+            context = Context(intent, format_products(results), ["Product Catalog"])
+            
+        else:
+            context = Context(intent, "", [])
+            
+        # 3. Grounded Generation
         prompt = self._build_prompt(user_message, context)
-        
-        # Step 4: Generate
         response = self.llm.chat(prompt)
         
-        return {
-            "response": response,
-            "sources": context.sources,
-            "intent": intent.value
-        }
-    
-    def _get_context(self, intent: QueryIntent, query: str, user_id: str) -> Context:
-        if intent == QueryIntent.ORDER_STATUS:
-            # Structured lookup — exact, no hallucination possible
-            order_data = self.order_db.get_recent_orders(user_id)
-            return Context(intent, json.dumps(order_data), ["Order Database"])
-        
-        elif intent == QueryIntent.POLICY:
-            # RAG over policy documents
-            chunks = self.policy_rag.retrieve(query, k=3)
-            context_text = "\n---\n".join(c.text for c in chunks)
-            sources = [c.metadata["doc_title"] for c in chunks]
-            return Context(intent, context_text, sources)
-        
-        elif intent == QueryIntent.PRODUCT:
-            # Hybrid search: semantic + keyword
-            results = self.product_search.hybrid_search(query, k=5)
-            context_text = format_products(results)
-            return Context(intent, context_text, ["Product Catalog"])
-        
-        else:
-            return Context(intent, "", [])  # No retrieval for chitchat
-    
-    def _build_prompt(self, query: str, context: Context) -> str:
-        base_system = """You are a helpful customer service assistant for ShopCo.
-        Answer based on the provided context. If you don't have enough information,
-        say so honestly. Never make up order details, prices, or policies."""
-        
-        if context.data:
-            return f"""{base_system}
-
-Context ({context.intent.value}):
-{context.data}
-
-Customer question: {query}"""
-        else:
-            return f"{base_system}\n\nCustomer: {query}"
+        return {"response": response, "sources": context.sources}
 ```
 
-### Intent Classifier
+### Related Questions
 
-```python
-class IntentClassifier:
-    def __init__(self):
-        self.llm = LLMClient(model="gpt-4o-mini", temperature=0)
+!!! question "Follow-up Interview Questions"
+    1. Why use Semantic Intent Routing instead of an Autonomous Agent with Tools?
+    2. How do you handle multi-intent queries (e.g., "Where is my order and what is your return policy?")?
+
+??? success "View Answers"
+    **1. Routing vs Agents?**
+    An Autonomous Agent (ReAct) requires the LLM to dynamically reason about which tool to use, making sequential API calls. This results in incredibly high latency (e.g., 5-10 seconds) and non-deterministic behavior. Intent Routing is $O(1)$ in LLM calls, deterministic, and easily hits a sub-1s latency budget. Agents are for complex open-ended workflows; Routers are for strict consumer APIs.
     
-    def classify(self, message: str) -> QueryIntent:
-        prompt = f"""Classify this customer message into one category:
-- order_status: asking about their order, tracking, delivery
-- policy: asking about returns, refunds, shipping policy, terms
-- product: asking about products, availability, specs, prices
-- chitchat: greetings, thanks, general conversation
-
-Message: "{message}"
-Return only the category name."""
-        
-        result = self.llm.complete(prompt).strip().lower()
-        try:
-            return QueryIntent(result)
-        except ValueError:
-            return QueryIntent.UNKNOWN
-```
-
-### Key Design Decisions
-
-| Decision | Rationale |
-|---|---|
-| Intent classification first | Different intents need different data sources |
-| Structured DB for orders | 100% accuracy needed; no hallucination tolerable |
-| RAG for policies | Documents change; don't bake into model weights |
-| Hybrid search for products | Exact product names (BM25) + semantic (dense) |
-| Low temperature (0.3) | Customer service needs consistent, factual tone |
-| Always return sources | Builds trust; enables human verification |
-
-### Evaluation Metrics
-- **Task completion rate** — did the user get their question answered?
-- **Hallucination rate** — factual errors per 1000 queries
-- **Retrieval precision** — were retrieved chunks relevant?
-- **Response latency** — p95 < 3 seconds
-- **CSAT score** — customer satisfaction rating
+    **2. Multi-Intent Queries?**
+    The Intent Classifier must be upgraded to support Multi-Label Classification (outputting an array like `["ORDER_STATUS", "POLICY"]`). The Orchestrator then forks the execution, executing the SQL lookup and the Vector lookup in parallel asynchronously, concatenates both results into the Context Builder, and sends them to the final LLM.
 
 ---
 
-## Case Study 2: Prompting Techniques in Practice
+## Case Study 2: High-Yield LLM Data Extraction Pipeline
 
-**Problem:** A legal tech company wants to extract structured information from contracts — parties involved, key dates, payment terms, and obligations — at high accuracy.
+**The Problem:** A legal tech company wants to extract highly structured JSON information (parties, dates, payment terms) from massive, unstructured legal contracts. A simple prompt like *"Extract data into JSON"* results in frequent syntax errors and hallucinated clauses.
 
-### Naive Approach (fails)
+### The System Design Answer
+
+Reliable data extraction requires a multi-stage pipeline:
+1. **Schema Definition:** Use Pydantic to strictly type the required JSON output.
+2. **Chain-of-Thought (CoT):** Force the LLM to write out its reasoning *before* generating the JSON.
+3. **Few-Shot Examples:** Provide explicit edge-case examples.
+4. **Self-Correction Loop:** Catch JSON parsing errors in Python, and feed the error string back to the LLM so it can fix its own mistake.
+
+### Python Implementation Architecture
 
 ```python
-# BAD: Too open-ended, inconsistent output format
-prompt = f"Extract important information from this contract: {contract_text}"
-# Output: varies wildly between runs, hard to parse programmatically
-```
+import json
+from datetime import datetime
 
-### Step-by-Step Improvement
+# The Prompt uses CoT (Think first) and Few-Shot examples
+extraction_prompt = """
+You are a legal analyst extracting structured data.
 
-**Iteration 1: Define output schema**
-```python
-prompt = f"""Extract the following from this contract and return as JSON:
-- parties (list of party names and their roles)
-- effective_date
-- expiration_date
-- payment_terms
-- key_obligations (list, max 5)
+First, read the contract and WRITE YOUR ANALYSIS:
+1. Identify all named parties.
+2. Identify all dates and payment clauses.
+
+Then, return a STRICT JSON object:
+{
+  "parties": [{"name": "...", "role": "..."}],
+  "effective_date": "YYYY-MM-DD",
+  "payment_terms": {"amount": "...", "due_date": "..."}
+}
+
+EXAMPLE EDGE CASE:
+Snippet: "This Amendment modifies the Agreement dated March 15, 2023."
+Extraction: {"effective_date": null, "notes": "Amendment to 2023-03-15 agreement"}
 
 Contract:
-{contract_text}
+{contract}
+"""
 
-Return valid JSON only, no other text."""
-```
-
-**Iteration 2: Add Chain-of-Thought for complex clauses**
-```python
-prompt = f"""You are a legal analyst extracting structured data from contracts.
-
-First, read the contract carefully and identify:
-1. All named parties and their roles
-2. All dates mentioned and their significance
-3. All payment-related clauses
-4. The key obligations of each party
-
-Then, based on your analysis, return a JSON object with:
-{{
-  "parties": [{{"name": "...", "role": "...", "address": "..."}}],
-  "effective_date": "YYYY-MM-DD or null",
-  "expiration_date": "YYYY-MM-DD or null",
-  "payment_terms": {{
-    "amount": "...", 
-    "frequency": "...", 
-    "due_date": "...",
-    "late_penalty": "..."
-  }},
-  "obligations": [{{"party": "...", "obligation": "...", "deadline": "..."}}],
-  "governing_law": "..."
-}}
-
-Contract:
-{contract_text}
-
-Think through each field carefully before outputting the JSON."""
-```
-
-**Iteration 3: Add validation and self-correction**
-```python
 def extract_with_validation(contract_text: str, max_retries: int = 3) -> dict:
     for attempt in range(max_retries):
         response = llm(extraction_prompt.format(contract=contract_text))
         
         try:
-            data = json.loads(response)
+            # 1. Attempt to parse JSON (must strip markdown blocktags first)
+            json_str = extract_json_from_markdown(response)
+            data = json.loads(json_str)
             
-            # Validate required fields
+            # 2. Validate application logic
             assert "parties" in data and len(data["parties"]) >= 2
-            assert "effective_date" in data
-            
-            # Validate date format
-            for date_field in ["effective_date", "expiration_date"]:
-                if data.get(date_field):
-                    datetime.strptime(data[date_field], "%Y-%m-%d")
-            
-            return data
+            if data.get("effective_date"):
+                datetime.strptime(data["effective_date"], "%Y-%m-%d")
+                
+            return data # Success!
             
         except (json.JSONDecodeError, AssertionError, ValueError) as e:
             if attempt < max_retries - 1:
-                # Self-correction: tell the model what went wrong
+                # 3. Automated Self-Correction Loop
                 correction_prompt = f"""
-Your previous extraction had an error: {str(e)}
-Previous output: {response}
-
-Please fix the error and return corrected valid JSON.
-Contract: {contract_text}
-"""
+                Your previous extraction failed validation: {str(e)}
+                Previous output: {response}
+                
+                Analyze why it failed and return the CORRECTED JSON.
+                """
                 response = llm(correction_prompt)
+                
+    raise ValueError("Catastrophic extraction failure after maximum retries.")
+```
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Why does Chain-of-Thought (CoT) mathematically improve extraction accuracy?
+    2. Why not just use OpenAI Native Function Calling / Tool Use for extraction?
+    3. How do you handle contracts that exceed the LLM's context window?
+
+??? success "View Answers"
+    **1. Mathematics of CoT?**
+    LLMs are autoregressive; the next token is mathematically conditioned on all preceding tokens in the context window. If the LLM generates the JSON value immediately, it is guessing. If you force the LLM to write out its reasoning first (e.g., *"The contract mentions two dates, Jan 1 and Feb 1. Jan 1 is the signing date..."*), the attention mechanism locks onto those reasoning tokens, guaranteeing the subsequent JSON generation is highly accurate.
     
-    raise ValueError("Could not extract valid data after retries")
-```
-
-**Iteration 4: Few-shot examples for edge cases**
-```python
-few_shot_examples = """
-EXAMPLE 1:
-Contract snippet: "This Agreement is entered into as of January 1, 2024 between 
-ACME Corp ("Buyer") and XYZ Ltd ("Seller")..."
-Extracted: {"parties": [{"name": "ACME Corp", "role": "Buyer"}, {"name": "XYZ Ltd", "role": "Seller"}], 
-             "effective_date": "2024-01-01"}
-
-EXAMPLE 2 (amendment — no new effective date):
-Contract snippet: "This Amendment No. 2 hereby modifies the Agreement dated March 15, 2023..."
-Extracted: {"parties": [...], "effective_date": null, 
-             "notes": "This is an amendment to existing agreement dated 2023-03-15"}
-"""
-```
-
-### Results Comparison
-
-| Approach | JSON parse success | Field accuracy | Time per contract |
-|---|---|---|---|
-| Naive | 60% | 70% | 2s |
-| Schema + CoT | 90% | 88% | 3s |
-| + Validation/retry | 98% | 88% | 4s avg |
-| + Few-shot | 98% | 94% | 4s avg |
-
-### Lessons Learned
-
-1. **Schema definition is non-negotiable** for structured extraction — free-form output is unparseable at scale
-2. **CoT dramatically improves complex clause interpretation** — the model "thinks" before committing to values
-3. **Validation + retry is cheap insurance** — most failures self-correct on second attempt
-4. **Few-shot examples handle edge cases** that instructions alone miss
-5. **Evaluation drives improvement** — without the accuracy table above, you'd be flying blind
+    **2. Native Function Calling vs CoT?**
+    OpenAI Function Calling guarantees perfect JSON syntax, but it forces the model to generate the JSON *immediately* without a Chain-of-Thought reasoning pad. For complex extractions (like resolving conflicting legal clauses), Function Calling often results in syntactically perfect JSON containing completely hallucinated data. Best practice: Use Function Calling, but add a `reasoning_trace: str` field as the very first variable in the JSON schema to force CoT.
+    
+    **3. Context Window Limits?**
+    If a contract is 200,000 tokens, do not feed it all at once (due to the "Lost in the Middle" phenomenon). Use a Map-Reduce architecture: chunk the contract by section headings. Run the extraction prompt on every section in parallel (Map). Then, feed all the partial JSON extracts into a final LLM call to synthesize the master JSON object (Reduce).
 
 ---
 
