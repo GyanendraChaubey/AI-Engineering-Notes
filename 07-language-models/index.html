@@ -1125,8 +1125,8 @@
 <h2 id="q1-how-does-the-self-attention-mechanism-mathematically-function">Q1. How does the Self-Attention mechanism mathematically function?<a class="headerlink" href="#q1-how-does-the-self-attention-mechanism-mathematically-function" title="Permanent link">¶</a></h2>
 <h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
 <p>The core innovation of the Transformer is the <strong>Scaled Dot-Product Self-Attention</strong> mechanism. It allows the model to dynamically weigh the importance of every token in the sequence relative to the current token being processed.</p>
-<p>For every token, the model projects its embedding into three vectors: <strong>Query ($Q$)</strong>, <strong>Key ($K$)</strong>, and <strong>Value ($V$)</strong>. </p>
-<p>$$ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$</p>
+<p>For every token, the model projects its embedding into three vectors: <strong>Query (<span class="arithmatex">\(Q\)</span>)</strong>, <strong>Key (<span class="arithmatex">\(K\)</span>)</strong>, and <strong>Value (<span class="arithmatex">\(V\)</span>)</strong>. </p>
+<div class="arithmatex">\[ \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \]</div>
 <pre class="mermaid"><code>flowchart TD
     A["Input Embedding (X)"] --&gt; B["Linear Projections"]
     B --&gt; C["Query Matrix (Q)"]
@@ -1146,13 +1146,13 @@
 <p><strong>Intuition:</strong> 
 - The <strong>Query</strong> asks: <em>"What semantic information am I looking for?"</em>
 - The <strong>Key</strong> answers: <em>"What semantic information do I contain?"</em>
-- The dot product ($Q \cdot K^T$) measures how well the Keys match the Queries across the entire sequence.
+- The dot product (<span class="arithmatex">\(Q \cdot K^T\)</span>) measures how well the Keys match the Queries across the entire sequence.
 - The <strong>Value</strong> is the actual contextual payload that gets summed up based on the resulting attention weights.</p>
 <h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li>Why is the attention score divided by the square root of the head dimension ($\sqrt{d_k}$)?</li>
+<li>Why is the attention score divided by the square root of the head dimension (<span class="arithmatex">\(\sqrt{d_k}\)</span>)?</li>
 <li>What is the difference between Self-Attention and Cross-Attention?</li>
 <li>How does the Causal Mask prevent future-looking in Decoder models?</li>
 <li>What is the computational complexity of the Self-Attention mechanism?</li>
@@ -1160,22 +1160,22 @@
 </div>
 <details class="success">
 <summary>View Answers</summary>
-<p><strong>1. Why scale by $\sqrt{d_k}$?</strong>
-If the dimension $d_k$ is large, the dot products of random vectors grow extremely large in magnitude. When these large values are passed into the softmax function, it pushes the softmax into regions where the gradients are almost zero (vanishing gradients), halting training. Scaling by $\sqrt{d_k}$ forces the variance of the dot product to remain close to 1, keeping the gradients stable.</p>
+<p><strong>1. Why scale by <span class="arithmatex">\(\sqrt{d_k}\)</span>?</strong>
+If the dimension <span class="arithmatex">\(d_k\)</span> is large, the dot products of random vectors grow extremely large in magnitude. When these large values are passed into the softmax function, it pushes the softmax into regions where the gradients are almost zero (vanishing gradients), halting training. Scaling by <span class="arithmatex">\(\sqrt{d_k}\)</span> forces the variance of the dot product to remain close to 1, keeping the gradients stable.</p>
 <p><strong>2. Self vs Cross Attention?</strong>
-In Self-Attention, $Q$, $K$, and $V$ all come from the exact same input sequence (e.g., the user's prompt). In Cross-Attention (found in Encoder-Decoder models like T5), $Q$ comes from the Decoder (the translation being generated), while $K$ and $V$ come from the Encoder (the original source text).</p>
+In Self-Attention, <span class="arithmatex">\(Q\)</span>, <span class="arithmatex">\(K\)</span>, and <span class="arithmatex">\(V\)</span> all come from the exact same input sequence (e.g., the user's prompt). In Cross-Attention (found in Encoder-Decoder models like T5), <span class="arithmatex">\(Q\)</span> comes from the Decoder (the translation being generated), while <span class="arithmatex">\(K\)</span> and <span class="arithmatex">\(V\)</span> come from the Encoder (the original source text).</p>
 <p><strong>3. Causal Masking?</strong>
-During training, we process the entire sequence in parallel. Without a mask, token $t$ could simply "look ahead" at token $t+1$ to predict the next word, completely cheating the objective. The causal mask is a matrix of $-\infty$ applied to the upper triangle of the $QK^T$ matrix before the softmax. Since $\text{softmax}(-\infty) = 0$, it mathematically prevents any token from assigning attention weight to future tokens.</p>
+During training, we process the entire sequence in parallel. Without a mask, token <span class="arithmatex">\(t\)</span> could simply "look ahead" at token <span class="arithmatex">\(t+1\)</span> to predict the next word, completely cheating the objective. The causal mask is a matrix of <span class="arithmatex">\(-\infty\)</span> applied to the upper triangle of the <span class="arithmatex">\(QK^T\)</span> matrix before the softmax. Since <span class="arithmatex">\(\text{softmax}(-\infty) = 0\)</span>, it mathematically prevents any token from assigning attention weight to future tokens.</p>
 <p><strong>4. Computational Complexity?</strong>
-The matrix multiplication $QK^T$ requires calculating the dot product between every token and every other token. This results in $O(N^2 \cdot d)$ time and memory complexity, where $N$ is the sequence length. This quadratic scaling is the fundamental reason why processing a 100K context window is exceptionally difficult.</p>
+The matrix multiplication <span class="arithmatex">\(QK^T\)</span> requires calculating the dot product between every token and every other token. This results in <span class="arithmatex">\(O(N^2 \cdot d)\)</span> time and memory complexity, where <span class="arithmatex">\(N\)</span> is the sequence length. This quadratic scaling is the fundamental reason why processing a 100K context window is exceptionally difficult.</p>
 </details>
 <hr>
 <h2 id="q2-what-are-the-memory-bottlenecks-of-the-transformer-during-inference">Q2. What are the memory bottlenecks of the Transformer during inference?<a class="headerlink" href="#q2-what-are-the-memory-bottlenecks-of-the-transformer-during-inference" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
 <p>Inference memory is fundamentally different from training memory. During autoregressive generation (inference), the largest bottleneck is not the model weights—it is the <strong>KV Cache</strong>.</p>
-<p>To predict token $t$, the model needs the Key and Value vectors for all previous tokens $(0 \dots t-1)$. Recomputing these vectors at every step would require $O(N^3)$ compute. Instead, we cache them in VRAM.</p>
+<p>To predict token <span class="arithmatex">\(t\)</span>, the model needs the Key and Value vectors for all previous tokens <span class="arithmatex">\((0 \dots t-1)\)</span>. Recomputing these vectors at every step would require <span class="arithmatex">\(O(N^3)\)</span> compute. Instead, we cache them in VRAM.</p>
 <p><strong>KV Cache Memory Formula per Token:</strong>
-$2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})$</p>
+<span class="arithmatex">\(2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})\)</span></p>
 <p>For a 70B model with a 32K context window and a batch size of 16, the KV Cache can consume over 80GB of VRAM—more memory than the model weights themselves!</p>
 <h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -1190,21 +1190,21 @@ $2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim})
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. MQA and GQA?</strong>
-Standard Multi-Head Attention creates separate $Q, K, V$ heads. MQA forces all Query heads to share a single $K$ and $V$ head, shrinking the KV Cache size by $H$ times (e.g., 8x smaller). GQA is a compromise: it groups a few Query heads (e.g., 4) to share a single $K$ and $V$ head. GQA (used in Llama 3) perfectly balances the memory savings of MQA with the performance quality of standard attention.</p>
+Standard Multi-Head Attention creates separate <span class="arithmatex">\(Q, K, V\)</span> heads. MQA forces all Query heads to share a single <span class="arithmatex">\(K\)</span> and <span class="arithmatex">\(V\)</span> head, shrinking the KV Cache size by <span class="arithmatex">\(H\)</span> times (e.g., 8x smaller). GQA is a compromise: it groups a few Query heads (e.g., 4) to share a single <span class="arithmatex">\(K\)</span> and <span class="arithmatex">\(V\)</span> head. GQA (used in Llama 3) perfectly balances the memory savings of MQA with the performance quality of standard attention.</p>
 <p><strong>2. FlashAttention?</strong>
-During training, standard attention materializes the massive $N \times N$ attention matrix in the GPU's slow High Bandwidth Memory (HBM). FlashAttention fuses the operations, computing the softmax in blocks (tiling) entirely within the GPU's ultra-fast SRAM. This prevents writing the $N \times N$ matrix to HBM, saving massive memory and achieving up to a 4x speedup.</p>
+During training, standard attention materializes the massive <span class="arithmatex">\(N \times N\)</span> attention matrix in the GPU's slow High Bandwidth Memory (HBM). FlashAttention fuses the operations, computing the softmax in blocks (tiling) entirely within the GPU's ultra-fast SRAM. This prevents writing the <span class="arithmatex">\(N \times N\)</span> matrix to HBM, saving massive memory and achieving up to a 4x speedup.</p>
 <p><strong>3. Prefill vs Decode?</strong>
 <strong>Prefill:</strong> The user submits a prompt. The LLM processes all tokens in the prompt simultaneously in parallel to populate the initial KV Cache. This is heavily compute-bound (matrix multiplications).
 <strong>Decode:</strong> The LLM generates tokens autoregressively, one by one. It reads the massive KV Cache from memory to compute just a single token. This is heavily memory-bandwidth bound.</p>
 <p><strong>4. TTFT Context Scaling?</strong>
-Time-To-First-Token is determined by the Prefill phase. Because attention is $O(N^2)$, doubling the context window from 16K to 32K means the prefill compute doesn't double—it quadruples. Without hardware optimization (like RingAttention), massive contexts result in unacceptable user latency before the first word is even printed.</p>
+Time-To-First-Token is determined by the Prefill phase. Because attention is <span class="arithmatex">\(O(N^2)\)</span>, doubling the context window from 16K to 32K means the prefill compute doesn't double—it quadruples. Without hardware optimization (like RingAttention), massive contexts result in unacceptable user latency before the first word is even printed.</p>
 </details>
 <hr>
 <h2 id="q3-how-do-positional-encodings-work-and-why-is-rope-the-industry-standard">Q3. How do Positional Encodings work, and why is RoPE the industry standard?<a class="headerlink" href="#q3-how-do-positional-encodings-work-and-why-is-rope-the-industry-standard" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>A mathematical dot product has no concept of order; without intervention, a Transformer sees a sentence as a "Bag of Words." We must inject positional information into the embeddings.</p>
-<p>The modern standard is <strong>RoPE (Rotary Position Embedding)</strong>. Instead of adding a static vector to the input embedding, RoPE mathematically rotates the $Q$ and $K$ vectors in the complex plane by an angle proportional to their position index.</p>
-<p>The brilliance of RoPE is that the dot product of two rotated vectors depends strictly on the <em>relative distance</em> between them ($m - n$), allowing the model to perfectly capture relative phrasing (e.g., "not good" vs "good not").</p>
+<p>The modern standard is <strong>RoPE (Rotary Position Embedding)</strong>. Instead of adding a static vector to the input embedding, RoPE mathematically rotates the <span class="arithmatex">\(Q\)</span> and <span class="arithmatex">\(K\)</span> vectors in the complex plane by an angle proportional to their position index.</p>
+<p>The brilliance of RoPE is that the dot product of two rotated vectors depends strictly on the <em>relative distance</em> between them (<span class="arithmatex">\(m - n\)</span>), allowing the model to perfectly capture relative phrasing (e.g., "not good" vs "good not").</p>
 <h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1218,13 +1218,13 @@ Time-To-First-Token is determined by the Prefill phase. Because attention is $O(
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. RoPE vs Absolute Encoding?</strong>
-The original "Attention is All You Need" paper used Absolute encoding: it created a static sinusoidal vector for position $t$ and added it to the input word embedding. The problem is that the attention between position $1$ and $5$ looked mathematically different from position $101$ and $105$. RoPE encodes <em>relative</em> distance mathematically, so the distance between $(1, 5)$ and $(101, 105)$ yields the exact same attention penalty.</p>
+The original "Attention is All You Need" paper used Absolute encoding: it created a static sinusoidal vector for position <span class="arithmatex">\(t\)</span> and added it to the input word embedding. The problem is that the attention between position <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(5\)</span> looked mathematically different from position <span class="arithmatex">\(101\)</span> and <span class="arithmatex">\(105\)</span>. RoPE encodes <em>relative</em> distance mathematically, so the distance between <span class="arithmatex">\((1, 5)\)</span> and <span class="arithmatex">\((101, 105)\)</span> yields the exact same attention penalty.</p>
 <p><strong>2. ALiBi (Attention with Linear Biases)?</strong>
-ALiBi doesn't touch the embeddings at all. Instead, it subtracts a linear penalty directly from the final attention scores right before the softmax. The penalty is proportional to the distance between tokens: $Penalty = m \times |i - j|$. Because the penalty is just a linear subtraction, it naturally extrapolates to sequences much longer than the model was trained on.</p>
+ALiBi doesn't touch the embeddings at all. Instead, it subtracts a linear penalty directly from the final attention scores right before the softmax. The penalty is proportional to the distance between tokens: <span class="arithmatex">\(Penalty = m \times |i - j|\)</span>. Because the penalty is just a linear subtraction, it naturally extrapolates to sequences much longer than the model was trained on.</p>
 <p><strong>3. Position Interpolation (PI)?</strong>
 If a model is trained on 4K tokens, its RoPE angles only know how to rotate up to position 4,000. If you pass in 8,000 tokens, the model collapses due to unseen angles. PI compresses the sequence: it tells the model that position 8,000 is actually position 4,000, and position 1 is 0.5. By squishing the indices to fit within the trained 0-4K domain, the model can instantly handle 8K context with minimal fine-tuning.</p>
 <p><strong>4. Why apply after projection?</strong>
-If we applied rotation to the raw word embedding <em>before</em> the linear projections ($W_q, W_k$), the linear transformation matrix would distort the precise geometric angles. By applying RoPE <em>after</em> creating $Q$ and $K$, we guarantee that the relative dot product $Q \cdot K^T$ strictly preserves the rotary math.</p>
+If we applied rotation to the raw word embedding <em>before</em> the linear projections (<span class="arithmatex">\(W_q, W_k\)</span>), the linear transformation matrix would distort the precise geometric angles. By applying RoPE <em>after</em> creating <span class="arithmatex">\(Q\)</span> and <span class="arithmatex">\(K\)</span>, we guarantee that the relative dot product <span class="arithmatex">\(Q \cdot K^T\)</span> strictly preserves the rotary math.</p>
 </details>
 <hr>
 <h2 id="q4-how-does-the-mixture-of-experts-moe-architecture-work">Q4. How does the Mixture of Experts (MoE) architecture work?<a class="headerlink" href="#q4-how-does-the-mixture-of-experts-moe-architecture-work" title="Permanent link">¶</a></h2>
@@ -1262,7 +1262,7 @@ A model like Mixtral 8x7B has 47 Billion total parameters. Because only 2 expert
 <p><strong>3. Are experts domain-specific?</strong>
 No. We do not explicitly label Expert 1 as "Math" and Expert 2 as "French". The routing behavior emerges completely organically during backpropagation. Upon post-training analysis, researchers often find that experts specialize in syntax, punctuation, or abstract concepts rather than clean human subjects.</p>
 <p><strong>4. The Router Math?</strong>
-The Router is just a simple linear layer. We multiply the token embedding by a weight matrix $W_r$, which outputs an 8-dimensional vector (for 8 experts). We apply a Softmax function to turn this into a probability distribution, and pick the Top-2 highest probabilities.</p>
+The Router is just a simple linear layer. We multiply the token embedding by a weight matrix <span class="arithmatex">\(W_r\)</span>, which outputs an 8-dimensional vector (for 8 experts). We apply a Softmax function to turn this into a probability distribution, and pick the Top-2 highest probabilities.</p>
 </details>
 <hr>
 <h2 id="q5-what-is-the-difference-between-encoder-only-decoder-only-and-encoder-decoder-architectures">Q5. What is the difference between Encoder-Only, Decoder-Only, and Encoder-Decoder architectures?<a class="headerlink" href="#q5-what-is-the-difference-between-encoder-only-decoder-only-and-encoder-decoder-architectures" title="Permanent link">¶</a></h2>
@@ -1317,7 +1317,7 @@ If you want an embedding that represents the word "bank" in the sentence "I sat 
 <p><strong>3. Decoders for Classification?</strong>
 You can use a Decoder for classification (e.g., Prompt: "Classify this sentiment: 'I love it.' Sentiment: "). However, because it only uses unidirectional attention, it is incredibly inefficient. A 110M parameter BERT (Encoder) will routinely outperform a 7B parameter Llama (Decoder) at pure classification tasks while using 1/60th of the compute.</p>
 <p><strong>4. Cross-Attention in Encoder-Decoder?</strong>
-In translation (French to English), the Encoder processes the entire French sentence bidirectionally and outputs a matrix of hidden states. The Decoder generates the English sentence word-by-word. During generation, the Decoder uses Cross-Attention: its Queries ($Q$) come from the currently generated English words, but its Keys ($K$) and Values ($V$) come directly from the Encoder's French hidden states, allowing it to "look back" at the source text.</p>
+In translation (French to English), the Encoder processes the entire French sentence bidirectionally and outputs a matrix of hidden states. The Decoder generates the English sentence word-by-word. During generation, the Decoder uses Cross-Attention: its Queries (<span class="arithmatex">\(Q\)</span>) come from the currently generated English words, but its Keys (<span class="arithmatex">\(K\)</span>) and Values (<span class="arithmatex">\(V\)</span>) come directly from the Encoder's French hidden states, allowing it to "look back" at the source text.</p>
 </details>
 <hr>
 <p><em>Next: <a href="../08-fine-tuning/">Supervised Fine-Tuning →</a></em></p>
@@ -1396,6 +1396,10 @@ In translation (French to English), the Encoder processes the entire French sent
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

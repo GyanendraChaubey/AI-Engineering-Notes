@@ -1192,7 +1192,7 @@ Just like weights, the KV cache can be quantized. Crushing the KV cache to 8-bit
 <p>Standard LLM generation is strictly sequential. To generate Token 3, you must finish calculating Token 2. You cannot parallelize autoregressive decoding.</p>
 <p><strong>Speculative Decoding</strong> bypasses this constraint by pairing a massive, slow "Target Model" (e.g., Llama-3-70B) with a tiny, lightning-fast "Draft Model" (e.g., Llama-3-8B).</p>
 <ol>
-<li>The Draft model rapidly hallucinates the next $K$ tokens (e.g., $K=4$).</li>
+<li>The Draft model rapidly hallucinates the next <span class="arithmatex">\(K\)</span> tokens (e.g., <span class="arithmatex">\(K=4\)</span>).</li>
 <li>These 4 tokens are appended to the prompt.</li>
 <li>The Target model runs a <strong>single parallel forward pass</strong> (Pre-fill mode) on all 4 draft tokens simultaneously to check their probabilities.</li>
 <li>If the Target model's mathematical probabilities agree with the Draft model's choices, all 4 tokens are instantly accepted.</li>
@@ -1307,6 +1307,10 @@ The Draft model must share the exact same Tokenizer vocabulary as the Target mod
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

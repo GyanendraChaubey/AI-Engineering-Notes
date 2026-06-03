@@ -1191,7 +1191,7 @@ Metadata (e.g., <code>user_id=123</code>, <code>doc_type=pdf</code>) is stored e
 <li><strong>Hierarchy:</strong> The graph is built in multiple layers. Layer 0 contains <em>all</em> vectors. Layer 1 contains a random 10% subset. Layer 2 contains 1%, etc.</li>
 <li><strong>Search:</strong> The query enters at the top layer. It greedily hops to the closest node until it hits a local minimum.</li>
 <li><strong>Drop Down:</strong> It drops down to the exact same node in the layer below (which has more connections) and resumes the greedy search.</li>
-<li><strong>Result:</strong> By the time it reaches Layer 0, it is already zoomed in on the correct microscopic neighborhood, guaranteeing $O(\log N)$ search time.</li>
+<li><strong>Result:</strong> By the time it reaches Layer 0, it is already zoomed in on the correct microscopic neighborhood, guaranteeing <span class="arithmatex">\(O(\log N)\)</span> search time.</li>
 </ol>
 <h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -1219,8 +1219,8 @@ In extremely high dimensions (e.g., 3072d), the distance between any two random 
 <h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>A billion 768-dimensional <code>float32</code> vectors require <strong>~3 Terabytes of RAM</strong>. This is economically unviable. Production systems use <strong>Quantization</strong> to compress the vectors by up to 97%.</p>
 <p><strong>Product Quantization (PQ):</strong>
-1. <strong>Split:</strong> Divides a 768d vector into $M$ sub-vectors (e.g., 8 chunks of 96d).
-2. <strong>Cluster:</strong> Runs K-Means clustering (where $K=256$) on each of the 8 sub-spaces independently.
+1. <strong>Split:</strong> Divides a 768d vector into <span class="arithmatex">\(M\)</span> sub-vectors (e.g., 8 chunks of 96d).
+2. <strong>Cluster:</strong> Runs K-Means clustering (where <span class="arithmatex">\(K=256\)</span>) on each of the 8 sub-spaces independently.
 3. <strong>Encode:</strong> Replaces the 96d float values with the 8-bit Integer ID (0-255) of the nearest centroid.
 4. <strong>Compression:</strong> The 3072-byte vector is now represented by 8 bytes (an array of eight 8-bit integers). </p>
 <pre class="mermaid"><code>flowchart LR
@@ -1264,7 +1264,7 @@ Scalar Quantization rounds each individual dimension independently. It finds the
 <tbody>
 <tr>
 <td><strong>Dot Product</strong></td>
-<td>$\sum (A_i \times B_i)$</td>
+<td><span class="arithmatex">\(\sum (A_i \times B_i)\)</span></td>
 <td>Measures angle AND magnitude. Fast to compute.</td>
 </tr>
 <tr>
@@ -1274,12 +1274,12 @@ Scalar Quantization rounds each individual dimension independently. It finds the
 </tr>
 <tr>
 <td><strong>L2 (Euclidean)</strong></td>
-<td>$\sqrt{\sum (A_i - B_i)^2}$</td>
+<td><span class="arithmatex">\(\sqrt{\sum (A_i - B_i)^2}\)</span></td>
 <td>Measures straight-line geometric distance between endpoints.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>The Golden Rule:</strong> If you mathematically L2-normalize all vectors (forcing their length to $1.0$ so they sit on a hypersphere), then <strong>Cosine Similarity = Dot Product</strong>. You must normalize vectors at ingestion and query using Dot Product to save the massive CPU overhead of calculating vector magnitudes at runtime.</p>
+<p><strong>The Golden Rule:</strong> If you mathematically L2-normalize all vectors (forcing their length to <span class="arithmatex">\(1.0\)</span> so they sit on a hypersphere), then <strong>Cosine Similarity = Dot Product</strong>. You must normalize vectors at ingestion and query using Dot Product to save the massive CPU overhead of calculating vector magnitudes at runtime.</p>
 <h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1415,6 +1415,10 @@ If you build a SaaS app for 10,000 companies, filtering by <code>tenant_id</code
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

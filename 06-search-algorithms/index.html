@@ -1139,8 +1139,8 @@
     G --&gt; H["Top-K Chunks injected to LLM Context"]</code></pre>
 <p><strong>The Multi-Stage Pipeline:</strong>
 1. <strong>Query Transformation:</strong> Rewrite the user's ambiguous query into an optimized search vector (e.g., HyDE, Query Expansion).
-2. <strong>First-Stage Retrieval (Recall):</strong> Use incredibly fast Approximate Nearest Neighbor (ANN) and Inverted Indexes (BM25) to cast a wide net and retrieve the Top-100 candidates in $&lt;50$ms.
-3. <strong>Second-Stage Re-Ranking (Precision):</strong> Pass the Top-100 candidates through a heavy Transformer Cross-Encoder to exactly calculate their relevance to the query, selecting the final Top-5 chunks in $\sim 150$ms.</p>
+2. <strong>First-Stage Retrieval (Recall):</strong> Use incredibly fast Approximate Nearest Neighbor (ANN) and Inverted Indexes (BM25) to cast a wide net and retrieve the Top-100 candidates in <span class="arithmatex">\(&lt;50\)</span>ms.
+3. <strong>Second-Stage Re-Ranking (Precision):</strong> Pass the Top-100 candidates through a heavy Transformer Cross-Encoder to exactly calculate their relevance to the query, selecting the final Top-5 chunks in <span class="arithmatex">\(\sim 150\)</span>ms.</p>
 <h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1154,7 +1154,7 @@
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Latency budget?</strong>
-Search must be virtually instantaneous to leave time for LLM generation (Time-To-First-Token). Stage 1 (ANN) must execute in $10$-$50$ms. Stage 2 (Cross-Encoder) is computationally heavy, operating at $O(N)$ where N is the number of candidates. Scoring 100 candidates usually takes $100$-$200$ms on GPU. The entire retrieval pipeline should strictly complete in $&lt;300$ms.</p>
+Search must be virtually instantaneous to leave time for LLM generation (Time-To-First-Token). Stage 1 (ANN) must execute in <span class="arithmatex">\(10\)</span>-<span class="arithmatex">\(50\)</span>ms. Stage 2 (Cross-Encoder) is computationally heavy, operating at <span class="arithmatex">\(O(N)\)</span> where N is the number of candidates. Scoring 100 candidates usually takes <span class="arithmatex">\(100\)</span>-<span class="arithmatex">\(200\)</span>ms on GPU. The entire retrieval pipeline should strictly complete in <span class="arithmatex">\(&lt;300\)</span>ms.</p>
 <p><strong>2. Cross-Encoder vs Bi-Encoder?</strong>
 A Bi-Encoder embeds the Query and Document completely independently. A Cross-Encoder concatenates them (<code>[CLS] Query [SEP] Document</code>) and passes them through the Transformer layers together. This allows the Self-Attention mechanism to calculate direct attention weights between individual words in the query and individual words in the document, resulting in vastly superior semantic matching accuracy at the cost of massive latency.</p>
 <p><strong>3. Agentic Retrieval for multi-hop?</strong>
@@ -1167,13 +1167,13 @@ In most production RAG failures, over 70% of hallucinated or "I don't know" answ
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
 <p><strong>Dense Retrieval</strong> relies on continuous vector spaces (Semantic). It maps concepts mathematically so that "car" and "automobile" sit in the same geographic region of the space.</p>
 <p><strong>Sparse Retrieval (BM25)</strong> relies on discrete lexical tokens. It builds an <strong>Inverted Index</strong> (a hash map of words pointing to document IDs). BM25 is based on TF-IDF (Term Frequency - Inverse Document Frequency) but applies a mathematical saturation curve to prevent keyword spamming.</p>
-<p>$$ BM25(q, D) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{TF(q_i, D) \cdot (k_1 + 1)}{TF(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{avgdl})} $$</p>
+<div class="arithmatex">\[ BM25(q, D) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{TF(q_i, D) \cdot (k_1 + 1)}{TF(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{avgdl})} \]</div>
 <h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
 <li>How does the BM25 formula mathematically prevent token saturation?</li>
-<li>Why is an Inverted Index $O(1)$ for exact keyword lookups?</li>
+<li>Why is an Inverted Index <span class="arithmatex">\(O(1)\)</span> for exact keyword lookups?</li>
 <li>Why does Dense retrieval fail catastrophically on exact ID matches?</li>
 <li>What is SPLADE and how does it bridge Sparse and Dense retrieval?</li>
 </ol>
@@ -1181,9 +1181,9 @@ In most production RAG failures, over 70% of hallucinated or "I don't know" answ
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. BM25 Saturation?</strong>
-In raw TF-IDF, if a document contains the word "Apple" 100 times, it scores 10x higher than a document containing it 10 times. BM25 introduces the $k_1$ parameter (usually set to 1.2 - 2.0). As Term Frequency ($TF$) increases, the score asymptotes toward a maximum limit. Seeing a word 5 times proves relevance; seeing it 500 times is just keyword spamming and doesn't yield a higher score.</p>
-<p><strong>2. Inverted Index $O(1)$ lookup?</strong>
-An inverted index works identically to the index at the back of a textbook. It is a Hash Map where the Key is the token (e.g., <code>apple</code>) and the Value is a list of Document IDs <code>[doc1, doc7, doc9]</code>. Looking up a keyword is a direct hash table lookup, which is $O(1)$ time complexity, instantly returning the exact documents containing the word.</p>
+In raw TF-IDF, if a document contains the word "Apple" 100 times, it scores 10x higher than a document containing it 10 times. BM25 introduces the <span class="arithmatex">\(k_1\)</span> parameter (usually set to 1.2 - 2.0). As Term Frequency (<span class="arithmatex">\(TF\)</span>) increases, the score asymptotes toward a maximum limit. Seeing a word 5 times proves relevance; seeing it 500 times is just keyword spamming and doesn't yield a higher score.</p>
+<p><strong>2. Inverted Index <span class="arithmatex">\(O(1)\)</span> lookup?</strong>
+An inverted index works identically to the index at the back of a textbook. It is a Hash Map where the Key is the token (e.g., <code>apple</code>) and the Value is a list of Document IDs <code>[doc1, doc7, doc9]</code>. Looking up a keyword is a direct hash table lookup, which is <span class="arithmatex">\(O(1)\)</span> time complexity, instantly returning the exact documents containing the word.</p>
 <p><strong>3. Dense failures on IDs?</strong>
 Embedding models use sub-word tokenizers (like Byte-Pair Encoding). An ID like <code>ERR-902-X</code> is fractured into multiple tokens (e.g., <code>[ERR, -, 90, 2, -X]</code>). The Transformer averages these random characters together, generating a vector that points to random noise in the semantic space. Cosine similarity cannot effectively match random sub-word geometric noise.</p>
 <p><strong>4. What is SPLADE?</strong>
@@ -1196,13 +1196,13 @@ SPLADE (Sparse Lexical and Expansion) is a neural sparse retrieval model. It use
 <p>Because Cosine Similarity scores range from <code>[-1, 1]</code> and BM25 scores can range from <code>[0, 100+]</code>, you cannot simply add the scores together. You must merge them using <strong>Reciprocal Rank Fusion (RRF)</strong> or <strong>Convex Combination (Alpha Weighting)</strong>.</p>
 <p><strong>Reciprocal Rank Fusion (RRF):</strong>
 RRF ignores the raw scores entirely. It looks only at the <em>position</em> (rank) of the document in the respective lists. </p>
-<p>$$ RRF_Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}} $$</p>
+<div class="arithmatex">\[ RRF\_Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}} \]</div>
 <h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
 <li>Why is RRF mathematically superior to raw score normalization?</li>
-<li>What is the $k$ smoothing constant in RRF?</li>
+<li>What is the <span class="arithmatex">\(k\)</span> smoothing constant in RRF?</li>
 <li>How does Convex Combination (Alpha Weighting) work?</li>
 <li>How do you dynamically tune Alpha weighting based on query intent?</li>
 </ol>
@@ -1211,14 +1211,14 @@ RRF ignores the raw scores entirely. It looks only at the <em>position</em> (ran
 <summary>View Answers</summary>
 <p><strong>1. RRF vs Score Normalization?</strong>
 If you try to normalize BM25 scores using Min-Max scaling, an outlier document with a massive BM25 score of 300 will squash all other documents into the <code>[0, 0.01]</code> range. By discarding the scores and relying strictly on Rank, RRF becomes completely immune to outlier scores and varying distributions across different retrieval algorithms.</p>
-<p><strong>2. The $k$ smoothing constant?</strong>
-$k$ is typically set to 60. Without $k$, a document at Rank 1 in Dense gets a score of $1/1 = 1.0$, and Rank 2 gets $1/2 = 0.5$. The penalty for dropping one rank is massive. By adding $k=60$, Rank 1 becomes $1/61 \approx 0.0163$ and Rank 2 becomes $1/62 \approx 0.0161$. This smooths out the curve, preventing highly-ranked documents in one list from completely dominating documents that rank consistently well (e.g., Rank 10) in both lists.</p>
+<p><strong>2. The <span class="arithmatex">\(k\)</span> smoothing constant?</strong>
+<span class="arithmatex">\(k\)</span> is typically set to 60. Without <span class="arithmatex">\(k\)</span>, a document at Rank 1 in Dense gets a score of <span class="arithmatex">\(1/1 = 1.0\)</span>, and Rank 2 gets <span class="arithmatex">\(1/2 = 0.5\)</span>. The penalty for dropping one rank is massive. By adding <span class="arithmatex">\(k=60\)</span>, Rank 1 becomes <span class="arithmatex">\(1/61 \approx 0.0163\)</span> and Rank 2 becomes <span class="arithmatex">\(1/62 \approx 0.0161\)</span>. This smooths out the curve, preventing highly-ranked documents in one list from completely dominating documents that rank consistently well (e.g., Rank 10) in both lists.</p>
 <p><strong>3. Convex Combination (Alpha Weighting)?</strong>
-If you mathematically normalize the scores (using z-score or softmax), you can blend them using an Alpha ($\alpha$) parameter where $0 \le \alpha \le 1$.
-$Final_Score = (\alpha \times Dense_Score) + ((1 - \alpha) \times Sparse_Score)$. 
-If $\alpha=1$, it is pure semantic search. If $\alpha=0$, it is pure keyword search.</p>
+If you mathematically normalize the scores (using z-score or softmax), you can blend them using an Alpha (<span class="arithmatex">\(\alpha\)</span>) parameter where <span class="arithmatex">\(0 \le \alpha \le 1\)</span>.
+<span class="arithmatex">\(Final\_Score = (\alpha \times Dense\_Score) + ((1 - \alpha) \times Sparse\_Score)\)</span>. 
+If <span class="arithmatex">\(\alpha=1\)</span>, it is pure semantic search. If <span class="arithmatex">\(\alpha=0\)</span>, it is pure keyword search.</p>
 <p><strong>4. Dynamic Alpha Tuning?</strong>
-Advanced systems use a lightweight classifier (like a fast RoBERTa model or XGBoost) to classify the query at runtime. If the query contains heavily capitalized acronyms or UUIDs (<code>"Fix error XJ-92"</code>), the classifier sets $\alpha = 0.1$ (favoring BM25). If the query is conversational (<code>"How does the company feel about remote work?"</code>), it sets $\alpha = 0.9$ (favoring Dense).</p>
+Advanced systems use a lightweight classifier (like a fast RoBERTa model or XGBoost) to classify the query at runtime. If the query contains heavily capitalized acronyms or UUIDs (<code>"Fix error XJ-92"</code>), the classifier sets <span class="arithmatex">\(\alpha = 0.1\)</span> (favoring BM25). If the query is conversational (<code>"How does the company feel about remote work?"</code>), it sets <span class="arithmatex">\(\alpha = 0.9\)</span> (favoring Dense).</p>
 </details>
 <hr>
 <h2 id="q4-how-do-you-evaluate-and-diagnose-retrieval-failures-systematically">Q4. How do you evaluate and diagnose retrieval failures systematically?<a class="headerlink" href="#q4-how-do-you-evaluate-and-diagnose-retrieval-failures-systematically" title="Permanent link">¶</a></h2>
@@ -1243,10 +1243,10 @@ Advanced systems use a lightweight classifier (like a fast RoBERTa model or XGBo
 <p><strong>1. NDCG (Normalized Discounted Cumulative Gain)?</strong>
 NDCG measures ranking quality. It handles graded relevance (e.g., Document A is "Perfect", Document B is "Okay"). The "Discounted" part means it applies a logarithmic penalty to the score based on rank. Finding a "Perfect" document at Rank 1 gives you a massive score. Finding a "Perfect" document at Rank 10 gives you almost nothing, because users rarely scroll to the 10th result.</p>
 <p><strong>2. MRR for QA Systems?</strong>
-NDCG evaluates the entire list of K results. Mean Reciprocal Rank (MRR) strictly evaluates the rank of the <em>very first</em> relevant document ($Score = 1/Rank_{first_relevant}$). In a Q&amp;A RAG system, the LLM just needs the correct fact to answer the question. It doesn't matter if there are 5 more good documents at ranks 7, 8, and 9. MRR perfectly tracks "Did we get the answer to the top of the context window?"</p>
+NDCG evaluates the entire list of K results. Mean Reciprocal Rank (MRR) strictly evaluates the rank of the <em>very first</em> relevant document (<span class="arithmatex">\(Score = 1/Rank_{first\_relevant}\)</span>). In a Q&amp;A RAG system, the LLM just needs the correct fact to answer the question. It doesn't matter if there are 5 more good documents at ranks 7, 8, and 9. MRR perfectly tracks "Did we get the answer to the top of the context window?"</p>
 <p><strong>3. Precision vs Recall?</strong>
-- $Precision@K$: Out of the 10 documents retrieved, how many were actually relevant? (Measures noise/distractions for the LLM).
-- $Recall@K$: Out of all the relevant documents in the database, what percentage did we find in the top 10? (Measures if we missed critical facts).</p>
+- <span class="arithmatex">\(Precision@K\)</span>: Out of the 10 documents retrieved, how many were actually relevant? (Measures noise/distractions for the LLM).
+- <span class="arithmatex">\(Recall@K\)</span>: Out of all the relevant documents in the database, what percentage did we find in the top 10? (Measures if we missed critical facts).</p>
 <p><strong>4. Instrumentation?</strong>
 In production, you must log: <code>Query</code>, <code>Retrieved_Chunk_IDs</code>, <code>RRF_Scores</code>, and the <code>Final_LLM_Answer</code>. You then implement user telemetry (Thumbs Up / Thumbs Down buttons). When a user hits Thumbs Down, you can cross-reference the <code>Retrieved_Chunk_IDs</code> against the Golden Dataset to see if the retriever failed to pull the correct document, entirely isolating the failure point.</p>
 </details>
@@ -1365,6 +1365,10 @@ Query Transformation requires an LLM inference call <em>before</em> the database
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

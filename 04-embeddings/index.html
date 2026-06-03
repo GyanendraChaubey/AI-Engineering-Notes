@@ -1152,9 +1152,9 @@
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. CLS vs Mean Pooling?</strong>
-Mean-pooling calculates the arithmetic mean of all token vectors across the sequence dimension ($V = \frac{1}{N} \sum v_i$). It captures the overall semantic average but dilutes specific highly-weighted tokens. <code>[CLS]</code> pooling relies on the transformer's attention mechanism to route critical sequence-level information into a single token vector during the forward pass. Today, mean-pooling (often weighted by attention masks) is generally preferred for sentence-transformers as it produces smoother semantic spaces.</p>
+Mean-pooling calculates the arithmetic mean of all token vectors across the sequence dimension (<span class="arithmatex">\(V = \frac{1}{N} \sum v_i\)</span>). It captures the overall semantic average but dilutes specific highly-weighted tokens. <code>[CLS]</code> pooling relies on the transformer's attention mechanism to route critical sequence-level information into a single token vector during the forward pass. Today, mean-pooling (often weighted by attention masks) is generally preferred for sentence-transformers as it produces smoother semantic spaces.</p>
 <p><strong>2. Dimensionality vs Latency?</strong>
-A higher dimension (e.g., 3072 vs 768) mathematically increases the capacity of the model to resolve fine-grained semantic differences (higher accuracy). However, calculating cosine similarity requires taking the dot product of the vectors. The time complexity of computing dot products across $N$ vectors is $O(N \times D)$. Quadrupling the dimension quadruples the memory requirements (RAM/VRAM) and the computational latency of the search.</p>
+A higher dimension (e.g., 3072 vs 768) mathematically increases the capacity of the model to resolve fine-grained semantic differences (higher accuracy). However, calculating cosine similarity requires taking the dot product of the vectors. The time complexity of computing dot products across <span class="arithmatex">\(N\)</span> vectors is <span class="arithmatex">\(O(N \times D)\)</span>. Quadrupling the dimension quadruples the memory requirements (RAM/VRAM) and the computational latency of the search.</p>
 <p><strong>3. TF-IDF vs Dense Embeddings?</strong>
 TF-IDF (Sparse retrieval) relies on exact lexical matching. If a user searches for "automobile", and the document says "car", the vectors are orthogonal (dot product = 0), yielding no match. Dense embeddings project "car" and "automobile" into nearby continuous coordinates, capturing the semantic synonymy.</p>
 <p><strong>4. Anisotropy in embedding spaces?</strong>
@@ -1180,10 +1180,10 @@ Anisotropy means the embeddings occupy a narrow cone in the high-dimensional spa
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Recall vs Precision?</strong>
-$Precision@K = \frac{|Relevant \cap Retrieved_K|}{K}$. (How much of what we retrieved is useful?)
-$Recall@K = \frac{|Relevant \cap Retrieved_K|}{|Relevant_{Total}|}$. (How much of the total useful info did we retrieve?)</p>
+<span class="arithmatex">\(Precision@K = \frac{|Relevant \cap Retrieved_K|}{K}\)</span>. (How much of what we retrieved is useful?)
+<span class="arithmatex">\(Recall@K = \frac{|Relevant \cap Retrieved_K|}{|Relevant_{Total}|}\)</span>. (How much of the total useful info did we retrieve?)</p>
 <p><strong>2. NDCG vs MRR?</strong>
-MRR (Mean Reciprocal Rank) evaluates the rank of the <em>first</em> relevant document ($1/rank$). It assumes there is only one correct answer. If a query has 5 highly relevant chunks that all need to be retrieved for a complete answer, MRR ignores chunks 2-5. NDCG handles multiple relevant documents and heavily penalizes the system if they are ranked lower down the list.</p>
+MRR (Mean Reciprocal Rank) evaluates the rank of the <em>first</em> relevant document (<span class="arithmatex">\(1/rank\)</span>). It assumes there is only one correct answer. If a query has 5 highly relevant chunks that all need to be retrieved for a complete answer, MRR ignores chunks 2-5. NDCG handles multiple relevant documents and heavily penalizes the system if they are ranked lower down the list.</p>
 <p><strong>3. Generating a Golden Dataset (GPL)?</strong>
 Generative Pseudo Labeling (GPL) involves taking raw chunks from your enterprise corpus and feeding them to an LLM with the prompt: <em>"Generate 3 search queries that a user might type to find this exact paragraph."</em> This automatically creates thousands of (Query, Ground_Truth_Chunk) pairs without expensive human annotation, which you can use to benchmark embedding models.</p>
 <p><strong>4. Symmetric vs Asymmetric search?</strong>
@@ -1254,7 +1254,7 @@ A short user query ("How to fix XJ-92?") occupies a very different semantic spac
 <p><strong>2. Why dense embeddings fail on IDs?</strong>
 Embedding models use sub-word tokenization (like Byte-Pair Encoding). An ID like "XJ-92" might be split into tokens <code>[X, J, -, 92]</code>. The transformer averages these out. The semantic meaning of an arbitrary ID is basically random noise in the embedding space, making it impossible to retrieve via cosine similarity.</p>
 <p><strong>3. Reciprocal Rank Fusion (RRF)?</strong>
-You run a Dense search (Cosine Similarity) and a Sparse search (BM25 keyword match) simultaneously. RRF combines them by taking the rank of the document in each list, rather than the raw scores (which have different scales). Formula: $Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}}$. The document that ranks highest across <em>both</em> lists rises to the top.</p>
+You run a Dense search (Cosine Similarity) and a Sparse search (BM25 keyword match) simultaneously. RRF combines them by taking the rank of the document in each list, rather than the raw scores (which have different scales). Formula: <span class="arithmatex">\(Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}}\)</span>. The document that ranks highest across <em>both</em> lists rises to the top.</p>
 <p><strong>4. HyDE computational risks?</strong>
 HyDE requires calling an LLM API to generate text <em>before</em> you can run your vector search. This adds hundreds of milliseconds (or seconds) of latency to the search query, which is unacceptable for real-time autocomplete or instantaneous search applications.</p>
 </details>
@@ -1285,7 +1285,7 @@ HyDE requires calling an LLM API to generate text <em>before</em> you can run yo
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. MNR Loss efficiency?</strong>
-Normally, you have to explicitly provide negative examples (wrong documents) for every query. With MNR loss, you only provide (Query, Positive_Doc) pairs in a batch of size $N$. The loss function treats the $N-1$ <em>other</em> positive documents in the batch as implicit negatives for the current query. This allows massive computational efficiency because you reuse the encoded vectors across the batch to calculate the contrastive loss matrix.</p>
+Normally, you have to explicitly provide negative examples (wrong documents) for every query. With MNR loss, you only provide (Query, Positive_Doc) pairs in a batch of size <span class="arithmatex">\(N\)</span>. The loss function treats the <span class="arithmatex">\(N-1\)</span> <em>other</em> positive documents in the batch as implicit negatives for the current query. This allows massive computational efficiency because you reuse the encoded vectors across the batch to calculate the contrastive loss matrix.</p>
 <p><strong>2. What is a Hard Negative?</strong>
 If a user searches for "How to reset router", a random batch negative might be a document about "Company holiday policy." The model easily learns they are different. A <em>Hard Negative</em> is a document that is lexically very similar but semantically incorrect (e.g., "How to reset password"). Supplying hard negatives forces the model to learn fine-grained semantic boundaries rather than just relying on keyword overlap.</p>
 <p><strong>3. Small fine-tuned model vs Massive API?</strong>
@@ -1370,6 +1370,10 @@ If you fine-tune a general model purely on legal contracts, it will "forget" gen
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

@@ -1181,11 +1181,11 @@
     style C fill:#f39c12,color:#fff
     style E fill:#8e44ad,color:#fff</code></pre>
 <h3 id="the-mathematics-of-grounding">The Mathematics of Grounding<a class="headerlink" href="#the-mathematics-of-grounding" title="Permanent link">¶</a></h3>
-<p>In standard generation, the model predicts the next token $y_t$ based on the prompt $x$ and previous tokens $y_{&lt;t}$:
-$P(y_t | x, y_{&lt;t})$</p>
-<p>In RAG, we introduce a set of retrieved documents $Z = {z_1, z_2, ... z_k}$. The generation is now conditioned on both the prompt and the retrieved evidence:
-$P(y_t | x, Z, y_{&lt;t})$</p>
-<p>By heavily weighting the attention mechanism towards $Z$, the probability of hallucinating tokens that contradict $Z$ approaches zero.</p>
+<p>In standard generation, the model predicts the next token <span class="arithmatex">\(y_t\)</span> based on the prompt <span class="arithmatex">\(x\)</span> and previous tokens <span class="arithmatex">\(y_{&lt;t}\)</span>:
+<span class="arithmatex">\(P(y_t | x, y_{&lt;t})\)</span></p>
+<p>In RAG, we introduce a set of retrieved documents <span class="arithmatex">\(Z = \{z_1, z_2, ... z_k\}\)</span>. The generation is now conditioned on both the prompt and the retrieved evidence:
+<span class="arithmatex">\(P(y_t | x, Z, y_{&lt;t})\)</span></p>
+<p>By heavily weighting the attention mechanism towards <span class="arithmatex">\(Z\)</span>, the probability of hallucinating tokens that contradict <span class="arithmatex">\(Z\)</span> approaches zero.</p>
 <h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1409,14 +1409,14 @@ You cannot evaluate RAG with standard metrics like accuracy. The RAGAS framework
 <li>Run the query through a Vector index (Dense).</li>
 <li>Combine the two ranked lists using an algorithm like <strong>Reciprocal Rank Fusion (RRF)</strong>.</li>
 </ol>
-<p>$$RRF_Score = \frac{1}{k + Rank_{sparse}} + \frac{1}{k + Rank_{dense}}$$</p>
-<p><em>Where $k$ is a constant (usually 60) to prevent the top rank from dominating the score.</em></p>
+<div class="arithmatex">\[RRF\_Score = \frac{1}{k + Rank_{sparse}} + \frac{1}{k + Rank_{dense}}\]</div>
+<p><em>Where <span class="arithmatex">\(k\)</span> is a constant (usually 60) to prevent the top rank from dominating the score.</em></p>
 <h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
 <li>In what scenarios does BM25 completely outperform semantic embeddings?</li>
-<li>How does Alpha ($\alpha$) weighting work in hybrid search score fusion?</li>
+<li>How does Alpha (<span class="arithmatex">\(\alpha\)</span>) weighting work in hybrid search score fusion?</li>
 <li>Why is Reciprocal Rank Fusion (RRF) mathematically elegant for combining different search spaces?</li>
 <li>Why do vector databases struggle with exact match queries like "SKU-12345"?</li>
 </ol>
@@ -1425,7 +1425,7 @@ You cannot evaluate RAG with standard metrics like accuracy. The RAGAS framework
 <summary>View Answers</summary>
 <p><strong>1. When does BM25 outperform semantic?</strong>
 BM25 dominates on highly specific, out-of-vocabulary terminology. Examples include serial numbers ("XYZ-9982"), specific error codes ("ERR_CONNECTION_RESET"), rare names, or domain-specific acronyms. Semantic models often map these rare terms to generic vector space noise.</p>
-<p><strong>2. Alpha ($\alpha$) weighting?</strong>
+<p><strong>2. Alpha (<span class="arithmatex">\(\alpha\)</span>) weighting?</strong>
 Alpha is a tunable parameter between 0.0 and 1.0 used to linearly combine scores: <code>Final_Score = (alpha * Dense_Score) + ((1 - alpha) * Sparse_Score)</code>. An alpha of 1.0 is pure vector search; 0.0 is pure keyword search. You tune alpha based on your dataset (e.g., an e-commerce catalog heavily relies on keywords, so alpha might be 0.3).</p>
 <p><strong>3. Why is RRF elegant?</strong>
 Dense scores are usually cosine similarities (between 0 and 1). Sparse scores (BM25) are unbounded (can be 5.5, 12.0, 100.0). You cannot simply add them together because they are not on the same scale. RRF ignores the raw scores entirely and only looks at the <em>Rank</em> (1st, 2nd, 3rd) from each list, allowing you to merge completely incompatible scoring systems flawlessly.</p>
@@ -1509,6 +1509,10 @@ Embedding models rely on sub-word tokenization. "SKU-12345" might be tokenized a
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

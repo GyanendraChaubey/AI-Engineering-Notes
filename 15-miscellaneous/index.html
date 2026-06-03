@@ -1125,7 +1125,7 @@
 <h2 id="q1-how-do-you-optimize-the-overall-cost-of-a-production-llm-system">Q1. How do you optimize the overall cost of a production LLM system?<a class="headerlink" href="#q1-how-do-you-optimize-the-overall-cost-of-a-production-llm-system" title="Permanent link">¶</a></h2>
 <h3 id="core-answer">Core Answer<a class="headerlink" href="#core-answer" title="Permanent link">¶</a></h3>
 <p>Cost comes from two sources: <strong>inference</strong> (token API costs) and <strong>infrastructure</strong> (compute/storage). A Senior Engineer must implement systemic optimizations across both.</p>
-<p><strong>1. Semantic Caching:</strong> Standard caching hashes the exact string. Semantic Caching embeds the query into a vector and checks for $&gt;0.95$ Cosine Similarity with past queries, serving cached answers for synonymous questions and dropping latency to 20ms.</p>
+<p><strong>1. Semantic Caching:</strong> Standard caching hashes the exact string. Semantic Caching embeds the query into a vector and checks for <span class="arithmatex">\(&gt;0.95\)</span> Cosine Similarity with past queries, serving cached answers for synonymous questions and dropping latency to 20ms.</p>
 <p><strong>2. Prompt Compression &amp; Smart Truncation:</strong> Remove redundant context before it hits the LLM.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Prompt compression — removes linguistically redundant tokens</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">llmlingua</span><span class="w"> </span><span class="kn">import</span> <span class="n">PromptCompressor</span>
@@ -1164,7 +1164,7 @@ If you self-host on AWS, your cost is $X/hour per GPU. Continuous batching (via 
 <h2 id="q2-how-do-mixture-of-experts-moe-architectures-decouple-parameter-count-from-compute-cost">Q2. How do Mixture of Experts (MoE) architectures decouple Parameter Count from Compute Cost?<a class="headerlink" href="#q2-how-do-mixture-of-experts-moe-architectures-decouple-parameter-count-from-compute-cost" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
 <p>In a standard <strong>Dense Transformer</strong>, 100% of the model's parameters are activated to generate a single token. Scaling a dense model makes inference painfully slow.</p>
-<p><strong>Mixture of Experts (MoE)</strong> replaces the standard Feed-Forward Network (FFN) with a Router and $N$ "Expert" FFNs. For every token, the Router selects only the <strong>Top-$K$</strong> experts (e.g., 2 out of 8) to process that specific token. </p>
+<p><strong>Mixture of Experts (MoE)</strong> replaces the standard Feed-Forward Network (FFN) with a Router and <span class="arithmatex">\(N\)</span> "Expert" FFNs. For every token, the Router selects only the <strong>Top-<span class="arithmatex">\(K\)</span></strong> experts (e.g., 2 out of 8) to process that specific token. </p>
 <p>A model like Mixtral 8x7B has <strong>47 Billion total parameters</strong>, but only activates <strong>13 Billion parameters</strong> per token.</p>
 <pre class="mermaid"><code>flowchart TD
     A["Input Token"] --&gt; B["Self-Attention Layer"]
@@ -1262,7 +1262,7 @@ Standard Attention has 32 Query Heads and 32 KV Heads. MQA forces all 32 Query H
 For <code>d_model=4096</code>, <code>n_heads=32</code>, <code>d_head=128</code>:
 - <code>Input X</code>: <code>(batch, seq_len, 4096)</code>
 - <code>Q, K, V</code>: <code>(batch, 32, seq_len, 128)</code>
-- <code>Attention Scores</code>: <code>(batch, 32, seq_len, seq_len)</code> &lt;- This is the $O(N^2)$ bottleneck!</p>
+- <code>Attention Scores</code>: <code>(batch, 32, seq_len, seq_len)</code> &lt;- This is the <span class="arithmatex">\(O(N^2)\)</span> bottleneck!</p>
 </details>
 <hr>
 <h2 id="q4-how-do-you-build-a-sub-500ms-production-rag-architecture">Q4. How do you build a sub-500ms Production RAG Architecture?<a class="headerlink" href="#q4-how-do-you-build-a-sub-500ms-production-rag-architecture" title="Permanent link">¶</a></h2>
@@ -1374,7 +1374,7 @@ Dense (Vector) search understands concepts but fails at exact keyword matching (
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. FP16 vs BF16?</strong>
-Standard FP16 has a maximum value of <code>65,504</code>. LLM activations frequently spike above 100,000, causing FP16 tensors to overflow to <code>NaN</code> and crash the training run. BF16 sacrificed precision (mantissa bits) to expand its exponent range to match FP32 ($3 \times 10^{38}$), permanently solving the overflow problem.</p>
+Standard FP16 has a maximum value of <code>65,504</code>. LLM activations frequently spike above 100,000, causing FP16 tensors to overflow to <code>NaN</code> and crash the training run. BF16 sacrificed precision (mantissa bits) to expand its exponent range to match FP32 (<span class="arithmatex">\(3 \times 10^{38}\)</span>), permanently solving the overflow problem.</p>
 <p><strong>2. FP8 vs INT8?</strong>
 INT8 uses 8 bits to represent equally spaced integers (-128 to 127). FP8 is a floating-point format, meaning numbers are exponentially distributed (high precision near zero, low precision for massive numbers). Because neural network weights naturally form a Gaussian distribution clustered around zero, FP8 perfectly maps to the math, making it vastly superior to INT8 for training.</p>
 </details>
@@ -1455,6 +1455,10 @@ INT8 uses 8 bits to represent equally spaced integers (-128 to 127). FP8 is a fl
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

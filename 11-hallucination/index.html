@@ -1104,7 +1104,7 @@
 <strong>Intrinsic Hallucination</strong> occurs when the LLM's output directly contradicts the source material provided in the prompt (e.g., Context says "Revenue is $5M", LLM says "Revenue is $10M").
 <strong>Extrinsic Hallucination</strong> occurs when the LLM adds plausible but unverified information that is <em>not</em> in the source material (e.g., Context says "Revenue is $5M", LLM says "Revenue is $5M, which is a record high for the company").</p>
 <p><strong>2. Temperature and Hallucination?</strong>
-Temperature controls the entropy of the output probability distribution. $T=0$ forces the model to strictly pick the single most mathematically probable next token (ArgMax), which minimizes hallucinations but makes the text sound robotic. $T=0.8$ flattens the distribution, allowing the model to pick the 3rd or 4th most probable token. This vastly increases creativity but mathematically guarantees that the model will eventually veer off the factual pathway into a hallucination.</p>
+Temperature controls the entropy of the output probability distribution. <span class="arithmatex">\(T=0\)</span> forces the model to strictly pick the single most mathematically probable next token (ArgMax), which minimizes hallucinations but makes the text sound robotic. <span class="arithmatex">\(T=0.8\)</span> flattens the distribution, allowing the model to pick the 3rd or 4th most probable token. This vastly increases creativity but mathematically guarantees that the model will eventually veer off the factual pathway into a hallucination.</p>
 <p><strong>3. URL and Citation Hallucination?</strong>
 Pre-training data (the internet) is filled with academic papers formatted as <code>(Author, Year)</code> and URLs formatted as <code>https://domain.com/path</code>. The LLM perfectly learns the <em>syntax</em> of a URL, but it does not know if a specific path actually exists on a server. It will generate a syntactically flawless URL that yields a 404 error because it's just predicting plausible URL tokens.</p>
 <p><strong>4. The Autoregressive Snowball Effect?</strong>
@@ -1299,6 +1299,10 @@ Building and maintaining the Knowledge Graph is incredibly difficult. You have t
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

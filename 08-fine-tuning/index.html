@@ -1173,8 +1173,8 @@ SFT requires massive quality control. "Garbage in, garbage out" is magnified in 
 - <strong>AdamW Master Weights (FP32):</strong> 4 bytes per parameter
 - <strong>AdamW Momentum 1 (FP32):</strong> 4 bytes per parameter
 - <strong>AdamW Momentum 2 / Variance (FP32):</strong> 4 bytes per parameter</p>
-<p><strong>Total fixed overhead:</strong> $\approx 16$ Bytes per Parameter.
-For a 7B parameter model (e.g., Llama-3-8B): $8B \times 16 \text{ bytes} \approx 128 \text{ GB of VRAM}$.</p>
+<p><strong>Total fixed overhead:</strong> <span class="arithmatex">\(\approx 16\)</span> Bytes per Parameter.
+For a 7B parameter model (e.g., Llama-3-8B): <span class="arithmatex">\(8B \times 16 \text{ bytes} \approx 128 \text{ GB of VRAM}\)</span>.</p>
 <p>This is <em>before</em> accounting for the KV Cache and Activation memory (which scales quadratically with sequence length and batch size). A standard 8B model requires at least two 80GB A100 GPUs just to fit in memory for Full Fine-Tuning.</p>
 <h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
 <div class="admonition question">
@@ -1201,8 +1201,8 @@ If your GPU only has enough RAM to support a Batch Size of 1, the gradients will
 <h2 id="q3-how-does-lora-low-rank-adaptation-bypass-the-memory-bottleneck">Q3. How does LoRA (Low-Rank Adaptation) bypass the memory bottleneck?<a class="headerlink" href="#q3-how-does-lora-low-rank-adaptation-bypass-the-memory-bottleneck" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>Full Fine-Tuning modifies all 8 Billion parameters, requiring 128GB of VRAM. <strong>LoRA (Low-Rank Adaptation)</strong> is a Parameter-Efficient Fine-Tuning (PEFT) technique that allows you to fine-tune a 70B model on a single consumer GPU.</p>
-<p>Instead of updating the massive pre-trained weight matrix $W$ (which has dimension $d \times k$), LoRA completely <strong>freezes</strong> the base model. It then injects a parallel trainable "Delta Matrix" ($\Delta W$).</p>
-<p>To save parameters, LoRA decomposes $\Delta W$ into two tiny low-rank matrices: $A$ (dimension $d \times r$) and $B$ (dimension $r \times k$), where $r$ (rank) is extremely small (e.g., 8 or 16).</p>
+<p>Instead of updating the massive pre-trained weight matrix <span class="arithmatex">\(W\)</span> (which has dimension <span class="arithmatex">\(d \times k\)</span>), LoRA completely <strong>freezes</strong> the base model. It then injects a parallel trainable "Delta Matrix" (<span class="arithmatex">\(\Delta W\)</span>).</p>
+<p>To save parameters, LoRA decomposes <span class="arithmatex">\(\Delta W\)</span> into two tiny low-rank matrices: <span class="arithmatex">\(A\)</span> (dimension <span class="arithmatex">\(d \times r\)</span>) and <span class="arithmatex">\(B\)</span> (dimension <span class="arithmatex">\(r \times k\)</span>), where <span class="arithmatex">\(r\)</span> (rank) is extremely small (e.g., 8 or 16).</p>
 <pre class="mermaid"><code>flowchart LR
     A["Input (X)"] --&gt; B["Frozen Base Weight Matrix (W)"]
     A --&gt; C["Matrix A (d × r)"]
@@ -1214,12 +1214,12 @@ If your GPU only has enough RAM to support a Batch Size of 1, the gradients will
 
     E --&gt; G["Summed Output (Y = WX + ABX)"]
     F --&gt; G</code></pre>
-<p><strong>Math Example:</strong> If $W$ is $4096 \times 4096$, it has <strong>16.7M params</strong>. If $r = 8$, $A$ is $4096 \times 8$ and $B$ is $8 \times 4096$, totaling just <strong>65K params</strong>. We achieved the same matrix dimensions while training <strong>99.6% fewer parameters</strong>, eliminating the massive Adam optimizer overhead.</p>
+<p><strong>Math Example:</strong> If <span class="arithmatex">\(W\)</span> is <span class="arithmatex">\(4096 \times 4096\)</span>, it has <strong>16.7M params</strong>. If <span class="arithmatex">\(r = 8\)</span>, <span class="arithmatex">\(A\)</span> is <span class="arithmatex">\(4096 \times 8\)</span> and <span class="arithmatex">\(B\)</span> is <span class="arithmatex">\(8 \times 4096\)</span>, totaling just <strong>65K params</strong>. We achieved the same matrix dimensions while training <strong>99.6% fewer parameters</strong>, eliminating the massive Adam optimizer overhead.</p>
 <h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li>What is the relationship between the rank ($r$) and the LoRA alpha ($\alpha$) parameter?</li>
+<li>What is the relationship between the rank (<span class="arithmatex">\(r\)</span>) and the LoRA alpha (<span class="arithmatex">\(\alpha\)</span>) parameter?</li>
 <li>Why does LoRA introduce absolutely zero latency during inference?</li>
 <li>How does QLoRA push memory boundaries even further?</li>
 <li>Which transformer modules should you target with LoRA adapters?</li>
@@ -1227,21 +1227,21 @@ If your GPU only has enough RAM to support a Batch Size of 1, the gradients will
 </div>
 <details class="success">
 <summary>View Answers</summary>
-<p><strong>1. Rank ($r$) vs Alpha ($\alpha$)?</strong>
-$r$ determines the parameter bottleneck (the "intelligence" capacity of the adapter). $\alpha$ is a scaling factor used during training to dictate how strongly the LoRA output influences the frozen base output. The outputs of the LoRA matrices are multiplied by $\frac{\alpha}{r}$. A common rule of thumb is to set $\alpha = 2r$. </p>
+<p><strong>1. Rank (<span class="arithmatex">\(r\)</span>) vs Alpha (<span class="arithmatex">\(\alpha\)</span>)?</strong>
+<span class="arithmatex">\(r\)</span> determines the parameter bottleneck (the "intelligence" capacity of the adapter). <span class="arithmatex">\(\alpha\)</span> is a scaling factor used during training to dictate how strongly the LoRA output influences the frozen base output. The outputs of the LoRA matrices are multiplied by <span class="arithmatex">\(\frac{\alpha}{r}\)</span>. A common rule of thumb is to set <span class="arithmatex">\(\alpha = 2r\)</span>. </p>
 <p><strong>2. Zero Inference Latency?</strong>
-During inference, you do not need to run the $X \times A \times B$ calculation. Because matrix multiplication is distributive, you can mathematically merge the trained LoRA weights directly into the base weights permanently: $W_{new} = W + (A \times B) \cdot \frac{\alpha}{r}$. The resulting matrix is the exact same size as the original, meaning inference latency is 100% identical to the base model.</p>
+During inference, you do not need to run the <span class="arithmatex">\(X \times A \times B\)</span> calculation. Because matrix multiplication is distributive, you can mathematically merge the trained LoRA weights directly into the base weights permanently: <span class="arithmatex">\(W_{new} = W + (A \times B) \cdot \frac{\alpha}{r}\)</span>. The resulting matrix is the exact same size as the original, meaning inference latency is 100% identical to the base model.</p>
 <p><strong>3. What is QLoRA?</strong>
 LoRA reduces the optimizer memory, but you still have to load the 16-bit Frozen Base Model into VRAM. QLoRA mathematically quantizes the Frozen Base Model down to 4-bit precision (NF4), slashing the base memory footprint by 75%. It then trains the 16-bit LoRA adapters on top of the 4-bit base. This allows fine-tuning a 70B model on two 24GB consumer GPUs.</p>
 <p><strong>4. Target Modules?</strong>
-Originally, researchers only applied LoRA to the Attention Query ($Q$) and Value ($V$) projection matrices. Modern best practice (as shown by the QLoRA paper) dictates applying LoRA adapters to <em>all linear layers</em> in the model, including $Q, K, V, O$, and the massive FFN Up/Down projections. This drastically improves convergence and final model quality.</p>
+Originally, researchers only applied LoRA to the Attention Query (<span class="arithmatex">\(Q\)</span>) and Value (<span class="arithmatex">\(V\)</span>) projection matrices. Modern best practice (as shown by the QLoRA paper) dictates applying LoRA adapters to <em>all linear layers</em> in the model, including <span class="arithmatex">\(Q, K, V, O\)</span>, and the massive FFN Up/Down projections. This drastically improves convergence and final model quality.</p>
 </details>
 <hr>
 <h2 id="q4-how-do-you-mitigate-catastrophic-forgetting-during-sft">Q4. How do you mitigate Catastrophic Forgetting during SFT?<a class="headerlink" href="#q4-how-do-you-mitigate-catastrophic-forgetting-during-sft" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
 <p><strong>Catastrophic Forgetting</strong> occurs when an LLM is fine-tuned heavily on a narrow domain (e.g., Medical diagnosis). As the weights shift to perfectly predict medical text, the model actively overwrites and "forgets" its pre-trained general reasoning abilities, failing at basic math, coding, or conversational tasks it previously excelled at.</p>
 <p><strong>Mitigation Strategies:</strong>
-1. <strong>Low Learning Rates &amp; Epochs:</strong> SFT requires learning rates ~10x lower than pre-training (e.g., $2e-5$) and usually converges in just 1 to 3 epochs. Training for 10 epochs guarantees overfitting and forgetting.
+1. <strong>Low Learning Rates &amp; Epochs:</strong> SFT requires learning rates ~10x lower than pre-training (e.g., <span class="arithmatex">\(2e-5\)</span>) and usually converges in just 1 to 3 epochs. Training for 10 epochs guarantees overfitting and forgetting.
 2. <strong>Data Mixing (Replay):</strong> If you are training on 10,000 Medical documents, inject 2,000 General Domain documents (Math, Code, Chit-chat) into the training set. This forces the gradients to preserve the general circuits.
 3. <strong>PEFT (LoRA):</strong> Because LoRA freezes 99% of the base weights, the foundational world-model is mathematically preserved in the frozen matrix. Only the tiny delta matrix is biased toward the medical domain.</p>
 <h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
@@ -1257,7 +1257,7 @@ Originally, researchers only applied LoRA to the Attention Query ($Q$) and Value
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Learning Rate Calibration?</strong>
-Pre-training uses high learning rates to violently carve out the foundational loss landscape. SFT uses a "Cosine Decay with Warmup" schedule starting at a very low rate (e.g., $1e-5$). The warmup prevents the initial uncalibrated gradients from destroying the delicate pre-trained weights, and the low learning rate ensures we are only "polishing" the loss minimum, not escaping it.</p>
+Pre-training uses high learning rates to violently carve out the foundational loss landscape. SFT uses a "Cosine Decay with Warmup" schedule starting at a very low rate (e.g., <span class="arithmatex">\(1e-5\)</span>). The warmup prevents the initial uncalibrated gradients from destroying the delicate pre-trained weights, and the low learning rate ensures we are only "polishing" the loss minimum, not escaping it.</p>
 <p><strong>2. Elastic Weight Consolidation (EWC)?</strong>
 EWC is an advanced continual-learning technique. Before SFT, we calculate the Fisher Information Matrix to identify exactly which weights are critical for the model's general abilities. We then add a penalty to the loss function: if the SFT optimizer tries to change those specific "important" weights, the loss spikes. It forces the optimizer to learn the new task using only "unimportant" weights.</p>
 <p><strong>3. Over-epoching?</strong>
@@ -1295,7 +1295,7 @@ Human labeling is slow and expensive. You can script GPT-4-Turbo to generate you
 <p><strong>3. SFT Evaluation?</strong>
 Validation Loss is a poor metric for LLMs because it only measures next-token probability, not semantic quality. You must use "LLM-as-a-Judge". Pass the fine-tuned model's outputs to GPT-4 and ask GPT-4 to score them from 1-5 on metrics like Faithfulness, Helpfulness, and Format Adherence.</p>
 <p><strong>4. SFT vs RLHF?</strong>
-SFT uses supervised examples (Input $\rightarrow$ Output). It is great for teaching format and style. Reinforcement Learning from Human Feedback (RLHF) uses preference ranking (Output A is better than Output B). RLHF is vastly superior at teaching abstract behavioral concepts like "Helpfulness", "Safety", and "Toxicity avoidance", which are incredibly hard to define via static SFT examples.</p>
+SFT uses supervised examples (Input <span class="arithmatex">\(\rightarrow\)</span> Output). It is great for teaching format and style. Reinforcement Learning from Human Feedback (RLHF) uses preference ranking (Output A is better than Output B). RLHF is vastly superior at teaching abstract behavioral concepts like "Helpfulness", "Safety", and "Toxicity avoidance", which are incredibly hard to define via static SFT examples.</p>
 </details>
 <hr>
 <p><em>Next: <a href="../09-preference-alignment/">Preference Alignment →</a></em></p>
@@ -1374,6 +1374,10 @@ SFT uses supervised examples (Input $\rightarrow$ Output). It is great for teach
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

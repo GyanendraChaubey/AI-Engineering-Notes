@@ -1115,7 +1115,7 @@
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Routing vs Agents?</strong>
-An Autonomous Agent (ReAct) requires the LLM to dynamically reason about which tool to use, making sequential API calls. This results in incredibly high latency (e.g., 5-10 seconds) and non-deterministic behavior. Intent Routing is $O(1)$ in LLM calls, deterministic, and easily hits a sub-1s latency budget. Agents are for complex open-ended workflows; Routers are for strict consumer APIs.</p>
+An Autonomous Agent (ReAct) requires the LLM to dynamically reason about which tool to use, making sequential API calls. This results in incredibly high latency (e.g., 5-10 seconds) and non-deterministic behavior. Intent Routing is <span class="arithmatex">\(O(1)\)</span> in LLM calls, deterministic, and easily hits a sub-1s latency budget. Agents are for complex open-ended workflows; Routers are for strict consumer APIs.</p>
 <p><strong>2. Multi-Intent Queries?</strong>
 The Intent Classifier must be upgraded to support Multi-Label Classification (outputting an array like <code>["ORDER_STATUS", "POLICY"]</code>). The Orchestrator then forks the execution, executing the SQL lookup and the Vector lookup in parallel asynchronously, concatenates both results into the Context Builder, and sends them to the final LLM.</p>
 </details>
@@ -1279,6 +1279,10 @@ If a contract is 200,000 tokens, do not feed it all at once (due to the "Lost in
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

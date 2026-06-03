@@ -1945,7 +1945,7 @@
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Why can't BERT generate text the same way GPT does?</strong>
-BERT is a Masked Language Model (MLM) with full bidirectional attention. During training, it sees both past and future context simultaneously to predict masked tokens in the middle of a sequence. To generate text autoregressively (token-by-token), a model must use a causal attention mask (so token $t$ only attends to tokens $&lt;t$). BERT lacks this causal mask, meaning its architecture is fundamentally incompatible with standard left-to-right generation.</p>
+BERT is a Masked Language Model (MLM) with full bidirectional attention. During training, it sees both past and future context simultaneously to predict masked tokens in the middle of a sequence. To generate text autoregressively (token-by-token), a model must use a causal attention mask (so token <span class="arithmatex">\(t\)</span> only attends to tokens <span class="arithmatex">\(&lt;t\)</span>). BERT lacks this causal mask, meaning its architecture is fundamentally incompatible with standard left-to-right generation.</p>
 <p><strong>2. What is the difference between MLM and CLM?</strong>
 <strong>MLM (Masked Language Modeling)</strong> corrupts input text (e.g., replacing 15% of tokens with <code>[MASK]</code>) and trains the model to recover them using bidirectional context. It excels at understanding tasks (NLU). <strong>CLM (Causal Language Modeling)</strong> predicts the very next token using only previous tokens (unidirectional). It excels at generation tasks (NLG).</p>
 <p><strong>3. How does a VAE relate to generative AI?</strong>
@@ -1973,7 +1973,7 @@ Because the internet contains many examples of mapped tasks (e.g., "English: Hel
     style D fill:#3498db,color:#fff</code></pre>
 <h3 id="stage-1-pre-training-causal-language-modeling">Stage 1: Pre-Training (Causal Language Modeling)<a class="headerlink" href="#stage-1-pre-training-causal-language-modeling" title="Permanent link">¶</a></h3>
 <p>Self-supervised learning on internet-scale data. Objective is <strong>next-token prediction</strong>:</p>
-<p>$$\mathcal{L}<em>{CLM} = -\frac{1}{T}\sum</em>{t=1}^{T} \log P_\theta(x_t \mid x_1, ..., x_{t-1})$$</p>
+<div class="arithmatex">\[\mathcal{L}_{CLM} = -\frac{1}{T}\sum_{t=1}^{T} \log P_\theta(x_t \mid x_1, ..., x_{t-1})\]</div>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Simplified pre-training loop</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">"input_ids"</span><span class="p">]</span>             <span class="c1"># shape: [B, T]</span>
@@ -2227,7 +2227,7 @@ If an English text uses 1,000 tokens, but a translated Korean text uses 3,000 to
 <p><strong>1. How does prompt caching reduce costs in RAG?</strong>
 In RAG, the system prompt and retrieved documents are often identical across multiple turns of a conversation. Prompt caching saves the computed Key-Value (KV) matrices for these prefix tokens. On subsequent requests, the API skips the compute-heavy "prefill" phase for those tokens, significantly lowering the cost and Time-To-First-Token (TTFT).</p>
 <p><strong>2. What is speculative decoding?</strong>
-Autoregressive generation is memory-bandwidth bound. Speculative decoding uses a tiny, fast "draft" model to generate $N$ speculative tokens. The large "target" model then verifies all $N$ tokens in a single parallel forward pass. If the draft was right, you get a massive speedup. If wrong, the target model corrects it. Output quality is mathematically guaranteed to be identical.</p>
+Autoregressive generation is memory-bandwidth bound. Speculative decoding uses a tiny, fast "draft" model to generate <span class="arithmatex">\(N\)</span> speculative tokens. The large "target" model then verifies all <span class="arithmatex">\(N\)</span> tokens in a single parallel forward pass. If the draft was right, you get a massive speedup. If wrong, the target model corrects it. Output quality is mathematically guaranteed to be identical.</p>
 <p><strong>3. Break-even point for self-hosting vs API?</strong>
 Break-even is when: <code>(Total API Cost) &gt; (Cloud GPU Hourly Rate * Hours)</code>. If you have a steady, massive stream of tokens (high utilization), a dedicated A100 ($3/hr) pushing 3,000 tokens/sec is far cheaper than the API. If your traffic is bursty or low-volume, the idle GPU time makes self-hosting wildly more expensive.</p>
 <p><strong>4. Quantization and quality?</strong>
@@ -2243,8 +2243,8 @@ During generation, models store historical KV states in GPU memory. Traditionall
 <h2 id="q5-what-is-the-temperature-parameter-and-how-should-it-be-configured">Q5. What is the Temperature parameter and how should it be configured?<a class="headerlink" href="#q5-what-is-the-temperature-parameter-and-how-should-it-be-configured" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_4">Core Answer<a class="headerlink" href="#core-answer_4" title="Permanent link">¶</a></h3>
 <p>Temperature <strong>τ</strong> controls randomness in token sampling by scaling the logits before applying softmax. It reshapes the probability distribution over the entire vocabulary.</p>
-<p>$$P(x_i) = \frac{\exp(z_i / \tau)}{\sum_{j=1}^{V} \exp(z_j / \tau)}$$</p>
-<p>where $z_i$ is the raw logit for token $i$ and $\tau$ is the temperature.</p>
+<div class="arithmatex">\[P(x_i) = \frac{\exp(z_i / \tau)}{\sum_{j=1}^{V} \exp(z_j / \tau)}\]</div>
+<p>where <span class="arithmatex">\(z_i\)</span> is the raw logit for token <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(\tau\)</span> is the temperature.</p>
 <pre class="mermaid"><code>graph TD
     A["Raw Logits z\n[2.1, 0.5, -0.3, 1.8]"] --&gt; B{"Temperature τ"}
     B --&gt;|"τ → 0\nGreedy / Deterministic"| C["Prob ≈ [0.999, 0.000, 0.000, 0.001]\nAlways picks argmax"]
@@ -2313,11 +2313,11 @@ As temperature goes to 0, the exponential scaling causes the highest logit's pro
 <p><strong>2. Interaction with Top-P and Top-K?</strong>
 Temperature scales the raw logits <em>before</em> Top-K or Top-P filtering is applied. After temperature scaling, Top-K truncates the list, and then Top-P trims the tail. Because temperature changes the probability distribution, it directly affects which tokens make it into the Top-P nucleus.</p>
 <p><strong>3. What is temperature calibration?</strong>
-LLMs are often poorly calibrated (they are overconfident in their predictions). "Temperature scaling" is a post-hoc calibration technique where you find an optimal temperature $\tau$ on a validation set so that the model's output probabilities actually match the true accuracy (e.g., if it predicts an answer with 80% confidence, it is right 80% of the time).</p>
+LLMs are often poorly calibrated (they are overconfident in their predictions). "Temperature scaling" is a post-hoc calibration technique where you find an optimal temperature <span class="arithmatex">\(\tau\)</span> on a validation set so that the model's output probabilities actually match the true accuracy (e.g., if it predicts an answer with 80% confidence, it is right 80% of the time).</p>
 <p><strong>4. Temperature for self-consistency?</strong>
 For self-consistency (generating multiple CoT reasoning paths), you need diversity so the model explores different logic trees. A temperature of 0.0 is useless here (it will generate the same path 10 times). A temperature of 0.5 to 0.7 is optimal to balance diverse reasoning paths without hallucinating the math.</p>
 <p><strong>5. Different temperature for first token?</strong>
-Yes! This is highly effective for classification. You can set $\tau=0.0$ for the first token (to deterministically pick the label "Yes" or "No"), and then set $\tau=0.7$ for the subsequent tokens to let the model generate a diverse, natural-sounding explanation for <em>why</em> it picked that label.</p>
+Yes! This is highly effective for classification. You can set <span class="arithmatex">\(\tau=0.0\)</span> for the first token (to deterministically pick the label "Yes" or "No"), and then set <span class="arithmatex">\(\tau=0.7\)</span> for the subsequent tokens to let the model generate a diverse, natural-sounding explanation for <em>why</em> it picked that label.</p>
 </details>
 <hr>
 <h2 id="q6-what-are-the-different-strategies-for-selecting-output-tokens-decoding-strategies">Q6. What are the different strategies for selecting output tokens (decoding strategies)?<a class="headerlink" href="#q6-what-are-the-different-strategies-for-selecting-output-tokens-decoding-strategies" title="Permanent link">¶</a></h2>
@@ -2402,9 +2402,9 @@ Before applying softmax, the engine looks at the list of tokens already generate
 <p><strong>4. What is contrastive decoding?</strong>
 Contrastive decoding runs a large "Expert" model and a small "Amateur" model simultaneously. The generation probability is calculated by subtracting the Amateur's logits from the Expert's logits. This penalizes generic, boring tokens (which the Amateur is good at predicting) and amplifies sophisticated tokens (which only the Expert knows), dramatically increasing text quality.</p>
 <p><strong>5. Speculative decoding speedup?</strong>
-Speculative decoding uses a tiny draft model to guess the next $K$ tokens. The large model then takes all $K$ tokens and checks them in <em>one single forward pass</em> (since transformers process full sequences in parallel). If the large model agrees, you generated $K$ tokens for the time cost of 1 token. Since both models use the exact same target probability distribution, the output is mathematically identical to standard autoregressive generation.</p>
+Speculative decoding uses a tiny draft model to guess the next <span class="arithmatex">\(K\)</span> tokens. The large model then takes all <span class="arithmatex">\(K\)</span> tokens and checks them in <em>one single forward pass</em> (since transformers process full sequences in parallel). If the large model agrees, you generated <span class="arithmatex">\(K\)</span> tokens for the time cost of 1 token. Since both models use the exact same target probability distribution, the output is mathematically identical to standard autoregressive generation.</p>
 <p><strong>6. Strategy for structured JSON output?</strong>
-Use Greedy decoding ($\tau = 0$). JSON syntax (<code>{</code>, <code>"</code>, <code>:</code>) must be exact. Any sampling randomness increases the risk of generating a malformed character (like a missing quote) which invalidates the entire output and breaks the downstream parsing pipeline.</p>
+Use Greedy decoding (<span class="arithmatex">\(\tau = 0\)</span>). JSON syntax (<code>{</code>, <code>"</code>, <code>:</code>) must be exact. Any sampling randomness increases the risk of generating a malformed character (like a missing quote) which invalidates the entire output and breaks the downstream parsing pipeline.</p>
 </details>
 <hr>
 <h2 id="q7-what-are-the-ways-to-define-stopping-criteria-for-llm-generation">Q7. What are the ways to define stopping criteria for LLM generation?<a class="headerlink" href="#q7-what-are-the-ways-to-define-stopping-criteria-for-llm-generation" title="Permanent link">¶</a></h2>
@@ -2496,7 +2496,7 @@ Standard APIs do not support budget-based stopping directly. You must use stream
 <details class="success">
 <summary>View Answers</summary>
 <p><strong>1. Efficiently checking stop sequences?</strong>
-The API uses a Trie (prefix tree) or Aho-Corasick algorithm to check the generated token stream against all stop sequences simultaneously in $O(1)$ time per token, rather than doing string matching.</p>
+The API uses a Trie (prefix tree) or Aho-Corasick algorithm to check the generated token stream against all stop sequences simultaneously in <span class="arithmatex">\(O(1)\)</span> time per token, rather than doing string matching.</p>
 <p><strong>2. Regex stop sequences?</strong>
 Currently, major APIs (OpenAI, Anthropic) do not support Regex stop sequences. Checking regex against a continuously streaming, shifting token window is computationally expensive at the engine level compared to static string matching. (However, some open-source inference engines like <code>vLLM</code> support regex via finite state machines).</p>
 <p><strong>3. Max stop sequences?</strong>
@@ -2930,6 +2930,10 @@ You evaluate it end-to-end on a benchmark (like SWE-bench for coding or GSM8K fo
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   

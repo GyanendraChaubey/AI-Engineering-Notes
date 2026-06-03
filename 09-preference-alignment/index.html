@@ -1114,7 +1114,7 @@ Created by Anthropic (Claude), Constitutional AI bypasses human labelers. You de
 <p><strong>RLHF</strong> is a highly complex, 3-stage pipeline that requires 4 distinct neural networks to reside in memory simultaneously.</p>
 <ol>
 <li><strong>SFT Policy Model:</strong> Create a baseline instruction-following model.</li>
-<li><strong>Reward Model (RM):</strong> Train a model to output a scalar score (e.g., <code>4.2</code>) representing human preference. We use the <strong>Bradley-Terry model</strong>, where the probability of choosing Response A over Response B is the sigmoid of the difference between their reward scores: $P(A \succ B) = \sigma(R(A) - R(B))$.</li>
+<li><strong>Reward Model (RM):</strong> Train a model to output a scalar score (e.g., <code>4.2</code>) representing human preference. We use the <strong>Bradley-Terry model</strong>, where the probability of choosing Response A over Response B is the sigmoid of the difference between their reward scores: <span class="arithmatex">\(P(A \succ B) = \sigma(R(A) - R(B))\)</span>.</li>
 <li><strong>PPO Loop:</strong> Use Proximal Policy Optimization (RL) to update the Policy Model to maximize the Reward Model's score.</li>
 </ol>
 <pre class="mermaid"><code>flowchart TD
@@ -1159,7 +1159,7 @@ Training a robust Reward Model typically requires 50,000 to 100,000 expertly lab
 <p>RLHF requires 4 models in VRAM: The Active Policy, the Frozen Reference, the Reward Model, and the PPO Value Network. This makes training massive models (like 70B parameters) almost impossible without thousands of GPUs.</p>
 <p><strong>Direct Preference Optimization (DPO)</strong> mathematically proves that you can completely bypass the Reward Model and the RL loop. DPO formulates the reward directly as the log-probability difference between the Active Policy and the Frozen Reference model. </p>
 <p>DPO turns RLHF into a simple Binary Cross-Entropy classification problem. It only requires 2 models in memory (Active and Reference) and is infinitely more stable to train.</p>
-<p>$$ \mathcal{L}<em>{DPO} = - \log \sigma \left( \beta \log \frac{\pi</em>\theta(y_w | x)}{\pi_{ref}(y_w | x)} - \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{ref}(y_l | x)} \right) $$</p>
+<div class="arithmatex">\[ \mathcal{L}_{DPO} = - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w | x)}{\pi_{ref}(y_w | x)} - \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{ref}(y_l | x)} \right) \]</div>
 <pre class="mermaid"><code>flowchart LR
     subgraph DPO_Training ["DPO Architecture"]
         A["Prompt (x)"] --&gt; B["Active Policy"]
@@ -1177,7 +1177,7 @@ Training a robust Reward Model typically requires 50,000 to 100,000 expertly lab
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li>What is the $\beta$ (beta) temperature parameter in DPO?</li>
+<li>What is the <span class="arithmatex">\(\beta\)</span> (beta) temperature parameter in DPO?</li>
 <li>Does DPO use a Reward Model during inference?</li>
 <li>Why does DPO suffer from the "Out-of-Distribution" problem compared to PPO?</li>
 <li>What is the difference between Online DPO and Offline DPO?</li>
@@ -1185,8 +1185,8 @@ Training a robust Reward Model typically requires 50,000 to 100,000 expertly lab
 </div>
 <details class="success">
 <summary>View Answers</summary>
-<p><strong>1. The $\beta$ (beta) Parameter?</strong>
-$\beta$ controls the strength of the KL-divergence constraint implicitly baked into the math. A high $\beta$ (e.g., $0.5$) forces the model to stay extremely close to the Reference model, making minimal changes. A low $\beta$ (e.g., $0.1$) allows the model to deviate heavily to maximize the margin between the Chosen and Rejected responses.</p>
+<p><strong>1. The <span class="arithmatex">\(\beta\)</span> (beta) Parameter?</strong>
+<span class="arithmatex">\(\beta\)</span> controls the strength of the KL-divergence constraint implicitly baked into the math. A high <span class="arithmatex">\(\beta\)</span> (e.g., <span class="arithmatex">\(0.5\)</span>) forces the model to stay extremely close to the Reference model, making minimal changes. A low <span class="arithmatex">\(\beta\)</span> (e.g., <span class="arithmatex">\(0.1\)</span>) allows the model to deviate heavily to maximize the margin between the Chosen and Rejected responses.</p>
 <p><strong>2. Reward Models in DPO?</strong>
 No. DPO mathematically maps the reward directly into the policy weights. There is no explicit Reward Model trained, and nothing is used during inference. You just run the fine-tuned LLM normally.</p>
 <p><strong>3. The Out-of-Distribution (OOD) Problem?</strong>
@@ -1332,6 +1332,10 @@ The Odds Ratio measures how much more likely the model is to generate the Chosen
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   
