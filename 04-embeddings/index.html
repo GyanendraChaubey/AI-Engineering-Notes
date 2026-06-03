@@ -1194,14 +1194,14 @@ Symmetric search implies the query and the target document are of similar length
 <h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>Standard dense embeddings (Bi-Encoders) compress all tokens into a single vector, leading to the <strong>information bottleneck</strong> problem where nuance is lost.</p>
 <pre class="mermaid"><code>flowchart LR
-    subgraph Dense Bi-Encoder
+    subgraph DenseBiEncoder ["Dense Bi-Encoder"]
         A1[Query] --&gt; B1[Encoder] --&gt; C1[Single Vector]
         A2[Doc] --&gt; B2[Encoder] --&gt; C2[Single Vector]
         C1 --&gt; D1[Dot Product]
         C2 --&gt; D1
     end
 
-    subgraph ColBERT Late Interaction
+    subgraph ColBERTLateInteraction ["ColBERT Late Interaction"]
         E1[Query] --&gt; F1[Encoder] --&gt; G1[N Token Vectors]
         E2[Doc] --&gt; F2[Encoder] --&gt; G2[M Token Vectors]
         G1 --&gt; H1[MaxSim Matrix]
@@ -1270,7 +1270,7 @@ HyDE requires calling an LLM API to generate text <em>before</em> you can run yo
     C --&gt; E
     D --&gt; E
     E --&gt; F[Calculate Margin Ranking Loss]
-    F --&gt; G[Backpropagate &amp; Update Weights]</code></pre>
+    F --&gt; G["Backpropagate &amp; Update Weights"]</code></pre>
 <p>The standard approach uses <strong>Multiple Negatives Ranking (MNR) Loss</strong>, maximizing the dot product of positive pairs while minimizing the dot product against all other in-batch examples.</p>
 <h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">

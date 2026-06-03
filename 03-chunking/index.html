@@ -1351,15 +1351,15 @@ Vector search cannot do math. If a user asks, "What is the average revenue acros
 <h3 id="core-answer_5">Core Answer<a class="headerlink" href="#core-answer_5" title="Permanent link">¶</a></h3>
 <p>A production ingestion pipeline must handle failures, duplicates, rate limits, and updates without corrupting the vector space. </p>
 <pre class="mermaid"><code>flowchart TD
-    A[S3 Bucket / Document Drop] --&gt; B[Hash Calculation (SHA-256)]
-    B --&gt; C{Hash exists in Metadata DB?}
-    C --&gt;|Yes| D[Skip / Idempotent Exit]
-    C --&gt;|No| E[Async Queue (Kafka / Celery)]
-    E --&gt; F[Document Intelligence Parsing]
-    F --&gt; G[Chunking &amp; Metadata Enrichment]
-    G --&gt; H[Batch Embedding with Exponential Backoff]
-    H --&gt; I[Vector DB Upsert]
-    I --&gt; J[Update Metadata DB]</code></pre>
+    A["S3 Bucket / Document Drop"] --&gt; B["Hash Calculation (SHA-256)"]
+    B --&gt; C{"Hash exists in Metadata DB?"}
+    C --&gt;|Yes| D["Skip / Idempotent Exit"]
+    C --&gt;|No| E["Async Queue (Kafka / Celery)"]
+    E --&gt; F["Document Intelligence Parsing"]
+    F --&gt; G["Chunking &amp; Metadata Enrichment"]
+    G --&gt; H["Batch Embedding with Exponential Backoff"]
+    H --&gt; I["Vector DB Upsert"]
+    I --&gt; J["Update Metadata DB"]</code></pre>
 <p><strong>Key Production Requirements:</strong>
 - <strong>Idempotency:</strong> Re-running the pipeline on the same folder should not create duplicate chunks. Use SHA-256 hashing of the file content.
 - <strong>Asynchronous Processing:</strong> Embedding millions of tokens takes time. Use queues to prevent timeouts.
