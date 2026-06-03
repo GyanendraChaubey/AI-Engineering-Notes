@@ -1,1056 +1,343 @@
-# 17. Company & Role Wise AI Engineering Interview Questions
+# AI Engineering Interview — Quick Reference Cheat Sheet
 
-This section contains a collection of interview questions extracted from various mock interviews and real interview experiences for AI Engineering, Generative AI, and Machine Learning roles.
+**How to use:** Read each question, recall the answer, then check. For full answers + code examples, see `company_wise_interviews.md`. For diagrams + deep dives, see `topic_deep_dive_rag.md`.
 
-## Generative AI Engineer
+---
 
-- After acquiring documents and metadata from KaaS, what are the next steps in processing and utilizing this information in Knowledge GPT?
-- After completing model training, what are the next steps in the end-to-end machine learning pipeline?
-- After deploying the model artifact to the cloud, what are the next steps in the production inference pipeline?
-- After reranking and before final data filtering, what do you do with metadata and document selection?
-- After retrieval, do you use only the indexed summaries or do you fetch and use the full original chunks for detailed answers?
-- Apart from feedback loops, how can you improve the accuracy and reduce hallucinations in LLM outputs within a RAG pipeline?
-- Apart from your main projects, what other areas do you actively contribute to?
-- Are accuracy, F1 score, and precision the right metrics for classification model evaluation?
-- Are there any other evaluation metrics besides accuracy, F1 score, and precision that provide clearer insights for classification models?
-- Are you able to share your screen now?
-- Are you aware of different chunking strategies in RAG pipelines? Can you name one or two?
-- Are you okay with being considered for a Senior GenAI Developer role instead of a Lead role?
-- Are you planning to change the vector index type (e.g., HNSW, IVF) or indexing strategy if recall or performance issues are found during analysis?
-- As an architect, how would you address customer concerns about 20% low-accuracy responses, high latency for those queries, and overall high cost in a productionized GenAI/RAG solution, given you have ground truth samples for the problematic cases?
-- As the person in charge, how would you mitigate the incompatibility and memory issues between Spark DataFrames and scikit-learn for large-scale model training?
-- Besides concise, one-line operations, what are other reasons for using Python lambda functions?
-- Besides introducing non-linearity, what else do activation functions help with in neural networks?
-- Besides the size threshold, are there any other parameters that need to be passed for recursive chunking?
-- Beyond infra/maintenance, what are core limitations of the RAG-based chatbot approach for product recommendations?
-- Beyond tuning embeddings and chunking, what additional steps can you take to further improve LLM output accuracy and reduce hallucinations in a RAG pipeline?
-- Brief day-to-day activities, areas of interest, and strong skill sets
-- Briefly explain how you built the RAG pipeline in your last project.
-- Briefly explain the RAG architecture for the Knowledge GPT (KGPT) project.
-- Briefly explain the user intent classification use case for [Company].
-- Can cross-entropy be utilized in the retrieval or reranking process for document chunks?
-- Can generative AI models be classified based on their functionalities, not just input/output modalities?
-- Can you briefly explain the architecture of transformers?
-- Can you control the splitting of text and chunking by specifying a custom character or separator, or is it fixed by the chunking strategy?
-- Can you create a function to remove duplicates, add a custom message, and handle exceptions using decorators?
-- Can you describe a complex problem you solved in the Knowledge GPT (KGPT) RAG pipeline, and provide some background on the overall architecture?
-- Can you describe a real end-to-end problem you solved (like next purchase date prediction or user intent classification), including dataset size/type and how you used pandas, numpy, and scikit-learn in your development process?
-- Can you describe any API framework you have worked on?
-- Can you elaborate in depth on the kind of MCP (Model Context Protocol) you have developed, including your approach and implementation?
-- Can you elaborate on the fine-tuning process in your second project, including which model you fine-tuned and the resources used?
-- Can you elaborate on what Retrieval-Augmented Generation (RAG) is, and when and why it is generally preferred in AI solutions?
-- Can you explain a bit more about CBOW (Continuous Bag of Words) in the context of embedding models?
-- Can you explain accuracy, balanced accuracy, precision, recall, and F1 score with examples?
-- Can you explain how LangGraph works and its role in AI pipelines?
-- Can you explain how recursive chunking works in RAG pipelines?
-- Can you explain in depth the evaluation and monitoring approach for the Knowledge GPT (KGPT) project?
-- Can you explain the concepts of agents, multi-agent systems, and MCP (Model Context Protocol) in the context of AI applications?
-- Can you explain the sliding window chunking method and how it works?
-- Can you give a concrete example of how an agent interacts with an external system like Jira to perform tasks such as creating an issue, updating its status, and adding a comment?
-- Can you give a high-level overview of the UIDS system architecture?
-- Can you give an example of agents in terms of implementation?
-- Can you give examples of algorithms that can be used to train an embedding model?
-- Can you handle exceptions gracefully inside the deduplication function?
-- Can you hear me? (Connectivity check)
-- Can you identify and describe the different components, agents, and tools orchestrated by LangGraph in your UIDS RAG labelling pipeline?
-- Can you share an example of ground truth used in your RAG-based data relabeling pipeline?
-- Can you walk me through the steps of your XGBoost implementation for next purchase date prediction?
-- Can you write a basic object of any class in Python?
-- Can you write pseudocode for chunking data, generating embeddings, and indexing them for RAG pipelines?
-- Clarification on discussion about ranks and updating adapters in training.
-- Clarification on expected output for the coding task (extract employees earning above department average salary).
-- Convert the deduplication logic into a function and add error handling using a decorator.
-- Describe a production-grade Generative AI/LLM project you deployed at scale, including business use case and challenges faced.
-- Describe a scenario where you disagreed with a technical design decision and how you handled it.
-- Describe a specific AI use case you delivered, covering: business problem, proposed solution, functional flow, technical implementation (models, infra).
-- Describe one project you are most confident about, covering end-to-end details, model specifics, evaluation metrics, and model improvement iterations.
-- Describe the Knowledge GPT project—problem statement, initial approach, solution design, and business impact for [Company].
-- Describe the complexity and handling of diverse data sources and file types in your RAG project, and how your data ingestion and indexing pipeline adapts to them.
-- Did you experiment with cosine similarity for your records?
-- Did you face CPU or processing limitations in your Python projects, and how did you handle heavy processing or orchestration tasks?
-- Did you face any optimization problems with client connectivity or interfaces in the MCP integration?
-- Did you have to provide any categorical data when training models like XGBoost, CatBoost, and Falcon?
-- Did you hear about GIL (Global Interpreter Lock) in Python?
-- Did you implement guardrails, and where were they applied in the solution?
-- Did you participate in setting up CI/CD and deployment processes, or was there a separate team for that in your current setup?
-- Did you use Python at the object-oriented programming (OOP) level or just at the procedural level?
-- Did you use any evaluation techniques in your multi-agent system?
-- Did you use chunking for embedding support queries, or was each query embedded directly?
-- Did you use metrics like precision and recall in your RAG pipeline evaluation?
-- Do CatBoost and XGBoost handle imbalanced datasets automatically, or is data manipulation required?
-- Do you have any front-end development experience?
-- Do you have any questions for the interviewer about the team, role, or company?
-- Do you have experience fine-tuning LLMs, especially in the context of RAG pipelines?
-- Do you have experience with natural language query processing?
-- Do you have experience working with NLTK or similar libraries?
-- Do you know how HNSW (Hierarchical Navigable Small World) works for vector search?
-- Do you know what the "mixture of experts" concept is?
-- Does batching or queuing jobs after implementing async processing increase latency and negatively impact user experience?
-- Even after using prompt engineering and few-shot prompts, why does the LLM still generate false (hallucinated) responses?
-- Explain and validate the Python function to rotate an array of n elements to the right by k positions.
-- Explain any one of your Generative AI (GenAI)-based use cases.
-- Explain how ChatGPT works end-to-end when a user submits a query.
-- Explain how you handle file discovery, extraction, and ingestion from S3 in your RAG pipeline, including how new files are detected and processed.
-- Explain how you handled diverse data sources and storage systems in your RAG project, particularly focusing on ingestion from S3 and integration with enterprise knowledge systems.
-- Explain in detail how your RAG-based system achieves 1–2 second response times at scale using asynchronous processing.
-- Explain in detail what you have done in a RAG (Retrieval-Augmented Generation) project, including data sources, ingestion pipeline, vector database, LLM models, retrieval methods, and evaluation approach.
-- Explain in simple terms: What chunking, embedding, and indexing strategies did you use in the project?
-- Explain the RAG pipeline architecture from user query to LLM response, detailing each component and technical process.
-- Explain the attention mechanism in transformers mathematically.
-- Explain the cost savings and team structure for the UIDS data labeling project, with quantitative details.
-- Explain the data chunking mechanisms and embedding models used in your RAG pipeline, including how you validated their effectiveness.
-- Explain the end goal of the UIDS and RAG data labeling projects, and how the RAG pipeline supports the main intent classification system.
-- Explain the end-to-end data lifecycle in Knowledge GPT: data sources, ingestion, chunking, embedding, storage, and retrieval.
-- Explain the end-to-end document ingestion and RAG pipeline flow for the Knowledge GPT (CPT) project, including document types, ingestion, and retrieval.
-- Explain the initial stages of the enterprise RAG architecture, focusing on document ingestion, metadata extraction, and storage.
-- Explain the significance of LangChain and LangGraph frameworks and when to use each.
-- Explain the step-by-step process for chunking, embedding, and indexing a simple list or string for RAG.
-- Explain what "4-bit" means in QLoRA, in very simple terms.
-- Explain what an embedding is and how it works to a non-technical person.
-- Explain what vanishing gradient means during model training.
-- Explain your MLOps pipeline.
-- Explain, in business terms (non-technical), the costs, team size, and business outcome/revenue for the UIDS RAG-based data labeling project.
-- Explain, step by step, the architecture decisions and workflow you implemented using AWS SageMaker for your MLOps pipeline.
-- Find employees earning more than the average salary of their department using pandas.
-- Find the name of the student with the 2nd highest marks from a dictionary, without using sort or sorted.
-- Find the second highest number in a nested list without using any inbuilt sorting functions.
-- Fix the code to print the name of the student with the second highest marks from a dictionary (without using sort/sorted).
-- Flatten a nested list in Python (e.g., x = [1, 2, 3, [4, 6, [7]]] → output = [1, 2, 3, 4, 5, 6, 7])
-- For a customer-facing e-commerce virtual assistant (like Amazon), would you use the same architecture as Knowledge GPT? What would be different?
-- For building a simple question-answering model, do we need the full transformer architecture, or can we simplify/remove some components?
-- For context precision in RAG/LLM evaluation, which two components are required to measure it?
-- For context precision, should the retrieved context be compared with the query or the ground truth?
-- For context precision, what exactly are the two things that need to be compared?
-- For fine-tuning Falcon-7B, what services or cloud infrastructure did you use and how did you set up the process?
-- For measuring faithfulness in a RAG/LLM system, which components among query, context, output, and ground truth are required?
-- For the RAG pipeline, what was the input, how did you augment the LLM, and what was the expected output of the application?
-- Given 100 documents, 10 retrieved for a query, and 3 used in the answer, what are recall and precision in this RAG example?
-- Given a heterogeneous list (numbers, strings, sets, complex numbers), return a new list where only the first letter of each string element is capitalized; all other elements remain unchanged.
-- Given a real-world scenario with a US insurance client facing 20% low-accuracy, high-latency, and high-cost queries in a production RAG/GenAI system, what step-by-step actions would you take for performance, latency, and cost optimization?
-- Given a sentence of 40 words, would you tokenize it as one word per token or five words per token, and why?
-- Have you deployed any AI applications? If yes, where and how are they used?
-- Have you developed or implemented any latency optimization solutions in production?
-- Have you done any prompt engineering in your projects?
-- Have you encountered any production issues with natural language query processing implementations? Can you walk through an example?
-- Have you encountered hallucinations in LLM models? Can you explain a scenario and how you addressed it?
-- Have you heard about Semantic Kernel?
-- Have you heard about the raptor approach to indexing?
-- Have you incorporated agent-based architectures in your recent GenAI projects, or are they traditional RAG implementations?
-- Have you used LangChain in your projects, or do you write your own code for these pipelines?
-- Have you used OCR for reading charts in PDFs?
-- Have you used Weights & Biases (wandb) for observability during model fine-tuning?
-- Have you used any database from the client side while using the MCP servers?
-- Have you used any observability tools?
-- Have you used frameworks like LangGraph, Autogen, or agent-based orchestration in your solutions, specifically in your UIDS data labeling process?
-- Have you used or are you familiar with recursive chunking strategies and recursive tokenization for large documents or tables?
-- Have you worked on any AI agentic frameworks or platforms?
-- Have you worked with anything similar to NLTK or natural language query processing?
-- Have you worked with decorators in Python?
-- How are the final documents selected when combining results from both lexical (BM25) and embedding-based (vector) search in a hybrid search setup?
-- How are the weights of the sentence transformer updated during fine-tuning—are they overwritten, joined, or updated in another way?
-- How are you evaluating the accuracy of the system’s responses?
-- How are you reducing the overall latency in the system?
-- How are you training the SetFit-based intent classification model in your ML pipeline?
-- How are you using RAG (Retrieval-Augmented Generation) in the UIDS project?
-- How can AI be leveraged in a chat-based analytics solution that translates natural language questions into SQL queries and provides both the answer and the SQL?
-- How can a state or region communicate with the subject in the context of ADHD (likely referring to a technical system or architecture)?
-- How can the UI help users delete all their uploaded documents, even if they don't know document IDs?
-- How can we evaluate the performance of an algorithm (like XGBoost)?
-- How can we mitigate the issue of memory errors when training models with very large datasets in scikit-learn?
-- How can you allow an end user to delete all their uploaded (temporary) documents, even if they don't know the specific document IDs, and ensure their searches only use permanent documents?
-- How can you analyze model results using bias and variance to distinguish between overfitting and underfitting?
-- How can you analyze the bias and variance behavior in an overfitted model?
-- How can you automate and improve the accuracy of evaluation for text-to-SQL or chatbot answers using agents or LLMs, instead of relying solely on human evaluation?
-- How can you avoid the problem of false relationships caused by label encoding on nominal categorical features?
-- How can you capitalize the first letter of string elements in a heterogeneous list without explicitly checking the data type?
-- How can you construct agent state and enable agents to communicate and reason together in a LangGraph-based multi-agent system?
-- How can you enable users to manually delete their own uploaded documents from the system?
-- How can you find non-repetitive (unique) characters from a string using Python's `collections.Counter` in a single line?
-- How can you handle overfitting in model outputs for your application?
-- How can you identify if a deployed production model is overfitting by looking at its responses?
-- How did you achieve persistent checkpointing in your LangGraph-based pipeline?
-- How did you debug your code when using LangGraph for pipeline orchestration?
-- How did you design and implement guardrails for data inflow and outflow in your RAG (Retrieval-Augmented Generation) system?
-- How did you develop the MCP server from scratch and what process did you follow?
-- How did you evaluate accuracy, precision, and recall after fine-tuning the model?
-- How did you extract text content from images in the dataset?
-- How did you handle 250 transactions per second (TPS) in your intent classification system?
-- How did you handle PII (Personally Identifiable Information) masking in your production systems?
-- How did you handle authentication and authorization in your end-to-end production deployments?
-- How did you handle content safety (detecting and mitigating harmful, biased, or unsafe LLM outputs) in your production systems?
-- How did you handle query routing and processing for Snowflake?
-- How did you handle scenarios where the LLM generated false responses due to insufficient or irrelevant retrieved context?
-- How did you handle streaming responses in your system?
-- How did you implement Knowledge GPT to solve the problem of inefficient keyword-based search?
-- How did you implement guardrails in your system without using third-party libraries?
-- How did you implement metadata management and chunk tracking in the pipeline?
-- How did you manage multi-turn dialogue in your chatbot projects?
-- How did you manage state in your project using LangGraph?
-- How did you manage token usage and control token costs during LLM evaluation?
-- How did you measure the accuracy of your RAG (Retrieval-Augmented Generation) pipeline solution?
-- How did you perform hyperparameter tuning for your models—did you use grid search, randomized search, or another approach?
-- How did you run the LLM evaluation for your system?
-- How did you solve the token limit issue when the LLM’s context window was getting exhausted?
-- How did you technically implement the "LLM as a judge" process to ensure responses are grounded only in your RAG system and not from external internet knowledge?
-- How do decoder-only LLMs process input tokens without a separate encoder?
-- How do transformers get updated during parameter-efficient fine-tuning methods like QLoRA or PEFT, and what exactly gets updated in the model?
-- How do you add a large (e.g., 300 MB) library as a layer to AWS Lambda, and will the same method work for such a size?
-- How do you address hallucinations in the news chatbot system?
-- How do you approach fine-tuning a model, and what techniques do you use?
-- How do you avoid always recommending the same top products for generic queries (e.g., "need a refrigerator") and ensure fair exposure for all brands/products in chatbot recommendations?
-- How do you balance cache management (like TTL) with maintaining a good user experience in agent systems?
-- How do you calculate the cosine angle (cosine similarity) between two vectors?
-- How do you choose the right model for a classification problem before running experiments?
-- How do you construct a workflow using LangGraph?
-- How do you control and optimize costs in multi-agent LLM systems where agents interact iteratively and each interaction incurs API costs?
-- How do you debug a complex RAG and agentic AI system when one component fails?
-- How do you debug and address hallucinations in a RAG (Retrieval-Augmented Generation) system? (Crisp, concise points)
-- How do you debug and identify the cause when LLM costs suddenly triple over three months?
-- How do you decide between building versus buying an AI solution when a new use case comes in?
-- How do you decide the chunk size and overlap when splitting documents for a RAG pipeline?
-- How do you decide the range of hyperparameters for tuning—do you use predefined ranges, trial and error, or another method?
-- How do you decide the weightage between BM25 (lexical) and cosine similarity (semantic) search results in hybrid retrieval?
-- How do you define and justify the accuracy level of your LLM to a customer?
-- How do you define bias and variance in the context of machine learning?
-- How do you deploy a RAG (Retrieval-Augmented Generation) pipeline on AWS?
-- How do you design and implement a multi-agent intelligence system using LangGraph, given that LangGraph does not provide built-in multi-agent intelligence?
-- How do you design or architect a fallback mechanism in an enterprise AI system?
-- How do you detect and handle issues in production when the data distribution changes (data drift), not just code failures?
-- How do you detect and handle issues when a model is deployed in production?
-- How do you detect data drift versus concept drift when intent classification accuracy drops in production?
-- How do you determine the best values for all hyperparameters like learning rate, number of estimators, L1/L2 regularization, etc.?
-- How do you determine whether a user query should be routed to SharePoint or Snowflake?
-- How do you enable agent reasoning using only memory, without using the ReAct framework?
-- How do you enable and use the debugger in VS Code for Python development?
-- How do you ensure code quality in your projects?
-- How do you ensure efficient resource utilization for inference-heavy workloads, avoiding unnecessary horizontal scaling when system load is low but inference API load is high?
-- How do you ensure proper chunking and embedding of structured/unstructured content (tables, JSON, code, images) from diverse document types (PDF, HTML, etc.) into a vector database?
-- How do you ensure semantic understanding in your intent classification model, given that cosine similarity alone doesn't capture semantics and new/unseen intents may cause hallucination?
-- How do you ensure strong PII and content filtering without negatively impacting user experience?
-- How do you ensure that a table split across multiple pages (e.g., in a PDF) is recognized and processed as a single table during chunking and embedding?
-- How do you ensure that an agent in a multi-agent system is performing well?
-- How do you ensure that sensitive personal information (PII) is not stored or exposed by the system, especially when LLMs might output or log such data?
-- How do you ensure that the chatbot maintains context for follow-up or reference questions in future turns?
-- How do you ensure that the context relevance score (e.g., 80%) truly reflects semantic and syntactic alignment, beyond just LLM judgment? Are you using any distance-based or embedding-based validation?
-- How do you ensure the correctness of outputs in Generative AI or RAG systems?
-- How do you equip agents with multiple tools and manage memory/context in a multi-agent system?
-- How do you evaluate a recommendation system beyond traditional offline metrics like recall@K, especially when comparing with ground truth?
-- How do you evaluate and ensure that different chunking or retrieval strategies actually improve output relevance and answer quality in the KGPT pipeline?
-- How do you evaluate and rerank retrieved document sections (e.g., relevant pages about drug usage/implications) after retrieval?
-- How do you evaluate the answers generated by your Knowledge GPT system?
-- How do you evaluate the completeness and correctness of an LLM-generated summary when some relevant information from the source document is missing?
-- How do you evaluate the output of a system like "alinam"? (Assuming "alinam" refers to an LLM or RAG-based AI system)
-- How do you evaluate the performance and quality of an agent or agentic architecture after implementation?
-- How do you evaluate transitions in your AI pipeline or chatbot system?
-- How do you extract key-value pairs when the document structure is inconsistent (e.g., value can be left, right, or below the key)?
-- How do you find all common values between two lists, including duplicates (i.e., print all occurrences of common elements)?
-- How do you handle API throttling (rate limit exceeded) exceptions in production applications?
-- How do you handle and store chart metadata, such as chart type and data labels, in your pipeline?
-- How do you handle cases where fixed-size chunking splits a paragraph or semantic unit, potentially ruining the output?
-- How do you handle categorical features in preprocessing?
-- How do you handle complex or nested tables in PDFs during the ingestion process?
-- How do you handle concurrency in FastAPI?
-- How do you handle context length limitations when conversation history becomes very large in multi-turn chat?
-- How do you handle conversation memory and session management in your GenAI applications?
-- How do you handle disaster recovery in AI systems?
-- How do you handle extraction of highly complex or nested tables in PDFs, where columns contain sub-rows or nested tables?
-- How do you handle feedback loops in a recommendation system?
-- How do you handle large files when providing them to a RAG pipeline? What solutions do you use?
-- How do you handle memory management in this RAG pipeline application?
-- How do you handle model drift in production AI systems?
-- How do you handle prompt injection attacks at the server side to prevent users from accessing other users' data?
-- How do you handle scalability and response time challenges in your RAG-based Knowledge GPT system, especially at high query volumes (250 TPS)?
-- How do you handle schema awareness at the tool level when building agent workflows that pull data from sources like Snowflake?
-- How do you handle significant data drift (PSI > 0.25) in production, and what type of retraining should be performed?
-- How do you handle state persistence and checkpointing across agent nodes in LangGraph pipelines?
-- How do you handle unclear requirements and decision-making for architecture and implementation in evolving AI/GenAI projects, especially when success criteria and technology choices are not well-defined by the client?
-- How do you handle varying section lengths when chunking markdown documents by headers, especially when some headers have very short content?
-- How do you handle video recordings in the ingestion pipeline?
-- How do you identify if your model is stuck in a local minima during training, and how do you address it?
-- How do you implement Approximate Nearest Neighbor (ANN) search in a vector database for a RAG-based system?
-- How do you implement Approximate Nearest Neighbor (ANN) search in a vector database for semantic retrieval, and what libraries or frameworks are typically used?
-- How do you implement Approximate Nearest Neighbor (ANN) search in a vector database, what libraries do you use, and what are the trade-offs and limitations regarding accuracy?
-- How do you implement automated retraining pipelines in your projects?
-- How do you implement enterprise security for your GenAI (JNI) applications?
-- How do you integrate real-time data tools (like web scrapers or internal database connectors) with an agent in a multi-agent system?
-- How do you manage and keep the distributed cache and memory layer updated when scaling agent instances in real time?
-- How do you manage the number of tokens passed to the language model (LLM) in a custom system without frameworks like LangChain?
-- How do you manage the process of converting documents into embeddings and indexing them for use with the system?
-- How do you manage token accumulation in cascaded/multi-step LLM workflows, where tokens from previous tasks are carried forward and can cause prompt size to grow excessively?
-- How do you maximize hardware (GPU/server) utilization when deploying your own open-source LLM to serve all users efficiently?
-- How do you mitigate insufficient data in machine learning projects?
-- How do you obtain or define the ground truth for answer correctness evaluation when the answer is not present in your RAG/internal knowledge base?
-- How do you order multiple retrieved documents for relevance in a search or RAG system?
-- How do you pass data from one node to another in a LangGraph workflow?
-- How do you perform retrieval optimization in a RAG or hybrid search system?
-- How do you perform rolling or expanding window splits for time series data, such as training on Jan–Mar and testing on April, then training on Apr–Jun and testing on July?
-- How do you prevent agents in a RAG-based annotation pipeline from entering infinite loops or repeatedly calling the same process?
-- How do you prevent an agent or pipeline from repeatedly calling an LLM in a loop when it is not satisfied with the answer?
-- How do you prevent data leakage via prompts, and how do you handle audit logs and compliance in your AI system?
-- How do you prevent hallucinations in a RAG-based system?
-- How do you prevent hallucinations in agent workflows for Generative AI systems?
-- How do you prevent infinite loops when agents communicate with each other in a multi-agent system?
-- How do you process PDFs with tables and charts in a RAG pipeline? What does the ETL pipeline look like?
-- How do you reduce cost in your AI/ML and RAG systems?
-- How do you reduce hallucination in LLM systems?
-- How do you reduce hallucination in LLM-based systems?
-- How do you reduce hallucinations in LLM-based systems?
-- How do you scale a system to handle 100K documents and support 500 queries per second (TPS), with each query averaging 100 tokens?
-- How do you select the best model when different models perform better on different evaluation metrics?
-- How do you split a time series dataset for training and testing, ensuring the split follows the order of the date column?
-- How do you synchronize or merge results from multiple async tasks running in parallel in a scalable AI system?
-- How do you technically implement intent classification to route queries between SharePoint and Snowflake, considering you have different metadata sources (chunk-level for SharePoint, schema for Snowflake), and how does your classifier interact with these?
-- How do you validate code generated by tools like GitHub Copilot to ensure all conditions and requirements are met?
-- How do you validate whether the LLM is providing the correct intent labels during automated data annotation?
-- How do you write an intent classifier?
-- How does BERT work, and what issues did it address that led to the development of transformers?
-- How does LangGraph work, and what are its main components for creating agents?
-- How does OpenSearch work as a vector database, and why is it efficient for data retrieval?
-- How does QLoRA reduce GPU memory usage?
-- How does a Decision Tree algorithm work?
-- How does a checkpoint work in LangGraph (or similar state machine orchestration frameworks)?
-- How does a multi-stage pipeline handle unstructured data quality issues using confidence scores and model agreement?
-- How does agent-to-agent orchestration work in your pipeline, and how is it implemented?
-- How does an LLM handle out-of-vocabulary (OOV) words during training, and how does it manage their semantics?
-- How does an agent interact with external systems like Jira to perform tasks (e.g., create issue, update status, add comment)?
-- How does an encoder-based sentence transformer acquire and represent semantic knowledge?
-- How does retrieval happen in the pipeline?
-- How does semantic similarity work when the answer is multi-sentence and the question is a single sentence?
-- How does the embedding of a sentence like "My name is Rishabh" look, and how can you visualize or describe it?
-- How does the learning rate affect the training of your model?
-- How does the orchestrator agent communicate with the sub-agent in your architecture?
-- How does the probability distribution look when temperature is set to a very high value (e.g., 30,000) in an LLM?
-- How does the system determine whether to search uploaded documents, permanent documents, or both, based on the user's query, especially when the user doesn't explicitly specify?
-- How does your orchestrator agent communicate with sub-agents in your multi-agent system?
-- How have you led your team in adapting solution design as LLMs have matured, especially considering regulated environments?
-- How have you recently used the MCP (Model Context Protocol) server in your projects?
-- How is MCP (Model Context Protocol) being used in the Knowledge GPT (KGPT) project?
-- How is a vector data store different from a relational database?
-- How is the best hyperparameter value selected after trying different values during tuning?
-- How is user intent identified in [Company]’s system? (Technical process overview)
-- How is user intent identified in the [Company] system?
-- How is your custom solution different from out-of-the-box AWS solutions like Amazon Q, which can also connect to a knowledge base and potentially provide high accuracy?
-- How many documents do you retrieve from the vector database for your use case?
-- How many embedding techniques do you know about?
-- How many tokens are required for storing conversation history in memory for agent reasoning?
-- How should you refactor the code to use a try-except block instead of if-else for capitalizing string elements in a heterogeneous list?
-- How to capitalize the first letter of string elements in a heterogeneous list (without explicit type checking)?
-- How to clean and convert the 'Amount' column to numeric values in a DataFrame with mixed formats and missing values?
-- How to print a right-angled triangle of stars, where stars and spaces alternate in each row as described?
-- How to process or analyze the string 'abcdeabc' stored in a list in Python?
-- How to reverse a string in Python?
-- How to work with and process the list `[2, 1, 5, 7, 8]` in Python?
-- How will you intelligently choose which queries to batch together in a RAG-based system, beyond just using a time window?
-- How would a two-page document be processed using the recursive chunking strategy?
-- How would you adapt your solution for chatbot-based product recommendations when product data is available as nested JSON in a data lake (e.g., Snowflake or Elasticsearch), rather than as crawled website text?
-- How would you approach building a fraud, waste, and abuse prediction model for healthcare claims data using labeled provider data?
-- How would you approach building a fraud, waste, and abuse prediction model for healthcare providers, considering highly variable data volumes per provider?
-- How would you approach building a unified dataset to match and compare product descriptions and prices across multiple e-commerce sites with differing product descriptions?
-- How would you approach diagnosing and identifying the root cause when users report that a chatbot is not providing accurate answers?
-- How would you approach extracting payment information from image-based (screenshot) invoices in the pipeline?
-- How would you approach forecasting the one-year sales volume for a new SUV model for a car manufacturer? What data, algorithms, and techniques would you use?
-- How would you architect a chat bot that answers natural language questions about a large database, provides analytics in natural language, and also returns the SQL query used for the answer?
-- How would you architect a complete AWS-based AI solution for document classification and field extraction, incorporating Python code, AI models, and intelligent agent-based decision-making?
-- How would you build an intent classifier from scratch?
-- How would you check or validate a table that has thousands of columns?
-- How would you chunk and process a table with thousands of columns and rows for efficient handling?
-- How would you classify content within a single PDF that contains both scanned (image-based) and digital (machine-readable) data?
-- How would you convert your current pipeline-based solution into an agentic (agent-based) framework?
-- How would you debug and improve an agent that gives incorrect or inconsistent answers?
-- How would you debug and improve an agent that is giving incorrect or inconsistent answers?
-- How would you design Knowledge GPT (a RAG-based GenAI assistant) for enterprise-scale deployment?
-- How would you design a GenAI-powered product recommendation chatbot for an electronics marketplace using crawled website data as the knowledge source?
-- How would you design a high-level architecture for a secure, low-latency, cost-aware, and highly available enterprise chatbot that answers questions grounded in internal documents for 10,000 users?
-- How would you design a highly available RAG or multi-agent system with strict data isolation, security, and prompt injection protection for specified users?
-- How would you design a low-latency RAG-based chatbot system for 10–15 million documents?
-- How would you design a multi-agent system where one agent is a research agent (with access to web search, scraping, internal DB) and another is a summarization agent?
-- How would you design a scalable chatbot system that ingests 100,000+ news articles daily and answers user queries with up-to-date information?
-- How would you design a scalable enterprise chatbot architecture for internal document handling, supporting 10,000 users, with a focus on architecture, security, cost control, and latency?
-- How would you design a scalable, cost-optimized agent system to handle 1000 transactions per second while managing user context?
-- How would you design a scalable, low-latency RAG pipeline for 10–15 million documents?
-- How would you design a secure system so developers can build an application without direct access to sensitive API keys or credentials?
-- How would you design a system that answers user questions by retrieving information from both SharePoint documents (various formats) and Snowflake database tables?
-- How would you design a system that provides evidence for each step in the ML pipeline, ensuring traceability and auditability?
-- How would you design a system to filter and summarize relevant sections from thousands of research papers about a specific drug (e.g., paracetamol), focusing on usage and implications?
-- How would you design an LLM-based solution to compare an insurance policy with ten competitor policies, and what would the project roadmap look like from a project manager’s perspective?
-- How would you design an MCP-based system to allow multiple tools to integrate together?
-- How would you design an agent system for a construction company to process blueprints and estimate material requirements, given that all calculation logic is already available?
-- How would you design an end-to-end architecture to extract, validate, and process payment information from a catalog of invoices, culminating in a card-based service for payment authorization?
-- How would you design prompts to extract 40 fields from documents using an LLM—would you use a single prompt or multiple prompts?
-- How would you design the Knowledge GPT system to handle high user concurrency and ensure low latency and high throughput for PDF upload and summarization?
-- How would you design the system to reduce hallucination in LLM responses?
-- How would you determine the best values for hyperparameters when fine-tuning a model?
-- How would you evaluate the retrieval quality in your RAG system?
-- How would you feed batch-processed data from distributed frameworks like Apache Spark into an incremental learning model in scikit-learn?
-- How would you handle high-volume batch processing (e.g., 10–20 documents, each with 10+ pages) efficiently in your pipeline?
-- How would you handle images and tables in documents (like PDFs or PPTs) within your data ingestion pipeline?
-- How would you handle or chunk a table with thousands of columns and rows?
-- How would you handle scalability from the application (not just DevOps) perspective?
-- How would you identify if post-deployment model degradation is due to embedding drift, prompt misalignment, or out-of-distribution (OOD) data?
-- How would you implement a RAG (Retrieval-Augmented Generation) pipeline for product matching and enrichment in this e-commerce use case?
-- How would you implement a system that allows users to search over (1) only their uploaded documents, (2) only permanent documents, or (3) both, based on intent?
-- How would you implement an automatic deletion policy to remove user-uploaded (temporary) documents after 24 hours?
-- How would you implement automated, scalable multi-stage processing to assess factual accuracy and relevance of LLM outputs at enterprise scale?
-- How would you implement caching in this enterprise chatbot architecture?
-- How would you implement checkpoints in a LangGraph (state machine) pipeline?
-- How would you implement semantic chunking for large document ingestion in a RAG pipeline?
-- How would you implement the security layer—including authentication, authorization, and data protection—in the enterprise chatbot architecture?
-- How would you initialize and architect a scalable fraud detection pipeline using scikit-learn with very large transactional data stored in BigQuery?
-- How would you integrate real-time data tools (like web scrapers or internal database connectors) with an agent in a multi-agent system?
-- How would you integrate your company's internal data with a multi-agent system, and what is the role of MCP servers in this integration?
-- How would you manage chunking and request handling in a chatbot or prompt-based system without using frameworks like LangChain or LangGraph?
-- How would you manage scaling and orchestration of many agent instances (e.g., 1 to 10,000 agents) from the application perspective?
-- How would you map requirements from an unstructured PDF to a large knowledge base of AWS services and features?
-- How would you mitigate hallucination in LLMs when the input data itself is ambiguous or unclear, even after applying RAG and chunking?
-- How would you mitigate the issue of hallucination in LLMs?
-- How would you solve the scalability and latency problem in a RAG-based application when query load increases, to prevent response times from rising to several minutes?
-- How would you test or fine-tune a 2SL setup if the results are not as expected?
-- How would you upgrade a LangGraph-based agentic workflow from level two to level three agent capabilities?
-- Hypothetically, if you don’t have a tokenization library, how would you manage the number of tokens sent to the LLM to avoid exceeding limits?
-- If a RAG system cannot retrieve the answer from its knowledge base, how should the code handle such cases?
-- If one person is 70% accurate and another is 0% accurate (always wrong), which person would you choose for a binary guessing game?
-- If product image URLs are also available, would your approach to product matching and unification change?
-- If the forecasting problem is for a new pharmaceutical tablet (e.g., for knee pain) instead of a car, would your approach and solution remain the same?
-- If the original weight matrix is of size m × n, what are the dimensions of the two low-rank matrices used in LoRA?
-- If you detect data drift in production, what actions do you take to address it?
-- If you have perfectly balanced, clean data with no outliers, and one model gives 70% accuracy while another gives 10% accuracy, which model should you choose?
-- If you have product images in addition to descriptions, how would you use them in your product matching and unification approach?
-- If you only keep the most recent context to manage token limits, how do you access or utilize previous conversation history when needed?
-- If you store metadata with each chunk in the vector DB, will semantic search still return the correct result?
-- In ChatGPT, does both encoding and decoding happen, or is it just decoding?
-- In ChatGPT, does encoding happen at all, or is it only decoding?
-- In a RAG system, if the generated answer is correct but the supporting evidence is only available on the internet (not in your internal knowledge base), how do you evaluate answer correctness?
-- In a binary classification scenario with a perfectly balanced dataset and no data issues, would you still choose the model with 70% accuracy over one with 50% or 10%?
-- In a binary gambling game, would you choose the person with 70% accuracy or the one with 1% accuracy to maximize your chances of winning?
-- In a coin toss game, if one person can predict 70 out of 100 outcomes correctly and another can only predict 1 out of 100, which person would you choose?
-- In a gambling scenario where one person can predict outcomes with 70% accuracy and another with 1% accuracy, whom would you choose to rely on?
-- In a real production scenario where you can't change prompts or fine-tune, how do you ensure your generative AI system (like a chatbot) is working correctly and not causing problems?
-- In hybrid search (semantic + lexical), if you retrieve five results from each method, how do you select the best five overall?
-- In production, after detecting significant data drift, how do you select and prepare the data for retraining—what data do you include or exclude?
-- In production, without control over prompts or fine-tuning, how do you ensure and monitor that your generative AI/RAG outputs remain good and data quality is maintained?
-- In the context of cosine similarity loss, what are the positive and negative pairs used for optimization during training?
-- In which scenarios would batching be effective in a RAG-based system, and when would you use it?
-- In which scenarios would you use async functions versus non-async functions when designing a scalable AI system?
-- In which situations should we focus on checking precision?
-- In your deployed RAG solution, what makes it agentic? Is it fully autonomous or human-in-the-loop, and how did you orchestrate multiple agents using the LangGraph framework?
-- In your project, in which format do you store the metadata?
-- Interviewer is preparing to draw a system architecture diagram (draw.io is open).
-- Is accuracy a good metric for evaluating models on imbalanced datasets (e.g., 70/30 split), and why or why not?
-- Is comparing words between question and answer a correct approach for semantic similarity, given the answer may contain additional information?
-- Is converting user text into numbers considered encoding in ChatGPT?
-- Is enabling TTL (time-to-live) on agent memory/cache helpful or could it cause problems for users in AI agent systems?
-- Is it possible to convert image data into markdown format during the document transformation process?
-- Is the sentence transformer model used in your pipeline encoder-based, decoder-based, or both?
-- Is there a direct, ready-to-use function in sklearn for time series train-test splitting, or do you always use manual chronological splitting?
-- Is your Knowledge GPT system designed for multi-turn conversations or just single-turn queries?
-- Modify the code to print all student names with the second highest marks, including duplicates.
-- Please elaborate on the classical machine learning use cases and algorithms you worked on during your time at [Company].
-- Print stars in the shape of an equilateral triangle.
-- Provide a sample code structure and main components for a graph-based pipeline application (e.g., using LangGraph).
-- Python code to find the first non-repeating character in a string.
-- Refactor the deduplication code into a function with error handling using a decorator.
-- Remove duplicate elements from a list without using any inbuilt functions.
-- Rotate an array of n elements to the right by k positions.
-- Should missing 'Amount' values be set to zero, and what does that imply in this context?
-- Should we still chunk documents if they are much smaller than the model’s context window?
-- Start building a simple classification model with feature engineering and an API wrapper (pseudo code is acceptable).
-- Statistically, what is the minimum number of samples needed for a machine learning model to work properly?
-- The interviewer is sharing a screen with an online Python compiler (Programiz) and has started to type a variable assignment (`l1 =`). What should you do next or how should you proceed?
-- To what extent have you used the LangGraph framework, and which components or modules have you utilized within it?
-- Using OOP (Object-Oriented Programming) in Python, write code to calculate the sum of all elements in a given list.
-- Validate if all required schema keys are present in a data dictionary in Python.
-- Walk me through the detailed steps of your model architecture and benchmarking process with CatBoost, XGBoost, and Falcon-7B in the UIDS project.
-- Walk through how to create a FastAPI endpoint that accepts any text and returns a response.
-- Walk through the end-to-end RAG (Retrieval-Augmented Generation) architecture for the Knowledge GPT enterprise assistant.
-- Walk through the key steps of a traditional AI/ML project lifecycle, including how to ensure outcomes are acceptable and future-proof.
-- What API gateway did you use in the Knowledge GPT (KGPT) solution for [Company], and is it open source or proprietary?
-- What actions or recommendations would you give to improve accuracy in a RAG/GenAI pipeline after identifying issues in error analysis?
-- What activation functions do you prefer and why?
-- What actually happens with the data when you associate numbers with different classes using label encoding?
-- What additional actions can be taken to improve latency, beyond using a reference database for repeated or similar queries?
-- What additional steps or architectural changes are needed for a RAG pipeline when scaling from 10,000 to 10 million documents?
-- What approach should be used for model inference if real-time predictions are not required and cost is a concern?
-- What approach would you use to capitalize the first letter of string elements in a heterogeneous list without checking the data type, and how would you explain it before coding?
-- What approach would you use to extract 40 fields from a mix of PDFs, Excel files, and scanned documents (including tables, nested tables, and both structured and unstructured formats)? Would you use AI/ML or rule-based methods?
-- What are "attention" and "MLP" in the context of transformer models?
-- What are 3–4 effective ways to reduce hallucinations in LLM-based RAG systems?
-- What are agents in the context of AI systems and orchestration frameworks?
-- What are containers?
-- What are decorators in Python?
-- What are deep learning models?
-- What are different mechanisms of data chunking?
-- What are different techniques to handle missing values, and when should each be used?
-- What are microservices?
-- What are other limitations of LLMs beyond static knowledge?
-- What are possible solutions to handle rate limiting when multiple clients with different limits cause a centralized system to hit its rate cap or crash, and everyone wants higher throughput?
-- What are query, key, and value in the context of attention mechanisms in transformers?
-- What are some complex AI use cases you have led, and were you hands-on or mainly guiding the team?
-- What are some other chunking strategies you are aware of besides the current header-based approach?
-- What are some performance measures for classification models to report to the business?
-- What are some performance measures you can use to report model results to the business?
-- What are the RAM and compute requirements for fine-tuning and deploying the SetFit-based intent classification model?
-- What are the architectural differences between the encoder and decoder in a transformer?
-- What are the basic components of an LLM (Large Language Model) architecture?
-- What are the common architectures for post-training model inference and serving, apart from model training itself?
-- What are the concrete steps to retrain a model using current production data after detecting data drift?
-- What are the current limitations of using Weights & Biases (wandb) for observability?
-- What are the detailed steps between fetching documents from S3 and generating embeddings in the Knowledge GPT data pipeline?
-- What are the different patterns you can use to create AI agents?
-- What are the different reasoning steps in the UIDS RAG labelling pipeline?
-- What are the different types of generative AI models beyond just LLMs?
-- What are the different ways to evaluate the correctness of LLM outputs in production?
-- What are the drawbacks of microservices?
-- What are the fixes if scaling in self-attention is not happening correctly?
-- What are the fundamental concepts of Databricks that you are referring to?
-- What are the input components that make up the context window in a RAG (Retrieval-Augmented Generation) pipeline?
-- What are the key considerations when moving an AI solution from POC/MVP to production?
-- What are the key criteria (keywords) used for splitting nodes in a Decision Tree?
-- What are the key differences between POC and production stages, especially regarding AI agents?
-- What are the key packages in LangChain for reasoning, and how do you include them in your project?
-- What are the key parameters in a vector database like OpenSearch for vector search?
-- What are the key parameters used in evaluation metrics like MRR (Mean Reciprocal Rank) or retrieval evaluation for search systems?
-- What are the key parameters used in the training control modules for fine-tuning transformer models?
-- What are the latest orchestration and agentic AI advancements you are leveraging or testing, and how do they help accelerate or improve your project outcomes?
-- What are the limitations of RAG (Retrieval-Augmented Generation) systems?
-- What are the limitations of the proposed RAG-based chatbot approach for product recommendations?
-- What are the limitations of using Weights & Biases (wandb) for observability, especially regarding integration and training duration?
-- What are the limitations of vector-based systems in AI applications?
-- What are the main fine-tuning methods for machine learning and LLM models?
-- What are the main fine-tuning methods, specifically parameter-efficient fine-tuning (PEFT) like QLoRA, and how are they used in LLM projects?
-- What are the main performance metrics for classification models to report to the business?
-- What are the main training parameters used in fine-tuning (e.g., with LoRA or similar methods)?
-- What are the major advantages and disadvantages of closed source vs. open source models?
-- What are the most optimized strategies for debugging a complex ML system with multiple components (retrieval, ranking, LLM, etc.)?
-- What are the multiple techniques available for fine-tuning, such as quantization, and how are they used?
-- What are the options for efficiently deploying and serving an open-source LLM on on-premise GPUs/servers?
-- What are the potential issues with reading all large data into memory for model training using scikit-learn?
-- What are the shortcomings or limitations of Retrieval-Augmented Generation (RAG)?
-- What are the top three metrics you would use to evaluate if a classification model is performing well?
-- What are the two components compared for context precision?
-- What are the various search methods you can utilize on a vector database for retrieving relevant document sections?
-- What are your core competencies?
-- What are your findings from the MCP architecture and implementation discussions?
-- What business problems are solved by the Knowledge GPT and Universal Intent Determination System projects?
-- What caching mechanism have you incorporated in your end-to-end solution?
-- What can you immediately do on deployment to a project, and where would you need more support?
-- What causes inconsistent ranking or missing relevant products (like "LG refrigerator") in RAG-based chatbot recommendations, and which module is responsible?
-- What challenges did you face with the LLM, specifically regarding token limits or other issues?
-- What challenges might arise if you build a chatbot or prompt-based GUI without using modern frameworks like LangChain or LangGraph?
-- What changes can be made to the retrieval process to improve the accuracy and consistency of product recommendations in the RAG-based chatbot?
-- What chunking and embedding strategy did you use for the UIDS labelling pipeline?
-- What chunking mechanism did you use for document processing?
-- What chunking strategies are used before the retrieval pipeline?
-- What chunking strategies did you consider when building your RAG pipeline?
-- What chunking strategy did you use for processing documents in Knowledge GPT?
-- What chunking strategy or methods did you use in your project for splitting documents (including those with images and tables) before embedding?
-- What differences have you observed between the dev environment and production after deploying your models?
-- What do "groundedness" and "answer relevance" mean in the context of RAG evaluation metrics?
-- What do chunk size and overlap mean in chunking, and how do they impact the embedding/vectorization process?
-- What do cross-encoders do in the context of retrieval and reranking?
-- What do precision and recall mean in the context of RAG (Retrieval-Augmented Generation) pipelines?
-- What do the embedding dimensions (e.g., 1536 for ada-002, 3072 for ada-003) mean, and how do they work in practice?
-- What do the individual numbers in a word embedding vector (e.g., 768-dimensional vector for "cat") represent at a high level?
-- What do you do with the Snowflake schema metadata, and where do you store it?
-- What do you know about generators in Python?
-- What do you know about the text-embedding-ada-002 embedding model?
-- What do you lose (what is the downside) when using HNSW-based ANN search instead of exact nearest neighbor search?
-- What do you mean by "indexing" in this context—are you referring to changing the underlying vector index type (e.g., HNSW, IVF), or something else?
-- What do you mean by "not best" queries in the context of retrieval issues for the problematic 20%?
-- What do you mean by "structured index" for Snowflake metadata?
-- What do you mean by embeddings?
-- What do you mean by insufficient data?
-- What do you understand by activation functions?
-- What do you understand by fine-tuning a language model (LM)?
-- What do you understand by lambda function in Python?
-- What does "intent" mean in your context, and how does it relate to the data?
-- What does "lost in the middle" mean in the context of RAG or LLM systems?
-- What does "low rank" mean in the context of LoRA (Low-Rank Adaptation)?
-- What does "rank" mean in the context of model evaluation, especially for search or retrieval systems?
-- What does "state" mean in LangGraph?
-- What does BM25 do in search systems?
-- What does context precision mean, and is it measured by comparing the retrieved context with the query?
-- What does cosine similarity indicate when two vectors are parallel to each other?
-- What does cosine similarity indicate when two vectors are perpendicular to each other?
-- What does it mean when you say Falcon is an LLM? What entities are getting trained or stored on your machine?
-- What does prompt engineering mean in your pipeline, and can you give an example of how you used it?
-- What evaluation frameworks and KPIs do you use to track and assess a RAG pipeline?
-- What evaluation metrics (including statistical checks and business validation) would you use to assess the quality of LLM-generated answers in a RAG system?
-- What exactly are you doing with MCP (Model Context Protocol) for the [Company] client?
-- What exactly is context precision in RAG/LLM evaluation, and how is it measured?
-- What experience do you have working with Kubernetes?
-- What formats can be used for AWS Lambda layers besides zip?
-- What foundational formula and backend logic ensure that a context relevance score (e.g., 85%) truly reflects context utilization and accuracy?
-- What frameworks would you use to ensure observability during model fine-tuning?
-- What guardrails and security controls are implemented in your Knowledge GPT system?
-- What guardrails have you implemented in your enterprise chatbot to ensure safety, compliance, and robust operation?
-- What happens after chunking in the Knowledge GPT data pipeline?
-- What happens if we set the temperature parameter to a very high value (e.g., 3000) in an LLM?
-- What happens if you use only vector-based (semantic) search for queries like model numbers or unique identifiers?
-- What happens to precision and recall if the classification threshold is increased from 0.5 to 0.7 in a binary classification problem?
-- What hyperparameters can you fine-tune or optimize in XGBoost and CatBoost models?
-- What intelligent criteria or logic would you use to decide which queries to batch together in a RAG-based system, considering user experience and latency?
-- What is "faithfulness" in the context of RAG/LLM evaluation, especially when given components like query and context?
-- What is "loss" in the context of machine learning?
-- What is ANN (Approximate Nearest Neighbor) in the context of RAG-based systems?
-- What is MCP (Model Context Protocol)?
-- What is MCP and how are you using it in your projects at [Company]?
-- What is QLoRA?
-- What is Reciprocal Rank Fusion (RRF) in your RAG pipeline?
-- What is Reciprocal Rank Fusion (RRF) in your retrieval pipeline?
-- What is a checkpoint in machine learning, and how does it work?
-- What is a context window in the context of LLMs and RAG systems?
-- What is a context window?
-- What is a limitation of LLMs regarding recent knowledge and weights?
-- What is a router in FastAPI and how does it work?
-- What is agentic AI?
-- What is an "intent" in the context of your UIDS project, and what does it mean to have 630+ intents?
-- What is an activation in the context of neural networks and transformers?
-- What is an embedding, and what does it mean to update or change embeddings in the context of language models?
-- What is answer relevance in LLM/RAG evaluation, and how is it measured?
-- What is context recall in RAG/LLM evaluation, and how is it measured?
-- What is embedding drift and why does it happen?
-- What is gradient descent in the context of machine learning models?
-- What is happening in the interview at this moment?
-- What is label encoding?
-- What is normalization of a feature?
-- What is one-hot encoding?
-- What is overfitting and what is underfitting in data science?
-- What is overfitting?
-- What is self-attention, and how do you calculate the self-attention score in machine learning?
-- What is semantic caching?
-- What is semantic search?
-- What is temperature in language models (LLMs)?
-- What is the accuracy of the overall solution (CPT)?
-- What is the advantage of using LangGraph in your architecture?
-- What is the alternative to LangGraph for agentic workflows on AWS?
-- What is the amount or volume of data handled in your RAG, embeddings, and vector DB projects?
-- What is the backend algorithm used by a vector database to match query vectors with stored vectors (e.g., for "paracetamol")?
-- What is the basic construct of LangGraph?
-- What is the basic difference between *args and **kwargs in Python?
-- What is the basic difference between RNN (Recurrent Neural Network) and CNN (Convolutional Neural Network)?
-- What is the best or most desirable condition for a model in terms of bias and variance?
-- What is the best practice for implementing a 24-hour deletion policy for user-uploaded documents, considering the limitations of scheduled jobs and direct deletion in the vector DB?
-- What is the best strategy to manage authentication tokens in a custom chatbot system without using frameworks like LangChain?
-- What is the core requirement or motivation for adding lambda functions to Python?
-- What is the data ingestion mechanism for Knowledge GPT—how do you extract and process documents from the KaaS (Knowledge as a Service) system?
-- What is the difference between CatBoost and XGBoost?
-- What is the difference between Flask and FastAPI?
-- What is the difference between L1 and L2 regularization?
-- What is the difference between LoRA and QLoRA for LLM fine-tuning?
-- What is the difference between ReLU and tanh (hyperbolic tangent) activation functions?
-- What is the difference between a Data Scientist and an AI Engineer? What does "AI Engineer" mean in your context?
-- What is the difference between a chain and a graph in the context of agent orchestration frameworks like LangChain and LangGraph?
-- What is the difference between building a custom RAG-based solution and using out-of-the-box agent modes or platforms like TCP?
-- What is the difference between multithreading and multiprocessing in Python?
-- What is the difference between sliding window chunking and semantic chunking, and when should each be used?
-- What is the difference between the Random Forest and XGBoost algorithms?
-- What is the dimensionality of the embedding vectors used in your system?
-- What is the distinction between an AI Engineer and a Data Scientist?
-- What is the embedding vector dimension for GPT-3 models?
-- What is the embedding vector dimension for GPT-4 or GPT-4o models, and is it different from Ada-002?
-- What is the embedding vector dimension used in your pipeline with GPT-4 or Azure OpenAI?
-- What is the end-to-end flow of information in a multi-agent system (e.g., for a legal research query), detailing how agents interact and process the request?
-- What is the end-to-end pipeline for implementing a RAG (Retrieval-Augmented Generation) system—from start to finish?
-- What is the first step you take to optimize retrieval before embedding and chunking?
-- What is the first thing you want to do if you get hired at Tredence for this role?
-- What is the format of the Snowflake schema metadata when storing it in a structured index like PostgreSQL?
-- What is the foundational formula used to compute context relevance in your custom RAG evaluation pipeline?
-- What is the function and purpose of the sigmoid activation (often referred to as the "S-shaped" or "gate" function) in neural networks?
-- What is the high-level design pattern or agent flow for a multi-agent system in an enterprise context?
-- What is the impact of having 48 rows versus 52 rows in your dataset?
-- What is the impact of using label encoding on nominal categorical features?
-- What is the length (dimension) of the embedding vector for document chunks, regardless of input token count?
-- What is the main difference between Flask and FastAPI, and why is FastAPI preferred?
-- What is the main objective of chunking documents in the pipeline?
-- What is the mathematical mechanism for how weights are updated in adapters (e.g., LoRA) during training?
-- What is the meaning of GPT?
-- What is the minimum number of rows required for a dataset to be statistically significant for machine learning?
-- What is the minimum sample size required for statistical significance in experiments or datasets?
-- What is the most complex use case you are using RAG (Retrieval-Augmented Generation) for?
-- What is the nature of the documents ingested—what types of files and what kind of information do they contain?
-- What is the potential issue with feeding Spark DataFrames directly into scikit-learn models?
-- What is the primary step to optimize retrieval if you do not want to use hybrid search?
-- What is the purpose of the `__init__.py` file in Python?
-- What is the relationship between chunking and the embedding model used in a RAG pipeline?
-- What is the significance of decorators in Python, and why do we use them?
-- What is the single minimum number of rows required for a machine learning model?
-- What is the spectrum of traditional data science models you have worked on beyond just logistic regression and segmentation?
-- What is the tech stack and architecture for the Knowledge GPT (CPT) project? Walk through the main components.
-- What is the terminology for the part of the transformer that gets updated during parameter-efficient fine-tuning (like LoRA/QLoRA)?
-- What is the theoretical minimum and maximum value for the temperature parameter in LLMs?
-- What is the theoretical range of the temperature parameter in LLMs?
-- What is the trade-off when using HNSW for nearest neighbor search in Elasticsearch?
-- What is the typical user base or concurrency supported by your enterprise AI applications?
-- What is the use of a decorator in Python?
-- What is the use of intent in your system?
-- What is your Retrieval-Augmented Generation (RAG) workflow after indexing the knowledge base?
-- What is your approach to diagnosing and resolving chatbot answer accuracy issues?
-- What is your core competency in data science—forecasting, classification, or another area?
-- What is your end-to-end approach and which AWS services would you use to deploy a Docker/Kubernetes-based AI agent on AWS?
-- What is your hands-on experience and the extent of your work with AWS Bedrock—specifically, have you used it for model hosting, agent creation, or workflow orchestration?
-- What is your industry background, and how do you approach working in highly regulated sectors like healthcare?
-- What is your step-by-step plan for designing a multi-agent system for enterprise workflows?
-- What is your total IT experience, and how much of it is relevant to agentic AI?
-- What is your understanding of Cloud Code, and how is it different from GitHub Copilot or other AI coding tools?
-- What kind of end-to-end ML pipeline have you designed and architected? Please describe your architecture and workflow.
-- What kind of input and output does your Generative AI (Knowledge GPT) application handle?
-- What kind of project was the next purchase date prediction for Instacart?
-- What level of agent (level one, two, or three) is being used in your multi-agent orchestration?
-- What libraries can we use in Python to find the number of repeated characters in a list?
-- What makes RAG (Retrieval-Augmented Generation) different from using a standard LLM-only approach for intent annotation and prediction?
-- What measures do you implement for prompt security, network security, and data security in your AWS-based GenAI applications?
-- What mechanism did you use to compute evaluation metrics, what is your current accuracy benchmark, and how will the evaluation operate in production?
-- What memory option did you use for your vector store on hyperscaler/cloud?
-- What metrics can we use to evaluate the performance of a regression model?
-- What metrics did you use to evaluate model efficiency and accuracy in the UIDS project?
-- What new open-source models and orchestration techniques are you exploring to further improve your intent classification system?
-- What other performance metrics did you monitor, and how did you ensure the overall solution performance for UIDS?
-- What packages and libraries did you use for chunking, embedding, and indexing in your RAG pipeline?
-- What parameters can be used in the XGBoost algorithm?
-- What parameters need to be passed for a recursive chunking strategy?
-- What percentage of fraud vs. non-fraud cases would you use in your test set for model evaluation, given only 5% fraud in real data?
-- What process efficiency or tangible gains did you achieve with your intent classification models?
-- What prompt engineering techniques have you leveraged to address prompt injection and related risks in your projects?
-- What proportion of fraud vs. non-fraud data would you use in your model, given that industry average fraud rate is 5%?
-- What questions do you have for the interviewer about the role, team, or company?
-- What recommendations would you give to improve retrieval and accuracy for the remaining 90% of queries (excluding the 10% problematic short/ambiguous queries)?
-- What retrieval techniques do you use to fetch relevant document sections in your RAG pipeline?
-- What routing layer did you use in the Knowledge GPT (KGPT) architecture?
-- What search algorithms are commonly used inside vector databases for similarity search?
-- What search strategy did you use for retrieval in your RAG pipeline?
-- What security guardrails are you using for MCP—are they AWS-based or custom frameworks at [Company]?
-- What steps would you take after receiving a ready-made notebook with all feature engineering and selection already completed?
-- What strategies do you apply for hallucination reduction in your RAG system?
-- What systems or tools have you integrated your AI solution with?
-- What technique do you use to extract content (including images and tables) from PDF, HTML, and Word documents for your RAG pipeline?
-- What technique would you use to handle missing values in the 'Amount' column for this user transaction data?
-- What techniques or mechanisms would you use to implement the security layer in an enterprise-level chatbot?
-- What techniques or methodologies would you use for final feature selection when you have a dataset with 100 features and 100 rows?
-- What techniques or tools did you use for model evaluation?
-- What technology stack are you comfortable with?
-- What threshold did you set for harmful content scores to allow or block LLM responses?
-- What threshold value of Population Stability Index (PSI) indicates that model retraining is needed due to data drift?
-- What tools and frameworks did you use to build your multi-agent system?
-- What troubleshooting steps would you suggest if prompts start failing in production, despite working in POC/MVP?
-- What type of memory/cache instance did you use for caching in your solution?
-- What type of queries can users ask, and does the dataset include image data?
-- What type of rate limiting parameters would you use in your MCP-based system design?
-- What types of data sources were used in Knowledge GPT, and how are new or updated documents ingested into the system?
-- What types of files did you process in your pipeline, and what was the content structure of those files (e.g., PDFs with text, tables, or images)?
-- What types of testing (beyond just accuracy) do you conduct before deploying a GenAI/RAG solution, and how do you carry them forward?
-- What was the biggest challenge you faced in an AI project, and how did you solve it?
-- What was the business case you solved with this dataset, and what business value or process efficiency did your solution deliver?
-- What was the business challenge/objective behind Knowledge GPT, and what impact did the deployed solution create?
-- What was the business objective and outcome of the UIDS RAG-based data labeling project?
-- What was the business problem that required building the RAG pipeline for the client?
-- What was the content in your data?
-- What was the most challenging task in the UIDS intent classification project, and how did you overcome it?
-- What was the problem statement for Knowledge GPT and why was it required?
-- What was the use case for which you were fine-tuning Falcon-7B?
-- What was your process for building the evaluation framework and metrics for the Knowledge GPT system?
-- What was your specific role and responsibilities in your recent AI projects at [Company]?
-- What were the MCP architecture discussions about?
-- What will you check if your LLM pipeline suddenly slows down?
-- What will you do if the client says the chatbot responses are short but not useful?
-- What would be your overall framework or approach for building this AI-powered NL-to-SQL analytics chatbot solution?
-- What would the pipeline look like if you want to fine-tune a model?
-- What would the pipeline look like to fine-tune a model (e.g., "yellow beard") for a specific domain like "tennis balls"?
-- What would you do if the RAG system gives a wrong answer even though the correct data exists in the knowledge base?
-- What would you do if, after deployment, the model’s false positives start increasing? How would you roll back and address this issue?
-- When do you use LangChain vs. LangGraph, and how would you architect an agentic solution using these tools?
-- When do you use TF-IDF and BM25 in hybrid search?
-- When do you use hybrid search in a retrieval system?
-- When facing data drift, what factors do you consider when deciding whether to retrain a model to support both old and new data, or to build a new model for only the new data?
-- When should ROC AUC be used as an evaluation metric for a model?
-- When should semantic search be used?
-- When using HNSW-based ANN search, do you lose precision or accuracy (recall)?
-- When using adapter modules (like LoRA adapters) in transformers, are the adapter parameters updated, added, or do they replace existing model parameters?
-- When would you not use RAG (Retrieval-Augmented Generation) models?
-- When would you use AWS Lambda versus EKS/ECS for deploying components of a RAG pipeline?
-- Where and how is the solution deployed on AWS?
-- Where does the system capture and store the metadata that distinguishes uploaded, permanent, and combined document sources for retrieval?
-- Where have you been using MCP in your projects?
-- Which Approximate Nearest Neighbor (ANN) algorithm does Elasticsearch support for vector search?
-- Which LangChain API did you use for chunking—recursive character text splitter or markdown header text splitter?
-- Which architectural layers have you worked on in your AI/ML solutions (from hardware to application)?
-- Which base model was used for the UIDS intent classifier, and what fine-tuning methodology was applied?
-- Which cloud platforms do you have hands-on experience with, and which are you most comfortable working on?
-- Which data types in Python can process data very fast?
-- Which embedding type—dense or sparse—typically has higher dimensionality?
-- Which frameworks did you use for implementing the various guardrails in your system?
-- Which is better: sigmoid or ReLU? In which use cases would you use each?
-- Which model and ML pipeline are you using to update (fine-tune) the sentence transformer for intent classification?
-- Which model did you use for intent classification in UIDS, and why did you choose SetFit over Falcon or XGBoost?
-- Which model is used for classifying user queries into 639 preset intents in the UIDS project?
-- Which orchestration framework or tool (LangChain, LangGraph, CrewAI, Agent K, etc.) would you choose for building this modular AI analytics chatbot, and why?
-- Which packages do you import to use LangGraph, and what are its supporting packages?
-- Which project would you like to explain in detail—Knowledge GPT or the GenAI-based data labeling pipeline?
-- Which search technique would you use for retrieving a specific, unseen model number (like "A1234567") in a RAG system, and why?
-- Which specific features of LangChain and LangGraph did you use in your RAG annotation pipeline?
-- Which tokenization strategy preserves higher semantic similarity: one word per token or five words per token?
-- Which transfer (activation/loss) function is used during backpropagation for fine-tuning the sentence transformer in your pipeline?
-- Which transfer (link) function is used during backpropagation in your sentence transformer fine-tuning pipeline?
-- Who decides user access levels when using MCP servers and applications?
-- Why are embedding vector dimensions typically multiples of 32 (e.g., 512, 768, 1536) instead of arbitrary numbers like 100 or 500?
-- Why are output tokens more expensive than input tokens in LLM API pricing?
-- Why are you migrating from Elasticsearch to OpenSearch for the KGPT project?
-- Why are you planning to move from [Company] to [Company]?
-- Why did hallucinations occur in your RAG system? What was the root cause?
-- Why did you build a custom RAG evaluation pipeline when frameworks like RAGAS already exist?
-- Why did you choose AWS-native tools for your ML pipeline instead of using Databricks or Snowflake for the data pipeline?
-- Why did you choose KNN over DBScan or other algorithms for vector search, and how did you determine the number of nearest neighbors?
-- Why did you choose a 250-character overlap for chunking, and how does this compare to common practices?
-- Why did you choose hybrid search (semantic + keyword) over only dense vector search in Knowledge GPT?
-- Why did you choose to use a 25-character overlap between chunks in your document chunking strategy?
-- Why did you use LangGraph for your RAG pipeline instead of a simple RAG pipeline?
-- Why did you use a recursive chunking strategy for document processing in Knowledge GPT?
-- Why did you use recursive chunking in the KGPT pipeline, and how do different chunking strategies impact retrieval and answer quality?
-- Why did you use recursive chunking strategies in your pipeline?
-- Why do LLMs sometimes fail at complex reasoning, and what are the possible fixes?
-- Why do two sentences with the same set of words in different orders (e.g., "man bites dog" vs. "dog bites man") produce different encodings in a transformer model?
-- Why do users encounter throttling exceptions when using an API like Gemini in production?
-- Why do we need lambda functions in Python?
-- Why do we need to do chunking in document processing for RAG pipelines?
-- Why do you have to standardize features before training the XGBoost model?
-- Why does increasing the context length sometimes reduce answer quality in LLM-based systems?
-- Why does the `validate_schema` function throw a "TypeError: unhashable type: 'list'" and how do you fix it?
-- Why does the embedding vector have a fixed dimension (e.g., 1536) regardless of input length?
-- Why is 50 chosen as the minimum number of rows, and what happens if you have less than that?
-- Why is `__init__.py` important in a Python package, and what happens if you don’t include it?
-- Why is cosine similarity commonly used for comparing embeddings in vector databases and NLP applications?
-- Why is real-time inference important for a fraud detection use case?
-- Why is the RAG system now generating incorrect or mismatched legal drafts (e.g., mixing up divorce and property dispute drafts), even though it worked fine earlier?
-- Why is the state immutable in LangGraph?
-- Why might a vector database or semantic search not be necessary for this product recommendation use case?
-- Why might prompt failures still occur in production even if output structure and edge cases were handled during UAT/MVP?
-- Why might prompts that worked in POC/MVP fail in a full production-grade system?
-- Why use a vector database instead of a traditional database for RAG/LLM systems?
-- Why was cosine similarity used as the loss function for fine-tuning the SetFit intent classifier?
-- Will having product images along with descriptions help improve product matching accuracy?
-- Would maintaining memory (e.g., caching previous results) improve performance if similar queries are processed consecutively?
-- Would you fully replace the ML intent classifier with an LLM, or would you build a hybrid architecture?
-- Would you use RAG models for semantic caching?
-- Write Python code to check if a string or number is a palindrome, without using slicing.
-- Write a Python function that takes two strings and returns a new string by alternating characters from each. If one string is longer, append the remaining characters at the end.
-- Write a Python function to find non-repetitive (unique) characters from a string in a list.
-- Write a Python function to get the common elements between two lists: list1 (1 to 10) and list2 (5 to 15).
-- Write a Python function to merge two strings by alternating their characters, appending any remaining characters from the longer string.
-- Write a Python function to validate if all schema keys are present in the input data dictionary.
-- Write a Python program to print the name of the student with the second highest marks from a dictionary.
-- Write a simple Python class for a calculator with addition and subtraction, taking input via the constructor.
+## 1. RAG Pipeline
 
-## AI ML Associate
+**Q: What is RAG and when is it preferred over fine-tuning?**
+A: RAG retrieves relevant documents at query-time and injects them into the LLM context — preferred when the knowledge base changes frequently, is private, or is too large to fine-tune on.
 
-- Given a boolean mask m, which selection is valid in NumPy?
-- How does LSTM differ from traditional time series forecasting methods like ARIMA in capturing sudden spikes and seasonality patterns?
-- How does Mixed Integer Programming (MIP) differ from Linear Optimization (LO) in handling binary (on/off) machine usage decisions?
-- How does demand forecasting integrate into a build optimization framework for production scheduling to minimize costs while meeting customer demand?
-- In NumPy, what is true about slicing arr[1:5]?
-- In clustering, what does a high silhouette score indicate?
-- What are the key details and next steps for the [Company] AIML assessment as shown in the email?
-- What do the observations about model performance before and after simplification indicate about overfitting and underfitting, and how should the team address them?
-- What does df['col'].isna().sum() compute?
-- What does high variance in model performance across cross-validation folds indicate?
-- What does it indicate if adding new variables to a regression model causes the adjusted R-squared to decrease?
-- What does the following list comprehension produce?
-- What gets printed by the given pandas script?
-- What is a common issue when using ReLU activation in neural networks?
-- What is produced by df.groupby('g')['x'].agg(['mean','max'])?
-- What is the best approach to decide which highly correlated variable to drop in a predictive model without degrading performance?
-- What is the best immediate action if a model performs well on training data but poorly on validation data?
-- What is the main issue with evaluating a classification model using accuracy on an imbalanced dataset (95% negative class)?
-- What is the most effective approach for building a robust unconstrained optimization model to minimize production cost without explicit constraints?
-- What is the most effective approach to automate building 1,000 forecasting models for different products, ensuring both accuracy and scalability?
-- What is the most effective way to handle infeasible solutions in a logistics optimization problem within a robust optimization framework?
-- What is the output of `[(x) for i in range(4) if (x := i*i) < 3]`?
-- What is the result of a + 10 for a NumPy array a = np.array([1,2,3])?
-- What should the product manager conclude if the p-value is 0.12 and the significance level (α) is 0.05?
-- What type of statistical error did the researchers commit by concluding the new drug is effective when later studies show no improvement, and what is its counterpart?
-- What will be the output of the following Python code?
-- What will happen when running df['a'].fillna(mean, inplace=True) if df is a valid DataFrame and mean is a valid numeric value?
-- Which evaluation metric is best for imbalanced binary classification?
-- Which fills NaN in column 'a' with mean in-place?
-- Which function converts a column to datetime in pandas?
-- Which is TRUE about decorators?
-- Which is true about Python generators?
-- Which learning paradigms should be applied to churn prediction, customer segmentation, and recommendation engine feedback in a retail AI initiative?
-- Which merges two DataFrames on column 'k' keeping only matches?
-- Which of the following statements about decorators is FALSE?
-- Which selects rows by label in a DataFrame df?
-- Which statement about NaN comparisons is TRUE?
-- Which statement correctly matches ARIMA, Facebook Prophet, and Random Forest Regression with their forecasting characteristics?
-- Which technique is most suitable for reducing dimensionality while preserving variance?
+**Q: What are the two pipelines in a RAG system?**
+A: Offline ingestion (parse -> chunk -> embed -> index) and online retrieval (embed query -> hybrid search -> rerank -> prompt -> LLM -> guardrail -> answer).
 
-## GenAI NLP Engineer
+**Q: When would you NOT use RAG?**
+A: When data fits entirely in the context window, when the task requires deeply internalized reasoning, or when sub-100ms latency is mandatory and caching is insufficient.
 
-- Any latest MLOps technique you tried recently that worked well?
-- Describe a production-ready system you designed that failed, explain the root cause, and how you fixed it.
-- Explain the end-to-end RAG pipeline architecture you built—what components did you add and how did you proceed?
-- Have you faced any latency challenges in your productionized GenAI/NLP projects?
-- Have you heard of tools like Graphify, and can they be useful for managing or optimizing token usage in your scenario?
-- How can you compare LLM-generated answers to ground truth using traditional NLP methods, without using LLM-as-a-judge?
-- How can you identify the rank of a matrix?
-- How do you ensure efficient token usage and control costs when multiple teams are using a high-token LLM model in a large project?
-- How do you evaluate your ranking model in the Knowledge GPT project?
-- How do you handle large prompt sizes in prompt engineering to manage latency and performance?
-- How will you evaluate and ensure response consistency when migrating from one LLM (e.g., GPT-4) to another (e.g., GPT-5), so that client-approved responses remain consistent in the new model?
-- How will you implement batching strategies, monitor latency (like p95), and respond to latency issues in a high-throughput payment system?
-- How will you measure hallucination rate, model drift, and failure rates for your AI system in production?
-- How will you monitor your AI systems in production?
-- How would you design a payment gateway system to handle sudden spikes in traffic (e.g., 50,000 TPS), ensuring scalability, low latency, and cost efficiency?
-- How would you design an AI-driven agent to monitor and manage latency spikes in real time, especially during unexpected traffic surges, using observability tools and automation?
-- How would you design your system if all AI/cloud services (like ChatGPT, cloud databases) suddenly became unavailable?
-- How would you justify not using GPT-4 (or similar large LLMs) for intent classification, especially to a non-technical or finance stakeholder?
-- What AWS services have you worked on?
-- What are the risks or limitations of using BLEU score for evaluating LLM-generated answers?
-- What guardrails have you used in your project to ensure safe and compliant LLM outputs?
-- What is the benefit of using JWT tokens for authentication?
-- What is the drawback of using identity-based tokens (session tokens) compared to JWT tokens?
-- What is the importance of the rank of a matrix in fine-tuning?
-- What techniques are you using for user authentication in your production architecture (with Redis, Kubernetes, and cloud deployment)?
-- What will you do if, even after prompt engineering and post-processing, the client still does not like the model’s response?
-- Which evaluation metric is best for comparing LLM-generated answers to ground truth, and why?
-- Why did you choose SetFit for fine-tuning instead of directly using LLMs? How do you justify this choice?
-- Why use LLM-based evaluation if you already have ground truth data?
-- Why would you choose LangGraph over LangChain for pipeline orchestration? What are the advantages?
+**Q: What is the "lost in the middle" problem?**
+A: LLMs pay more attention to the beginning and end of the context window — content in the middle is underutilized, so critical chunks should be placed first or last.
 
-## Data Science Lead
+**Q: How does a cross-encoder re-ranker differ from a bi-encoder?**
+A: Bi-encoder embeds query and document independently (fast, used for retrieval); cross-encoder takes the pair together for more precise scoring (slower, used for reranking top-20 to top-5).
 
-- Calculate sample covariance between Trip_Miles and Fare columns (rounded to 2 decimal points).
-- How to perform the Mann-Kendall test for trend detection without the `pymannkendall` library (since it is not available in the environment)?
-- How to resolve KeyError: 'trip_seconds' when accessing DataFrame columns?
-- Interviewee confirms that the `bfill` (backward fill) method is working.
-- Perform Mann-Kendall Test on Trip_Total and calculate 95% confidence interval for Trip_Seconds.
-- What are the columns and their descriptions in the dataset for the data science assessment?
-- What are the columns and their descriptions in the provided dataset?
-- What are the evaluation metrics, submission criteria, and setup instructions for the Data Science Lead test on HackerEarth?
-- What are the first three statistical analysis tasks required for the Data Science Lead assessment, and what are their expected output formats?
-- What are the first three statistical analysis tasks required for the Data Science Lead assessment?
-- What are the setup instructions, supported languages, and evaluation/scoring criteria for the Data Science Lead assessment?
-- What are the submission criteria and setup instructions for the Data Science Lead assessment on HackerEarth?
-- What are the submission criteria and setup steps for the Data Science Lead assessment?
-- What information is provided in the test invitation email for the Data Science - Lead test?
-- What is the file extension for Jupyter Notebook files?
-- What is the output of `print(df.size)` for the given DataFrame?
-- What is the output of `print(df.size)` for the given Student_Data.csv?
-- What is the output of the following Python code: `print(df.size)`?
-- What is the output of the given NumPy Python code using np.ix_ for advanced indexing?
-- What is the output of the given NumPy code using np.ix_ for advanced indexing?
-- What is the output of the given Python asyncio code?
-- What is the output of the given Python code using pandas DateOffset and datetime?
-- What is the output of the given Python code when validating the data number 1423?
-- What is the output of the given asyncio Python code?
-- What is the output of the pandas DateOffset and datetime operation in the provided code?
-- What will be the output of the given Python class code?
-- Which PySpark code splits each line of input using a comma as a separator?
-- Which Tkinter code snippet correctly places three labels in a vertical column with padding between them using the Pack layout manager?
-- Which keyboard shortcut runs the current cell in Jupyter?
-- Which option matches the pattern:
-- Which output pattern matches the required sequence for the problem?
-- Which statements accurately describe Haystack's key components and capabilities?
-- Write code to solve the first three statistical analysis tasks: Mann-Kendall test, confidence interval, and sample covariance.
+**Q: How do you handle a RAG system that returns no relevant chunks?**
+A: Return a graceful fallback ("I don't have reliable information on this"), expand top-K, try BM25 fallback, or rephrase the query with HyDE before giving up.
 
-## NLP Engineer
+**Q: What is HyDE (Hypothetical Document Embeddings)?**
+A: Instead of embedding the raw query, generate a hypothetical answer with an LLM and embed that — the hypothetical answer is stylistically closer to real document chunks, improving retrieval.
 
-- Are you aware of any recent changes or technologies where a chat agent can dynamically register a tool and open a custom UI (like a form) within the chat interface for tasks such as hotel or Airbnb booking?
-- Are you looking for a lead/managerial role, or are you open to an individual contributor (IC) role as well?
-- Do you know about R System and what the company does?
-- How do you build an anomaly detection model when you only have unlabeled data (no supervised labels)?
-- How do you conduct performance testing and ensure scalability when moving from a pilot rollout (200 users) to a full rollout (5000 users)?
-- How do you design and manage memory for long-running, high-memory-consumption AI agents?
-- How do you design for graceful failure handling when MCP endpoints or tools are unavailable in a multi-agent system, so users still have a good experience?
-- How do you handle and train models on very large datasets (like 2TB of parquet files) that cannot fit into memory using NumPy?
-- How do you roll back a machine learning model in production if the new version causes issues after deployment?
-- How do you version and manage prompts in a production environment?
-- How much of a very large dataset (like 2TB) should be used for model training, and what are the best practices for selecting training data size?
-- How would you design MCP agent workflows to handle distributed transactions, ensuring that a user transaction only completes if required agents succeed, even if some agents are down?
-- How would you design an end-to-end system where users can query engagement/project data, get contextual, non-hallucinated answers, and see only data they are authorized for?
-- How would you reduce monthly LLM token costs from 50k to 15–20k in a deployed AI system?
-- How would you select and prepare data for a model targeting Gen Z or young generations from a large, historical dataset?
-- What are best practices to ensure an agent selects the correct tool in a multi-tool agentic AI system, especially when it keeps picking the wrong tool (e.g., weather tool instead of hotel search)?
-- What are the possible failure points or weaknesses in your RAG-based engagement query system, and where might end users be dissatisfied with the results?
-- What are the practical ways to handle or fix overfitting in a machine learning model?
-- What is overfitting in machine learning?
-- What parameters would you use to select relevant data for model training when you have a large, historical dataset (e.g., 20 years of credit card data) but want to focus on recent trends and target groups?
-- What tools do you use for agent development, especially for building and managing AI agents?
-- Which types of models are most commonly affected by overfitting?
+**Q: How do you scale RAG from 10K to 10M documents?**
+A: Shard the vector index across multiple nodes, use HNSW for ANN search, add a semantic cache layer, batch embedding generation, and use async parallel retrieval.
 
-## ML Engineering Lead
+---
 
-- Can you describe a production issue you faced in the chatbot project and how you debugged it?
-- Can you explain one of your projects from end to end?
-- Can you explain the high-level architecture of your therapy chatbot project?
-- Can you provide highlights of your published research papers and explain what you did in each?
-- Explain the Python code showing class inheritance and the `super().__init__()` pattern.
-- How many different agents did you use in your multi-agent therapy system, and what were their roles?
-- How would you modify your RAG pipeline to ensure data isolation when serving multiple companies, preventing data leakage and context contamination between different tenants?
-- How would you scale your RAG pipeline from 50-100 users to 100K users while maintaining minimal latency?
-- No question detected - awaiting interview question
-- Solve LeetCode "Top K Frequent Elements" - Given an array of integers and k, return the k most frequent elements.
-- What components and tools did you use for your RAG pipeline deployment in production?
-- What will be the output of this Python threading code and explain the race condition issue?
-- What will be the output of this multithreading code and explain the race condition issue?
-- Which component will become the bottleneck first as users gradually increase from 50-100 users?
-- Why did you choose ColPali for the multimodal RAG system instead of standard OCR techniques? Please explain the project in detail.
-- You mentioned 80% accuracy for textile defect detection in real manufacturing - isn't 20% error rate too high for production? How did you conclude 80% was acceptable and how would you improve it?
+## 2. Chunking
 
-## Vision Pipeline Engineer
+**Q: Why do we chunk documents?**
+A: To fit text within the embedding model's token limit and to make retrieval return focused, relevant content with precise semantic embeddings.
 
-- Analyze the coding problem shown on screen - appears to be a bounding box intersection/overlap problem
-- Analyze the coding problem shown on screen - calculate total area covered by overlapping bounding boxes
-- Assign bounding boxes to grid cells and count cars per cell in an N×N grid overlay on an image
-- Assign bounding boxes to grid cells and count how many boxes are in each cell of an N×N grid
-- Extract and parse information from a pallet label image containing barcode, item details, and batch information
-- Find the pair of bounding boxes with the largest overlapping area
-- Fix IndexError - list index out of range in grid assignment
-- Fix IndexError - list index out of range in grid assignment function
-- Fix IndexError - list index out of range when accessing grid[row][col]
-- Fix TypeError - list indices must be integers or slices, not float
-- OCR text detection with bounding boxes, confidence scores, and barcode overlay detection
-- Write a Python script to visualize OCR results from a JSON file and decode barcodes in an image
+**Q: What is recursive character chunking and why is it the default?**
+A: Tries splitting at paragraph -> line -> sentence -> word before hard-cutting — preserves semantic boundaries unlike fixed-size which cuts blindly at character N.
 
-## AI Solutions Engineer
+**Q: What chunk size and overlap should you start with?**
+A: 500 tokens with 50-token overlap (10%) is a common baseline; increase chunk size for long-form reasoning, decrease for precise factual retrieval.
 
-- Can you elaborate on what exactly you mean by semantic chunking and how you will implement it?
-- How do you ensure commitment to stay with the next company for at least a couple of years, given your short tenure at the current role?
-- How does PyMuPDF help with semantic chunking? The interviewer is unclear on how text extraction relates to semantic chunking.
-- How would you make this PDF comparison implementation modular and production-ready?
-- If LLMs can help generate this solution in 45 minutes to 1 hour, what differentiates you from others who have the same access? How do you ensure this isn't easily replicated?
-- The interviewer expressed concern about your heavy dependency on LLMs for code generation during the interview. How would you address this concern and demonstrate your understanding of the code you write?
-- What do you mean by "service" when you say you'll create separate services for PDF parsing, diff engine, and LLM summarization?
-- What is the difference between three dot (...) and two dot (..) in React/Node.js?
-- Write an algorithm to parse two PDF versions of a regulation and summarize the differences between them concisely.
+**Q: When should you use semantic chunking?**
+A: When retrieval quality matters more than processing speed — groups sentences by embedding similarity, creating semantically coherent chunks at the cost of extra computation.
 
-## GenAI Solution Architect
+**Q: How do you handle tables in PDF chunking?**
+A: Extract with pdfplumber or Camelot, convert to Markdown, and store each table as a single atomic chunk with its caption — never split a table across two chunks.
 
-- Can you briefly explain the project where you built a production-ready model with SetFit v1.3 and benchmarked it against CatBoost, XGBoost, and Falcon?
-- Have you ever considered implementing a champion-challenger model for machine learning systems?
-- How is CatBoost different from XGBoost?
-- How would you design a solution to automate standardizing multiple client Excel inputs into a production-ready, standardized output format?
-- If you see low accuracy during testing/evaluation of the data standardization pipeline, what are the first things you would check?
-- Were there any specific issues found during evaluation that, once corrected, had a significant impact on the solution?
-- What is CatBoost in the context of your intent detection project?
-- What part of your work is hands-on versus project management and solution architecting?
-- What should you do if a better, cheaper model becomes available, even if the current system is working fine?
-- What was the actual business case for implementing RAG-based data labeling in your project?
-- When would you recommend a system or infrastructure upgrade for the data standardization pipeline?
+**Q: How do you handle images and charts in a RAG pipeline?**
+A: Use OCR (Textract/Tesseract) or a multimodal LLM (GPT-4 Vision) to generate text descriptions, embed those descriptions, and store the image URL in chunk metadata.
 
-## ai
+**Q: What is RAPTOR indexing?**
+A: Recursively cluster and summarize groups of chunks with an LLM, index both original leaf chunks and all summary nodes — enables answering both specific and broad questions from one index.
 
-- How can prompt hijacking (prompt injection) be detected and avoided in LLM-based systems?
-- How did you connect to AWS services using Python?
-- How do the transformer encoder and decoder work internally?
-- How do you resolve deadlock situations when multiple AI agents are involved?
-- How is rate limiting handled in LLM (Large Language Model) systems?
-- What are decorators in Python?
-- What is RAG (Retrieval-Augmented Generation)?
-- What is prompt hijacking and in what context is it used?
-- What is the difference between shallow copy and deep copy in Python?
-- What is the meaning of "next match tokens" or "next tokens" in the context of LLMs?
-- What is the purpose of the temperature parameter in AI models (especially LLMs)?
+**Q: Should you still chunk documents smaller than the model's context window?**
+A: Yes — smaller, focused chunks produce more precise embeddings and reduce noise in the retrieved context, even if the whole document would technically fit.
 
-## GenAI Engineer
+---
 
-- Explain the Calming AI Therapist chatbot end-to-end
-- Explain the therapy recommendation system end-to-end
+## 3. Embeddings
 
+**Q: What is an embedding?**
+A: A fixed-length numeric vector encoding the semantic meaning of text — semantically similar texts produce vectors that are close together in high-dimensional space.
+
+**Q: Why are embedding dimensions multiples of 32 (512, 768, 1536)?**
+A: GPU SIMD hardware is optimized for memory-aligned operations in chunks of 32 or 64 — these sizes maximize computational efficiency.
+
+**Q: What are the dimensions of text-embedding-ada-002 and text-embedding-3-large?**
+A: ada-002 produces 1536 dimensions; text-embedding-3-large produces 3072 dimensions (higher quality, higher cost).
+
+**Q: Dense vs sparse embeddings — what is the difference?**
+A: Dense (neural): low-dimensional, all values non-zero, captures semantic meaning. Sparse (BM25/TF-IDF): high-dimensional (~50K), mostly zeros, captures exact keyword matches.
+
+**Q: Why use cosine similarity instead of Euclidean distance for embeddings?**
+A: Cosine is scale-invariant — a short and long document about the same topic have different magnitudes but similar directional angles, making cosine more reliable.
+
+**Q: What is embedding drift?**
+A: When the embedding model is updated, the same text produces different vectors — stored vectors become inconsistent with newly generated ones, degrading retrieval quality.
+
+**Q: Is a sentence transformer encoder-based or decoder-based?**
+A: Encoder-based (BERT-style) — produces a fixed-length representation of the full input, unlike decoder-only models which generate text token by token.
+
+---
+
+## 4. Vector Databases & Search
+
+**Q: How is a vector database different from a relational database?**
+A: Vector DBs store high-dimensional float vectors and support approximate nearest-neighbor (ANN) similarity search; relational DBs store structured rows and support exact SQL queries.
+
+**Q: What is HNSW and what is the trade-off?**
+A: Hierarchical Navigable Small World — graph-based ANN with O(log N) search. Trades ~1-5% recall loss for massive speed gains over brute-force KNN. Always used in production.
+
+**Q: When would you use BM25 over vector search?**
+A: When querying for exact terms, model numbers, codes, or names — BM25 excels at exact keyword matching where semantic paraphrase is not needed.
+
+**Q: What is Reciprocal Rank Fusion (RRF)?**
+A: Merges two ranked lists without normalizing scores: `RRF(d) = sum(1 / (60 + rank_i))` — the document ranking highest in both lists wins.
+
+**Q: Why use hybrid search (vector + BM25) as the default in production?**
+A: Semantic search misses exact terms (e.g., "Error-404"); keyword search misses synonyms — hybrid consistently outperforms either alone.
+
+**Q: What HNSW parameters should you tune?**
+A: M (connections per node), ef_construction (candidates at build time), ef_search (candidates at query time — increase for better recall at cost of speed).
+
+---
+
+## 5. RAG Evaluation (RAGAS)
+
+**Q: What are the four core RAGAS metrics?**
+A: Context Precision and Context Recall (retrieval quality), Faithfulness and Answer Relevance (generation quality).
+
+**Q: What is Context Precision (RAGAS)?**
+A: Signal-to-noise ratio in retrieval — what fraction of retrieved chunks are relevant to the ground truth. Compare: retrieved context vs. ground truth.
+
+**Q: What is Context Recall (RAGAS)?**
+A: Coverage of retrieval — what fraction of the ground truth information is present in retrieved chunks. Compare: ground truth vs. retrieved context.
+
+**Q: What is Faithfulness?**
+A: What fraction of factual claims in the generated answer are explicitly supported by retrieved context — claims not in context = hallucination.
+
+**Q: What is Answer Relevance?**
+A: Whether the generated answer actually addresses the question — measured by generating hypothetical questions from the answer and checking alignment with the original.
+
+**Q: How do you measure answer correctness without RAGAS?**
+A: LLM-as-judge: prompt a second LLM with question + ground truth + generated answer, ask it to score 1-5 for correctness — return JSON {"score": N, "reason": "..."}.
+
+**Q: What is the difference between RAGAS context precision and KGPT context utilization?**
+A: Context precision (RAGAS) = retrieved context vs. ground truth (was right content retrieved?). Context utilization (KGPT custom) = retrieved context vs. generated answer (how much was used?). Different metrics.
+
+---
+
+## 6. Hallucination
+
+**Q: What are the main root causes of hallucination in RAG?**
+A: Wrong chunks retrieved, vague prompts not constraining the LLM, key facts split across chunk boundaries, relevant chunk outside top-K, or context overflow causing "lost in the middle."
+
+**Q: What is the most effective single technique to reduce hallucination?**
+A: A strict system prompt: "Answer ONLY based on the provided context. If the answer is not in the context, say I do not know" — prevents the LLM from using parametric knowledge.
+
+**Q: How does citation enforcement reduce hallucination?**
+A: Force the LLM to cite the chunk ID for every claim — if it cannot produce a valid citation from the retrieved set, the claim is hallucinated and can be flagged.
+
+**Q: How does LLM-as-a-Judge work for hallucination detection?**
+A: After generation, a second LLM call checks whether every factual claim is supported by retrieved context; if faithfulness score < threshold, return a fallback message.
+
+---
+
+## 7. Transformer Architecture & LLMs
+
+**Q: Explain the attention mechanism formula.**
+A: Attention(Q,K,V) = softmax(Q*Kt / sqrt(dk)) * V. Q asks "what am I looking for?", K answers "what do I offer?", V contains the information to aggregate. sqrt(dk) prevents vanishing gradients.
+
+**Q: Encoder-only vs decoder-only transformers — what is the difference?**
+A: Encoder (BERT): bidirectional attention, every token sees all others — best for understanding. Decoder (GPT): causal attention, each token only sees past tokens — best for generation.
+
+**Q: Does ChatGPT use an encoder and decoder?**
+A: No — GPT is decoder-only. There is no separate encoder; "encoding" the user input just means tokenization + embedding lookup through the same decoder stack.
+
+**Q: Why do same words in different order produce different embeddings?**
+A: Positional encodings added to token embeddings before attention inject word-order information — "dog bites man" and "man bites dog" produce different contextual representations.
+
+**Q: What is multi-head attention?**
+A: Multiple attention heads run in parallel (each with different learned W_Q, W_K, W_V projections) — each head learns different semantic relationships; outputs are concatenated.
+
+**Q: What is the vanishing gradient problem and how do transformers address it?**
+A: Gradients shrink exponentially through many layers. Transformers use residual connections (x + Attention(x)) and layer normalization to maintain gradient flow.
+
+**Q: How does an LLM handle out-of-vocabulary (OOV) words?**
+A: Via subword tokenization (BPE or SentencePiece) — unknown words are split into known subword pieces; there are no true OOV tokens in modern LLMs.
+
+---
+
+## 8. Fine-tuning: LoRA, QLoRA & SetFit
+
+**Q: What is LoRA?**
+A: Low-Rank Adaptation — injects two small trainable matrices A (r x n) and B (m x r) per layer; delta_W = B*A with B initialized to zero. Only A and B are trained; base model is frozen.
+
+**Q: What are the dimensions of LoRA matrices for a weight matrix of size m x n?**
+A: A has shape r x n (down-projection), B has shape m x r (up-projection), where r << min(m,n). B is initialized to zero so delta_W = 0 at training start.
+
+**Q: What is QLoRA?**
+A: Quantized LoRA — base model in 4-bit NF4 (8x memory reduction), LoRA adapters in BF16; enables fine-tuning 7B+ models on a single consumer GPU.
+
+**Q: What does "4-bit" mean in QLoRA?**
+A: Each weight stored in 4 bits (16 possible values) instead of 32 bits — 8x smaller. NF4 (NormalFloat4) is optimized for normally-distributed neural network weights.
+
+**Q: What is SetFit and when should you use it?**
+A: Few-shot fine-tuning for sentence transformers using contrastive learning — trains on 8-64 examples per class; ideal for intent classification when labeled data is scarce.
+
+**Q: How do you choose between SetFit, LLM, and XGBoost for intent classification?**
+A: SetFit: few examples (<100/class), fast inference. LLM: ambiguous/evolving intents, zero-shot. XGBoost: abundant labeled data, highest throughput, cheapest. Production: SetFit primary + LLM fallback.
+
+---
+
+## 9. Agents, LangGraph & MCP
+
+**Q: What is an AI agent?**
+A: An LLM in an observe-reason-act loop that can call tools, observe results, and decide the next step — unlike a single LLM call which is stateless and one-shot.
+
+**Q: What is LangGraph and why use it over a simple chain?**
+A: A stateful graph framework where nodes are processing steps and edges are transitions — enables conditional branching, loops, parallelism, and checkpointing that a linear chain cannot express.
+
+**Q: What is "state" in LangGraph and why is it immutable within nodes?**
+A: A TypedDict shared across all nodes — nodes return partial update dicts and never mutate state directly, preventing race conditions in parallel branches and making transitions auditable.
+
+**Q: What is checkpointing in LangGraph?**
+A: Persisting state after every node to Redis/SQLite/Postgres — enables resuming a failed workflow from the last checkpoint and supports human-in-the-loop review.
+
+**Q: How do you prevent infinite loops in an agent workflow?**
+A: Add an iterations counter to state; add a conditional edge that exits when iterations >= MAX_ITERATIONS. Also track visited tool calls and exit on repeated identical calls.
+
+**Q: What is MCP (Model Context Protocol)?**
+A: Anthropic's open protocol standardizing how LLMs communicate with external tools and data — the "USB-C for AI integrations" so any MCP client can use any MCP server.
+
+**Q: What are the three components of an MCP server?**
+A: Tools (functions the LLM can call with JSON Schema), Resources (data the LLM can read), and Prompts (reusable prompt templates) — exposed via stdio or HTTP/SSE.
+
+---
+
+## 10. MLOps, Drift & Production
+
+**Q: Data drift vs concept drift — what is the difference?**
+A: Data drift: input distribution P(X) changes. Concept drift: the relationship P(Y|X) changes — same input should now produce different output due to world changes.
+
+**Q: What PSI value triggers model retraining?**
+A: PSI < 0.10 = no action; 0.10-0.25 = monitor; greater than 0.25 = significant drift, retrain the model.
+
+**Q: What is PSI (Population Stability Index)?**
+A: PSI = sum((actual% - expected%) * ln(actual% / expected%)) — measures distribution shift between training-time and production-time feature distributions.
+
+**Q: What is the champion-challenger deployment pattern?**
+A: Current best model (champion) handles most traffic; new model (challenger) gets a small split (5-10%); metrics are compared and challenger promoted only if it outperforms.
+
+**Q: How do you detect model degradation without ground truth labels?**
+A: Monitor proxy metrics — embedding drift, output entropy, user feedback signals, LLM-as-judge scores on sampled production responses.
+
+**Q: When do you retrain on recent data only vs all historical data?**
+A: Recent only: concept drift confirmed (old patterns invalid). All historical: data drift only (same patterns, new input distribution).
+
+---
+
+## 11. Classification Metrics
+
+**Q: What are precision and recall, and when does each matter more?**
+A: Precision = TP/(TP+FP): minimize false alarms (spam filter). Recall = TP/(TP+FN): minimize missed cases (cancer screening, fraud detection).
+
+**Q: When is accuracy a misleading metric?**
+A: On imbalanced datasets — 95% accuracy on a 95/5 fraud dataset can mean zero fraud caught. Use F1, ROC AUC, or PR AUC instead.
+
+**Q: When should you use F1 vs ROC AUC?**
+A: F1 for imbalanced classes at a fixed threshold. ROC AUC when ranking quality matters or comparing across thresholds.
+
+**Q: What happens to precision and recall when threshold increases (0.5 to 0.7)?**
+A: Precision increases (fewer false positives); recall decreases (more actual positives missed).
+
+**Q: What is bias vs variance in ML?**
+A: Bias = systematic error (underfitting — model too simple). Variance = sensitivity to training data (overfitting — model too complex). Ideal: minimize both.
+
+---
+
+## 12. Guardrails, Security & PII
+
+**Q: What are input vs output guardrails?**
+A: Input: PII masking, toxicity filter, prompt injection detection, off-topic router. Output: faithfulness check, PII scan on response, harmful content filter, citation validator.
+
+**Q: What is prompt injection and how do you mitigate it?**
+A: Attacker embeds override instructions in user input. Mitigate with input sanitization, XML-tagged user input (separating user content from instructions), and output validation.
+
+**Q: How do you ensure multi-tenant data isolation in a vector DB?**
+A: Tag every chunk with tenant_id at ingestion; inject it as a mandatory metadata filter on every vector search query; validate from JWT token in middleware — undeniable.
+
+---
+
+## 13. Caching, Latency & Scaling
+
+**Q: What are the two types of caching in RAG?**
+A: Exact-match cache (SHA256 hash of query -> cached response) and semantic cache (embed query -> find past queries with cosine > 0.95 -> return cached response).
+
+**Q: Which component is the first bottleneck as a RAG system scales?**
+A: LLM API — every query requires at least one 1-5s call while all other components complete in under 200ms. Semantic caching (40-60% hit rate) is the most impactful fix.
+
+**Q: What is the bottleneck order from 100 to 100K users?**
+A: LLM API rate limits -> embedding service throughput -> vector DB query concurrency -> application tier (scales cheaply with Kubernetes HPA).
+
+**Q: How do you achieve 1-2 second RAG response times?**
+A: Semantic cache eliminates 40-60% of LLM calls; async parallel retrieval; streaming shows first token in ~300ms; route simple queries to smaller/cheaper models.
+
+---
+
+## 14. Python Fundamentals
+
+**Q: What is a decorator in Python?**
+A: A higher-order function that wraps another function to add behavior (logging, timing, auth, retry) without modifying the original code — applied with @decorator_name syntax.
+
+**Q: What is a generator and when do you use it?**
+A: A function using `yield` that produces values one at a time without loading all into memory — use for large sequences, streaming data, or lazy evaluation.
+
+**Q: What is the GIL and when does it matter?**
+A: CPython's Global Interpreter Lock allows only one thread to execute at a time — irrelevant for I/O-bound work (GIL released during waits) but prevents CPU parallelism (use multiprocessing instead).
+
+**Q: What is super().__init__() and why use it?**
+A: super() follows Python's MRO (Method Resolution Order) — correctly handles multiple inheritance. Hardcoding the parent class name breaks cooperative multiple inheritance.
+
+**Q: What is a race condition in Python threading?**
+A: counter += 1 (read-modify-write) can be interrupted between threads — GIL can release between LOAD and STORE bytecodes causing lost increments. Fix with threading.Lock().
+
+**Q: Solve Top-K Frequent Elements (LeetCode) — optimal approach?**
+A: Bucket sort O(n): Counter(nums) -> buckets indexed by frequency -> iterate buckets high-to-low, collect until k elements found. Min-heap approach is O(n log k) and also acceptable.
+
+---
+
+## 15. Quick-Fire Definitions
+
+| Term | One-line definition |
+|:---|:---|
+| **BM25** | Keyword search scoring TF-IDF + document length normalization |
+| **RRF** | Merges two ranked lists: score = sum(1 / (60 + rank)) |
+| **HNSW** | Graph-based ANN index; O(log N) search with ~1-5% recall loss |
+| **PSI** | Measures feature distribution shift; > 0.25 = retrain needed |
+| **LoRA** | Fine-tuning via low-rank matrices; A(r x n) * B(m x r) = delta_W |
+| **QLoRA** | LoRA + 4-bit NF4 quantization of base model; fits 7B+ on 1 GPU |
+| **SetFit** | Few-shot sentence transformer fine-tuning via contrastive learning |
+| **RAGAS** | RAG eval: Context Precision/Recall + Faithfulness + Answer Relevance |
+| **MCP** | Standardized LLM-to-tool protocol (Anthropic open standard) |
+| **LangGraph** | Stateful directed graph for agentic workflows with checkpointing |
+| **ReAct** | Agent pattern: Reason + Act interleaved (observe-think-act loop) |
+| **RAPTOR** | Recursive chunk summarization tree; indexes raw and summary nodes |
+| **HyDE** | Generate hypothetical answer -> embed it -> use for retrieval |
+| **Semantic cache** | Cache by query embedding similarity (cosine > 0.95) not exact match |
+| **ColPali** | Multimodal model that embeds page images directly, skipping OCR |
+| **LlamaGuard** | Meta open-source safety model; classifies 14 harm categories |
+| **tiktoken** | OpenAI tokenizer for counting tokens before API calls |
+| **GELU** | Activation in GPT/BERT; smoother gradient flow than ReLU |
+| **Embedding drift** | Embeddings shift after model update; re-index to fix retrieval |
+| **Champion-Challenger** | A/B deployment: current model gets majority traffic, new model gets small split for comparison |
+| **Context Precision** | RAGAS: fraction of retrieved chunks relevant to ground truth |
+| **Context Recall** | RAGAS: fraction of ground truth info covered by retrieved chunks |
+| **Faithfulness** | RAGAS: fraction of answer claims supported by retrieved context |
+| **NF4** | 4-bit NormalFloat quantization; optimized for neural network weight distributions |
+| **MRR** | Mean Reciprocal Rank: average of 1/rank_of_first_relevant_result |
