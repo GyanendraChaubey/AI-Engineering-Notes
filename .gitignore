@@ -1,5 +1,47 @@
+# ── Personal / Private Data ───────────────────────────
+# Raw interview transcripts — contain personal email in filenames
+interviews/
+
+# ── macOS ─────────────────────────────────────────────
 .DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ── MkDocs ────────────────────────────────────────────
 site/
 .cache/
+
+# ── Python ────────────────────────────────────────────
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.Python
+
+# ── Environment & Secrets ─────────────────────────────
+.env
+.env.*
+*.env
+secrets.yaml
+secrets.yml
+
+# ── IDEs & Editors ────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Logs & Temp ───────────────────────────────────────
+*.log
+*.tmp
+*.bak

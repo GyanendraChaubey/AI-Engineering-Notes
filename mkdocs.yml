@@ -83,6 +83,10 @@ nav:
     - 14. Prompt Hacking & Security: 14-prompt-hacking/README.md
     - 15. Miscellaneous Advanced Topics: 15-miscellaneous/README.md
     - 16. Case Studies: 16-case-studies/README.md
+    - 17. Interview Questions:
+      - Question List: 17-interview-questions/README.md
+      - Company Wise Interviews: 17-interview-questions/company_wise_interviews.md
+      - Deep Dive (RAG): 17-interview-questions/topic_deep_dive_rag.md
 
 extra:
   social:
