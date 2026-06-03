@@ -1,351 +1,207 @@
 # Advanced Search Algorithms
 
-> Retrieval quality is the single biggest lever in a RAG system. Poor retrieval = poor answers, regardless of LLM quality.
+> Retrieval quality is the single biggest lever in a RAG system. Poor retrieval equals poor answers, regardless of whether you are using a 7B or 400B parameter LLM. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
 
 ---
 
-## 1. What are the main architectural patterns for information retrieval in LLM systems?
+## Q1. What are the fundamental architectural patterns for Information Retrieval in RAG?
 
-```
-Pattern 1: Dense Retrieval (Semantic Search)
-  Query → Embed → ANN Search → Top-K chunks
+### Core Answer
 
-Pattern 2: Sparse Retrieval (Keyword Search)
-  Query → Tokenize → BM25/TF-IDF → Top-K chunks
+Production retrieval systems are not a single database query. They are multi-stage data engineering pipelines designed to balance the brutal trade-off between **Recall** (finding everything relevant) and **Precision** (filtering out the noise), all within a strict latency budget.
 
-Pattern 3: Hybrid Search
-  Dense + Sparse → Reciprocal Rank Fusion → Merged Top-K
-
-Pattern 4: Multi-Stage Pipeline
-  Fast recall (ANN) → Re-ranking (cross-encoder) → Top-N for LLM
-
-Pattern 5: Agentic Retrieval
-  LLM decomposes query → calls search tools iteratively → merges evidence
-```
-
-Each pattern adds complexity but improves recall and precision for different query types.
-
----
-
-## 2. Why is retrieval quality so critical in production RAG systems?
-
-The LLM is bounded by what you give it. If retrieval misses the relevant document:
-- The LLM hallucinates or says "I don't know"
-- No amount of prompt engineering or model size compensates
-
-**The retrieval bottleneck:** In most production RAG failures, >70% of bad answers trace back to retrieval not finding the right chunk — not to the LLM failing to reason over it.
-
-Analogy: You can hire the best analyst in the world, but if you give them the wrong files, they'll give you the wrong answer.
-
----
-
-## 3. How do you achieve both speed and accuracy at scale in large-scale semantic search?
-
-**Multi-stage architecture:**
-
-```
-Stage 1 — Recall (fast, approximate):
-  ANN search with HNSW → retrieve top-100 candidates in <10ms
-
-Stage 2 — Precision (slower, accurate):
-  Cross-encoder re-ranker scores all 100 candidates → select top-5 in ~100ms
-
-Stage 3 — Generation:
-  LLM generates answer from top-5 chunks
-```
-
-Additional techniques:
-- **Hardware acceleration:** GPU-based FAISS for sub-millisecond ANN
-- **Caching:** Cache embeddings for frequent queries
-- **Quantization:** INT8 quantized embeddings reduce memory and speed up SIMD distance computation
-- **Sharding:** Distribute the vector index across multiple nodes
-
----
-
-## 4. A client's RAG system has poor retrieval accuracy. How do you systematically fix it?
-
-**Diagnostic framework:**
-
-```python
-# Step 1: Instrument retrieval — log what's being retrieved
-for query in test_queries:
-    results = retriever.get(query, k=10)
-    log({"query": query, "retrieved_chunks": [r.text for r in results]})
-
-# Step 2: Manually annotate — did the right chunk appear in top-10?
-# Calculate Recall@10 = % of queries where relevant chunk is in top-10
-```
-
-**Fixes by root cause:**
-
-| Root Cause | Fix |
-|---|---|
-| Query too short / ambiguous | Query expansion, HyDE |
-| Wrong embedding model | Benchmark alternatives, fine-tune |
-| Poor chunking | Smaller chunks, better boundaries |
-| Missing keyword match | Add BM25 hybrid search |
-| Relevant doc deeply buried | Increase k, add re-ranking |
-| Metadata not leveraged | Add filtered search |
-| Multi-hop question | Add query decomposition |
-
-Work through these systematically — don't guess.
-
----
-
-## 5. How does BM25 keyword-based retrieval work?
-
-BM25 (Best Match 25) scores documents based on term frequency and inverse document frequency, with saturation to prevent spam:
-
-```
-BM25(q, d) = Σ IDF(tᵢ) × [tf(tᵢ,d) × (k₁+1)] / [tf(tᵢ,d) + k₁×(1-b+b×|d|/avgdl)]
-
-Where:
-  IDF(t) = log((N - df(t) + 0.5) / (df(t) + 0.5))
-  tf = term frequency in document
-  |d| = document length, avgdl = avg document length
-  k₁ ≈ 1.5 (term frequency saturation), b ≈ 0.75 (length normalization)
-```
-
-```python
-from rank_bm25 import BM25Okapi
-import nltk
-
-# Index
-tokenized_corpus = [nltk.word_tokenize(doc.lower()) for doc in documents]
-bm25 = BM25Okapi(tokenized_corpus)
-
-# Query
-query_tokens = nltk.word_tokenize("refund policy 30 days".lower())
-scores = bm25.get_scores(query_tokens)
-top_k_indices = scores.argsort()[-10:][::-1]
-```
-
-**Strength:** Exact keyword matches, works well for product names, IDs, technical terms.  
-**Weakness:** No semantic understanding — "car" and "automobile" are unrelated to BM25.
-
----
-
-## 6. How do you fine-tune a re-ranking model?
-
-A re-ranker (cross-encoder) takes a (query, document) pair and outputs a single relevance score — much more accurate than bi-encoder similarity but slower.
-
-```python
-from sentence_transformers import CrossEncoder
-
-# Load a pre-trained cross-encoder
-model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
-
-# Score query-document pairs
-pairs = [(query, doc) for doc in retrieved_docs]
-scores = model.predict(pairs)
-ranked = sorted(zip(scores, retrieved_docs), reverse=True)
-```
-
-**Fine-tuning with domain data:**
-
-```python
-from sentence_transformers import CrossEncoder, InputExample
-from torch.utils.data import DataLoader
-
-# Training data: (query, doc, label) where label=1 if relevant, 0 if not
-train_samples = [
-    InputExample(texts=["What is the return policy?", 
-                         "Items may be returned within 30 days."], label=1.0),
-    InputExample(texts=["What is the return policy?", 
-                         "Our CEO joined in 2020."], label=0.0),
-]
-
-model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2", num_labels=1)
-model.fit(
-    train_dataloader=DataLoader(train_samples, batch_size=16),
-    epochs=3,
-    output_path="./fine-tuned-reranker"
-)
-```
-
----
-
-## 7. What are the most common information retrieval metrics and when do they fail?
-
-| Metric | Formula | What it measures | Fails when |
-|---|---|---|---|
-| **Precision@K** | Relevant in top-K / K | Quality of top results | Doesn't reward ranking order |
-| **Recall@K** | Relevant found / Total relevant | How many relevant docs found | Doesn't measure quality |
-| **MRR** | 1/rank of first relevant | How quickly first relevant appears | Ignores results after first hit |
-| **MAP** | Mean avg precision across queries | Overall ranking quality | Slow to compute, complex |
-| **NDCG@K** | Normalized Discounted Cumulative Gain | Graded relevance + position | Requires graded labels |
-
-**Most practical for RAG:** Recall@5 (did the right chunk appear in top 5?) + NDCG@5.
-
----
-
-## 8. For a Q&A system like Quora, which evaluation metric would you choose?
-
-**MRR (Mean Reciprocal Rank)** — because the user wants the first result to be the correct answer. In a Q&A context:
-
-- Users scan from top to bottom
-- The first highly relevant answer is what matters most
-- Whether there are 5 or 50 good answers further down is less important
-
-```python
-def mean_reciprocal_rank(queries_results):
-    """
-    queries_results: list of lists, where each inner list is [is_relevant_1, is_relevant_2, ...]
-    """
-    rr_scores = []
-    for results in queries_results:
-        for rank, is_relevant in enumerate(results, start=1):
-            if is_relevant:
-                rr_scores.append(1 / rank)
-                break
-        else:
-            rr_scores.append(0)
-    return sum(rr_scores) / len(rr_scores)
-
-# Example
-results = [[0, 1, 0, 1], [1, 0, 0], [0, 0, 1]]
-print(mean_reciprocal_rank(results))  # (1/2 + 1/1 + 1/3) / 3 ≈ 0.61
-```
-
----
-
-## 9. Which metric should you use to evaluate a recommendation system?
-
-**NDCG@K (Normalized Discounted Cumulative Gain)** — because:
-- Recommendations have **graded relevance** (loved, liked, clicked, ignored)
-- **Position matters** — a great recommendation at rank 1 is worth more than at rank 10
-- NDCG captures both aspects
-
-```python
-import numpy as np
-
-def ndcg_at_k(relevance_scores, k):
-    """
-    relevance_scores: list of relevance scores (e.g., [3, 2, 0, 1, 3]) for ranked results
-    """
-    k = min(k, len(relevance_scores))
-    dcg = sum(rel / np.log2(rank + 2) 
-              for rank, rel in enumerate(relevance_scores[:k]))
+```mermaid
+flowchart TD
+    A["User Query"] --> B["Stage 1: Query Transformation"]
+    B --> C["Stage 2: Hybrid Retrieval (Fast / High Recall)"]
     
-    ideal = sorted(relevance_scores, reverse=True)[:k]
-    idcg = sum(rel / np.log2(rank + 2) 
-               for rank, rel in enumerate(ideal))
+    C --> D["Sparse Search (BM25)"]
+    C --> E["Dense Search (ANN / HNSW)"]
     
-    return dcg / idcg if idcg > 0 else 0
-
-scores = [3, 2, 0, 1, 3]  # Relevance of recommended items
-print(ndcg_at_k(scores, k=5))
-```
-
----
-
-## 10. How does hybrid search combine dense and sparse retrieval?
-
-Hybrid search runs **both** BM25 and dense ANN search, then merges results:
-
-```python
-def hybrid_search(query, vectorstore, bm25_index, k=10, alpha=0.5):
-    # Dense search
-    query_emb = embed(query)
-    dense_results = vectorstore.similarity_search_with_score(query_emb, k=k*2)
+    D --> F["Reciprocal Rank Fusion (RRF)"]
+    E --> F
     
-    # Sparse search
-    tokens = tokenize(query)
-    sparse_scores = bm25_index.get_scores(tokens)
-    sparse_results = get_top_k(sparse_scores, k=k*2)
+    F --> G["Stage 3: Cross-Encoder Re-Ranking (Slow / High Precision)"]
+    G --> H["Top-K Chunks injected to LLM Context"]
+```
+
+**The Multi-Stage Pipeline:**
+1. **Query Transformation:** Rewrite the user's ambiguous query into an optimized search vector (e.g., HyDE, Query Expansion).
+2. **First-Stage Retrieval (Recall):** Use incredibly fast Approximate Nearest Neighbor (ANN) and Inverted Indexes (BM25) to cast a wide net and retrieve the Top-100 candidates in $<50$ms.
+3. **Second-Stage Re-Ranking (Precision):** Pass the Top-100 candidates through a heavy Transformer Cross-Encoder to exactly calculate their relevance to the query, selecting the final Top-5 chunks in $\sim 150$ms.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. What is the latency budget for a production Two-Stage retrieval pipeline?
+    2. Why do Cross-Encoders perform mathematically better than Bi-Encoders for re-ranking?
+    3. How does Agentic Retrieval solve multi-hop reasoning?
+    4. What is the "Retrieval Bottleneck" in RAG systems?
+
+??? success "View Answers"
+    **1. Latency budget?**
+    Search must be virtually instantaneous to leave time for LLM generation (Time-To-First-Token). Stage 1 (ANN) must execute in $10$-$50$ms. Stage 2 (Cross-Encoder) is computationally heavy, operating at $O(N)$ where N is the number of candidates. Scoring 100 candidates usually takes $100$-$200$ms on GPU. The entire retrieval pipeline should strictly complete in $<300$ms.
+
+    **2. Cross-Encoder vs Bi-Encoder?**
+    A Bi-Encoder embeds the Query and Document completely independently. A Cross-Encoder concatenates them (`[CLS] Query [SEP] Document`) and passes them through the Transformer layers together. This allows the Self-Attention mechanism to calculate direct attention weights between individual words in the query and individual words in the document, resulting in vastly superior semantic matching accuracy at the cost of massive latency.
+
+    **3. Agentic Retrieval for multi-hop?**
+    Standard RAG fails at queries like *"Who is the CEO of the company that acquired Slack?"* because no single document contains both facts. Agentic Retrieval uses an LLM to decompose the query. It executes Search 1: *"Who acquired Slack?"* -> Extracts "Salesforce". It then dynamically constructs Search 2: *"Who is the CEO of Salesforce?"* -> Extracts "Marc Benioff".
+
+    **4. The Retrieval Bottleneck?**
+    In most production RAG failures, over 70% of hallucinated or "I don't know" answers occur because the correct chunk was never retrieved and placed in the context window. If the facts aren't in the prompt, no amount of prompt engineering or LLM parameter scaling will fix the output.
+
+---
+
+## Q2. How do Sparse (BM25) and Dense (Embedding) search algorithms fundamentally differ?
+
+### Core Answer
+
+**Dense Retrieval** relies on continuous vector spaces (Semantic). It maps concepts mathematically so that "car" and "automobile" sit in the same geographic region of the space.
+
+**Sparse Retrieval (BM25)** relies on discrete lexical tokens. It builds an **Inverted Index** (a hash map of words pointing to document IDs). BM25 is based on TF-IDF (Term Frequency - Inverse Document Frequency) but applies a mathematical saturation curve to prevent keyword spamming.
+
+$$ BM25(q, D) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{TF(q_i, D) \cdot (k_1 + 1)}{TF(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{avgdl})} $$
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. How does the BM25 formula mathematically prevent token saturation?
+    2. Why is an Inverted Index $O(1)$ for exact keyword lookups?
+    3. Why does Dense retrieval fail catastrophically on exact ID matches?
+    4. What is SPLADE and how does it bridge Sparse and Dense retrieval?
+
+??? success "View Answers"
+    **1. BM25 Saturation?**
+    In raw TF-IDF, if a document contains the word "Apple" 100 times, it scores 10x higher than a document containing it 10 times. BM25 introduces the $k_1$ parameter (usually set to 1.2 - 2.0). As Term Frequency ($TF$) increases, the score asymptotes toward a maximum limit. Seeing a word 5 times proves relevance; seeing it 500 times is just keyword spamming and doesn't yield a higher score.
+
+    **2. Inverted Index $O(1)$ lookup?**
+    An inverted index works identically to the index at the back of a textbook. It is a Hash Map where the Key is the token (e.g., `apple`) and the Value is a list of Document IDs `[doc1, doc7, doc9]`. Looking up a keyword is a direct hash table lookup, which is $O(1)$ time complexity, instantly returning the exact documents containing the word.
+
+    **3. Dense failures on IDs?**
+    Embedding models use sub-word tokenizers (like Byte-Pair Encoding). An ID like `ERR-902-X` is fractured into multiple tokens (e.g., `[ERR, -, 90, 2, -X]`). The Transformer averages these random characters together, generating a vector that points to random noise in the semantic space. Cosine similarity cannot effectively match random sub-word geometric noise.
+
+    **4. What is SPLADE?**
+    SPLADE (Sparse Lexical and Expansion) is a neural sparse retrieval model. It uses a BERT model to analyze a document, but instead of outputting a dense 768d vector, it outputs weights for the 30,000 words in the BERT vocabulary. Crucially, it expands the document by assigning weights to words that *aren't even in the text* but are highly relevant (synonyms). It gives you the exact matching of Sparse with the semantic understanding of Dense.
+
+---
+
+## Q3. How do you mathematically merge multiple search algorithms (Hybrid Search)?
+
+### Core Answer
+
+Hybrid Search executes a Sparse (BM25) search and a Dense (Vector) search simultaneously. 
+
+Because Cosine Similarity scores range from `[-1, 1]` and BM25 scores can range from `[0, 100+]`, you cannot simply add the scores together. You must merge them using **Reciprocal Rank Fusion (RRF)** or **Convex Combination (Alpha Weighting)**.
+
+**Reciprocal Rank Fusion (RRF):**
+RRF ignores the raw scores entirely. It looks only at the *position* (rank) of the document in the respective lists. 
+
+$$ RRF\_Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}} $$
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Why is RRF mathematically superior to raw score normalization?
+    2. What is the $k$ smoothing constant in RRF?
+    3. How does Convex Combination (Alpha Weighting) work?
+    4. How do you dynamically tune Alpha weighting based on query intent?
+
+??? success "View Answers"
+    **1. RRF vs Score Normalization?**
+    If you try to normalize BM25 scores using Min-Max scaling, an outlier document with a massive BM25 score of 300 will squash all other documents into the `[0, 0.01]` range. By discarding the scores and relying strictly on Rank, RRF becomes completely immune to outlier scores and varying distributions across different retrieval algorithms.
+
+    **2. The $k$ smoothing constant?**
+    $k$ is typically set to 60. Without $k$, a document at Rank 1 in Dense gets a score of $1/1 = 1.0$, and Rank 2 gets $1/2 = 0.5$. The penalty for dropping one rank is massive. By adding $k=60$, Rank 1 becomes $1/61 \approx 0.0163$ and Rank 2 becomes $1/62 \approx 0.0161$. This smooths out the curve, preventing highly-ranked documents in one list from completely dominating documents that rank consistently well (e.g., Rank 10) in both lists.
+
+    **3. Convex Combination (Alpha Weighting)?**
+    If you mathematically normalize the scores (using z-score or softmax), you can blend them using an Alpha ($\alpha$) parameter where $0 \le \alpha \le 1$.
+    $Final\_Score = (\alpha \times Dense\_Score) + ((1 - \alpha) \times Sparse\_Score)$. 
+    If $\alpha=1$, it is pure semantic search. If $\alpha=0$, it is pure keyword search.
+
+    **4. Dynamic Alpha Tuning?**
+    Advanced systems use a lightweight classifier (like a fast RoBERTa model or XGBoost) to classify the query at runtime. If the query contains heavily capitalized acronyms or UUIDs (`"Fix error XJ-92"`), the classifier sets $\alpha = 0.1$ (favoring BM25). If the query is conversational (`"How does the company feel about remote work?"`), it sets $\alpha = 0.9$ (favoring Dense).
+
+---
+
+## Q4. How do you evaluate and diagnose retrieval failures systematically?
+
+### Core Answer
+
+You cannot evaluate retrieval by eyeballing the final LLM output. If the LLM generates a bad answer, it could be a hallucination (Generation Failure) or a missing document (Retrieval Failure). 
+
+**Systematic Evaluation Pipeline:**
+1. Generate a **Golden Dataset** of (Query, Relevant_Document_IDs) pairs.
+2. Run the queries through the retrieval pipeline, completely bypassing the LLM.
+3. Calculate IR metrics: **Recall@K** and **NDCG@K**.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. What is NDCG@K and why is it the gold standard for search?
+    2. Why is MRR (Mean Reciprocal Rank) better for QA systems than NDCG?
+    3. What is the difference between Precision@K and Recall@K?
+    4. How do you instrument logs to catch Retrieval Bottlenecks in production?
+
+??? success "View Answers"
+    **1. NDCG (Normalized Discounted Cumulative Gain)?**
+    NDCG measures ranking quality. It handles graded relevance (e.g., Document A is "Perfect", Document B is "Okay"). The "Discounted" part means it applies a logarithmic penalty to the score based on rank. Finding a "Perfect" document at Rank 1 gives you a massive score. Finding a "Perfect" document at Rank 10 gives you almost nothing, because users rarely scroll to the 10th result.
+
+    **2. MRR for QA Systems?**
+    NDCG evaluates the entire list of K results. Mean Reciprocal Rank (MRR) strictly evaluates the rank of the *very first* relevant document ($Score = 1/Rank_{first\_relevant}$). In a Q&A RAG system, the LLM just needs the correct fact to answer the question. It doesn't matter if there are 5 more good documents at ranks 7, 8, and 9. MRR perfectly tracks "Did we get the answer to the top of the context window?"
+
+    **3. Precision vs Recall?**
+    - $Precision@K$: Out of the 10 documents retrieved, how many were actually relevant? (Measures noise/distractions for the LLM).
+    - $Recall@K$: Out of all the relevant documents in the database, what percentage did we find in the top 10? (Measures if we missed critical facts).
+
+    **4. Instrumentation?**
+    In production, you must log: `Query`, `Retrieved_Chunk_IDs`, `RRF_Scores`, and the `Final_LLM_Answer`. You then implement user telemetry (Thumbs Up / Thumbs Down buttons). When a user hits Thumbs Down, you can cross-reference the `Retrieved_Chunk_IDs` against the Golden Dataset to see if the retriever failed to pull the correct document, entirely isolating the failure point.
+
+---
+
+## Q5. What are the state-of-the-art query transformation techniques?
+
+### Core Answer
+
+Users are notoriously lazy. They type `"wifi broken"` instead of `"What are the troubleshooting steps for a disconnected wireless network router?"`. Passing `"wifi broken"` directly to a Dense Embedding model yields terrible vector similarity to the highly technical troubleshooting manual.
+
+**Query Transformation** intercepts the query and uses a fast, cheap LLM to rewrite it before hitting the vector database.
+
+```mermaid
+flowchart LR
+    A["User Query: 'wifi broken'"] --> B{"Transformation Strategy"}
     
-    # Merge with Reciprocal Rank Fusion
-    return reciprocal_rank_fusion([dense_results, sparse_results], k=k)
-
-def reciprocal_rank_fusion(result_lists, k=60):
-    scores = {}
-    for results in result_lists:
-        for rank, (doc_id, score) in enumerate(results):
-            scores[doc_id] = scores.get(doc_id, 0) + 1 / (k + rank + 1)
-    return sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    B --> C["HyDE (Hypothetical Document Embeddings)"]
+    C --> D["LLM generates fake troubleshooting manual paragraph"]
+    D --> E["Embed the fake paragraph"]
+    
+    B --> F["Query Decomposition"]
+    F --> G["'How to reset router?'"]
+    F --> H["'How to check ISP outage?'"]
+    G --> I["Embed sub-queries"]
+    H --> I
 ```
 
-**When hybrid wins:**
-- Queries with rare proper nouns or IDs → BM25 catches exact match
-- Queries with semantic intent → Dense catches meaning
-- Hybrid covers both cases
+### Related Questions
 
----
+!!! question "Follow-up Interview Questions"
+    1. How does HyDE mathematically bridge the semantic gap?
+    2. What is Step-Back Prompting?
+    3. What is Self-Querying (Metadata Extraction)?
+    4. What is the latency risk of Query Transformation?
 
-## 11. How do you merge rankings from multiple search methods?
+??? success "View Answers"
+    **1. HyDE Semantic Bridging?**
+    HyDE asks an LLM to generate a hypothetical answer to the short query. Even if the LLM hallucinates the facts, it generates the exact *lexical vocabulary, tone, and structural distribution* of a correct manual. When this hypothetical text is embedded, it projects into the exact same region of the high-dimensional vector space as the real manual, yielding massive Cosine Similarity scores.
 
-**Reciprocal Rank Fusion (RRF)** is the standard approach — robust, no hyperparameter tuning needed:
+    **2. Step-Back Prompting?**
+    Sometimes queries are too specific: *"Why did the Model S battery fail on Oct 4th?"* The vector database might have no documents matching that date. Step-Back Prompting asks an LLM to generate a broader abstraction: *"What are the common causes of battery failures in electric vehicles?"* You run retrieval for both the specific query and the step-back query, drastically improving recall for edge cases.
 
-```
-RRF_score(doc) = Σ_list [ 1 / (k + rank_in_list) ]
+    **3. Self-Querying?**
+    Users often include metadata in their natural language: *"Show me Q3 finance reports from last year."* If you embed this directly, it fails. Self-Querying passes the query to an LLM with access to the database schema. The LLM extracts the structured metadata and rewrites the query: `Search_String = "finance reports"`, `Filter = {quarter: Q3, year: 2025}`.
 
-Where k=60 is a smoothing constant
-```
-
-**Alternatives:**
-- **Weighted score fusion:** `final = α × dense_score + (1-α) × sparse_score` — requires scores to be on the same scale (normalize first)
-- **CombMNZ:** Sum of scores × number of lists the document appears in
-- **Borda count:** Points based on rank position
-
-RRF is preferred because it's immune to score scale differences between methods.
-
----
-
-## 12. How do you handle multi-hop or multi-faceted queries?
-
-A multi-hop query requires combining information from multiple documents:  
-*"Who is the CEO of the company that acquired Slack?"*  
-→ Hop 1: Which company acquired Slack? (Salesforce)  
-→ Hop 2: Who is Salesforce's CEO? (Marc Benioff)
-
-**Approaches:**
-
-1. **Query decomposition** — Use an LLM to break the query into sub-questions
-
-```python
-decompose_prompt = """
-Break this complex question into simpler sub-questions that can be answered independently.
-
-Question: {question}
-
-Return as a numbered list.
-"""
-
-sub_questions = llm(decompose_prompt.format(question=user_query))
-# Sub-question 1: Which company acquired Slack?
-# Sub-question 2: Who is the CEO of [company]?
-```
-
-2. **Iterative retrieval** — Retrieve → read → form follow-up query → retrieve again
-
-3. **Graph-based retrieval** — Build a knowledge graph; traverse edges for multi-hop reasoning
-
-4. **ReAct agent** — LLM decides when to call search and what to search for
-
----
-
-## 13. What are the main techniques to improve retrieval quality?
-
-| Technique | What it does |
-|---|---|
-| **HyDE** | Generate hypothetical answer → embed that instead of query |
-| **Query expansion** | Add synonyms/related terms using LLM |
-| **Query rewriting** | Rephrase query for better embedding alignment |
-| **Hybrid search** | Combine dense + sparse |
-| **Re-ranking** | Cross-encoder scores retrieved chunks more precisely |
-| **Chunk parent retrieval** | Retrieve small chunks but return their larger parent for context |
-| **Multi-vector retrieval** | Index multiple representations (summary + full text) |
-| **Step-back prompting** | Ask a more abstract question first to retrieve broader context |
-| **Self-query retrieval** | LLM generates metadata filters from natural language query |
-
-```python
-# HyDE implementation
-def hyde_retrieve(query, retriever, llm):
-    # Generate hypothetical answer
-    hypothetical = llm(f"Write a 2-sentence answer to: {query}")
-    # Embed and retrieve based on hypothetical answer
-    return retriever.get_relevant_documents(hypothetical)
-```
+    **4. Latency Risks?**
+    Query Transformation requires an LLM inference call *before* the database search even begins. Even with fast models (like `gpt-4o-mini`), this adds 300-800ms of latency. For real-time autocomplete or instantaneous search, this is a total blocker. It is best reserved for asynchronous agentic workflows or complex RAG chat systems.
 
 ---
 
