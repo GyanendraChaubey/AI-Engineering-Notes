@@ -1,319 +1,220 @@
 # Supervised Fine-Tuning of LLMs
 
-> Fine-tuning adapts a general-purpose model to your specific task, style, or domain — without training from scratch.
+> Supervised Fine-Tuning (SFT) adapts a generalist foundation model to your specific domain, tone, and formatting constraints. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
 
 ---
 
-## 1. What is fine-tuning and why is it necessary?
+## Q1. What is the fundamental difference between Pre-training, SFT, and RAG?
 
-**Fine-tuning** is the process of continuing to train a pre-trained LLM on a smaller, task-specific dataset to adapt its behavior.
+### Core Answer
 
-**Why it's needed:**
-- Pre-trained models are generalists — they don't know your company's tone, format requirements, or domain terminology
-- Some tasks (e.g., always respond in JSON, follow a specific clinical report format) can't be reliably achieved through prompting alone
-- Fine-tuning can reduce prompt length needed → lower inference cost
-- It bakes in behaviors that would otherwise require complex system prompts
+Many engineering teams confuse the purpose of Fine-Tuning with Retrieval-Augmented Generation (RAG). 
+
+**Pre-training** learns the *World Model*. It predicts the next token over trillions of words (Unsupervised) to learn grammar, logic, and broad facts.
+**Supervised Fine-Tuning (SFT)** learns *Behavior and Format*. It uses high-quality (Prompt, Response) pairs to teach the model how to act (e.g., "Always respond in strict JSON," "Adopt a clinical tone").
+**RAG** provides *Dynamic Context*. It injects facts into the prompt at runtime.
+
+**The Golden Rule:** Use RAG for *Knowledge*. Use SFT for *Behavior*.
+
+```mermaid
+flowchart TD
+    A["User Requirement"] --> B{"Is it a Knowledge gap?"}
+    
+    B -->|"Yes (needs proprietary data)"| C["Implement RAG"]
+    
+    B -->|"No (needs specific format/tone)"| D{"Is prompt engineering failing?"}
+    
+    D -->|"No"| E["Use System Prompts / Few-Shot"]
+    
+    D -->|"Yes (too complex / latency too high)"| F["Implement Supervised Fine-Tuning"]
+    
+    C --> G["Can also combine SFT + RAG (RA-DIT)"]
+    F --> G
+```
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Can SFT reliably inject new factual knowledge into an LLM?
+    2. How does SFT reduce inference latency in production?
+    3. What is the ChatML format and why is it necessary for SFT?
+    4. What happens if you fine-tune on low-quality data?
+
+??? success "View Answers"
+    **1. SFT for Knowledge Injection?**
+    It is highly discouraged. SFT modifies the model's weights to increase the probability of specific token sequences. While the model *might* memorize a fact seen in SFT, it is prone to hallucination, cannot be cited, cannot be updated without retraining, and cannot have role-based access control (RBAC). Always use RAG for facts.
+
+    **2. SFT for Latency Reduction?**
+    If you want a model to output a complex JSON schema, you might need a 2,000-token system prompt containing 10 few-shot examples. This massive prompt consumes significant Prefill compute and Time-To-First-Token (TTFT) latency for *every single user query*. By fine-tuning the model on 5,000 JSON examples, you bake the behavior into the weights. You can then drop the system prompt entirely, drastically reducing latency and token costs.
+
+    **3. The ChatML Format?**
+    Base models just predict the next word. SFT teaches them to be "chatbots" using special control tokens (e.g., `<|im_start|>user`, `<|im_start|>assistant`). If you fine-tune a model using a different control token format than what it was pre-trained with, the model will output gibberish. Data must be strictly formatted into conversational turns.
+
+    **4. Low-Quality SFT Data?**
+    SFT requires massive quality control. "Garbage in, garbage out" is magnified in SFT. Fine-tuning on 10,000 mediocre examples will actively degrade the model's foundational reasoning capabilities (Model Collapse), whereas fine-tuning on just 1,000 pristine, expert-curated examples (like the LIMA paper demonstrated) yields a highly capable model.
 
 ---
 
-## 2. When should you consider fine-tuning an LLM?
+## Q2. How do you mathematically estimate the GPU memory required for Full Fine-Tuning?
 
-**Fine-tune when:**
-- The base model consistently fails at a specific task despite good prompt engineering
-- You need a specific output format reliably (JSON schema, structured reports)
-- You want to inject a consistent tone/persona
-- Latency matters and you want to reduce system prompt length
-- You have 1K+ high-quality labeled examples
+### Core Answer
 
-**Don't fine-tune when:**
-- You just need to add knowledge (use RAG instead)
-- You have fewer than ~500 examples
-- The task works well with prompting
-- Your data changes frequently
+Training a model requires vastly more VRAM than running inference. During Full Fine-Tuning (FFT), you must store the Model Weights, the Gradients, the Optimizer States, and the Forward Activations.
 
-**Decision flowchart:**
-```
-Does prompting solve it? → YES → Use prompting
-         ↓ NO
-Is it a knowledge problem? → YES → Use RAG
-         ↓ NO
-Is it a behavior/style/format problem? → YES → Fine-tune
-         ↓
-Do you have labeled data? → NO → Generate synthetic data first
-```
+If we use the standard **AdamW optimizer** with **Mixed Precision (BF16)**, the memory formula is:
+- **Weights (BF16):** 2 bytes per parameter
+- **Gradients (BF16):** 2 bytes per parameter
+- **AdamW Master Weights (FP32):** 4 bytes per parameter
+- **AdamW Momentum 1 (FP32):** 4 bytes per parameter
+- **AdamW Momentum 2 / Variance (FP32):** 4 bytes per parameter
 
----
+**Total fixed overhead:** $\approx 16$ Bytes per Parameter.
+For a 7B parameter model (e.g., Llama-3-8B): $8B \times 16 \text{ bytes} \approx 128 \text{ GB of VRAM}$.
 
-## 3. How do you make the final decision to fine-tune?
+This is *before* accounting for the KV Cache and Activation memory (which scales quadratically with sequence length and batch size). A standard 8B model requires at least two 80GB A100 GPUs just to fit in memory for Full Fine-Tuning.
 
-Run this checklist before committing to fine-tuning:
+### Related Questions
 
-1. **Baseline prompt engineering:** Have you tried chain-of-thought, few-shot, and system prompt variations?
-2. **Failure analysis:** Are failures systematic (always bad at format) or random (hallucinations)? Systematic failures → good candidate for fine-tuning.
-3. **Data availability:** Do you have 500–10K quality examples? If not, can you generate synthetic data?
-4. **ROI calculation:** Fine-tuning cost (compute + data prep) vs. ongoing inference savings (shorter prompts) + quality improvement
-5. **Evaluation setup:** Do you have a clear, measurable success metric before starting?
+!!! question "Follow-up Interview Questions"
+    1. Why does the Adam optimizer consume twice as much memory as the model weights?
+    2. How does Gradient Checkpointing trade compute for memory?
+    3. What is Mixed Precision Training (BF16)?
+    4. How does Gradient Accumulation solve batch size limits on single GPUs?
 
----
+??? success "View Answers"
+    **1. Adam Optimizer Memory?**
+    Standard SGD just uses the gradient. Adam tracks the exponentially decaying average of past gradients (Momentum) and the past squared gradients (Variance) to dynamically adjust the learning rate for *every single parameter*. These two rolling averages must be stored in high-precision FP32, requiring 8 bytes per parameter (4x the memory of the BF16 model weights).
 
-## 4. How do you train a model to respond only when it has sufficient context?
+    **2. Gradient Checkpointing?**
+    During the forward pass, the model must save all intermediate layer outputs (Activations) in memory because the Backpropagation algorithm needs them to calculate the chain rule. For deep models, this memory is massive. Gradient Checkpointing deletes these activations from memory immediately. During the backward pass, it simply *recalculates* them on the fly. It saves up to 60% of VRAM at the cost of being 20% slower computationally.
 
-This is a **calibration / abstention** problem. Train the model to output a special "I don't know" response when evidence is insufficient.
+    **3. Mixed Precision Training?**
+    Training purely in FP32 takes 4 bytes per weight. We can store the model and run the forward/backward pass in Bfloat16 (BF16, 2 bytes) to double speed and halve memory. However, BF16 doesn't have enough precision for the tiny gradient updates applied by the optimizer. Mixed Precision keeps a "Master Copy" of the weights in FP32, calculates the update in BF16, and applies the update to the FP32 Master.
 
-```python
-# Training data format
-training_examples = [
-    # Sufficient context
-    {
-        "context": "Our return policy allows 30-day returns with receipt.",
-        "question": "Can I return an item after 25 days?",
-        "answer": "Yes, you can return items within 30 days with a valid receipt."
-    },
-    # Insufficient context
-    {
-        "context": "Our return policy allows 30-day returns with receipt.",
-        "question": "Can I return items bought online to a physical store?",
-        "answer": "I don't have enough information to answer this. The provided context doesn't specify online vs in-store return rules."
-    }
-]
-
-# System prompt during fine-tuning
-system = """You are a customer service assistant. 
-Answer ONLY based on the provided context. 
-If the context doesn't contain enough information, say exactly: 
-"I don't have enough information to answer this from the provided context."
-Never guess or make up information."""
-```
-
-Include ~20–30% "insufficient context" examples in your training set.
+    **4. Gradient Accumulation?**
+    If your GPU only has enough RAM to support a Batch Size of 1, the gradients will be incredibly noisy and the model won't converge. Gradient Accumulation runs the forward and backward pass for a Batch Size of 1, but *does not update the weights*. It simply adds the gradient to a running tally. After 32 iterations, it calls `optimizer.step()`, perfectly simulating a Batch Size of 32 without needing 32x the VRAM.
 
 ---
 
-## 5. How do you create a fine-tuning dataset for question answering?
+## Q3. How does LoRA (Low-Rank Adaptation) bypass the memory bottleneck?
 
-**Sources of training data:**
-1. **Human-curated:** SMEs write question + answer pairs (highest quality, expensive)
-2. **Existing data transformation:** Convert FAQs, support tickets, documentation into Q&A format
-3. **Synthetic generation:** Use a strong LLM (GPT-4) to generate Q&A pairs from your documents
+### Core Answer
 
-```python
-# Synthetic Q&A generation
-generate_qa_prompt = """
-Given this document passage, generate 5 diverse question-answer pairs.
-The questions should be realistic queries a user might ask.
-The answers should be based solely on the passage.
+Full Fine-Tuning modifies all 8 Billion parameters, requiring 128GB of VRAM. **LoRA (Low-Rank Adaptation)** is a Parameter-Efficient Fine-Tuning (PEFT) technique that allows you to fine-tune a 70B model on a single consumer GPU.
 
-Passage:
-{passage}
+Instead of updating the massive pre-trained weight matrix $W$ (which has dimension $d \times k$), LoRA completely **freezes** the base model. It then injects a parallel trainable "Delta Matrix" ($\Delta W$).
 
-Return as a JSON array:
-[{"question": "...", "answer": "..."}, ...]
-"""
+To save parameters, LoRA decomposes $\Delta W$ into two tiny low-rank matrices: $A$ (dimension $d \times r$) and $B$ (dimension $r \times k$), where $r$ (rank) is extremely small (e.g., 8 or 16).
 
-# Format for fine-tuning (ChatML format)
-def format_for_finetuning(question, answer, context=""):
-    return {
-        "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"Context: {context}\n\nQuestion: {question}"},
-            {"role": "assistant", "content": answer}
-        ]
-    }
+```mermaid
+flowchart LR
+    A["Input (X)"] --> B["Frozen Base Weight Matrix (W)"]
+    A --> C["Matrix A (d × r)"]
+    
+    C --> D["Matrix B (r × k)"]
+    
+    B --> E["Base Output"]
+    D --> F["LoRA Delta Output"]
+    
+    E --> G["Summed Output (Y = WX + ABX)"]
+    F --> G
 ```
 
-**Quality control:**
-- Filter out answers that are too short (<10 words) or too long (>500 words)
-- Check answer faithfulness to source context
-- Deduplicate similar questions
+**Math Example:** If $W$ is $4096 \times 4096$, it has **16.7M params**. If $r = 8$, $A$ is $4096 \times 8$ and $B$ is $8 \times 4096$, totaling just **65K params**. We achieved the same matrix dimensions while training **99.6% fewer parameters**, eliminating the massive Adam optimizer overhead.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. What is the relationship between the rank ($r$) and the LoRA alpha ($\alpha$) parameter?
+    2. Why does LoRA introduce absolutely zero latency during inference?
+    3. How does QLoRA push memory boundaries even further?
+    4. Which transformer modules should you target with LoRA adapters?
+
+??? success "View Answers"
+    **1. Rank ($r$) vs Alpha ($\alpha$)?**
+    $r$ determines the parameter bottleneck (the "intelligence" capacity of the adapter). $\alpha$ is a scaling factor used during training to dictate how strongly the LoRA output influences the frozen base output. The outputs of the LoRA matrices are multiplied by $\frac{\alpha}{r}$. A common rule of thumb is to set $\alpha = 2r$. 
+
+    **2. Zero Inference Latency?**
+    During inference, you do not need to run the $X \times A \times B$ calculation. Because matrix multiplication is distributive, you can mathematically merge the trained LoRA weights directly into the base weights permanently: $W_{new} = W + (A \times B) \cdot \frac{\alpha}{r}$. The resulting matrix is the exact same size as the original, meaning inference latency is 100% identical to the base model.
+
+    **3. What is QLoRA?**
+    LoRA reduces the optimizer memory, but you still have to load the 16-bit Frozen Base Model into VRAM. QLoRA mathematically quantizes the Frozen Base Model down to 4-bit precision (NF4), slashing the base memory footprint by 75%. It then trains the 16-bit LoRA adapters on top of the 4-bit base. This allows fine-tuning a 70B model on two 24GB consumer GPUs.
+
+    **4. Target Modules?**
+    Originally, researchers only applied LoRA to the Attention Query ($Q$) and Value ($V$) projection matrices. Modern best practice (as shown by the QLoRA paper) dictates applying LoRA adapters to *all linear layers* in the model, including $Q, K, V, O$, and the massive FFN Up/Down projections. This drastically improves convergence and final model quality.
 
 ---
 
-## 6. How do you set hyperparameters for fine-tuning?
+## Q4. How do you mitigate Catastrophic Forgetting during SFT?
 
-| Hyperparameter | Typical Range | Notes |
-|---|---|---|
-| **Learning rate** | 1e-5 to 5e-5 | Lower than pre-training; use cosine schedule |
-| **Batch size** | 8–128 | Larger = more stable; limited by GPU memory |
-| **Epochs** | 1–5 | More epochs → overfitting on small datasets |
-| **Warmup steps** | 3–10% of training | Prevents early unstable updates |
-| **Max sequence length** | 512–4096 | Based on your data distribution |
-| **LoRA rank (r)** | 8–64 | Higher = more capacity, more parameters |
-| **LoRA alpha** | 2×r | Standard rule of thumb |
+### Core Answer
 
-**Learning rate rule of thumb:** For instruction fine-tuning, 2e-5 is a safe default. Watch validation loss — if it increases while training loss decreases, you're overfitting.
+**Catastrophic Forgetting** occurs when an LLM is fine-tuned heavily on a narrow domain (e.g., Medical diagnosis). As the weights shift to perfectly predict medical text, the model actively overwrites and "forgets" its pre-trained general reasoning abilities, failing at basic math, coding, or conversational tasks it previously excelled at.
 
-```python
-from transformers import TrainingArguments
+**Mitigation Strategies:**
+1. **Low Learning Rates & Epochs:** SFT requires learning rates ~10x lower than pre-training (e.g., $2e-5$) and usually converges in just 1 to 3 epochs. Training for 10 epochs guarantees overfitting and forgetting.
+2. **Data Mixing (Replay):** If you are training on 10,000 Medical documents, inject 2,000 General Domain documents (Math, Code, Chit-chat) into the training set. This forces the gradients to preserve the general circuits.
+3. **PEFT (LoRA):** Because LoRA freezes 99% of the base weights, the foundational world-model is mathematically preserved in the frozen matrix. Only the tiny delta matrix is biased toward the medical domain.
 
-args = TrainingArguments(
-    output_dir="./fine-tuned-model",
-    num_train_epochs=3,
-    per_device_train_batch_size=4,
-    gradient_accumulation_steps=8,   # Effective batch = 32
-    learning_rate=2e-5,
-    lr_scheduler_type="cosine",
-    warmup_ratio=0.05,
-    fp16=True,
-    evaluation_strategy="steps",
-    eval_steps=200,
-    save_strategy="best",
-    load_best_model_at_end=True,
-)
-```
+### Related Questions
 
----
+!!! question "Follow-up Interview Questions"
+    1. How do you calibrate the Learning Rate for SFT compared to Pre-training?
+    2. What is Elastic Weight Consolidation (EWC)?
+    3. What is the impact of training for too many epochs in SFT?
+    4. How does "Format Overfitting" manifest in SFT models?
 
-## 7. How do you estimate infrastructure requirements for fine-tuning an LLM?
+??? success "View Answers"
+    **1. Learning Rate Calibration?**
+    Pre-training uses high learning rates to violently carve out the foundational loss landscape. SFT uses a "Cosine Decay with Warmup" schedule starting at a very low rate (e.g., $1e-5$). The warmup prevents the initial uncalibrated gradients from destroying the delicate pre-trained weights, and the low learning rate ensures we are only "polishing" the loss minimum, not escaping it.
 
-**Memory formula (full fine-tuning):**
-```
-Total GPU Memory = Model params × bytes_per_param × multiplier
+    **2. Elastic Weight Consolidation (EWC)?**
+    EWC is an advanced continual-learning technique. Before SFT, we calculate the Fisher Information Matrix to identify exactly which weights are critical for the model's general abilities. We then add a penalty to the loss function: if the SFT optimizer tries to change those specific "important" weights, the loss spikes. It forces the optimizer to learn the new task using only "unimportant" weights.
 
-bytes_per_param:
-  FP32 training: 4 bytes → weights (4) + gradients (4) + Adam states (8) = 16 bytes/param
-  BF16 + Adam:   weights (2) + master copy (4) + gradients (4) + Adam (8) = ~18 bytes/param
+    **3. Over-epoching?**
+    LLMs are massive over-parameterized function approximators. By Epoch 4 or 5 on a small dataset of 5,000 examples, the model will simply memorize the exact training data verbatim (overfitting) rather than learning the underlying semantic patterns. Validation Loss will decouple from Training Loss and skyrocket.
 
-Multiplier: ~2–4× for activations
-
-Example: 7B model, BF16
-  = 7B × 18 = 126GB + activations → needs 4× A100 80GB minimum
-```
-
-**With LoRA (parameter-efficient):**
-```
-Only train LoRA params (typically 0.1–1% of model size)
-7B model with LoRA r=16: ~17M trainable params
-Memory ≈ 7B×2 (frozen weights in BF16) + 17M×16 = ~16GB → fits on 1× A100 40GB
-```
-
-**Training time estimate:**
-```
-Training tokens = num_examples × avg_sequence_length
-Throughput (tokens/sec) ≈ GPU_TFLOPS / (6 × model_params)  [rough estimate]
-Training time = Training tokens / Throughput / 3600  [hours]
-```
+    **4. Format Overfitting?**
+    If 100% of your SFT training data ends with the phrase "Thank you for asking!", the model will structurally bind that phrase to every output. If all your training data is exactly 3 paragraphs long, the model will lose the ability to write a 1-paragraph or 5-paragraph answer. Training data must have high variance in length, structure, and tone.
 
 ---
 
-## 8. How do you fine-tune a large model on consumer hardware?
+## Q5. How do you build an SFT dataset for "Abstention" (Refusing to Hallucinate)?
 
-**Key techniques for consumer GPU (RTX 3090/4090, 24GB VRAM):**
+### Core Answer
 
-```python
-from transformers import AutoModelForCausalLM, BitsAndBytesConfig
-from peft import get_peft_model, LoraConfig, TaskType
+In Enterprise RAG, the worst possible outcome is the LLM hallucinating a confident answer when the retrieved context doesn't contain the facts. 
 
-# Step 1: Load in 4-bit quantization (QLoRA)
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16,
-    bnb_4bit_use_double_quant=True  # Nested quantization for extra savings
-)
+Trying to solve this with System Prompts (*"If the answer is not in the context, say 'I don't know'"*) is highly fragile. The LLM's pre-trained urge to "be helpful" will often override the prompt.
 
-model = AutoModelForCausalLM.from_pretrained(
-    "meta-llama/Llama-3-8B",
-    quantization_config=bnb_config,
-    device_map="auto"
-)
+**You must use SFT to teach Abstention.**
+Your dataset must contain a specific ratio of **Negative Examples**:
+1. Retrieve a document.
+2. Ask a question completely unrelated to the document.
+3. Set the target ground-truth output to the exact string: *"I do not have enough information in the provided context to answer this."*
 
-# Step 2: Apply LoRA adapters (only these weights are trained)
-lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    target_modules=["q_proj", "v_proj", "k_proj", "o_proj"],
-    lora_dropout=0.05,
-    task_type=TaskType.CAUSAL_LM
-)
-model = get_peft_model(model, lora_config)
-model.print_trainable_parameters()
-# Trainable params: 6,815,744 (0.08% of 7B) — fits in 24GB VRAM
-```
+By exposing the model to this pattern thousands of times, Abstention becomes a mathematically preferred neural pathway over hallucination.
 
-**Additional memory tricks:**
-- Gradient checkpointing: `model.gradient_checkpointing_enable()`
-- Gradient accumulation: simulate larger batch sizes
-- Flash Attention 2: reduces attention memory usage
+### Related Questions
 
----
+!!! question "Follow-up Interview Questions"
+    1. What is the optimal ratio of Positive to Negative examples in an abstention dataset?
+    2. How do you use Distillation (Synthetic Data) from GPT-4 to build an SFT dataset?
+    3. How do you evaluate an SFT model beyond simple Validation Loss?
+    4. What is the difference between SFT and RLHF for behavioral alignment?
 
-## 9. What are the different categories of Parameter-Efficient Fine-Tuning (PEFT)?
+??? success "View Answers"
+    **1. Optimal Positive/Negative Ratio?**
+    Empirically, the dataset should contain 20% to 30% Negative (Abstention) examples. If you drop below 10%, the model ignores the lesson and still hallucinates. If you go above 40%, you induce "Refusal Overfitting"—the model becomes hyper-conservative and starts saying "I don't know" even when the correct facts *are* present in the context.
 
-| Category | Method | How it works |
-|---|---|---|
-| **Additive** | Adapters | Insert small trainable FFN modules between layers |
-| **Additive** | Prefix Tuning | Prepend trainable virtual tokens to input |
-| **Additive** | Prompt Tuning | Learn soft prompt embeddings only |
-| **Re-parameterized** | LoRA | Low-rank decomposition of weight updates |
-| **Re-parameterized** | DoRA | Decompose into magnitude + direction components |
-| **Selective** | BitFit | Train only bias terms |
-| **Selective** | Sparse fine-tuning | Train a small % of selected parameters |
+    **2. Synthetic Data (Distillation)?**
+    Human labeling is slow and expensive. You can script GPT-4-Turbo to generate your SFT dataset. Pass a company document to GPT-4 and prompt it: *"Generate 5 complex user queries that can be answered by this document, and provide the exact step-by-step answer."* You then use these thousands of synthetic QA pairs to fine-tune a much smaller, cheaper 8B parameter model, effectively "distilling" GPT-4's intelligence into your local model.
 
-**LoRA** (Low-Rank Adaptation) is the dominant approach:
-```
-Instead of updating W (d×k), learn W + ΔW where ΔW = A×B
-A: (d×r), B: (r×k), r << min(d,k)
+    **3. SFT Evaluation?**
+    Validation Loss is a poor metric for LLMs because it only measures next-token probability, not semantic quality. You must use "LLM-as-a-Judge". Pass the fine-tuned model's outputs to GPT-4 and ask GPT-4 to score them from 1-5 on metrics like Faithfulness, Helpfulness, and Format Adherence.
 
-Parameters: d×k → d×r + r×k = r×(d+k) << d×k
-```
-
----
-
-## 10. What is catastrophic forgetting in LLMs and how is it mitigated?
-
-**Catastrophic forgetting** occurs when fine-tuning on task-specific data causes the model to "forget" its general capabilities (reasoning, language understanding, other task knowledge).
-
-```
-Before fine-tuning:  Model answers math, code, and general questions well
-After fine-tuning on medical Q&A:  Model may fail basic math or code tasks
-```
-
-**Mitigation strategies:**
-
-1. **PEFT / LoRA:** Only update a tiny fraction of weights — base model capabilities preserved in frozen weights
-2. **Lower learning rate:** Less aggressive weight update = less forgetting
-3. **Fewer epochs:** Stop before the model over-specializes
-4. **Data mixing:** Include a small % of general instruction data with your domain data (e.g., 80% domain, 20% general)
-5. **EWC (Elastic Weight Consolidation):** Penalize changes to parameters that were important for previous tasks
-6. **Replay:** Include examples from previous tasks in the training mix
-
----
-
-## 11. What are the different re-parameterization methods for fine-tuning?
-
-### LoRA (Low-Rank Adaptation)
-```python
-# W_new = W_frozen + A @ B
-# A: (d, r), B: (r, k) initialized A~N(0,σ), B=0
-# At inference: merge W_new = W_frozen + (alpha/r) * A @ B
-# Zero extra latency after merging!
-```
-
-### DoRA (Weight-Decomposed Low-Rank Adaptation)
-Decomposes weight into magnitude (scalar) and direction (unit vector), then applies LoRA to the direction:
-```
-W = m × (V / ||V||) where m=magnitude, V=direction
-Updates: learn Δm (scalar) and ΔV via LoRA
-```
-More expressive than standard LoRA; used in newer models.
-
-### LoRA-FA (Frozen A)
-Freeze matrix A, only train B → further reduces compute/memory while maintaining quality.
-
-### GaLore (Gradient Low-Rank Projection)
-Project gradients into a low-rank subspace during training — allows full-parameter fine-tuning with LoRA-level memory. Good for pre-training or continued pre-training.
-
-```python
-from galore_torch import GaLoreAdamW
-
-optimizer = GaLoreAdamW(
-    model.parameters(),
-    lr=1e-4,
-    rank=128,
-    update_proj_gap=200,  # Re-project every 200 steps
-    scale=0.25
-)
-```
+    **4. SFT vs RLHF?**
+    SFT uses supervised examples (Input $\rightarrow$ Output). It is great for teaching format and style. Reinforcement Learning from Human Feedback (RLHF) uses preference ranking (Output A is better than Output B). RLHF is vastly superior at teaching abstract behavioral concepts like "Helpfulness", "Safety", and "Toxicity avoidance", which are incredibly hard to define via static SFT examples.
 
 ---
 
