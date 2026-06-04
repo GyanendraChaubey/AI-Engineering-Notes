@@ -27,7 +27,7 @@ A comprehensive, open-source study guide for LLM engineering interviews — cove
 | 15 | [Miscellaneous Advanced Topics](docs/15-miscellaneous/README.md) | 8 |
 | 16 | [Case Studies](docs/16-case-studies/README.md) | 2 |
 
-**Total: 118 questions with detailed answers and code examples**
+**Total: 527 questions with detailed answers and code examples**
 
 ---
 

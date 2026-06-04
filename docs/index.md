@@ -26,9 +26,9 @@ A comprehensive, open-source study guide for LLM engineering interviews — cove
 | 14 | [Prompt Hacking & Security](14-prompt-hacking/README.md) | 3 |
 | 15 | [Miscellaneous Advanced Topics](15-miscellaneous/README.md) | 8 |
 | 16 | [Case Studies](16-case-studies/README.md) | 2 |
-| 17 | [Interview Questions](17-interview-questions/README.md) | - |
+| 17 | [Interview Questions](17-interview-questions/README.md) | 409 |
 
-**Total: 118+ questions with detailed answers and code examples**
+**Total: 527 questions with detailed answers and code examples**
 
 ---
 
