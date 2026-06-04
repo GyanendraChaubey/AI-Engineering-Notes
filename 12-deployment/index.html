@@ -814,15 +814,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation" class="md-nav__link">
+  <a href="#q2-what-is-the-kv-cache-and-what-are-its-memory-trade-offs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2. How does PagedAttention solve KV Cache memory fragmentation?
+        Q2. What is the KV Cache, and what are its memory trade-offs?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Q2. How does PagedAttention solve KV Cache memory fragmentation?">
+    <nav class="md-nav" aria-label="Q2. What is the KV Cache, and what are its memory trade-offs?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -853,15 +853,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q3-how-does-quantization-speed-up-inference-without-destroying-accuracy" class="md-nav__link">
+  <a href="#q3-how-does-pagedattention-solve-kv-cache-memory-fragmentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3. How does Quantization speed up inference without destroying accuracy?
+        Q3. How does PagedAttention solve KV Cache memory fragmentation?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Q3. How does Quantization speed up inference without destroying accuracy?">
+    <nav class="md-nav" aria-label="Q3. How does PagedAttention solve KV Cache memory fragmentation?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -892,15 +892,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit" class="md-nav__link">
+  <a href="#q4-how-does-quantization-speed-up-inference-without-destroying-accuracy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4. How does Speculative Decoding break the autoregressive speed limit?
+        Q4. How does Quantization speed up inference without destroying accuracy?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Q4. How does Speculative Decoding break the autoregressive speed limit?">
+    <nav class="md-nav" aria-label="Q4. How does Quantization speed up inference without destroying accuracy?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -916,6 +916,45 @@
         
           <li class="md-nav__item">
   <a href="#related-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5-how-does-speculative-decoding-break-the-autoregressive-speed-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5. How does Speculative Decoding break the autoregressive speed limit?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5. How does Speculative Decoding break the autoregressive speed limit?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         Related Questions
@@ -1260,8 +1299,53 @@ In standard CV/NLP models, you wait for 64 requests, batch them, and run them. H
 Continuous batching (pioneered by the ORCA paper, used in vLLM/TGI) solves this. The scheduler operates at the token iteration level. As soon as Request A finishes token 10 and exits, the scheduler immediately pulls Request C from the queue and inserts it into Request A's vacant slot on the very next token iteration. The GPU is kept at 100% batch saturation at all times.</p>
 </details>
 <hr>
-<h2 id="q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation">Q2. How does PagedAttention solve KV Cache memory fragmentation?<a class="headerlink" href="#q2-how-does-pagedattention-solve-kv-cache-memory-fragmentation" title="Permanent link">¶</a></h2>
+<h2 id="q2-what-is-the-kv-cache-and-what-are-its-memory-trade-offs">Q2. What is the KV Cache, and what are its memory trade-offs?<a class="headerlink" href="#q2-what-is-the-kv-cache-and-what-are-its-memory-trade-offs" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_1">Core Answer<a class="headerlink" href="#core-answer_1" title="Permanent link">¶</a></h3>
+<p>During autoregressive generation, the Transformer's attention mechanism requires every new token to attend to all preceding tokens. Without any optimization, the GPU must recompute the Key and Value tensors for every previous token at each generation step, resulting in <span class="arithmatex">\(O(n^2)\)</span> compute per sequence.</p>
+<p>The <strong>KV Cache</strong> eliminates this redundancy. Each token's Key and Value projections are computed once and stored in GPU VRAM. On every subsequent step, the model computes only the new token's K and V, then reads the previously cached tensors for attention. Compute drops to <span class="arithmatex">\(O(n)\)</span> per new token.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Without_Cache ["Without KV Cache"]
+        direction TB
+        W1["Step 1: compute K,V for token 1"]
+        W2["Step 2: recompute K,V for tokens 1–2"]
+        W3["Step 3: recompute K,V for tokens 1–3"]
+    end
+
+    subgraph With_Cache ["With KV Cache"]
+        direction TB
+        C1["Step 1: compute K₁,V₁ → store"]
+        C2["Step 2: compute K₂,V₂ → store\n(reuse K₁,V₁ from cache)"]
+        C3["Step 3: compute K₃,V₃ → store\n(reuse K₁,V₁,K₂,V₂ from cache)"]
+    end
+
+    style W1 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style W2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style W3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style C1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C2 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
+<p>The memory cost is: <span class="arithmatex">\(\text{KV memory} = 2 \times \text{layers} \times \text{seq\_len} \times \text{hidden\_dim} \times \text{bytes\_per\_element}\)</span>. For a 7B model (32 layers, hidden dim 4096, FP16) with a 2K context, this is roughly <strong>2–3 GB of VRAM consumed entirely by the cache</strong>. For long-context models (128K tokens) the KV cache of a single 70B request can exceed 80 GB, making memory management the central challenge in serving.</p>
+<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why does KV cache memory scale with sequence length but not compute per step?</li>
+<li>What architectural changes reduce KV cache size without shrinking the model?</li>
+<li>What are the main strategies for managing KV cache at serving scale?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Memory vs Compute Scaling?</strong>
+The cache must store one K and one V tensor per token per layer for the full history — so memory is <span class="arithmatex">\(O(n)\)</span> in sequence length. The attention computation per new token is a single Query attended over all <span class="arithmatex">\(n\)</span> cached K vectors, which is <span class="arithmatex">\(O(n)\)</span> work per step. Total generation work is <span class="arithmatex">\(O(n^2)\)</span> (summed over all steps), but the <em>incremental</em> compute per new token is <span class="arithmatex">\(O(n)\)</span>, which is why caching is worthwhile.</p>
+<p><strong>2. Architectural Reductions (MQA / GQA)?</strong>
+Standard Multi-Head Attention (MHA) creates a distinct Key and Value head per Query head (e.g., 32 Q heads → 32 K heads + 32 V heads). <strong>Multi-Query Attention (MQA)</strong> collapses all Query heads to share a single K and V head, shrinking KV cache size by up to 96%. <strong>Grouped Query Attention (GQA)</strong> — used in Llama-3 and Mistral — is a middle ground: <span class="arithmatex">\(G\)</span> groups of Query heads each share one K/V head. GQA preserves most of MQA's memory benefit while avoiding the accuracy drop seen in extreme MQA configurations.</p>
+<p><strong>3. Serving-Scale KV Cache Management?</strong>
+Three dominant strategies: (1) <strong>PagedAttention</strong> (vLLM) — borrows OS virtual memory to allocate cache in non-contiguous fixed-size blocks, eliminating fragmentation and increasing batch size 3–4x (see Q3). (2) <strong>KV Cache Quantization</strong> — compress cached tensors from FP16 to INT8 or FP8, halving memory at the cost of slight attention precision loss on long contexts. (3) <strong>Sliding Window / Streaming LLM</strong> — drop cache entries beyond a fixed window for infinite-length generation, trading recall of distant tokens for unbounded sequence support.</p>
+</details>
+<hr>
+<h2 id="q3-how-does-pagedattention-solve-kv-cache-memory-fragmentation">Q3. How does PagedAttention solve KV Cache memory fragmentation?<a class="headerlink" href="#q3-how-does-pagedattention-solve-kv-cache-memory-fragmentation" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
 <p>During the Decode phase, the LLM must "remember" all previous tokens to generate the next one. Instead of re-calculating everything from scratch, the GPU stores the intermediate Keys and Values in VRAM. This is the <strong>KV Cache</strong>.</p>
 <p>The KV cache grows dynamically with every generated token. Historically, inference engines had to statically pre-allocate contiguous memory for the maximum possible sequence length (e.g., 4096 tokens per request) just in case the model generated a long response. If the model only generated 10 tokens, the remaining 4086 tokens of VRAM were permanently locked and wasted (Internal Fragmentation). This limited batch sizes to tiny numbers.</p>
 <p><strong>PagedAttention</strong> (the core of the <code>vLLM</code> engine) borrows OS Virtual Memory paging. It chops the KV cache into small, fixed-size blocks (e.g., 16 tokens). It dynamically allocates physical blocks on the fly only when the model actually needs them, mapping them together via a logical page table.</p>
@@ -1302,7 +1386,7 @@ Continuous batching (pioneered by the ORCA paper, used in vLLM/TGI) solves this.
     style P5 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
     style P8 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF</code></pre>
 <p>By eliminating memory fragmentation, PagedAttention allows the GPU to fit 3x to 4x more requests into the batch, linearly scaling throughput.</p>
-<h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
+<h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
@@ -1321,13 +1405,13 @@ If the batch is full and outputs are longer than expected, physical VRAM runs ou
 Standard Multi-Head Attention creates a distinct Key and Value matrix for every single Query head (e.g., 32 Q heads, 32 K heads, 32 V heads). MQA forces all 32 Query heads to mathematically share a <em>single</em> Key and Value head. This shrinks the total size of the KV cache in VRAM by up to 96%, allowing massive context windows and giant batch sizes without OOM errors.</p>
 </details>
 <hr>
-<h2 id="q3-how-does-quantization-speed-up-inference-without-destroying-accuracy">Q3. How does Quantization speed up inference without destroying accuracy?<a class="headerlink" href="#q3-how-does-quantization-speed-up-inference-without-destroying-accuracy" title="Permanent link">¶</a></h2>
-<h3 id="core-answer_2">Core Answer<a class="headerlink" href="#core-answer_2" title="Permanent link">¶</a></h3>
+<h2 id="q4-how-does-quantization-speed-up-inference-without-destroying-accuracy">Q4. How does Quantization speed up inference without destroying accuracy?<a class="headerlink" href="#q4-how-does-quantization-speed-up-inference-without-destroying-accuracy" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
 <p><strong>Quantization</strong> compresses the neural network weights from 16-bit floats (BF16/FP16) down to 8-bit or 4-bit integers. </p>
 <p>Because the Decode phase is strictly <strong>Memory Bandwidth-Bound</strong>, reducing a 7B model from 14GB (FP16) down to 3.5GB (INT4) means the GPU can transfer the entire model across the silicon 4x faster. <strong>Quantization doesn't increase compute speed; it removes the data transfer bottleneck.</strong></p>
 <p>LLMs tolerate extreme quantization because they are massively over-parameterized. The weight distributions form tight Gaussian bell curves, meaning rounding them to the nearest INT4 bin rarely shifts the overall mathematical direction of the forward pass. </p>
 <p>The primary danger in Quantization is <strong>Outliers</strong>—specific activation channels that are 100x larger than the mean. If you quantize an outlier blindly, the clipping error cascades through the network, destroying accuracy.</p>
-<h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
+<h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
@@ -1346,8 +1430,8 @@ During Pre-fill, the GPU processes thousands of tokens in parallel, saturating t
 Just like weights, the KV cache can be quantized. Crushing the KV cache to 8-bit floating point (FP8) cuts memory usage in half, allowing you to double your batch size (massive throughput gain). However, unlike static weights, the KV cache is highly dynamic. Heavy KV quantization on complex reasoning tasks often leads to "attention degradation," where the model forgets specific details from the middle of the prompt.</p>
 </details>
 <hr>
-<h2 id="q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit">Q4. How does Speculative Decoding break the autoregressive speed limit?<a class="headerlink" href="#q4-how-does-speculative-decoding-break-the-autoregressive-speed-limit" title="Permanent link">¶</a></h2>
-<h3 id="core-answer_3">Core Answer<a class="headerlink" href="#core-answer_3" title="Permanent link">¶</a></h3>
+<h2 id="q5-how-does-speculative-decoding-break-the-autoregressive-speed-limit">Q5. How does Speculative Decoding break the autoregressive speed limit?<a class="headerlink" href="#q5-how-does-speculative-decoding-break-the-autoregressive-speed-limit" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_4">Core Answer<a class="headerlink" href="#core-answer_4" title="Permanent link">¶</a></h3>
 <p>Standard LLM generation is strictly sequential. To generate Token 3, you must finish calculating Token 2. You cannot parallelize autoregressive decoding.</p>
 <p><strong>Speculative Decoding</strong> bypasses this constraint by pairing a massive, slow "Target Model" (e.g., Llama-3-70B) with a tiny, lightning-fast "Draft Model" (e.g., Llama-3-8B).</p>
 <ol>
@@ -1379,7 +1463,7 @@ Just like weights, the KV cache can be quantized. Crushing the KV cache to 8-bit
     style F fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
     style G fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
     style H fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
-<h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
+<h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>

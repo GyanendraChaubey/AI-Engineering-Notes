@@ -829,6 +829,133 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q6-what-is-flashattention-and-how-does-it-work-mathematically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q6. What is FlashAttention and how does it work mathematically?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6. What is FlashAttention and how does it work mathematically?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-attention-memory-flow-expensive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standard Attention Memory Flow (Expensive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashattention-core-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FlashAttention Core Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-it-an-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is It an Approximation?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-gains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Gains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashattention-v2-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FlashAttention v2 Improvements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-flashattention-solve-the-700k-token-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does FlashAttention Solve the 700k Token Problem?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1484,6 +1611,111 @@ If you want an embedding that represents the word "bank" in the sentence "I sat 
 You can use a Decoder for classification (e.g., Prompt: "Classify this sentiment: 'I love it.' Sentiment: "). However, because it only uses unidirectional attention, it is incredibly inefficient. A 110M parameter BERT (Encoder) will routinely outperform a 7B parameter Llama (Decoder) at pure classification tasks while using 1/60th of the compute.</p>
 <p><strong>4. Cross-Attention in Encoder-Decoder?</strong>
 In translation (French to English), the Encoder processes the entire French sentence bidirectionally and outputs a matrix of hidden states. The Decoder generates the English sentence word-by-word. During generation, the Decoder uses Cross-Attention: its Queries (<span class="arithmatex">\(Q\)</span>) come from the currently generated English words, but its Keys (<span class="arithmatex">\(K\)</span>) and Values (<span class="arithmatex">\(V\)</span>) come directly from the Encoder's French hidden states, allowing it to "look back" at the source text.</p>
+</details>
+<hr>
+<h2 id="q6-what-is-flashattention-and-how-does-it-work-mathematically">Q6. What is FlashAttention and how does it work mathematically?<a class="headerlink" href="#q6-what-is-flashattention-and-how-does-it-work-mathematically" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_5">Core Answer<a class="headerlink" href="#core-answer_5" title="Permanent link">¶</a></h3>
+<p>Standard self-attention has <span class="arithmatex">\(O(n^2)\)</span> memory complexity because it materializes the full <span class="arithmatex">\(n \times n\)</span> attention matrix and writes it to the GPU's slow High Bandwidth Memory (HBM). <strong>The bottleneck is not FLOPs — it is memory bandwidth.</strong> Modern GPUs are compute-rich but HBM-limited.</p>
+<p><strong>FlashAttention</strong> (Dao et al., 2022) achieves exact attention with <span class="arithmatex">\(O(n \cdot d)\)</span> memory by computing attention in tiled blocks that stay entirely within the GPU's ultra-fast on-chip SRAM — never writing the attention matrix to HBM.</p>
+<h3 id="standard-attention-memory-flow-expensive">Standard Attention Memory Flow (Expensive)<a class="headerlink" href="#standard-attention-memory-flow-expensive" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Compute QKᵀ   →  Write n×n matrix to HBM  →  Read it back
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Apply softmax →  Write result to HBM       →  Read it back
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Multiply by V →  Write output to HBM
+</span></code></pre></div>
+<p>Four HBM round-trips per attention layer — each round-trip bottlenecked by ~2 TB/s bandwidth vs the 300+ TFLOPS of compute sitting idle.</p>
+<h3 id="flashattention-core-algorithm">FlashAttention Core Algorithm<a class="headerlink" href="#flashattention-core-algorithm" title="Permanent link">¶</a></h3>
+<p>FlashAttention tiles Q, K, V into blocks and processes them one block at a time in SRAM:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>For each block of Q (block_q):
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    For each block of K, V (block_k, block_v):
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        Compute partial scores: S_block = block_q · block_kᵀ / √d
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        Apply online softmax update
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        Accumulate weighted V into output O
+</span></code></pre></div>
+<p>The <strong>online softmax trick</strong> is the mathematical key — it computes the exact softmax of the full row without ever storing the full row:</p>
+<div class="arithmatex">\[m_{\text{new}} = \max(m_{\text{old}},\ m_{\text{block}})$$
+$$\ell_{\text{new}} = \ell_{\text{old}} \cdot e^{m_{\text{old}} - m_{\text{new}}} + \sum_j e^{x_j - m_{\text{new}}}\]</div>
+<p>Where <span class="arithmatex">\(m\)</span> is the running maximum and <span class="arithmatex">\(\ell\)</span> is the running normalizer. Each new block updates both in a single pass, yielding exact softmax with no full-row storage.</p>
+<h3 id="memory-comparison">Memory Comparison<a class="headerlink" href="#memory-comparison" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Memory Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard Attention</td>
+<td><span class="arithmatex">\(O(n^2)\)</span> — stores the full attention matrix</td>
+</tr>
+<tr>
+<td>FlashAttention</td>
+<td><span class="arithmatex">\(O(n \cdot d)\)</span> — only stores output + small SRAM tiles</td>
+</tr>
+</tbody>
+</table>
+<p>For <span class="arithmatex">\(n = 16k\)</span> tokens and <span class="arithmatex">\(d = 128\)</span>: Standard → 1GB attention matrix; FlashAttention → ~2MB in SRAM.</p>
+<h3 id="is-it-an-approximation">Is It an Approximation?<a class="headerlink" href="#is-it-an-approximation" title="Permanent link">¶</a></h3>
+<p><strong>No — FlashAttention computes mathematically exact attention.</strong> Unlike Linformer, Performer, or Reformer (all of which approximate attention), FlashAttention is bit-for-bit identical to standard attention. The online softmax produces the same result as computing the full softmax — just without materializing the intermediate matrix.</p>
+<h3 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">¶</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">q</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># PyTorch ≥ 2.0 automatically dispatches to FlashAttention kernel</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># when running on a CUDA device with compatible dtype</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">out</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">scaled_dot_product_attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="performance-gains">Performance Gains<a class="headerlink" href="#performance-gains" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Gain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training speedup</td>
+<td>2–4× on long sequences</td>
+</tr>
+<tr>
+<td>Memory reduction</td>
+<td>5–20× at sequence lengths ≥ 4k</td>
+</tr>
+<tr>
+<td>Backward pass</td>
+<td>Recomputes attention tiles (no storage needed)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flashattention-v2-improvements">FlashAttention v2 Improvements<a class="headerlink" href="#flashattention-v2-improvements" title="Permanent link">¶</a></h3>
+<p>FlashAttention-2 (2023) added: (1) better GPU thread-block parallelism over both sequence and head dimensions, (2) reduced non-matmul operations in the inner loop, (3) more efficient backward pass — yielding ~2× additional speedup over v1.</p>
+<h3 id="does-flashattention-solve-the-700k-token-problem">Does FlashAttention Solve the 700k Token Problem?<a class="headerlink" href="#does-flashattention-solve-the-700k-token-problem" title="Permanent link">¶</a></h3>
+<p><strong>No.</strong> FlashAttention reduces the <em>constant factor</em> and <em>memory bandwidth bottleneck</em>, but the computational complexity remains <span class="arithmatex">\(O(n^2 \cdot d)\)</span>. At <span class="arithmatex">\(n = 700k\)</span>, the raw FLOP count is <span class="arithmatex">\(700k^2 \times d \approx 10^{13}\)</span> — far beyond what any GPU can execute at usable latency. FlashAttention is essential for long contexts in the 4k–100k range but does not make million-token prompts feasible alone.</p>
+<h3 id="related-questions_5">Related Questions<a class="headerlink" href="#related-questions_5" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>Why does FlashAttention speed up training more than inference?</li>
+<li>How does FlashAttention's backward pass avoid storing the attention matrix?</li>
+<li>How does FlashAttention differ from sparse attention methods like Longformer?</li>
+<li>What hardware constraint makes FlashAttention beneficial?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. Training vs Inference speedup?</strong>
+During training, FlashAttention eliminates storing the <span class="arithmatex">\(n \times n\)</span> attention matrix for both forward and backward passes — a huge memory saving that allows larger batch sizes and longer sequences. During inference, the KV Cache dominates memory, and only the prefill phase benefits from FlashAttention. The decode phase (generating one token at a time) performs small attention operations that fit in SRAM regardless.</p>
+<p><strong>2. Backward pass without storing attention matrix?</strong>
+The standard backward pass reads the saved attention matrix from HBM to compute gradients. FlashAttention's backward pass instead recomputes the attention tiles on-the-fly during the backward sweep (trading compute for memory). Because recomputing a tile from Q, K, V is cheap compared to HBM round-trips, this "gradient checkpointing at the attention level" is both faster and more memory-efficient.</p>
+<p><strong>3. FlashAttention vs Sparse Attention (Longformer)?</strong>
+Sparse attention methods (Longformer, BigBird) reduce complexity to <span class="arithmatex">\(O(n \cdot w)\)</span> (window size <span class="arithmatex">\(w\)</span>) by computing only local token interactions. They are approximate — tokens outside the window have zero attention weight by design. FlashAttention is exact: it computes full global attention. FlashAttention is for hardware efficiency; sparse attention is for architectural approximation of long-range dependencies.</p>
+<p><strong>4. Hardware constraint?</strong>
+FlashAttention exploits the two-tier GPU memory hierarchy: large, slow HBM (~80GB, ~3 TB/s) and small, fast SRAM (~20MB, ~19 TB/s). By keeping the attention computation inside SRAM, it avoids the 6× bandwidth gap between the two tiers. On CPUs (which lack this hierarchy), FlashAttention provides no benefit.</p>
 </details>
 <hr>
 <p><em>Next: <a href="../08-fine-tuning/">Supervised Fine-Tuning →</a></em></p>

@@ -857,6 +857,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q6-what-are-the-key-peft-variants-beyond-lora-qlora-dora-relora-and-autolora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q6. What are the key PEFT variants beyond LoRA: QLoRA, DoRA, ReLoRA, and AutoLoRA?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6. What are the key PEFT variants beyond LoRA: QLoRA, DoRA, ReLoRA, and AutoLoRA?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-answer_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Answer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1457,6 +1496,80 @@ Human labeling is slow and expensive. You can script GPT-4-Turbo to generate you
 Validation Loss is a poor metric for LLMs because it only measures next-token probability, not semantic quality. You must use "LLM-as-a-Judge". Pass the fine-tuned model's outputs to GPT-4 and ask GPT-4 to score them from 1-5 on metrics like Faithfulness, Helpfulness, and Format Adherence.</p>
 <p><strong>4. SFT vs RLHF?</strong>
 SFT uses supervised examples (Input <span class="arithmatex">\(\rightarrow\)</span> Output). It is great for teaching format and style. Reinforcement Learning from Human Feedback (RLHF) uses preference ranking (Output A is better than Output B). RLHF is vastly superior at teaching abstract behavioral concepts like "Helpfulness", "Safety", and "Toxicity avoidance", which are incredibly hard to define via static SFT examples.</p>
+</details>
+<hr>
+<h2 id="q6-what-are-the-key-peft-variants-beyond-lora-qlora-dora-relora-and-autolora">Q6. What are the key PEFT variants beyond LoRA: QLoRA, DoRA, ReLoRA, and AutoLoRA?<a class="headerlink" href="#q6-what-are-the-key-peft-variants-beyond-lora-qlora-dora-relora-and-autolora" title="Permanent link">¶</a></h2>
+<h3 id="core-answer_5">Core Answer<a class="headerlink" href="#core-answer_5" title="Permanent link">¶</a></h3>
+<p>After LoRA established the PEFT paradigm, four major variants emerged to address specific limitations in memory, convergence, and adapter placement. All four freeze the base model and train only small adapter structures, but each does it differently.</p>
+<p><strong>QLoRA (Quantized LoRA):</strong> Loads the base model in 4-bit precision (NF4 format), then trains 16-bit LoRA adapters on top of it. Paged optimizers prevent GPU memory spikes. This enables fine-tuning a 65B model on a single 48GB GPU with near full-precision quality.</p>
+<p><strong>DoRA (Weight-Decomposed LoRA):</strong> Decomposes each weight matrix into a magnitude scalar <span class="arithmatex">\(m\)</span> and a normalized direction <span class="arithmatex">\(\hat{V}\)</span>, then applies LoRA updates to each component separately: <span class="arithmatex">\(W = m \cdot \hat{V}\)</span>. Standard LoRA blends both into one <span class="arithmatex">\(\Delta W\)</span>, which struggles when the task requires significant weight rescaling. DoRA fixes this and consistently outperforms LoRA at the same parameter count.</p>
+<p><strong>ReLoRA (Restart LoRA):</strong> Standard LoRA adapters can stall in local optima during long training runs. ReLoRA periodically merges the current adapters into the base weights (<span class="arithmatex">\(W \leftarrow W + AB\)</span>), resets the adapters, and continues training — allowing each training phase to start from a richer base. Best suited for full pre-training or continued pre-training runs, not short SFT.</p>
+<p><strong>AutoLoRA:</strong> Instead of manually choosing which layers and what rank to assign, AutoLoRA uses importance scoring across layers to automatically determine adapter placement and rank allocation. A layer that shows high gradient sensitivity gets a higher rank; others get a lower rank or no adapter at all.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Base Model"] --&gt; B{"PEFT Variant"}
+
+    B --&gt;|"QLoRA"| C["Quantize to 4-bit (NF4)\nFreeze base\nTrain 16-bit LoRA adapters"]
+    B --&gt;|"DoRA"| D["Decompose W = m × V̂\nLearn Δm and ΔV separately"]
+    B --&gt;|"ReLoRA"| E["Train LoRA → Merge → Reset\nRepeat each cycle"]
+    B --&gt;|"AutoLoRA"| F["Score layer importance\nAssign rank per layer automatically"]
+
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF</code></pre>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Core Idea</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QLoRA</td>
+<td>4-bit base + 16-bit LoRA</td>
+<td>Fitting huge models on small GPUs</td>
+</tr>
+<tr>
+<td>DoRA</td>
+<td>Separate magnitude/direction updates</td>
+<td>Better quality than LoRA, same cost</td>
+</tr>
+<tr>
+<td>ReLoRA</td>
+<td>Merge + restart LoRA periodically</td>
+<td>Long pre-training or continued training</td>
+</tr>
+<tr>
+<td>AutoLoRA</td>
+<td>Auto-assign ranks by layer importance</td>
+<td>Reducing wasted parameters in SFT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="related-questions_5">Related Questions<a class="headerlink" href="#related-questions_5" title="Permanent link">¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Follow-up Interview Questions</p>
+<ol>
+<li>What is NF4 and why does it outperform standard 4-bit uniform quantization?</li>
+<li>Why does DoRA separate weight magnitude from direction?</li>
+<li>In what scenario would you choose ReLoRA over standard LoRA?</li>
+<li>How does AutoLoRA differ from manually sweeping LoRA rank as a hyperparameter?</li>
+</ol>
+</div>
+<details class="success">
+<summary>View Answers</summary>
+<p><strong>1. NF4 (NormalFloat-4)?</strong>
+NF4 is a 4-bit data type designed around the empirical observation that LLM weights follow a near-Gaussian distribution centered at zero. Standard INT4 quantization places its 16 representable values evenly across the range, wasting most bins on extreme values where almost no weights exist. NF4 derives its bin boundaries by quantizing a theoretical normal distribution so that each bin covers an equal portion of the probability mass — placing many more bins near zero where the weights are dense. This reduces quantization error significantly. QLoRA also uses <em>double quantization</em>: the quantization constants themselves (one per 64-parameter block) are quantized a second time from FP32 to FP8, saving an additional ~0.37 bits per parameter.</p>
+<p><strong>2. DoRA Magnitude/Direction Split?</strong>
+LoRA updates <span class="arithmatex">\(W + AB\)</span>, which changes both the scale and direction of the weight matrix in a coupled way. Tasks that require the model to strongly rescale certain weight channels (e.g., switching output tone or learning a task with very different activation magnitudes) require large <span class="arithmatex">\(\Delta W\)</span> norms that a low-rank decomposition struggles to express cleanly. DoRA decouples these: the scalar <span class="arithmatex">\(m\)</span> absorbs all scaling changes while <span class="arithmatex">\(\hat{V}\)</span> handles purely directional changes. This matches how weight updates look in fully fine-tuned models, leading to more stable convergence.</p>
+<p><strong>3. When to Use ReLoRA?</strong>
+ReLoRA's periodic merge-and-restart gives each subsequent LoRA phase a richer starting point, simulating the effect of a higher-rank adapter over time. This benefit compounds over long training runs (tens of thousands of steps). For a short SFT run of 1–3 epochs on a small dataset, a standard LoRA with a well-tuned rank achieves similar results with less complexity.</p>
+<p><strong>4. AutoLoRA vs Rank Sweep?</strong>
+A manual rank sweep trains one full run per candidate rank and picks the best. AutoLoRA runs once and learns the rank allocation jointly with the adapter weights, using differentiable importance scores. This means it can discover that layer 8 needs rank 32 while layer 2 only needs rank 4 — a result that would require <span class="arithmatex">\(O(N)\)</span> separate manual experiments to find.</p>
 </details>
 <hr>
 <p><em>Next: <a href="../09-preference-alignment/">Preference Alignment →</a></em></p>
