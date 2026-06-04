@@ -1,6 +1,6 @@
 # Preference Alignment (RLHF & DPO)
 
-> Supervised Fine-Tuning (SFT) teaches a model *how* to talk. Preference Alignment teaches a model *what humans actually want it to say*. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Supervised Fine-Tuning (SFT) teaches a model *how* to talk. Preference Alignment teaches a model *what humans actually want it to say*.
 
 ---
 

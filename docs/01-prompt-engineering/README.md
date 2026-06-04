@@ -1,6 +1,6 @@
 # Prompt Engineering & LLM Fundamentals
 
-> Core concepts every LLM engineer must know — from how models generate text to advanced reasoning techniques. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Core concepts every LLM engineer must know — from how models generate text to advanced reasoning techniques.
 
 ---
 

@@ -1,6 +1,6 @@
 # Retrieval Augmented Generation (RAG)
 
-> RAG bridges the gap between static model knowledge and dynamic, verifiable, up-to-date information. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> RAG bridges the gap between static model knowledge and dynamic, verifiable, up-to-date information.
 
 ---
 

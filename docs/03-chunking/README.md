@@ -1,6 +1,6 @@
 # Document Digitization & Chunking
 
-> How you split your documents is often the single biggest factor in RAG retrieval quality. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> How you split your documents is often the single biggest factor in RAG retrieval quality.
 
 ---
 

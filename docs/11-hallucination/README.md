@@ -1,6 +1,6 @@
 # Hallucination Control Techniques
 
-> Hallucination is the primary barrier preventing Generative AI from achieving full autonomy in production. Controlling it requires systemic interventions across the entire architecture. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Hallucination is the primary barrier preventing Generative AI from achieving full autonomy in production. Controlling it requires systemic interventions across the entire architecture.
 
 ---
 

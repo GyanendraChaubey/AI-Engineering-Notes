@@ -1,6 +1,6 @@
 # Language Models — Internal Working
 
-> A deep dive into the mathematical mechanics, memory constraints, and architectural evolutions of modern Transformer-based LLMs. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> A deep dive into the mathematical mechanics, memory constraints, and architectural evolutions of modern Transformer-based LLMs.
 
 ---
 

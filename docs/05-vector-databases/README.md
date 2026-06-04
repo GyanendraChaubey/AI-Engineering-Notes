@@ -1,6 +1,6 @@
 # Vector Databases — Internal Working
 
-> Vector Databases are the storage layer of the AI era, purpose-built to execute Approximate Nearest Neighbor (ANN) searches across billions of high-dimensional embeddings. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Vector Databases are the storage layer of the AI era, purpose-built to execute Approximate Nearest Neighbor (ANN) searches across billions of high-dimensional embeddings.
 
 ---
 

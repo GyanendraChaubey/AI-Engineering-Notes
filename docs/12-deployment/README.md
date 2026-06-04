@@ -1,6 +1,6 @@
 # LLM Deployment & Inference Optimization
 
-> Serving an LLM is easy. Serving an LLM efficiently, securely, and cheaply at scale is one of the hardest infrastructure problems in modern engineering. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Serving an LLM is easy. Serving an LLM efficiently, securely, and cheaply at scale is one of the hardest infrastructure problems in modern engineering.
 
 ---
 

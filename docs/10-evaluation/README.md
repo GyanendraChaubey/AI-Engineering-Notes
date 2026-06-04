@@ -1,6 +1,6 @@
 # Evaluation of LLM Systems
 
-> You cannot improve what you cannot measure. Moving an LLM application from a "cool demo" to a production system requires a rigorous, automated evaluation harness. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> You cannot improve what you cannot measure. Moving an LLM application from a "cool demo" to a production system requires a rigorous, automated evaluation harness.
 
 ---
 

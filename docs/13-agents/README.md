@@ -1,6 +1,6 @@
 # Agent-Based Systems
 
-> Moving from stateless chatbots to autonomous reasoning engines. Agents are the bridge between generating text and taking action in the real world. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Moving from stateless chatbots to autonomous reasoning engines. Agents are the bridge between generating text and taking action in the real world.
 
 ---
 

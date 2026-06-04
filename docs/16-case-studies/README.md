@@ -1,6 +1,6 @@
 # Case Studies in LLM System Design
 
-> Applying the underlying mathematics, architecture, and prompting theory to realistic production scenarios. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** system design interview.
+> Applying the underlying mathematics, architecture, and prompting theory to realistic production scenarios.
 
 ---
 

@@ -1,6 +1,6 @@
 # Advanced Search Algorithms
 
-> Retrieval quality is the single biggest lever in a RAG system. Poor retrieval equals poor answers, regardless of whether you are using a 7B or 400B parameter LLM. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Retrieval quality is the single biggest lever in a RAG system. Poor retrieval equals poor answers, regardless of whether you are using a 7B or 400B parameter LLM.
 
 ---
 

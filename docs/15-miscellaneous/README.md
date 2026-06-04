@@ -1,6 +1,6 @@
 # Miscellaneous LLM Engineering Topics
 
-> Advanced topics spanning architecture, memory mathematics, low-precision training, and production pipelines. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Advanced topics spanning architecture, memory mathematics, low-precision training, and production pipelines.
 
 ---
 

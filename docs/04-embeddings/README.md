@@ -1,6 +1,6 @@
 # Embedding Models
 
-> Embeddings are the mathematical bridge between raw text and semantic similarity. They are the engine of modern RAG systems. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Embeddings are the mathematical bridge between raw text and semantic similarity. They are the engine of modern RAG systems.
 
 ---
 

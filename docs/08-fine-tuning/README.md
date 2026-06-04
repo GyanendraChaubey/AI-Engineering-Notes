@@ -1,6 +1,6 @@
 # Supervised Fine-Tuning of LLMs
 
-> Supervised Fine-Tuning (SFT) adapts a generalist foundation model to your specific domain, tone, and formatting constraints. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Supervised Fine-Tuning (SFT) adapts a generalist foundation model to your specific domain, tone, and formatting constraints.
 
 ---
 

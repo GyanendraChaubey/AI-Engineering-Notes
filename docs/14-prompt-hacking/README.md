@@ -1,6 +1,6 @@
 # Prompt Hacking & LLM Security
 
-> Exposing an LLM to the internet is mathematically equivalent to exposing an unfiltered SQL endpoint. Controlling malicious input is the foundation of AI security. Answers are calibrated for a **Google L5 Senior AI/ML Engineer** interview bar.
+> Exposing an LLM to the internet is mathematically equivalent to exposing an unfiltered SQL endpoint. Controlling malicious input is the foundation of AI security.
 
 ---
 
