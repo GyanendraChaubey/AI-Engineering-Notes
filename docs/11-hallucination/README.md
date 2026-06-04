@@ -104,15 +104,15 @@ flowchart TD
     F --> G{"Classification"}
     G -->|"Entailment (>0.9)"| H["Return Answer to User"]
     G -->|"Contradiction / Neutral"| I["Block Output / Trigger Fallback"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style F fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style G fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style I fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style F fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style G fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style H fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style I fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Related Questions
@@ -160,12 +160,12 @@ flowchart LR
     
     D -->|"Returns: 'Alice'"| E["LLM Formats Response"]
     E --> F["Response: Alice is the CEO of Acme."]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style F fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Related Questions

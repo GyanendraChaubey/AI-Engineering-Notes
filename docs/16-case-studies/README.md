@@ -45,16 +45,16 @@ flowchart TD
     H --> I
     I --> J
 
-    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
-    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
-    style C fill:#E8EAF6,stroke:#3949AB,color:#1a1a1a
-    style D fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
-    style E fill:#E3F2FD,stroke:#1565C0,color:#1a1a1a
-    style F fill:#E0F2F1,stroke:#00695C,color:#1a1a1a
-    style G fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
-    style H fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
-    style I fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
-    style J fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
+    style A fill:#D4AC0D,stroke:#9A7D0A,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style C fill:#5D6D7E,stroke:#2E4057,color:#FFFFFF
+    style D fill:#2980B9,stroke:#1A5276,color:#FFFFFF
+    style E fill:#2980B9,stroke:#1A5276,color:#FFFFFF
+    style F fill:#16A085,stroke:#0E6655,color:#FFFFFF
+    style G fill:#E67E22,stroke:#CA6F1E,color:#FFFFFF
+    style H fill:#8E44AD,stroke:#6C3483,color:#FFFFFF
+    style I fill:#C0392B,stroke:#922B21,color:#FFFFFF
+    style J fill:#16A085,stroke:#0E6655,color:#FFFFFF
 ```
 
 ### Python Implementation Architecture

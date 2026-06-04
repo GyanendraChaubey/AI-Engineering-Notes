@@ -83,16 +83,16 @@ flowchart TD
     E4 --> F
     F --> G
 
-    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
-    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
-    style C fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
-    style D fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
-    style E1 fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
-    style E2 fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
-    style E3 fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
-    style E4 fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
-    style F fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
-    style G fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
+    style A fill:#D4AC0D,stroke:#9A7D0A,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style C fill:#2980B9,stroke:#1A5276,color:#FFFFFF
+    style D fill:#E67E22,stroke:#CA6F1E,color:#FFFFFF
+    style E1 fill:#8E44AD,stroke:#6C3483,color:#FFFFFF
+    style E2 fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style E3 fill:#8E44AD,stroke:#6C3483,color:#FFFFFF
+    style E4 fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,color:#FFFFFF
+    style G fill:#16A085,stroke:#0E6655,color:#FFFFFF
 ```
 
 **PyTorch Implementation of an MoE Layer:**
@@ -214,15 +214,15 @@ flowchart TD
     G --> H
     H --> I
 
-    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
-    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
-    style C fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
-    style D fill:#E3F2FD,stroke:#1565C0,color:#1a1a1a
-    style E fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
-    style F fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
-    style G fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
-    style H fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
-    style I fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
+    style A fill:#D4AC0D,stroke:#9A7D0A,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style C fill:#2980B9,stroke:#1A5276,color:#FFFFFF
+    style D fill:#2980B9,stroke:#1A5276,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,color:#FFFFFF
+    style F fill:#8E44AD,stroke:#6C3483,color:#FFFFFF
+    style G fill:#27AE60,stroke:#1E8449,color:#FFFFFF
+    style H fill:#C0392B,stroke:#922B21,color:#FFFFFF
+    style I fill:#16A085,stroke:#0E6655,color:#FFFFFF
 ```
 
 **Production RAG Component Class:**
