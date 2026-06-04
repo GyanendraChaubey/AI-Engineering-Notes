@@ -233,4 +233,108 @@ The original Transformer (2017) was an **Encoder-Decoder** designed for translat
 
 ---
 
+## Q6. What is FlashAttention and how does it work mathematically?
+
+### Core Answer
+
+Standard self-attention has $O(n^2)$ memory complexity because it materializes the full $n \times n$ attention matrix and writes it to the GPU's slow High Bandwidth Memory (HBM). **The bottleneck is not FLOPs — it is memory bandwidth.** Modern GPUs are compute-rich but HBM-limited.
+
+**FlashAttention** (Dao et al., 2022) achieves exact attention with $O(n \cdot d)$ memory by computing attention in tiled blocks that stay entirely within the GPU's ultra-fast on-chip SRAM — never writing the attention matrix to HBM.
+
+### Standard Attention Memory Flow (Expensive)
+
+```
+Compute QKᵀ   →  Write n×n matrix to HBM  →  Read it back
+Apply softmax →  Write result to HBM       →  Read it back
+Multiply by V →  Write output to HBM
+```
+
+Four HBM round-trips per attention layer — each round-trip bottlenecked by ~2 TB/s bandwidth vs the 300+ TFLOPS of compute sitting idle.
+
+### FlashAttention Core Algorithm
+
+FlashAttention tiles Q, K, V into blocks and processes them one block at a time in SRAM:
+
+```
+For each block of Q (block_q):
+    For each block of K, V (block_k, block_v):
+        Compute partial scores: S_block = block_q · block_kᵀ / √d
+        Apply online softmax update
+        Accumulate weighted V into output O
+```
+
+The **online softmax trick** is the mathematical key — it computes the exact softmax of the full row without ever storing the full row:
+
+$$m_{\text{new}} = \max(m_{\text{old}},\ m_{\text{block}})$$
+$$\ell_{\text{new}} = \ell_{\text{old}} \cdot e^{m_{\text{old}} - m_{\text{new}}} + \sum_j e^{x_j - m_{\text{new}}}$$
+
+Where $m$ is the running maximum and $\ell$ is the running normalizer. Each new block updates both in a single pass, yielding exact softmax with no full-row storage.
+
+### Memory Comparison
+
+| Method | Memory Complexity |
+|---|---|
+| Standard Attention | $O(n^2)$ — stores the full attention matrix |
+| FlashAttention | $O(n \cdot d)$ — only stores output + small SRAM tiles |
+
+For $n = 16k$ tokens and $d = 128$: Standard → 1GB attention matrix; FlashAttention → ~2MB in SRAM.
+
+### Is It an Approximation?
+
+**No — FlashAttention computes mathematically exact attention.** Unlike Linformer, Performer, or Reformer (all of which approximate attention), FlashAttention is bit-for-bit identical to standard attention. The online softmax produces the same result as computing the full softmax — just without materializing the intermediate matrix.
+
+### Code Example
+
+```python
+import torch
+import torch.nn.functional as F
+
+q = torch.randn(1, 8, 2048, 64, device="cuda", dtype=torch.float16)
+k = torch.randn(1, 8, 2048, 64, device="cuda", dtype=torch.float16)
+v = torch.randn(1, 8, 2048, 64, device="cuda", dtype=torch.float16)
+
+# PyTorch ≥ 2.0 automatically dispatches to FlashAttention kernel
+# when running on a CUDA device with compatible dtype
+out = F.scaled_dot_product_attention(q, k, v)
+```
+
+### Performance Gains
+
+| Metric | Gain |
+|---|---|
+| Training speedup | 2–4× on long sequences |
+| Memory reduction | 5–20× at sequence lengths ≥ 4k |
+| Backward pass | Recomputes attention tiles (no storage needed) |
+
+### FlashAttention v2 Improvements
+
+FlashAttention-2 (2023) added: (1) better GPU thread-block parallelism over both sequence and head dimensions, (2) reduced non-matmul operations in the inner loop, (3) more efficient backward pass — yielding ~2× additional speedup over v1.
+
+### Does FlashAttention Solve the 700k Token Problem?
+
+**No.** FlashAttention reduces the *constant factor* and *memory bandwidth bottleneck*, but the computational complexity remains $O(n^2 \cdot d)$. At $n = 700k$, the raw FLOP count is $700k^2 \times d \approx 10^{13}$ — far beyond what any GPU can execute at usable latency. FlashAttention is essential for long contexts in the 4k–100k range but does not make million-token prompts feasible alone.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Why does FlashAttention speed up training more than inference?
+    2. How does FlashAttention's backward pass avoid storing the attention matrix?
+    3. How does FlashAttention differ from sparse attention methods like Longformer?
+    4. What hardware constraint makes FlashAttention beneficial?
+
+??? success "View Answers"
+    **1. Training vs Inference speedup?**
+    During training, FlashAttention eliminates storing the $n \times n$ attention matrix for both forward and backward passes — a huge memory saving that allows larger batch sizes and longer sequences. During inference, the KV Cache dominates memory, and only the prefill phase benefits from FlashAttention. The decode phase (generating one token at a time) performs small attention operations that fit in SRAM regardless.
+
+    **2. Backward pass without storing attention matrix?**
+    The standard backward pass reads the saved attention matrix from HBM to compute gradients. FlashAttention's backward pass instead recomputes the attention tiles on-the-fly during the backward sweep (trading compute for memory). Because recomputing a tile from Q, K, V is cheap compared to HBM round-trips, this "gradient checkpointing at the attention level" is both faster and more memory-efficient.
+
+    **3. FlashAttention vs Sparse Attention (Longformer)?**
+    Sparse attention methods (Longformer, BigBird) reduce complexity to $O(n \cdot w)$ (window size $w$) by computing only local token interactions. They are approximate — tokens outside the window have zero attention weight by design. FlashAttention is exact: it computes full global attention. FlashAttention is for hardware efficiency; sparse attention is for architectural approximation of long-range dependencies.
+
+    **4. Hardware constraint?**
+    FlashAttention exploits the two-tier GPU memory hierarchy: large, slow HBM (~80GB, ~3 TB/s) and small, fast SRAM (~20MB, ~19 TB/s). By keeping the attention computation inside SRAM, it avoids the 6× bandwidth gap between the two tiers. On CPUs (which lack this hierarchy), FlashAttention provides no benefit.
+
+---
+
 *Next: [Supervised Fine-Tuning →](../08-fine-tuning/README.md)*

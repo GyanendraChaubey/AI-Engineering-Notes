@@ -232,4 +232,65 @@ By exposing the model to this pattern thousands of times, Abstention becomes a m
 
 ---
 
+## Q6. What are the key PEFT variants beyond LoRA: QLoRA, DoRA, ReLoRA, and AutoLoRA?
+
+### Core Answer
+
+After LoRA established the PEFT paradigm, four major variants emerged to address specific limitations in memory, convergence, and adapter placement. All four freeze the base model and train only small adapter structures, but each does it differently.
+
+**QLoRA (Quantized LoRA):** Loads the base model in 4-bit precision (NF4 format), then trains 16-bit LoRA adapters on top of it. Paged optimizers prevent GPU memory spikes. This enables fine-tuning a 65B model on a single 48GB GPU with near full-precision quality.
+
+**DoRA (Weight-Decomposed LoRA):** Decomposes each weight matrix into a magnitude scalar $m$ and a normalized direction $\hat{V}$, then applies LoRA updates to each component separately: $W = m \cdot \hat{V}$. Standard LoRA blends both into one $\Delta W$, which struggles when the task requires significant weight rescaling. DoRA fixes this and consistently outperforms LoRA at the same parameter count.
+
+**ReLoRA (Restart LoRA):** Standard LoRA adapters can stall in local optima during long training runs. ReLoRA periodically merges the current adapters into the base weights ($W \leftarrow W + AB$), resets the adapters, and continues training — allowing each training phase to start from a richer base. Best suited for full pre-training or continued pre-training runs, not short SFT.
+
+**AutoLoRA:** Instead of manually choosing which layers and what rank to assign, AutoLoRA uses importance scoring across layers to automatically determine adapter placement and rank allocation. A layer that shows high gradient sensitivity gets a higher rank; others get a lower rank or no adapter at all.
+
+```mermaid
+flowchart TD
+    A["Base Model"] --> B{"PEFT Variant"}
+
+    B -->|"QLoRA"| C["Quantize to 4-bit (NF4)\nFreeze base\nTrain 16-bit LoRA adapters"]
+    B -->|"DoRA"| D["Decompose W = m × V̂\nLearn Δm and ΔV separately"]
+    B -->|"ReLoRA"| E["Train LoRA → Merge → Reset\nRepeat each cycle"]
+    B -->|"AutoLoRA"| F["Score layer importance\nAssign rank per layer automatically"]
+
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+```
+
+| Method | Core Idea | Best For |
+|---|---|---|
+| QLoRA | 4-bit base + 16-bit LoRA | Fitting huge models on small GPUs |
+| DoRA | Separate magnitude/direction updates | Better quality than LoRA, same cost |
+| ReLoRA | Merge + restart LoRA periodically | Long pre-training or continued training |
+| AutoLoRA | Auto-assign ranks by layer importance | Reducing wasted parameters in SFT |
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. What is NF4 and why does it outperform standard 4-bit uniform quantization?
+    2. Why does DoRA separate weight magnitude from direction?
+    3. In what scenario would you choose ReLoRA over standard LoRA?
+    4. How does AutoLoRA differ from manually sweeping LoRA rank as a hyperparameter?
+
+??? success "View Answers"
+    **1. NF4 (NormalFloat-4)?**
+    NF4 is a 4-bit data type designed around the empirical observation that LLM weights follow a near-Gaussian distribution centered at zero. Standard INT4 quantization places its 16 representable values evenly across the range, wasting most bins on extreme values where almost no weights exist. NF4 derives its bin boundaries by quantizing a theoretical normal distribution so that each bin covers an equal portion of the probability mass — placing many more bins near zero where the weights are dense. This reduces quantization error significantly. QLoRA also uses *double quantization*: the quantization constants themselves (one per 64-parameter block) are quantized a second time from FP32 to FP8, saving an additional ~0.37 bits per parameter.
+
+    **2. DoRA Magnitude/Direction Split?**
+    LoRA updates $W + AB$, which changes both the scale and direction of the weight matrix in a coupled way. Tasks that require the model to strongly rescale certain weight channels (e.g., switching output tone or learning a task with very different activation magnitudes) require large $\Delta W$ norms that a low-rank decomposition struggles to express cleanly. DoRA decouples these: the scalar $m$ absorbs all scaling changes while $\hat{V}$ handles purely directional changes. This matches how weight updates look in fully fine-tuned models, leading to more stable convergence.
+
+    **3. When to Use ReLoRA?**
+    ReLoRA's periodic merge-and-restart gives each subsequent LoRA phase a richer starting point, simulating the effect of a higher-rank adapter over time. This benefit compounds over long training runs (tens of thousands of steps). For a short SFT run of 1–3 epochs on a small dataset, a standard LoRA with a well-tuned rank achieves similar results with less complexity.
+
+    **4. AutoLoRA vs Rank Sweep?**
+    A manual rank sweep trains one full run per candidate rank and picks the best. AutoLoRA runs once and learns the rank allocation jointly with the adapter weights, using differentiable importance scores. This means it can discover that layer 8 needs rank 32 while layer 2 only needs rank 4 — a result that would require $O(N)$ separate manual experiments to find.
+
+---
+
 *Next: [Preference Alignment →](../09-preference-alignment/README.md)*

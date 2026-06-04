@@ -38,7 +38,60 @@ Because generating tokens is entirely gated by memory bandwidth, throwing a "fas
 
 ---
 
-## Q2. How does PagedAttention solve KV Cache memory fragmentation?
+## Q2. What is the KV Cache, and what are its memory trade-offs?
+
+### Core Answer
+
+During autoregressive generation, the Transformer's attention mechanism requires every new token to attend to all preceding tokens. Without any optimization, the GPU must recompute the Key and Value tensors for every previous token at each generation step, resulting in $O(n^2)$ compute per sequence.
+
+The **KV Cache** eliminates this redundancy. Each token's Key and Value projections are computed once and stored in GPU VRAM. On every subsequent step, the model computes only the new token's K and V, then reads the previously cached tensors for attention. Compute drops to $O(n)$ per new token.
+
+```mermaid
+flowchart LR
+    subgraph Without_Cache ["Without KV Cache"]
+        direction TB
+        W1["Step 1: compute K,V for token 1"]
+        W2["Step 2: recompute K,V for tokens 1–2"]
+        W3["Step 3: recompute K,V for tokens 1–3"]
+    end
+
+    subgraph With_Cache ["With KV Cache"]
+        direction TB
+        C1["Step 1: compute K₁,V₁ → store"]
+        C2["Step 2: compute K₂,V₂ → store\n(reuse K₁,V₁ from cache)"]
+        C3["Step 3: compute K₃,V₃ → store\n(reuse K₁,V₁,K₂,V₂ from cache)"]
+    end
+
+    style W1 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style W2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style W3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style C1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C2 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+```
+
+The memory cost is: $\text{KV memory} = 2 \times \text{layers} \times \text{seq\_len} \times \text{hidden\_dim} \times \text{bytes\_per\_element}$. For a 7B model (32 layers, hidden dim 4096, FP16) with a 2K context, this is roughly **2–3 GB of VRAM consumed entirely by the cache**. For long-context models (128K tokens) the KV cache of a single 70B request can exceed 80 GB, making memory management the central challenge in serving.
+
+### Related Questions
+
+!!! question "Follow-up Interview Questions"
+    1. Why does KV cache memory scale with sequence length but not compute per step?
+    2. What architectural changes reduce KV cache size without shrinking the model?
+    3. What are the main strategies for managing KV cache at serving scale?
+
+??? success "View Answers"
+    **1. Memory vs Compute Scaling?**
+    The cache must store one K and one V tensor per token per layer for the full history — so memory is $O(n)$ in sequence length. The attention computation per new token is a single Query attended over all $n$ cached K vectors, which is $O(n)$ work per step. Total generation work is $O(n^2)$ (summed over all steps), but the *incremental* compute per new token is $O(n)$, which is why caching is worthwhile.
+
+    **2. Architectural Reductions (MQA / GQA)?**
+    Standard Multi-Head Attention (MHA) creates a distinct Key and Value head per Query head (e.g., 32 Q heads → 32 K heads + 32 V heads). **Multi-Query Attention (MQA)** collapses all Query heads to share a single K and V head, shrinking KV cache size by up to 96%. **Grouped Query Attention (GQA)** — used in Llama-3 and Mistral — is a middle ground: $G$ groups of Query heads each share one K/V head. GQA preserves most of MQA's memory benefit while avoiding the accuracy drop seen in extreme MQA configurations.
+
+    **3. Serving-Scale KV Cache Management?**
+    Three dominant strategies: (1) **PagedAttention** (vLLM) — borrows OS virtual memory to allocate cache in non-contiguous fixed-size blocks, eliminating fragmentation and increasing batch size 3–4x (see Q3). (2) **KV Cache Quantization** — compress cached tensors from FP16 to INT8 or FP8, halving memory at the cost of slight attention precision loss on long contexts. (3) **Sliding Window / Streaming LLM** — drop cache entries beyond a fixed window for infinite-length generation, trading recall of distant tokens for unbounded sequence support.
+
+---
+
+## Q3. How does PagedAttention solve KV Cache memory fragmentation?
 
 ### Core Answer
 
@@ -108,7 +161,7 @@ By eliminating memory fragmentation, PagedAttention allows the GPU to fit 3x to 
 
 ---
 
-## Q3. How does Quantization speed up inference without destroying accuracy?
+## Q4. How does Quantization speed up inference without destroying accuracy?
 
 ### Core Answer
 
@@ -139,7 +192,7 @@ The primary danger in Quantization is **Outliers**—specific activation channel
 
 ---
 
-## Q4. How does Speculative Decoding break the autoregressive speed limit?
+## Q5. How does Speculative Decoding break the autoregressive speed limit?
 
 ### Core Answer
 
