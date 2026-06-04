@@ -587,3 +587,7 @@ A: Direct metrics: explicit thumbs-up/down rating, CSAT score, NPS (would you us
 
 **Q: How do you decompose and measure RAG quality across retrieval and generation separately?**
 A: Use RAGAS or a custom evaluation harness with separate metrics per stage. **Retrieval stage**: Context Precision (what fraction of retrieved chunks were relevant to the ground-truth answer?) and Context Recall (what fraction of the ground-truth evidence was present in retrieved chunks?). **Generation stage**: Faithfulness (what fraction of generated claims are supported by retrieved context?) and Answer Relevance (does the answer actually address the question?). To debug: if Faithfulness is low but Context Precision is high → the LLM is hallucinating despite good retrieval → fix the prompt or use SFT for abstention. If Context Recall is low → retrieval is missing relevant documents → fix chunking, embedding, or expand top-K.
+
+---
+
+*Continue to: [Company Wise Interviews →](company_wise_interviews.md) · [RAG Deep Dive →](topic_deep_dive_rag.md)*

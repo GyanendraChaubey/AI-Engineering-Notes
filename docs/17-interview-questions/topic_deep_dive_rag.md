@@ -1356,3 +1356,7 @@ Marks a directory as a Python **package**, enabling `from mypackage.module impor
 | LangChain vs LangGraph | LangChain for chains; LangGraph for stateful, looping, multi-agent |
 | Context precision vs recall | Precision = did we fetch only relevant chunks; Recall = did we fetch all relevant chunks |
 | Faithfulness vs answer relevance | Faithfulness = grounded in context; Relevance = answers the question |
+
+---
+
+*[← Company Wise Interviews](company_wise_interviews.md)*
