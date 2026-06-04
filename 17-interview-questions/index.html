@@ -4646,6 +4646,8 @@ A: Decompose evaluation into four orthogonal dimensions: (1) <strong>Retrieval q
 A: Direct metrics: explicit thumbs-up/down rating, CSAT score, NPS (would you use this feature again?). Implicit behavioral signals: task completion rate (did the user act on the answer?), follow-up correction rate (did the user immediately rephrase or correct the LLM?), session abandonment rate (did the user leave without a satisfying answer?), time-to-next-query (a very fast follow-up often signals the previous answer was unhelpful). Log all LLM outputs and user actions together so you can retroactively correlate output quality with behavior signals.</p>
 <p><strong>Q: How do you decompose and measure RAG quality across retrieval and generation separately?</strong>
 A: Use RAGAS or a custom evaluation harness with separate metrics per stage. <strong>Retrieval stage</strong>: Context Precision (what fraction of retrieved chunks were relevant to the ground-truth answer?) and Context Recall (what fraction of the ground-truth evidence was present in retrieved chunks?). <strong>Generation stage</strong>: Faithfulness (what fraction of generated claims are supported by retrieved context?) and Answer Relevance (does the answer actually address the question?). To debug: if Faithfulness is low but Context Precision is high → the LLM is hallucinating despite good retrieval → fix the prompt or use SFT for abstention. If Context Recall is low → retrieval is missing relevant documents → fix chunking, embedding, or expand top-K.</p>
+<hr>
+<p><em>Continue to: <a href="company_wise_interviews/">Company Wise Interviews →</a> · <a href="topic_deep_dive_rag/">RAG Deep Dive →</a></em></p>
 
 
 
