@@ -1331,10 +1331,10 @@
     B --&gt;|"Small (100-256)"| C["High Precision\n(Exact concept match)\nLow Context\n(LLM lacks surrounding info)"]
     B --&gt;|"Large (1000+)"| D["Low Precision\n(Vectors are diluted noise)\nHigh Context\n(If retrieved, LLM has full picture)"]
 
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1366,12 +1366,12 @@ It solves the Precision vs. Context tradeoff. You chunk the document into very s
     B --&gt;|Standard| D[Recursive Character Split]
     B --&gt;|Advanced| E[Document Structure Aware]
     B --&gt;|State of the Art| F[Semantic / Propositional]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF</code></pre>
 <ol>
 <li><strong>Fixed-Size with Overlap:</strong> Splits exactly every <span class="arithmatex">\(N\)</span> tokens. Must include a sliding window overlap (e.g., 10%) to prevent splitting a crucial sentence exactly in half.</li>
 <li><strong>Recursive Character Text Splitting:</strong> Attempts to split by paragraphs (<code>\n\n</code>), then sentences (<code>.</code>), then words (<code></code>). It only falls back to smaller separators if the paragraph exceeds the maximum chunk size.</li>
@@ -1444,13 +1444,13 @@ If a query requires linking Fact A (page 1) and Fact B (page 10), small chunks a
     D --&gt; G[(Vector DB)]
     E --&gt; G
     F --&gt; G
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style D fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style F fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style G fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="advanced-pipeline">Advanced Pipeline<a class="headerlink" href="#advanced-pipeline" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>OCR + Layout Analysis:</strong> Models like <code>LayoutLMv3</code>, Azure Document Intelligence, or Unstructured.io use computer vision to draw bounding boxes around elements and classify them (<code>Title</code>, <code>List</code>, <code>Table</code>, <code>Figure</code>).</li>
@@ -1522,16 +1522,16 @@ Vector search cannot do math. If a user asks, "What is the average revenue acros
     G --&gt; H["Batch Embedding with Exponential Backoff"]
     H --&gt; I["Vector DB Upsert"]
     I --&gt; J["Update Metadata DB"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style H fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
-    style I fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style J fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style G fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style H fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style I fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style J fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <p><strong>Key Production Requirements:</strong>
 - <strong>Idempotency:</strong> Re-running the pipeline on the same folder should not create duplicate chunks. Use SHA-256 hashing of the file content.
 - <strong>Asynchronous Processing:</strong> Embedding millions of tokens takes time. Use queues to prevent timeouts.

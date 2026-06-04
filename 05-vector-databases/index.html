@@ -1285,15 +1285,15 @@
         G --&gt; H["Graph Traversal (HNSW)"]
         H --&gt; I["Top-K Result Aggregation"]
     end
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style F fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style G fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style H fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style E fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style F fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style G fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style H fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style I fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <p>To support real-time updates while answering queries, vector databases typically use an <strong>LSM-Tree-like architecture</strong>:
 1. <strong>Writes</strong> go to an append-only Write-Ahead Log (WAL) and an in-memory segment (MemTable) which uses an exact or simple index.
 2. <strong>Background workers</strong> periodically flush MemTables to disk as immutable segments and asynchronously build heavy ANN indexes (like HNSW) on them.
@@ -1343,17 +1343,17 @@ Metadata (e.g., <code>user_id=123</code>, <code>doc_type=pdf</code>) is stored e
 
     A2 -.-&gt; A1
     A1 -.-&gt; A0
-    style A2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style A1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style B1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style D1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style A0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style B0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style C0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style E0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100</code></pre>
+    style A2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style B1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style A0 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style B0 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style C0 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D0 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E0 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF</code></pre>
 <ol>
 <li><strong>Hierarchy:</strong> The graph is built in multiple layers. Layer 0 contains <em>all</em> vectors. Layer 1 contains a random 10% subset. Layer 2 contains 1%, etc.</li>
 <li><strong>Search:</strong> The query enters at the top layer. It greedily hops to the closest node until it hits a local minimum.</li>
@@ -1395,11 +1395,11 @@ In extremely high dimensions (e.g., 3072d), the distance between any two random 
     B --&gt; C["K-Means (K=256) per chunk"]
     C --&gt; D["Map to Centroid ID (1 Byte)"]
     D --&gt; E["8-Byte PQ Code"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style D fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1489,15 +1489,15 @@ If a text embedding model (like an early BERT model) outputs vectors of varying 
 
     B --&gt;|"Single-Stage (In-Filter)"| H["Traverse ANN graph"]
     H --&gt; I["Check filter condition BEFORE hopping to node"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style E fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style G fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style H fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style F fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style G fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style H fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style I fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>

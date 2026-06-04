@@ -1325,12 +1325,12 @@
     D --&gt;|Augmented Prompt| E[LLM]
     E --&gt; F[Grounded Response]
 
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style F fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="the-mathematics-of-grounding">The Mathematics of Grounding<a class="headerlink" href="#the-mathematics-of-grounding" title="Permanent link">¶</a></h3>
 <p>In standard generation, the model predicts the next token <span class="arithmatex">\(y_t\)</span> based on the prompt <span class="arithmatex">\(x\)</span> and previous tokens <span class="arithmatex">\(y_{&lt;t}\)</span>:
 <span class="arithmatex">\(P(y_t | x, y_{&lt;t})\)</span></p>
@@ -1378,17 +1378,17 @@ If an attacker hides instructions in a document (e.g., a resume that says "Ignor
         I --&gt; J[Prompt Template]
         J --&gt; K[LLM]
     end
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style F fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style G fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style H fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style I fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style J fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style K fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style F fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style G fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style H fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style I fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style J fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style K fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="component-breakdown">Component Breakdown<a class="headerlink" href="#component-breakdown" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Document Parsers</strong>: Convert PDFs, HTML, PPTX into raw text while preserving structure (tables, headers).</li>
@@ -1498,13 +1498,13 @@ Fine-tuning requires massive, clean datasets and expensive GPU clusters for hour
         E --&gt; F
         F --&gt; G[Generation]
     end
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style F fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style G fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="advanced-solutions">Advanced Solutions<a class="headerlink" href="#advanced-solutions" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Query Rewriting:</strong> An LLM intercepts the user query, resolves pronouns using chat history, and expands keywords before hitting the vector database.</li>

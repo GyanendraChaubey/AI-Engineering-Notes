@@ -2023,12 +2023,12 @@
     subgraph Generative["Generative AI - Models P(X)"]
         D["Learned Distribution\nP(X)"] --&gt; E["Sampling"] --&gt; F["New Synthetic X"]
     end
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style C fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style C fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style F fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="deep-dive-key-differences">Deep-Dive: Key Differences<a class="headerlink" href="#deep-dive-key-differences" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2120,10 +2120,10 @@ Because the internet contains many examples of mapped tasks (e.g., "English: Hel
     A["Raw Text\nTrillions of tokens\nC4, Common Crawl\nGitHub, Books"] --&gt;|"Stage 1\nSelf-supervised CLM"| B["Base Model\nPre-trained weights\nWorld knowledge\nLanguage understanding"]
     B --&gt;|"Stage 2\nInstruction tuning SFT"| C["Chat Model\nFollows instructions\nStructured responses"]
     C --&gt;|"Stage 3\nRLHF or DPO"| D["Aligned Model\nHelpful + Harmless\nHonest responses"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="stage-1-pre-training-causal-language-modeling">Stage 1: Pre-Training (Causal Language Modeling)<a class="headerlink" href="#stage-1-pre-training-causal-language-modeling" title="Permanent link">¶</a></h3>
 <p>Self-supervised learning on internet-scale data. Objective is <strong>next-token prediction</strong>:</p>
 <div class="arithmatex">\[\mathcal{L}_{CLM} = -\frac{1}{T}\sum_{t=1}^{T} \log P_\theta(x_t \mid x_1, ..., x_{t-1})\]</div>
@@ -2208,12 +2208,12 @@ Weight decay prevents weights from growing too large, acting as L2 regularizatio
     A["Raw text:\n'unbelievable AI'"] --&gt; B["Tokenizer\nBPE Algorithm"] --&gt; C["Token strings:\n['un','believ','able',' AI']\nToken IDs: [1234, 5678, 9012, 4321]"]
     C --&gt; D["Embedding Layer\nlookup table [V x d_model]"] --&gt; E["Dense vectors\nshape: [T, d_model]"]
     E --&gt; F["Transformer\nProcessing"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style F fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="tokenization-algorithms">Tokenization Algorithms<a class="headerlink" href="#tokenization-algorithms" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2368,12 +2368,12 @@ If an English text uses 1,000 tokens, but a translated Korean text uses 3,000 to
     C --&gt; D["GPU Selection\nA10G 24GB: $1.5/hr\nA100 80GB: $3/hr\nH100 80GB: $6/hr"]
     D --&gt; E["Throughput\ntokens/sec per GPU"]
     E --&gt; F["Cost per 1M tokens\n= GPU_$/hr × GPUs / tokens_per_hr × 1M"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
-    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style F fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="related-questions_3">Related Questions<a class="headerlink" href="#related-questions_3" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -2415,11 +2415,11 @@ During generation, models store historical KV states in GPU memory. Traditionall
     B --&gt;|"τ → 0\nGreedy / Deterministic"| C["Prob ≈ [0.999, 0.000, 0.000, 0.001]\nAlways picks argmax"]
     B --&gt;|"τ = 1.0\nDefault / Neutral"| D["Prob = [0.52, 0.11, 0.05, 0.32]\nRaw softmax distribution"]
     B --&gt;|"τ &gt; 1.0\nMore Random"| E["Prob ≈ [0.34, 0.22, 0.18, 0.26]\nMore uniform / creative"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="production-configuration-guide">Production Configuration Guide<a class="headerlink" href="#production-configuration-guide" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2497,13 +2497,13 @@ Yes! This is highly effective for classification. You can set <span class="arith
     B --&gt; E["Top-K Sampling\nSample from top-K\nhighest-prob tokens"]
     B --&gt; F["Top-P Nucleus\nSample from smallest\nset with P(cumulative) ≥ p"]
     B --&gt; G["Temperature +\nTop-P Combined\nProduction default"]
-    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
-    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
-    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
-    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c</code></pre>
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style C fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style G fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="strategy-comparison">Strategy Comparison<a class="headerlink" href="#strategy-comparison" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -2747,11 +2747,11 @@ Unlike markdown headings (<code>#</code>) which frequently appear naturally in u
     B --&gt; C["Prompt:\n'A -&gt; 1'\n'B -&gt; 2'\n'C -&gt; ?'"]
     C --&gt; D["In-Context Learning\n(No Weight Updates)"]
     D --&gt; E["Output: 3"]
-    style A fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
-    style B fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
-    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
-    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c</code></pre>
+    style A fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style B fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="mechanism">Mechanism<a class="headerlink" href="#mechanism" title="Permanent link">¶</a></h3>
 <p>During pre-training, the model saw millions of examples of "pattern completion" (e.g., lists, sequences, formatting). When given few-shot examples in a prompt, the attention heads act as a dynamic lookup mechanism, comparing the new input to the provided examples to infer the latent task mapping.</p>
 <h3 id="why-its-powerful">Why It's Powerful<a class="headerlink" href="#why-its-powerful" title="Permanent link">¶</a></h3>
