@@ -1283,7 +1283,15 @@
     E --&gt; F
 
     F --&gt; G["Stage 3: Cross-Encoder Re-Ranking (Slow / High Precision)"]
-    G --&gt; H["Top-K Chunks injected to LLM Context"]</code></pre>
+    G --&gt; H["Top-K Chunks injected to LLM Context"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
 <p><strong>The Multi-Stage Pipeline:</strong>
 1. <strong>Query Transformation:</strong> Rewrite the user's ambiguous query into an optimized search vector (e.g., HyDE, Query Expansion).
 2. <strong>First-Stage Retrieval (Recall):</strong> Use incredibly fast Approximate Nearest Neighbor (ANN) and Inverted Indexes (BM25) to cast a wide net and retrieve the Top-100 candidates in <span class="arithmatex">\(&lt;50\)</span>ms.
@@ -1413,7 +1421,16 @@ In production, you must log: <code>Query</code>, <code>Retrieved_Chunk_IDs</code
     F --&gt; G["'How to reset router?'"]
     F --&gt; H["'How to check ISP outage?'"]
     G --&gt; I["Embed sub-queries"]
-    H --&gt; I</code></pre>
+    H --&gt; I
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
+    style H fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
 <h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>

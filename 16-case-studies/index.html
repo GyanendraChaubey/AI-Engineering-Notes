@@ -1184,21 +1184,40 @@
 - Product queries hit a Hybrid (BM25 + Dense) database.</p>
 <p>Only after the specialized sub-system retrieves the deterministic data is the expensive frontier LLM invoked to generate the final natural language response.</p>
 <pre class="mermaid"><code>flowchart TD
-    A["User Message"] --&gt; B["Intent Classifier (Fast LLM)"]
+    A["User Message"]
+    B["Intent Classifier - Fast LLM"]
+    C["No Retrieval"]
+    D["SQL Database - Deterministic"]
+    E["Dense RAG - Vector DB"]
+    F["Hybrid RAG - BM25 + Vector"]
+    G["Context Builder"]
+    H["Generation - Frontier LLM"]
+    I["Safety &amp; Hallucination Filter"]
+    J["Response + Citations"]
 
-    B --&gt;|"Intent: Chitchat"| C["No Retrieval"]
-    B --&gt;|"Intent: Order Status"| D["SQL Database (Deterministic)"]
-    B --&gt;|"Intent: Policy"| E["Dense RAG (Vector DB)"]
-    B --&gt;|"Intent: Product Search"| F["Hybrid RAG (BM25 + Vector)"]
-
-    C --&gt; G["Context Builder"]
+    A --&gt; B
+    B --&gt;|"Intent: Chitchat"| C
+    B --&gt;|"Intent: Order Status"| D
+    B --&gt;|"Intent: Policy"| E
+    B --&gt;|"Intent: Product Search"| F
+    C --&gt; G
     D --&gt; G
     E --&gt; G
     F --&gt; G
+    G --&gt; H
+    H --&gt; I
+    I --&gt; J
 
-    G --&gt; H["Generation (Frontier LLM)"]
-    H --&gt; I["Safety &amp; Hallucination Filter"]
-    I --&gt; J["Response + Citations"]</code></pre>
+    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
+    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
+    style C fill:#E8EAF6,stroke:#3949AB,color:#1a1a1a
+    style D fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
+    style E fill:#E3F2FD,stroke:#1565C0,color:#1a1a1a
+    style F fill:#E0F2F1,stroke:#00695C,color:#1a1a1a
+    style G fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
+    style H fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
+    style I fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
+    style J fill:#E0F7FA,stroke:#00838F,color:#1a1a1a</code></pre>
 <h3 id="python-implementation-architecture">Python Implementation Architecture<a class="headerlink" href="#python-implementation-architecture" title="Permanent link">¶</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>

@@ -1288,7 +1288,14 @@
     D --&gt;|"Yes (too complex / latency too high)"| F["Implement Supervised Fine-Tuning"]
 
     C --&gt; G["Can also combine SFT + RAG (RA-DIT)"]
-    F --&gt; G</code></pre>
+    F --&gt; G
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f</code></pre>
 <h3 id="related-questions">Related Questions<a class="headerlink" href="#related-questions" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
@@ -1360,7 +1367,14 @@ If your GPU only has enough RAM to support a Batch Size of 1, the gradients will
     D --&gt; F["LoRA Delta Output"]
 
     E --&gt; G["Summed Output (Y = WX + ABX)"]
-    F --&gt; G</code></pre>
+    F --&gt; G
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
 <p><strong>Math Example:</strong> If <span class="arithmatex">\(W\)</span> is <span class="arithmatex">\(4096 \times 4096\)</span>, it has <strong>16.7M params</strong>. If <span class="arithmatex">\(r = 8\)</span>, <span class="arithmatex">\(A\)</span> is <span class="arithmatex">\(4096 \times 8\)</span> and <span class="arithmatex">\(B\)</span> is <span class="arithmatex">\(8 \times 4096\)</span>, totaling just <strong>65K params</strong>. We achieved the same matrix dimensions while training <strong>99.6% fewer parameters</strong>, eliminating the massive Adam optimizer overhead.</p>
 <h3 id="related-questions_2">Related Questions<a class="headerlink" href="#related-questions_2" title="Permanent link">¶</a></h3>
 <div class="admonition question">

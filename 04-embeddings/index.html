@@ -1282,7 +1282,16 @@
     E --&gt;|CLS Pooling| G[Vector of the CLS token]
     F --&gt; H[L2 Normalization]
     G --&gt; H
-    H --&gt; I[Final Dense Vector 768d]</code></pre>
+    H --&gt; I[Final Dense Vector 768d]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
+    style H fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
 <p>To convert a variable-length sequence of token vectors into a single fixed-length document vector, the model uses a <strong>Pooling Strategy</strong>:
 - <strong>Mean Pooling:</strong> Averages the contextualized embeddings of all tokens in the sequence.
 - <strong>CLS Pooling:</strong> Takes the embedding of the special <code>[CLS]</code> (classification) token at the start of the sequence, which has been trained to aggregate sequence-level meaning.</p>
@@ -1353,7 +1362,21 @@ Symmetric search implies the query and the target document are of similar length
         E2[Doc] --&gt; F2[Encoder] --&gt; G2[M Token Vectors]
         G1 --&gt; H1[MaxSim Matrix]
         G2 --&gt; H1
-    end</code></pre>
+    end
+    style A1 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C1 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style A2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B2 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C2 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D1 fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style E1 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style F1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style G1 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style F2 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style G2 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style H1 fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32</code></pre>
 <ul>
 <li><strong>ColBERT (Late Interaction):</strong> Instead of pooling into one vector, ColBERT stores a separate embedding for <em>every single token</em> in the document. At query time, it computes a massive similarity matrix between every query token and every document token, retaining near cross-encoder accuracy with much lower latency.</li>
 <li><strong>Matryoshka Representation Learning (MRL):</strong> A training technique where the embedding vector is trained to hold the most critical information in its earliest dimensions. You can dynamically truncate a 3072d vector down to 256d at runtime without retraining, saving massive amounts of memory while preserving 90% of the accuracy.</li>
@@ -1417,7 +1440,14 @@ HyDE requires calling an LLM API to generate text <em>before</em> you can run yo
     C --&gt; E
     D --&gt; E
     E --&gt; F[Calculate Margin Ranking Loss]
-    F --&gt; G["Backpropagate &amp; Update Weights"]</code></pre>
+    F --&gt; G["Backpropagate &amp; Update Weights"]
+    style A fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style B fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style E fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style F fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c</code></pre>
 <p>The standard approach uses <strong>Multiple Negatives Ranking (MNR) Loss</strong>, maximizing the dot product of positive pairs while minimizing the dot product against all other in-batch examples.</p>
 <h3 id="related-questions_4">Related Questions<a class="headerlink" href="#related-questions_4" title="Permanent link">¶</a></h3>
 <div class="admonition question">
