@@ -1,6 +1,6 @@
 # AI Engineering Interview — Quick Reference Cheat Sheet
 
-**How to use:** Read each question, recall the answer, then check. For full answers + code examples, see `company_wise_interviews.md`. For diagrams + deep dives, see `topic_deep_dive_rag.md`.
+**How to use:** Read each question, recall the answer, then check. For full mathematical derivations, diagrams, and deep dives, see the topic-specific sections: [RAG](../02-rag/README.md), [Embeddings](../04-embeddings/README.md), [Fine-Tuning](../08-fine-tuning/README.md), [Language Models](../07-language-models/README.md), [Deployment](../12-deployment/README.md), and others in the [index](../index.md).
 
 ---
 
