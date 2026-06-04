@@ -5937,9 +5937,9 @@ An LLM generates hypothetical questions from the answer and checks if they match
 </blockquote>
 <h3 id="types-of-drift">Types of Drift<a class="headerlink" href="#types-of-drift" title="Permanent link">¶</a></h3>
 <pre class="mermaid"><code>graph TD
-    DRIFT[Production Degradation] --&gt; DD[Data Drift\nInput distribution changed\nP_train(X) ≠ P_prod(X)]
-    DRIFT --&gt; CD[Concept Drift\nRelationship between X and Y changed\nP(Y|X) changed]
-    DRIFT --&gt; LD[Label Drift\nTarget distribution changed\nP(Y) changed]
+    DRIFT[Production Degradation] --&gt; DD["Data Drift\nInput distribution changed\nP_train(X) != P_prod(X)"]
+    DRIFT --&gt; CD["Concept Drift\nRelationship between X and Y changed\nP(Y given X) changed"]
+    DRIFT --&gt; LD["Label Drift\nTarget distribution changed\nP(Y) changed"]
 
     DD --&gt;|"Example"| EX1["Users now ask about GPT-5\nbut training data only had GPT-4 queries"]
     CD --&gt;|"Example"| EX2["'Positive' sentiment phrase\nchanged meaning over time"]
