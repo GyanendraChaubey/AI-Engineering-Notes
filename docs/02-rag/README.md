@@ -21,8 +21,12 @@ flowchart TD
     D -->|Augmented Prompt| E[LLM]
     E --> F[Grounded Response]
     
-    style C fill:#f39c12,color:#fff
-    style E fill:#8e44ad,color:#fff
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### The Mathematics of Grounding
@@ -81,6 +85,17 @@ flowchart LR
         I --> J[Prompt Template]
         J --> K[LLM]
     end
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style F fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style G fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style H fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style I fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style J fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style K fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### Component Breakdown
@@ -175,6 +190,13 @@ flowchart TD
         E --> F
         F --> G[Generation]
     end
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### Advanced Solutions

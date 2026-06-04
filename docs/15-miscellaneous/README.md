@@ -62,20 +62,37 @@ A model like Mixtral 8x7B has **47 Billion total parameters**, but only activate
 
 ```mermaid
 flowchart TD
-    A["Input Token"] --> B["Self-Attention Layer"]
-    B --> C["MoE Router (Gating Network)"]
-    
-    C -->|"Token assigned to Top-2 Experts"| D{"Expert Selection"}
-    
-    D -.-> E1["Expert 1"]
-    D ==> E2["Expert 2 - ACTIVE"]
-    D -.-> E3["Expert 3"]
-    D ==> E4["Expert 4 - ACTIVE"]
-    
-    E2 --> F["Weighted Sum"]
+    A["Input Token"]
+    B["Self-Attention Layer"]
+    C["MoE Router (Gating Network)"]
+    D{"Expert Selection"}
+    E1["Expert 1"]
+    E2["Expert 2 - ACTIVE"]
+    E3["Expert 3"]
+    E4["Expert 4 - ACTIVE"]
+    F["Weighted Sum"]
+    G["Output Token"]
+
+    A --> B --> C
+    C -->|"Token assigned to Top-2 Experts"| D
+    D -.-> E1
+    D ==> E2
+    D -.-> E3
+    D ==> E4
+    E2 --> F
     E4 --> F
-    
-    F --> G["Output Token"]
+    F --> G
+
+    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
+    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
+    style C fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
+    style D fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
+    style E1 fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
+    style E2 fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
+    style E3 fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
+    style E4 fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
+    style F fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
+    style G fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
 ```
 
 **PyTorch Implementation of an MoE Layer:**
@@ -177,19 +194,35 @@ A production RAG is a monolithic multi-stage pipeline designed for extreme preci
 
 ```mermaid
 flowchart TD
-    A["User Query"] --> B["Query Expansion (LLM)"]
-    
-    B --> C["Dense Search (Vector DB)"]
-    B --> D["Sparse Search (BM25)"]
-    
-    C --> E["Reciprocal Rank Fusion (RRF)"]
+    A["User Query"]
+    B["Query Expansion - LLM"]
+    C["Dense Search - Vector DB"]
+    D["Sparse Search - BM25"]
+    E["Reciprocal Rank Fusion - RRF"]
+    F["Cross-Encoder Re-Ranker"]
+    G["Generation LLM"]
+    H["Faithfulness Validator"]
+    I["Final Response"]
+
+    A --> B
+    B --> C
+    B --> D
+    C --> E
     D --> E
-    
-    E -->|"Top 20 Chunks"| F["Cross-Encoder Re-Ranker"]
-    
-    F -->|"Top 5 Chunks"| G["Generation LLM"]
-    G --> H["Faithfulness Validator"]
-    H --> I["Final Response"]
+    E -->|"Top 20 Chunks"| F
+    F -->|"Top 5 Chunks"| G
+    G --> H
+    H --> I
+
+    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
+    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
+    style C fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
+    style D fill:#E3F2FD,stroke:#1565C0,color:#1a1a1a
+    style E fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
+    style F fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
+    style G fill:#E8F5E9,stroke:#2E7D32,color:#1a1a1a
+    style H fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
+    style I fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
 ```
 
 **Production RAG Component Class:**

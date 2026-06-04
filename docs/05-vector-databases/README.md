@@ -24,6 +24,15 @@ flowchart TD
         G --> H["Graph Traversal (HNSW)"]
         H --> I["Top-K Result Aggregation"]
     end
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style F fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style G fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style H fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 To support real-time updates while answering queries, vector databases typically use an **LSM-Tree-like architecture**:
@@ -81,6 +90,17 @@ flowchart TD
     
     A2 -.-> A1
     A1 -.-> A0
+    style A2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B2 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style A1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style B1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style D1 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style A0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style B0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style C0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E0 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
 ```
 
 1. **Hierarchy:** The graph is built in multiple layers. Layer 0 contains *all* vectors. Layer 1 contains a random 10% subset. Layer 2 contains 1%, etc.
@@ -129,6 +149,11 @@ flowchart LR
     B --> C["K-Means (K=256) per chunk"]
     C --> D["Map to Centroid ID (1 Byte)"]
     D --> E["8-Byte PQ Code"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### Related Questions
@@ -211,6 +236,15 @@ flowchart TD
     
     B -->|"Single-Stage (In-Filter)"| H["Traverse ANN graph"]
     H --> I["Check filter condition BEFORE hopping to node"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style E fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style H fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### Related Questions

@@ -30,6 +30,13 @@ flowchart TD
     
     C --> G["Can also combine SFT + RAG (RA-DIT)"]
     F --> G
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
 ```
 
 ### Related Questions
@@ -118,6 +125,13 @@ flowchart LR
     
     E --> G["Summed Output (Y = WX + ABX)"]
     F --> G
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 **Math Example:** If $W$ is $4096 \times 4096$, it has **16.7M params**. If $r = 8$, $A$ is $4096 \times 8$ and $B$ is $8 \times 4096$, totaling just **65K params**. We achieved the same matrix dimensions while training **99.6% fewer parameters**, eliminating the massive Adam optimizer overhead.

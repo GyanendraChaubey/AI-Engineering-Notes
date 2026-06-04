@@ -21,21 +21,40 @@ Only after the specialized sub-system retrieves the deterministic data is the ex
 
 ```mermaid
 flowchart TD
-    A["User Message"] --> B["Intent Classifier (Fast LLM)"]
-    
-    B -->|"Intent: Chitchat"| C["No Retrieval"]
-    B -->|"Intent: Order Status"| D["SQL Database (Deterministic)"]
-    B -->|"Intent: Policy"| E["Dense RAG (Vector DB)"]
-    B -->|"Intent: Product Search"| F["Hybrid RAG (BM25 + Vector)"]
-    
-    C --> G["Context Builder"]
+    A["User Message"]
+    B["Intent Classifier - Fast LLM"]
+    C["No Retrieval"]
+    D["SQL Database - Deterministic"]
+    E["Dense RAG - Vector DB"]
+    F["Hybrid RAG - BM25 + Vector"]
+    G["Context Builder"]
+    H["Generation - Frontier LLM"]
+    I["Safety & Hallucination Filter"]
+    J["Response + Citations"]
+
+    A --> B
+    B -->|"Intent: Chitchat"| C
+    B -->|"Intent: Order Status"| D
+    B -->|"Intent: Policy"| E
+    B -->|"Intent: Product Search"| F
+    C --> G
     D --> G
     E --> G
     F --> G
-    
-    G --> H["Generation (Frontier LLM)"]
-    H --> I["Safety & Hallucination Filter"]
-    I --> J["Response + Citations"]
+    G --> H
+    H --> I
+    I --> J
+
+    style A fill:#FFF9C4,stroke:#F9A825,color:#1a1a1a
+    style B fill:#C8E6C9,stroke:#388E3C,color:#1a1a1a
+    style C fill:#E8EAF6,stroke:#3949AB,color:#1a1a1a
+    style D fill:#BBDEFB,stroke:#1976D2,color:#1a1a1a
+    style E fill:#E3F2FD,stroke:#1565C0,color:#1a1a1a
+    style F fill:#E0F2F1,stroke:#00695C,color:#1a1a1a
+    style G fill:#FFE0B2,stroke:#E65100,color:#1a1a1a
+    style H fill:#F3E5F5,stroke:#7B1FA2,color:#1a1a1a
+    style I fill:#FCE4EC,stroke:#C62828,color:#1a1a1a
+    style J fill:#E0F7FA,stroke:#00838F,color:#1a1a1a
 ```
 
 ### Python Implementation Architecture

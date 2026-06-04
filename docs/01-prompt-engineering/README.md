@@ -20,6 +20,12 @@ graph LR
     subgraph Generative["Generative AI - Models P(X)"]
         D["Learned Distribution\nP(X)"] --> E["Sampling"] --> F["New Synthetic X"]
     end
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style C fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
 ```
 
 ### Deep-Dive: Key Differences
@@ -86,10 +92,10 @@ flowchart LR
     A["Raw Text\nTrillions of tokens\nC4, Common Crawl\nGitHub, Books"] -->|"Stage 1\nSelf-supervised CLM"| B["Base Model\nPre-trained weights\nWorld knowledge\nLanguage understanding"]
     B -->|"Stage 2\nInstruction tuning SFT"| C["Chat Model\nFollows instructions\nStructured responses"]
     C -->|"Stage 3\nRLHF or DPO"| D["Aligned Model\nHelpful + Harmless\nHonest responses"]
-    style A fill:#1a3a5c,color:#fff
-    style B fill:#1d5c8a,color:#fff
-    style C fill:#2980b9,color:#fff
-    style D fill:#3498db,color:#fff
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
 ```
 
 ### Stage 1: Pre-Training (Causal Language Modeling)
@@ -195,6 +201,12 @@ flowchart LR
     A["Raw text:\n'unbelievable AI'"] --> B["Tokenizer\nBPE Algorithm"] --> C["Token strings:\n['un','believ','able',' AI']\nToken IDs: [1234, 5678, 9012, 4321]"]
     C --> D["Embedding Layer\nlookup table [V x d_model]"] --> E["Dense vectors\nshape: [T, d_model]"]
     E --> F["Transformer\nProcessing"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
 ```
 
 ### Tokenization Algorithms
@@ -308,6 +320,12 @@ flowchart TD
     C --> D["GPU Selection\nA10G 24GB: $1.5/hr\nA100 80GB: $3/hr\nH100 80GB: $6/hr"]
     D --> E["Throughput\ntokens/sec per GPU"]
     E --> F["Cost per 1M tokens\n= GPU_$/hr × GPUs / tokens_per_hr × 1M"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
 ```
 
 ### Related Questions
@@ -361,9 +379,11 @@ graph TD
     B -->|"τ → 0\nGreedy / Deterministic"| C["Prob ≈ [0.999, 0.000, 0.000, 0.001]\nAlways picks argmax"]
     B -->|"τ = 1.0\nDefault / Neutral"| D["Prob = [0.52, 0.11, 0.05, 0.32]\nRaw softmax distribution"]
     B -->|"τ > 1.0\nMore Random"| E["Prob ≈ [0.34, 0.22, 0.18, 0.26]\nMore uniform / creative"]
-    style C fill:#c0392b,color:#fff
-    style D fill:#27ae60,color:#fff
-    style E fill:#8e44ad,color:#fff
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
 ```
 
 ### Production Configuration Guide
@@ -418,6 +438,13 @@ flowchart TD
     B --> E["Top-K Sampling\nSample from top-K\nhighest-prob tokens"]
     B --> F["Top-P Nucleus\nSample from smallest\nset with P(cumulative) ≥ p"]
     B --> G["Temperature +\nTop-P Combined\nProduction default"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
 ```
 
 ### Strategy Comparison
@@ -660,6 +687,11 @@ graph LR
     B --> C["Prompt:\n'A -> 1'\n'B -> 2'\n'C -> ?'"]
     C --> D["In-Context Learning\n(No Weight Updates)"]
     D --> E["Output: 3"]
+    style A fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style B fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
 ```
 
 ### Mechanism

@@ -73,6 +73,18 @@ flowchart TD
     
     Logical_KV_Space -.-> Block_Table
     Block_Table -.-> Physical_VRAM
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style F fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style P1 fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style P2 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style P3 fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style P4 fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style P5 fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style P8 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
 ```
 
 By eliminating memory fragmentation, PagedAttention allows the GPU to fit 3x to 4x more requests into the batch, linearly scaling throughput.
@@ -157,6 +169,14 @@ flowchart LR
     
     F --> H["Loop back to Draft Model"]
     G --> H
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style G fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style H fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
 ```
 
 ### Related Questions

@@ -21,8 +21,10 @@ graph TD
     B -->|"Small (100-256)"| C["High Precision\n(Exact concept match)\nLow Context\n(LLM lacks surrounding info)"]
     B -->|"Large (1000+)"| D["Low Precision\n(Vectors are diluted noise)\nHigh Context\n(If retrieved, LLM has full picture)"]
     
-    style C fill:#27ae60,color:#fff
-    style D fill:#c0392b,color:#fff
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
 ```
 
 ### Related Questions
@@ -61,6 +63,12 @@ flowchart TD
     B -->|Standard| D[Recursive Character Split]
     B -->|Advanced| E[Document Structure Aware]
     B -->|State of the Art| F[Semantic / Propositional]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
 ```
 
 1. **Fixed-Size with Overlap:** Splits exactly every $N$ tokens. Must include a sliding window overlap (e.g., 10%) to prevent splitting a crucial sentence exactly in half.
@@ -145,6 +153,13 @@ flowchart LR
     D --> G[(Vector DB)]
     E --> G
     F --> G
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style F fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 ### Advanced Pipeline
@@ -228,6 +243,16 @@ flowchart TD
     G --> H["Batch Embedding with Exponential Backoff"]
     H --> I["Vector DB Upsert"]
     I --> J["Update Metadata DB"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style C fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style H fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
+    style I fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style J fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 **Key Production Requirements:**

@@ -31,6 +31,17 @@ flowchart TD
     I --> J["Multiply by Value Matrix (V)"]
     E --> J
     J --> K["Output Representation"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style F fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20
+    style G fill:#fffde7,stroke:#f57f17,stroke-width:2px,color:#f57f17
+    style H fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style I fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style J fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style K fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 **Intuition:** 
@@ -152,6 +163,14 @@ flowchart TD
     C --> G["Weighted Sum based on Routing Probabilities"]
     E --> G
     G --> H["Output to Next Layer"]
+    style A fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+    style B fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f9a825
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style D fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style F fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#c62828
+    style G fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+    style H fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
 ```
 
 For every token, the Router calculates probabilities and selects only the Top-K experts (usually Top-2 out of 8). Only those 2 experts are executed, saving massive amounts of compute (FLOPs).
