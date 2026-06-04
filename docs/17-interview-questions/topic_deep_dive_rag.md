@@ -815,9 +815,9 @@ graph TD
 
 ```mermaid
 graph TD
-    DRIFT[Production Degradation] --> DD[Data Drift\nInput distribution changed\nP_train(X) ≠ P_prod(X)]
-    DRIFT --> CD[Concept Drift\nRelationship between X and Y changed\nP(Y|X) changed]
-    DRIFT --> LD[Label Drift\nTarget distribution changed\nP(Y) changed]
+    DRIFT[Production Degradation] --> DD["Data Drift\nInput distribution changed\nP_train(X) != P_prod(X)"]
+    DRIFT --> CD["Concept Drift\nRelationship between X and Y changed\nP(Y given X) changed"]
+    DRIFT --> LD["Label Drift\nTarget distribution changed\nP(Y) changed"]
 
     DD -->|"Example"| EX1["Users now ask about GPT-5\nbut training data only had GPT-4 queries"]
     CD -->|"Example"| EX2["'Positive' sentiment phrase\nchanged meaning over time"]
