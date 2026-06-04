@@ -82,7 +82,7 @@ Inference memory is fundamentally different from training memory. During autoreg
 To predict token $t$, the model needs the Key and Value vectors for all previous tokens $(0 \dots t-1)$. Recomputing these vectors at every step would require $O(N^3)$ compute. Instead, we cache them in VRAM.
 
 **KV Cache Memory Formula per Token:**
-$2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})$
+$$2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})$$
 
 For a 70B model with a 32K context window and a batch size of 16, the KV Cache can consume over 80GB of VRAM—more memory than the model weights themselves!
 

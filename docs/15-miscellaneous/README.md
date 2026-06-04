@@ -668,7 +668,7 @@ class RoPEAttention(nn.Module):
 
 **Why RoPE extrapolates better:** because relative position is encoded in the *angle difference* between two rotations, which is mathematically well-defined even for positions beyond the training length. Absolute embeddings simply have no learned vector for position 5000 if training only saw up to 4096.
 
-**RoPE scaling for very long contexts (NTK / YaRN):** At very long sequences (>4× training length), the rotation frequencies become too dense and quality degrades. NTK-aware scaling modifies the base frequency: `base_new = base * (scale_factor ^ (dim / (dim - 2)))`. YaRN additionally applies a magnitude correction to preserve attention entropy. Both are applied at inference time without retraining.
+**RoPE scaling for very long contexts (NTK / YaRN):** At very long sequences (>4× training length), the rotation frequencies become too dense and quality degrades. NTK-aware scaling modifies the base frequency: $base_{new} = base \times scale\_factor^{dim\,/\,(dim-2)}$. YaRN additionally applies a magnitude correction to preserve attention entropy. Both are applied at inference time without retraining.
 
 ### Related Questions
 

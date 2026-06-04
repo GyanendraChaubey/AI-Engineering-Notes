@@ -270,7 +270,7 @@ $$RRF\_Score = \frac{1}{k + Rank_{sparse}} + \frac{1}{k + Rank_{dense}}$$
     BM25 dominates on highly specific, out-of-vocabulary terminology. Examples include serial numbers ("XYZ-9982"), specific error codes ("ERR_CONNECTION_RESET"), rare names, or domain-specific acronyms. Semantic models often map these rare terms to generic vector space noise.
 
     **2. Alpha ($\alpha$) weighting?**
-    Alpha is a tunable parameter between 0.0 and 1.0 used to linearly combine scores: `Final_Score = (alpha * Dense_Score) + ((1 - alpha) * Sparse_Score)`. An alpha of 1.0 is pure vector search; 0.0 is pure keyword search. You tune alpha based on your dataset (e.g., an e-commerce catalog heavily relies on keywords, so alpha might be 0.3).
+    Alpha is a tunable parameter between 0.0 and 1.0 used to linearly combine scores: $Final\_Score = (\alpha \times Dense\_Score) + ((1-\alpha) \times Sparse\_Score)$. An alpha of 1.0 is pure vector search; 0.0 is pure keyword search. You tune alpha based on your dataset (e.g., an e-commerce catalog heavily relies on keywords, so alpha might be 0.3).
 
     **3. Why is RRF elegant?**
     Dense scores are usually cosine similarities (between 0 and 1). Sparse scores (BM25) are unbounded (can be 5.5, 12.0, 100.0). You cannot simply add them together because they are not on the same scale. RRF ignores the raw scores entirely and only looks at the *Rank* (1st, 2nd, 3rd) from each list, allowing you to merge completely incompatible scoring systems flawlessly.

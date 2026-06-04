@@ -124,7 +124,7 @@ $$ RRF\_Score = \frac{1}{k + Rank_{Dense}} + \frac{1}{k + Rank_{Sparse}} $$
 
     **3. Convex Combination (Alpha Weighting)?**
     If you mathematically normalize the scores (using z-score or softmax), you can blend them using an Alpha ($\alpha$) parameter where $0 \le \alpha \le 1$.
-    $Final\_Score = (\alpha \times Dense\_Score) + ((1 - \alpha) \times Sparse\_Score)$. 
+    $$Final\_Score = (\alpha \times Dense\_Score) + ((1 - \alpha) \times Sparse\_Score)$$
     If $\alpha=1$, it is pure semantic search. If $\alpha=0$, it is pure keyword search.
 
     **4. Dynamic Alpha Tuning?**

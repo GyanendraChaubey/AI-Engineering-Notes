@@ -70,7 +70,9 @@ flowchart LR
     style C3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
 ```
 
-The memory cost is: $\text{KV memory} = 2 \times \text{layers} \times \text{seq\_len} \times \text{hidden\_dim} \times \text{bytes\_per\_element}$. For a 7B model (32 layers, hidden dim 4096, FP16) with a 2K context, this is roughly **2–3 GB of VRAM consumed entirely by the cache**. For long-context models (128K tokens) the KV cache of a single 70B request can exceed 80 GB, making memory management the central challenge in serving.
+The memory cost is:
+
+$$\text{KV memory} = 2 \times \text{layers} \times \text{seq\_len} \times \text{hidden\_dim} \times \text{bytes\_per\_element}$$ For a 7B model (32 layers, hidden dim 4096, FP16) with a 2K context, this is roughly **2–3 GB of VRAM consumed entirely by the cache**. For long-context models (128K tokens) the KV cache of a single 70B request can exceed 80 GB, making memory management the central challenge in serving.
 
 ### Related Questions
 

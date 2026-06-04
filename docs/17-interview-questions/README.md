@@ -100,7 +100,7 @@ A: Hierarchical Navigable Small World — graph-based ANN with O(log N) search. 
 A: When querying for exact terms, model numbers, codes, or names — BM25 excels at exact keyword matching where semantic paraphrase is not needed.
 
 **Q: What is Reciprocal Rank Fusion (RRF)?**
-A: Merges two ranked lists without normalizing scores: `RRF(d) = sum(1 / (60 + rank_i))` — the document ranking highest in both lists wins.
+A: Merges two ranked lists without normalizing scores: $RRF(d) = \sum \frac{1}{60 + rank_i}$ — the document ranking highest in both lists wins.
 
 **Q: Why use hybrid search (vector + BM25) as the default in production?**
 A: Semantic search misses exact terms (e.g., "Error-404"); keyword search misses synonyms — hybrid consistently outperforms either alone.
