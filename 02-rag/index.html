@@ -4673,7 +4673,7 @@ You cannot evaluate RAG with standard metrics like accuracy. The RAGAS framework
 <p><strong>1. When does BM25 outperform semantic?</strong>
 BM25 dominates on highly specific, out-of-vocabulary terminology. Examples include serial numbers ("XYZ-9982"), specific error codes ("ERR_CONNECTION_RESET"), rare names, or domain-specific acronyms. Semantic models often map these rare terms to generic vector space noise.</p>
 <p><strong>2. Alpha (<span class="arithmatex">\(\alpha\)</span>) weighting?</strong>
-Alpha is a tunable parameter between 0.0 and 1.0 used to linearly combine scores: <code>Final_Score = (alpha * Dense_Score) + ((1 - alpha) * Sparse_Score)</code>. An alpha of 1.0 is pure vector search; 0.0 is pure keyword search. You tune alpha based on your dataset (e.g., an e-commerce catalog heavily relies on keywords, so alpha might be 0.3).</p>
+Alpha is a tunable parameter between 0.0 and 1.0 used to linearly combine scores: <span class="arithmatex">\(Final\_Score = (\alpha \times Dense\_Score) + ((1-\alpha) \times Sparse\_Score)\)</span>. An alpha of 1.0 is pure vector search; 0.0 is pure keyword search. You tune alpha based on your dataset (e.g., an e-commerce catalog heavily relies on keywords, so alpha might be 0.3).</p>
 <p><strong>3. Why is RRF elegant?</strong>
 Dense scores are usually cosine similarities (between 0 and 1). Sparse scores (BM25) are unbounded (can be 5.5, 12.0, 100.0). You cannot simply add them together because they are not on the same scale. RRF ignores the raw scores entirely and only looks at the <em>Rank</em> (1st, 2nd, 3rd) from each list, allowing you to merge completely incompatible scoring systems flawlessly.</p>
 <p><strong>4. Why do vector databases struggle with "SKU-12345"?</strong>

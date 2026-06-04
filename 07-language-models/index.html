@@ -4256,7 +4256,7 @@ The matrix multiplication <span class="arithmatex">\(QK^T\)</span> requires calc
 <p>Inference memory is fundamentally different from training memory. During autoregressive generation (inference), the largest bottleneck is not the model weights—it is the <strong>KV Cache</strong>.</p>
 <p>To predict token <span class="arithmatex">\(t\)</span>, the model needs the Key and Value vectors for all previous tokens <span class="arithmatex">\((0 \dots t-1)\)</span>. Recomputing these vectors at every step would require <span class="arithmatex">\(O(N^3)\)</span> compute. Instead, we cache them in VRAM.</p>
 <p><strong>KV Cache Memory Formula per Token:</strong>
-<span class="arithmatex">\(2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})\)</span></p>
+$<span class="arithmatex">\(2 \times (\text{Num Layers}) \times (\text{Num Heads}) \times (\text{Head Dim}) \times (\text{Bytes per Float})\)</span>$</p>
 <p>For a 70B model with a 32K context window and a batch size of 16, the KV Cache can consume over 80GB of VRAM—more memory than the model weights themselves!</p>
 <h3 id="related-questions_1">Related Questions<a class="headerlink" href="#related-questions_1" title="Permanent link">¶</a></h3>
 <div class="admonition question">
