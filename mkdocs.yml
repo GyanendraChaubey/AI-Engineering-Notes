@@ -85,7 +85,92 @@ nav:
     - 16. Case Studies: 16-case-studies/README.md
     - 17. Interview Questions:
       - Question List: 17-interview-questions/README.md
-      - Company Wise Interviews: 17-interview-questions/company_wise_interviews.md
+      - Company Wise Interviews:
+        - Overview: 17-interview-questions/company_wise_interviews.md
+        - Generative AI Engineer (Part 1):
+          - Interview 1: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_01.md
+          - Interview 2: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_02.md
+          - Interview 3: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_03.md
+          - Interview 4: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_04.md
+          - Interview 5: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_05.md
+          - Interview 6: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_06.md
+          - Interview 7: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_07.md
+          - Interview 8: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_08.md
+          - Interview 9: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_09.md
+          - Interview 10: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_10.md
+          - Interview 11: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_11.md
+          - Interview 12: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_12.md
+          - Interview 13: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_13.md
+          - Interview 14: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_14.md
+          - Interview 15: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_15.md
+          - Interview 16: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_16.md
+          - Interview 17: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_17.md
+          - Interview 18: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_18.md
+          - Interview 19: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_19.md
+          - Interview 20: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_20.md
+          - Interview 21: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_21.md
+          - Interview 22: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_22.md
+          - Interview 23: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_23.md
+          - Interview 24: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_24.md
+          - Interview 25: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_25.md
+          - Interview 26: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_26.md
+          - Interview 27: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_27.md
+          - Interview 28: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_28.md
+          - Interview 29: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_29.md
+          - Interview 30: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_30.md
+          - Interview 31: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_31.md
+          - Interview 32: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_32.md
+          - Interview 33: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_33.md
+          - Interview 34: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_34.md
+          - Interview 35: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_35.md
+          - Interview 36: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_36.md
+          - Interview 37: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_37.md
+          - Interview 38: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_38.md
+          - Interview 39: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_39.md
+          - Interview 40: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_40.md
+          - Interview 41: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_41.md
+          - Interview 42: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_42.md
+          - Interview 43: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_43.md
+          - Interview 44: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_44.md
+          - Interview 45: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_45.md
+          - Interview 46: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_46.md
+          - Interview 47: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_47.md
+          - Interview 48: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_48.md
+          - Interview 49: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_49.md
+          - Interview 50: 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_50.md
+          - Interview Session 51 (Deep Dive): 17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_session_51.md
+        - Generative AI Engineer (Part 2):
+          - Interview 1: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_01.md
+          - Interview 2: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_02.md
+          - Interview 3: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_03.md
+          - Interview 4: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_04.md
+          - Interview 5: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_05.md
+          - Interview 6: 17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_06.md
+        - AI (General):
+          - Interview 1: 17-interview-questions/company_wise/ai/interview_01.md
+          - Interview 2: 17-interview-questions/company_wise/ai/interview_02.md
+        - NLP Engineer:
+          - Interview 1: 17-interview-questions/company_wise/nlp-engineer/interview_01.md
+          - Interview 2: 17-interview-questions/company_wise/nlp-engineer/interview_02.md
+        - GenAI Engineer:
+          - Interview 1: 17-interview-questions/company_wise/genai-engineer/interview_01.md
+        - AI Solutions Engineer:
+          - Interview 1: 17-interview-questions/company_wise/ai-solutions-engineer/interview_01.md
+        - GenAI NLP Engineer (Part 1):
+          - Interview 1: 17-interview-questions/company_wise/genai-nlp-engineer-part-1/interview_01.md
+          - Interview 2: 17-interview-questions/company_wise/genai-nlp-engineer-part-1/interview_02.md
+        - GenAI Solution Architect:
+          - Interview 1: 17-interview-questions/company_wise/genai-solution-architect/interview_01.md
+          - Interview Session 2 (Deep Dive): 17-interview-questions/company_wise/genai-solution-architect/interview_session_02.md
+        - GenAI NLP Engineer (Part 2):
+          - Interview 1: 17-interview-questions/company_wise/genai-nlp-engineer-part-2/interview_01.md
+        - ML Engineering Lead:
+          - Interview 1: 17-interview-questions/company_wise/ml-engineering-lead/interview_01.md
+          - Interview Session 2 (Deep Dive): 17-interview-questions/company_wise/ml-engineering-lead/interview_session_02.md
+        - Data Science Lead:
+          - Interview 1: 17-interview-questions/company_wise/data-science-lead/interview_01.md
+        - Vision Pipeline Engineer:
+          - Interview 1: 17-interview-questions/company_wise/vision-pipeline-engineer/interview_01.md
       - Deep Dive (RAG): 17-interview-questions/topic_deep_dive_rag.md
 
 extra:

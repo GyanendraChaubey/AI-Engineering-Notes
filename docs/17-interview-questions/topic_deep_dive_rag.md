@@ -63,10 +63,21 @@ graph TD
         N --> O[Final Answer + Citations]
     end
 
-    classDef store fill:#e3f2fd,stroke:#1565c0
-    classDef llm fill:#f3e5f5,stroke:#6a1b9a
-    class F,G store
-    class M llm
+    style F fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style G fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style M fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style B fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style C fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style E fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style H fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style I fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style J fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style K fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style L fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style N fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style O fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Key Components Explained
@@ -111,9 +122,16 @@ flowchart TD
     H -->|Pass| I[Return Answer + Citations]
     H -->|Fail| J[Fallback: 'I cannot find a\nreliable answer in the knowledge base.']
 
-    style F fill:#c8e6c9,stroke:#2e7d32
-    style H fill:#fff3e0,stroke:#e65100
-    style J fill:#ffebee,stroke:#c62828
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style F fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style G fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style H fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style I fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style J fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
 ```
 
 ### 5 Concrete Mitigation Techniques
@@ -160,6 +178,13 @@ flowchart LR
     E -->|Fits?| C
     E -->|No| F[Hard split by space]
     F --> C
+
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style B fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style C fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Semantic Chunking — Step by Step
@@ -192,10 +217,10 @@ graph LR
     GT -.->|"Context Recall:\nDoes R cover all of GT?"| R
     Q -.->|"Context Precision:\nIs R relevant to Q?"| R
 
-    style Q fill:#e8eaf6,stroke:#3f51b5
-    style GT fill:#e8f5e9,stroke:#2e7d32
-    style R fill:#fff3e0,stroke:#ef6c00
-    style A fill:#fce4ec,stroke:#c2185b
+    style Q fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style GT fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style R fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style A fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Metric Definitions
@@ -259,8 +284,13 @@ graph TD
     R --> RE[Cross-Encoder Re-ranker]
     RE --> TOP[Top-3 sent to LLM]
 
-    style RRF fill:#fff9c4,stroke:#f9a825
-    style RE fill:#fce4ec,stroke:#c2185b
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style VS fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style KS fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style RRF fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style R fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style RE fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style TOP fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
 ```
 
 ### When to Use Each
@@ -316,6 +346,24 @@ graph LR
         V2 --> OUT
         V3 --> OUT
     end
+
+    style T1 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style E1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style E2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style E3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style Q1 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style Q2 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style Q3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style K1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style K2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style K3 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style V1 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style V2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style V3 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style SCORE fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style OUT fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Positional Encoding — Why Order Matters
@@ -386,10 +434,12 @@ graph LR
     B --> ADD
     ADD --> OUT[Output h]
 
-    style W fill:#ffcdd2,stroke:#c62828
-    style A fill:#c8e6c9,stroke:#2e7d32
-    style B fill:#c8e6c9,stroke:#2e7d32
-    style ADD fill:#fff9c4,stroke:#f9a825
+    style X fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style W fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style A fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style B fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style ADD fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style OUT fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
 ```
 
 **"Low Rank" explained:** A rank-r matrix can be expressed as a product of two thin matrices. If rank=8, you're only updating 8 "dimensions" of change instead of the full m×n space. This captures the most important weight directions with far fewer parameters.
@@ -406,8 +456,12 @@ flowchart LR
     D --> E[Gradient flows ONLY\nthrough adapters]
     E --> F[Save adapter weights\n~10-100x smaller than full model]
 
-    style B fill:#fce4ec,stroke:#c2185b
-    style D fill:#c8e6c9,stroke:#2e7d32
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style B fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style C fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style D fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style F fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
 ```
 
 **What "4-bit" means:** Each weight is stored in 4 bits (16 possible values) instead of 32 bits (FP32) or 16 bits (BF16). This reduces memory by 8x vs FP32. QLoRA uses **NF4 (NormalFloat4)** — a data type optimized for normally-distributed weight values in neural networks.
@@ -457,8 +511,14 @@ flowchart TD
     T3 --> OBS
     OBS --> A
 
-    style A fill:#e3f2fd,stroke:#1565c0
-    style OBS fill:#fff3e0,stroke:#e65100
+    style U fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style A fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style D fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style R fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style OBS fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 ### LangChain vs LangGraph
@@ -484,6 +544,14 @@ graph TD
         N4 --> N2
         N3 --> END([__end__])
     end
+
+    style START fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style END fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style N1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style N2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style N3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style N4 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style COND fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
 
     subgraph STATE["State Object shared across all nodes"]
         S1[query: str]
@@ -516,10 +584,11 @@ graph TD
     E -->|"Approved"| U
     E -->|"Needs revision"| W
 
-    style O fill:#e3f2fd,stroke:#1565c0
-    style R fill:#e8f5e9,stroke:#2e7d32
-    style W fill:#fff3e0,stroke:#e65100
-    style E fill:#fce4ec,stroke:#c2185b
+    style U fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style O fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style R fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style W fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
 ```
 
 **Agent levels:**
@@ -557,8 +626,14 @@ graph LR
     T2 --> DB[(PostgreSQL)]
     T3 --> FS[(File System)]
 
-    style LLM fill:#e3f2fd,stroke:#1565c0
-    style SERVER fill:#f3e5f5,stroke:#6a1b9a
+    style LLM fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style R1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style JIRA fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style DB fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style FS fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
 ```
 
 ### MCP vs Direct API Calls
@@ -598,6 +673,14 @@ graph LR
 
     V1 -.->|"cosine similarity ≈ 0.95\n(semantically similar)"| V2
     V1 -.->|"cosine similarity ≈ 0.12\n(semantically different)"| V3
+
+    style T1 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style E fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style V1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style V2 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style V3 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 **Each dimension** doesn't have a human-interpretable meaning (unlike one-hot encoding). The entire 768-dimensional direction in vector space encodes semantic concepts learned during training.
@@ -690,6 +773,23 @@ graph TD
     L1 -.->|"Drill down"| L0
 
     Q[Query Vector] -->|"Start at top layer\ntraverse to approximate region"| L2
+
+    style A2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style C2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style F2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style B1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style C1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style D1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style E1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style F1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style B0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style C0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style D0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style E0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style F0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style Q fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 **Search process:** Start at the top layer, greedily find the nearest node, drop to the next layer and repeat. When you reach Layer 0, do a local beam search. This gives O(log N) complexity instead of O(N) for brute force.
@@ -722,9 +822,12 @@ graph TD
     DD -->|"Example"| EX1["Users now ask about GPT-5\nbut training data only had GPT-4 queries"]
     CD -->|"Example"| EX2["'Positive' sentiment phrase\nchanged meaning over time"]
 
-    style DD fill:#fff3e0,stroke:#e65100
-    style CD fill:#fce4ec,stroke:#c2185b
-    style LD fill:#e3f2fd,stroke:#1565c0
+    style DRIFT fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style DD fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style CD fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style LD fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style EX1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style EX2 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
 ```
 
 ### PSI — Population Stability Index
@@ -758,9 +861,13 @@ flowchart TD
     SHADOW --> PROMOTE[Promote to production]
     COMPARE -->|No| ROLLBACK[Keep current model\nInvestigate further]
 
-    style TRIGGER fill:#fff3e0,stroke:#e65100
-    style PROMOTE fill:#c8e6c9,stroke:#2e7d32
-    style ROLLBACK fill:#ffcdd2,stroke:#c62828
+    style TRIGGER fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style TRAIN fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style EVAL fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style COMPARE fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style SHADOW fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style PROMOTE fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style ROLLBACK fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Detecting Embedding Drift in RAG Systems
@@ -783,11 +890,18 @@ After deploying a RAG system, monitor:
 graph TD
     subgraph CM["Confusion Matrix (Binary Classification)"]
         direction LR
-        PP["Predicted: Positive"] 
-        PN["Predicted: Negative"]
-        AP["Actual: Positive"] 
-        AN["Actual: Negative"]
+        AP["Actual: Positive"] -->|Correct| TP["✅ TP\nTrue Positive"]
+        AP -->|Missed| FN["❌ FN\nFalse Negative"]
+        AN["Actual: Negative"] -->|False Alarm| FP["⚠️ FP\nFalse Positive"]
+        AN -->|Correct| TN["✅ TN\nTrue Negative"]
     end
+
+    style AP fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style AN fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style TP fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style TN fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style FP fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style FN fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 |  | Predicted Positive | Predicted Negative |
@@ -838,6 +952,14 @@ graph LR
     subgraph IDEAL["Ideal"]
         I1[Low bias, low variance\nGeneralizes well]
     end
+
+    style B1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style B2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style B3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style V1 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style V2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style V3 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style I1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
 ```
 
 **Bias** = how far off average predictions are from true values. High bias = systematic error.  
@@ -868,6 +990,10 @@ graph LR
     subgraph THIGH["Temperature → ∞ (Uniform Random)"]
         PH["Prob: [0.33, 0.33, 0.33]\nPure random selection"]
     end
+
+    style P0 fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style P1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style PH fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 - **T = 0** — always picks the highest-probability token. Deterministic. Good for factual Q&A, code.
@@ -887,6 +1013,13 @@ graph LR
     CW --> RC["Retrieved Chunks\n~3000 tokens"]
     CW --> UQ["User Query\n~50 tokens"]
     CW --> RESP["LLM Response\n~500 tokens"]
+
+    style CW fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style SP fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style CH fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style RC fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style UQ fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style RESP fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
 ```
 
 **"Lost in the Middle" problem** — LLMs pay more attention to the beginning and end of the context window. Content in the middle tends to be underutilized. Mitigation: place the most critical chunks first and last; use re-ranking to prioritize.
@@ -933,6 +1066,20 @@ graph TD
         OG3[Harmful Content Filter]
         OG4[Source Citation Validator]
     end
+
+    style INPUT fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style IG fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style LLM fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style OG fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style USER fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style IG1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style IG2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style IG3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style IG4 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style OG1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style OG2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style OG3 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style OG4 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Prompt Injection
@@ -989,9 +1136,13 @@ flowchart TD
     STORE --> USER[Return Answer]
     RETURN --> USER
 
-    style CACHE fill:#fff9c4,stroke:#f9a825
-    style RETURN fill:#c8e6c9,stroke:#2e7d32
-    style RAG fill:#e3f2fd,stroke:#1565c0
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style EMB fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style CACHE fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style RETURN fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style RAG fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style STORE fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style USER fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
 ```
 
 Tools: **GPTCache**, **Redis** with vector similarity (RedisVL), custom implementation with Pinecone + Redis.
@@ -1015,9 +1166,14 @@ graph TD
 
     QUEUE[Async Queue\nSQS / Celery] -.->|Batch similar queries| W1
 
-    style LB fill:#e3f2fd,stroke:#1565c0
-    style CACHE_L fill:#fff9c4,stroke:#f9a825
-    style LLM fill:#f3e5f5,stroke:#6a1b9a
+    style LB fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style W1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style W2 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style W3 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style CACHE_L fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style VDB fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style LLM fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style QUEUE fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
 ```
 
 **Key strategies for 250 TPS:**
