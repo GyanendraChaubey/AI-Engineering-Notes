@@ -1,0 +1,4324 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_31/">
+      
+      
+        <link rel="prev" href="../interview_30/">
+      
+      
+        <link rel="next" href="../interview_32/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 31 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-1-interview-31" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 31
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-1-interview-31">Generative AI Engineer (Part 1) — Interview 31<a class="headerlink" href="#generative-ai-engineer-part-1-interview-31" title="Permanent link">¶</a></h1>
+<p><strong>Q: Can you walk me through the steps of your XGBoost implementation for next purchase date prediction?</strong></p>
+<ul>
+<li>
+<p>Sure, here’s how I implemented XGBoost for next purchase date prediction:</p>
+</li>
+<li>
+<p><strong>1. Data Collection &amp; Preparation</strong></p>
+</li>
+<li>Gathered historical transaction data for each customer and product.</li>
+<li>Cleaned the data, handled missing values, and removed duplicates.</li>
+<li>Engineered features such as:</li>
+<li>Days since last purchase</li>
+<li>Purchase frequency</li>
+<li>Average purchase interval</li>
+<li>
+<p>Recency, total purchases, and customer/product-level aggregates</p>
+</li>
+<li>
+<p><strong>2. Feature Engineering</strong></p>
+</li>
+<li>Created lag features to capture purchase patterns over time.</li>
+<li>Encoded categorical variables (like product/category) using label encoding or one-hot encoding.</li>
+<li>
+<p>Normalized/standardized numerical features if needed.</p>
+</li>
+<li>
+<p><strong>3. Train-Test Split</strong></p>
+</li>
+<li>
+<p>Split the data into training and test sets based on time (to avoid data leakage).</p>
+</li>
+<li>
+<p><strong>4. Model Training</strong></p>
+</li>
+<li>Used XGBoost Regressor for predicting the number of days until the next purchase.</li>
+<li>
+<p>Tuned hyperparameters (like learning rate, max depth, n_estimators) using cross-validation.</p>
+</li>
+<li>
+<p><strong>5. Model Evaluation</strong></p>
+</li>
+<li>Evaluated model performance using Mean Absolute Percentage Error (MAPE).</li>
+<li>
+<p>Achieved a MAPE of 13.6%, which was considered good for this business case.</p>
+</li>
+<li>
+<p><strong>6. Deployment</strong></p>
+</li>
+<li>Saved the trained model and integrated it into the marketing workflow.</li>
+<li>
+<p>Passed predictions to the Salesforce Marketing Cloud team for campaign targeting.</p>
+</li>
+<li>
+<p><strong>7. Monitoring &amp; Iteration</strong></p>
+</li>
+<li>Monitored model performance and retrained periodically with new data.</li>
+</ul>
+<p>This approach helped the business run targeted campaigns and improve customer engagement by predicting when each customer was likely to make their next purchase.</p>
+<hr>
+<p><strong>Q: Why do you have to standardize features before training the XGBoost model?</strong></p>
+<ul>
+<li>Standardization is not strictly required for tree-based models like XGBoost, because they are not sensitive to the scale of input features.</li>
+<li>However, in some cases, standardizing or normalizing features can still be helpful:</li>
+<li>It can make feature importance more interpretable, especially when comparing across features with different units or scales.</li>
+<li>If the pipeline includes other models (like linear regression or neural networks), standardization ensures consistency and prevents issues with those algorithms.</li>
+<li>It can help with convergence and stability if you use XGBoost with certain regularization or objective functions, or if you later switch to models that are sensitive to feature scale.</li>
+<li>In my project, I standardized features mainly for consistency across the pipeline and to keep the data ready for any future model experimentation that might require it.</li>
+</ul>
+<hr>
+<p><strong>Q: What is normalization of a feature?</strong></p>
+<ul>
+<li>Normalization is a data preprocessing technique used to scale numerical feature values into a specific range, usually [0, 1].</li>
+<li>The main goal is to ensure that all features contribute equally to the model and to avoid dominance by features with larger values.</li>
+<li>The most common normalization method is Min-Max scaling:</li>
+<li>For each value, subtract the minimum value of the feature and divide by the range (max - min).</li>
+<li>Formula: 
+ <span class="arithmatex">\( x_{norm} = \frac{x - x_{min}}{x_{max} - x_{min}} \)</span></li>
+<li>After normalization, all feature values will be between 0 and 1.</li>
+<li>This is especially useful when features have different units or scales, and it helps some algorithms (like neural networks or k-means) perform better and converge faster.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you handle categorical features in preprocessing?</strong></p>
+<ul>
+<li>For categorical features, normalization is not applicable because they are not numerical.</li>
+<li>Instead, we use encoding techniques to convert categorical values into a numerical format that machine learning models can understand.</li>
+<li>The most common methods are:</li>
+<li><strong>Label Encoding</strong>: Assigns each unique category a different integer value. Useful for ordinal categories.</li>
+<li><strong>One-Hot Encoding</strong>: Creates a new binary column for each category, marking 1 if the row belongs to that category and 0 otherwise. Useful for nominal (non-ordered) categories.</li>
+<li>In my projects, like the UIDS intent classification system, I used label encoding for intent labels and sometimes one-hot encoding for other categorical features.</li>
+<li>This ensures that the model can process categorical data correctly and avoids introducing unintended ordinal relationships where they don’t exist.</li>
+</ul>
+<hr>
+<p><strong>Q: What is label encoding?</strong></p>
+<ul>
+<li>Label encoding is a technique used to convert categorical values into numerical values.</li>
+<li>Each unique category in a feature is assigned a unique integer value.</li>
+<li>For example, if you have a feature "color" with values ["red", "green", "blue"], label encoding might assign: "red" = 0, "green" = 1, "blue" = 2.</li>
+<li>This allows machine learning models to process categorical data as numbers.</li>
+<li>In my UIDS intent classification project, I used label encoding to transform intent labels into integers before training the model, as shown in my code:</li>
+<li><code>le = LabelEncoder()</code></li>
+<li><code>le.fit(train_df["l_intent"])</code></li>
+<li><code>train_df["label"] = le.transform(train_df["l_intent"])</code></li>
+<li>Label encoding is simple and efficient, especially for target labels or ordinal features.</li>
+</ul>
+<hr>
+<p><strong>Q: What actually happens with the data when you associate numbers with different classes using label encoding?</strong></p>
+<ul>
+<li>When you use label encoding, each unique category in a categorical feature is replaced by a unique integer.</li>
+<li>The original categorical column (like "color" with values "red", "green", "blue") is transformed into a numerical column (like 0, 1, 2).</li>
+<li>This allows machine learning models to process the data, since most algorithms require numerical input.</li>
+<li>The mapping between category and integer is consistent, so the model can learn patterns based on these encoded values.</li>
+<li>In my UIDS project, for example, I used label encoding to convert intent labels into integers before training and prediction. This made it possible to train classification models and later decode predictions back to the original class names using the same encoder.</li>
+<li>The encoded data is now ready for model training, and the model treats each integer as a distinct class label.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the impact of using label encoding on nominal categorical features?</strong></p>
+<ul>
+<li>The main impact is that the model may learn false relationships between categories that do not exist.</li>
+<li>For nominal features (like "red", "green", "blue"), label encoding introduces artificial order and distance, which can confuse models that use mathematical operations on feature values.</li>
+<li>This can lead to:</li>
+<li>Incorrect model assumptions about similarity or ranking between categories.</li>
+<li>Reduced model accuracy and poor generalization.</li>
+<li>Potential bias in predictions, as the model may treat some categories as "closer" or "further" apart.</li>
+<li>In practice, this is why one-hot encoding is preferred for nominal features, as it avoids introducing any unintended order or distance.</li>
+<li>In my experience, using the right encoding method for categorical features is critical for building robust and accurate models, especially in enterprise AI systems where data quality and model interpretability are important.</li>
+</ul>
+<hr>
+<p><strong>Q: How can you avoid the problem of false relationships caused by label encoding on nominal categorical features?</strong></p>
+<ul>
+<li>Yes, to avoid introducing false relationships between nominal categories, I use one-hot encoding instead of label encoding.</li>
+<li>One-hot encoding creates a separate binary column for each category, so there is no artificial order or distance between them.</li>
+<li>For example, for the "color" feature with values "red", "green", "blue", one-hot encoding will create three columns: "color_red", "color_green", "color_blue", each with values 0 or 1.</li>
+<li>This ensures that the model treats each category as independent and avoids misleading the model with unintended ordinal information.</li>
+<li>In my projects, I always use one-hot encoding for nominal features and reserve label encoding for target variables or ordinal features where order matters.</li>
+<li>This approach improves model accuracy and interpretability, especially in enterprise AI systems where data quality is critical.</li>
+</ul>
+<hr>
+<p><strong>Q: What is one-hot encoding?</strong></p>
+<ul>
+<li>One-hot encoding is a technique to convert categorical variables into a set of binary columns.</li>
+<li>For each unique category in the feature, a new column is created.</li>
+<li>Each row will have a value of 1 in the column corresponding to its category, and 0 in all other columns.</li>
+<li>For example, if the "color" feature has values "red", "green", "blue":</li>
+<li>"red" becomes [1, 0, 0]</li>
+<li>"green" becomes [0, 1, 0]</li>
+<li>"blue" becomes [0, 0, 1]</li>
+<li>This method avoids introducing any artificial order or distance between categories, so the model treats each category as independent.</li>
+<li>In my projects, I use one-hot encoding for nominal features to ensure the model does not learn false relationships, which is important for model accuracy and interpretability.</li>
+</ul>
+<hr>
+<p><strong>Q: What are some performance measures you can use to report model results to the business?</strong></p>
+<ul>
+<li>There are several key performance metrics commonly used to evaluate and report model performance to business stakeholders:</li>
+<li><strong>Accuracy</strong>: The proportion of correct predictions out of total predictions. It gives a general sense of how often the model is right.</li>
+<li><strong>Balanced Accuracy</strong>: Useful when classes are imbalanced; it averages recall obtained on each class.</li>
+<li><strong>Precision</strong>: The proportion of true positive predictions out of all positive predictions made by the model. It shows how reliable positive predictions are.</li>
+<li><strong>Recall</strong>: The proportion of true positive predictions out of all actual positives. It measures how well the model captures all relevant cases.</li>
+<li><strong>F1 Score</strong>: The harmonic mean of precision and recall, providing a balance between the two, especially useful for imbalanced datasets.</li>
+<li><strong>Macro, Micro, and Weighted F1 Scores</strong>: These provide different ways to average F1 scores across classes, depending on the business need (e.g., treating all classes equally or weighting by class frequency).</li>
+<li>In my UIDS project, I used all these metrics to evaluate intent classification models and reported them to business teams for transparency and decision-making.</li>
+<li>These metrics help the business understand not just overall accuracy, but also how well the model performs on each class and in different scenarios, supporting better model selection and improvement.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the main performance metrics for classification models to report to the business?</strong></p>
+<ul>
+<li>For classification models, I typically report the following key performance metrics to the business:</li>
+<li><strong>Accuracy</strong>: Shows the overall percentage of correct predictions.</li>
+<li><strong>Balanced Accuracy</strong>: Useful when classes are imbalanced; it averages recall across all classes.</li>
+<li><strong>Precision</strong>: Indicates how many of the predicted positives are actually correct.</li>
+<li><strong>Recall</strong>: Measures how many actual positives were correctly identified.</li>
+<li><strong>F1 Score</strong>: Harmonic mean of precision and recall, providing a balanced measure, especially for imbalanced datasets.</li>
+<li><strong>F1 Score (Micro, Macro, Weighted)</strong>: </li>
+<li>Micro: Aggregates contributions of all classes to compute the average metric.</li>
+<li>Macro: Calculates metric independently for each class, then takes the average.</li>
+<li>Weighted: Takes class imbalance into account by weighting each class’s metric.</li>
+<li>In my UIDS project, I used all these metrics to evaluate and compare model performance, and shared them with business stakeholders for transparency and informed decision-making.</li>
+</ul>
+<p><strong>interviewee</strong>: Uh, in classifications.</p>
+<hr>
+<p><strong>Q: What are some performance measures for classification models to report to the business?</strong></p>
+<ul>
+<li>For classification models, I typically report the following performance metrics to the business:</li>
+<li><strong>Accuracy</strong>: Shows the overall percentage of correct predictions.</li>
+<li><strong>Balanced Accuracy</strong>: Useful when classes are imbalanced; it averages recall across all classes.</li>
+<li><strong>Precision</strong>: Indicates how many predicted positives are actually correct.</li>
+<li><strong>Recall</strong>: Measures how many actual positives the model correctly identified.</li>
+<li><strong>F1 Score (Micro, Macro, Weighted)</strong>: Combines precision and recall; micro averages over all samples, macro averages over classes, and weighted considers class imbalance.</li>
+<li>These metrics provide a clear and comprehensive view of model performance, helping business stakeholders understand both overall effectiveness and how well the model handles each class.</li>
+<li>In my UIDS project, I used all these metrics to evaluate and report the intent classification system’s performance, ensuring transparency and actionable insights for business decisions.</li>
+</ul>
+<hr>
+<p><strong>Q: Can you explain accuracy, balanced accuracy, precision, recall, and F1 score with examples?</strong></p>
+<ul>
+<li><strong>Accuracy</strong>: This is the percentage of correct predictions out of all predictions.</li>
+<li><em>Example</em>: If a model predicts 90 out of 100 samples correctly, the accuracy is 90%.</li>
+<li><strong>Balanced Accuracy</strong>: This is the average of recall obtained on each class, useful when classes are imbalanced.</li>
+<li><em>Example</em>: If you have two classes, and the model correctly predicts 80% of class A and 60% of class B, the balanced accuracy is (80% + 60%) / 2 = 70%.</li>
+<li><strong>Precision</strong>: This is the proportion of true positive predictions out of all positive predictions made by the model.</li>
+<li><em>Example</em>: If the model predicts 20 samples as positive, and 15 of them are actually positive, precision is 15/20 = 75%.</li>
+<li><strong>Recall</strong>: This is the proportion of true positive predictions out of all actual positives.</li>
+<li><em>Example</em>: If there are 30 actual positive samples, and the model correctly predicts 15 of them, recall is 15/30 = 50%.</li>
+<li><strong>F1 Score</strong>: This is the harmonic mean of precision and recall, balancing both metrics.</li>
+<li>
+<p><em>Example</em>: If precision is 75% and recall is 50%, F1 score = 2 * (0.75 * 0.5) / (0.75 + 0.5) ≈ 0.6 or 60%.</p>
+</li>
+<li>
+<p>In my UIDS project, I used all these metrics to evaluate the intent classification model and reported them to the business for a clear understanding of model performance.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Q: What does it mean when you say Falcon is an LLM? What entities are getting trained or stored on your machine?</strong></p>
+<ul>
+<li>When I say Falcon-7B is an LLM (Large Language Model), I mean it is a deep learning model with billions of parameters, pre-trained on a large corpus of text data to understand and generate human language.</li>
+<li>In the context of fine-tuning Falcon-7B for intent classification:</li>
+<li>The model’s parameters (weights and biases) are further updated using our labeled intent dataset, so it learns to map user queries to specific intent classes.</li>
+<li>During training, the model learns patterns and relationships between input queries and their corresponding intents.</li>
+<li>The main entities being trained and stored are:</li>
+<li><strong>Model Weights</strong>: The numerical parameters of the neural network, which are updated during fine-tuning.</li>
+<li><strong>Tokenizer/Vocabulary</strong>: The mapping from words or subwords to numerical tokens, which is required for processing text input.</li>
+<li><strong>Configuration Files</strong>: Metadata about the model architecture, training settings, and hyperparameters.</li>
+<li><strong>Label Encoder</strong>: A mapping from intent labels (like “paper jammed inside printer”) to numerical class indices.</li>
+<li>After training, these entities (model weights, tokenizer, config, and label encoder) are saved to disk or cloud storage (like S3) and loaded during inference to predict intents for new queries.</li>
+<li>In summary, the Falcon-7B LLM is a neural network whose parameters are fine-tuned and stored, along with supporting files, to enable accurate intent classification in production.</li>
+</ul>
+<hr>
+<p><strong>Q: What are deep learning models?</strong></p>
+<ul>
+<li>Deep learning models are a type of machine learning model based on artificial neural networks with multiple layers.</li>
+<li>These models are designed to automatically learn complex patterns and representations from large amounts of data.</li>
+<li>They consist of interconnected layers of artificial neurons, where each layer transforms the input data into more abstract features.</li>
+<li>Examples include models for image recognition (like CNNs), sequence modeling (like RNNs and Transformers), and large language models (LLMs) such as Falcon-7B, GPT, and BERT.</li>
+<li>In practice, deep learning models are used for tasks like natural language understanding, speech recognition, image classification, and more.</li>
+<li>In my projects, I have used deep learning models for intent classification, document retrieval, and generative AI tasks, leveraging their ability to handle complex, high-dimensional data and deliver high accuracy in real-world enterprise scenarios.</li>
+</ul>
+<hr>
+<p><strong>Q: How to clean and convert the 'Amount' column to numeric values in a DataFrame with mixed formats and missing values?</strong></p>
+<ul>
+<li>The 'Amount' column contains dollar signs, mixed formats, and missing values ("NA").</li>
+<li>To analyze or process this data, you need to:</li>
+<li>Remove the dollar sign and commas.</li>
+<li>Convert valid entries to float.</li>
+<li>Handle missing or invalid values (e.g., set as NaN).</li>
+<li>This is a common data cleaning step before any aggregation or analysis.</li>
+</ul>
+<p><strong>🔑 Key Steps</strong>:
+- Read the data into a pandas DataFrame.
+- Use <code>str.replace()</code> to remove '$' and ','.
+- Use <code>pd.to_numeric()</code> with <code>errors='coerce'</code> to convert to float and handle invalid entries as NaN.</p>
+<p><strong>💻 Code</strong>:
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1"># Import pandas for data manipulation</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Create the DataFrame from the given data</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> <span class="s1">'UserId'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="c1"># User IDs</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> <span class="s1">'Amount'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'$20.00'</span><span class="p">,</span> <span class="s1">'$34.23'</span><span class="p">,</span> <span class="s1">'NA'</span><span class="p">,</span> <span class="s1">'$0876'</span><span class="p">,</span> <span class="s1">'$0.01'</span><span class="p">,</span> <span class="s1">'$9'</span><span class="p">]</span> <span class="c1"># Amounts as strings</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># Create DataFrame</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Clean the 'Amount' column</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">df</span><span class="p">[</span><span class="s1">'Amount'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> <span class="n">df</span><span class="p">[</span><span class="s1">'Amount'</span><span class="p">]</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'$'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Remove dollar sign</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a> <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Remove commas if any</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">)</span> <span class="c1"># Clean up the string</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Convert to numeric, setting errors to NaN for invalid entries</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">df</span><span class="p">[</span><span class="s1">'Amount'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Amount'</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'coerce'</span><span class="p">)</span> <span class="c1"># Convert to float</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># Display the cleaned DataFrame</span>
+</span></code></pre></div><p></p>
+<p><strong>💡 Explanation</strong>:
+- The code first removes the '$' symbol and any commas from the 'Amount' column.
+- <code>pd.to_numeric(..., errors='coerce')</code> converts valid numbers to float and sets invalid entries (like 'NA') to NaN.
+- This cleaned DataFrame is now ready for further analysis (e.g., sum, mean, etc.).
+- Time complexity: O(n), where n is the number of rows.
+- Space complexity: O(n), as a new column is created for cleaned values.</p>
+<hr>
+<p><strong>Q: What are different techniques to handle missing values, and when should each be used?</strong></p>
+<ul>
+<li>There are several standard techniques to handle missing values in data:</li>
+<li><strong>Remove Rows with Missing Values</strong>:</li>
+<li>Use when the dataset is large and missing values are few.</li>
+<li>Prevents introducing bias from imputation.</li>
+<li><strong>Impute with Mean/Median/Mode</strong>:</li>
+<li>Use mean for normally distributed numerical data.</li>
+<li>Use median for skewed numerical data or when outliers are present.</li>
+<li>Use mode for categorical data.</li>
+<li><strong>Impute with a Constant Value</strong>:</li>
+<li>Use when a specific value (like 0 or "Unknown") makes sense for the business context.</li>
+<li><strong>Forward/Backward Fill</strong>:</li>
+<li>Use for time series data where previous or next values can logically fill gaps.</li>
+<li><strong>Model-Based Imputation</strong>:</li>
+<li>Use advanced methods (like KNN, regression, or ML models) when missingness is not random or when more accuracy is needed.</li>
+<li><strong>Leave as Missing (NaN)</strong>:</li>
+<li>Some algorithms (like XGBoost, CatBoost) can handle NaN values natively.</li>
+<li>The choice depends on:</li>
+<li>The amount and pattern of missing data.</li>
+<li>The importance of the feature.</li>
+<li>The impact on downstream analysis or model performance.</li>
+<li>The business context and interpretability requirements.</li>
+<li>In practice, always analyze the reason for missingness and test the impact of different strategies on your results.</li>
+</ul>
+<hr>
+<p><strong>Q: What technique would you use to handle missing values in the 'Amount' column for this user transaction data?</strong></p>
+<ul>
+<li>In this case, the 'Amount' column represents transaction values for each user, which are numerical and directly impact the calculation of the maximum transaction.</li>
+<li>Since the dataset is very small (only six users), removing rows with missing values could result in losing important user data.</li>
+<li>Imputing with mean or median is not ideal here because each transaction is unique and represents a real-world event, not a repeated measurement.</li>
+<li>For this scenario, the best approach is to:</li>
+<li>Set missing or invalid 'Amount' values to 0 or NaN.</li>
+<li>If the goal is to find the user with the maximum transaction, you should ignore users with missing or invalid amounts in the calculation.</li>
+<li>This ensures that only valid transactions are considered, and the result reflects actual user activity.</li>
+<li>This approach is simple, transparent, and avoids introducing artificial values that could distort the analysis.</li>
+<li>In production pipelines (as in my experience with enterprise AI systems), we typically fill missing numerical values with 0 or drop them for aggregation tasks, unless business logic requires a different strategy. For example, in the UIDS project, nulls are filled or handled during data preparation to ensure data quality before downstream processing.</li>
+</ul>
+<hr>
+<p><strong>Q: Should missing 'Amount' values be set to zero, and what does that imply in this context?</strong></p>
+<ul>
+<li>Setting missing 'Amount' values to zero will imply that the user made a transaction of zero value, not that the transaction data is missing.</li>
+<li>In this context, where 'Amount' represents the value of a transaction, replacing missing values with zero can mislead downstream analysis—especially when identifying the user with the maximum transaction.</li>
+<li>The best practice is to leave missing values as NaN (Not a Number) or remove those rows from calculations involving transaction amounts.</li>
+<li>This ensures that only users with valid transaction amounts are considered for metrics like maximum transaction.</li>
+<li>This approach aligns with standard data preparation practices in enterprise AI pipelines, as seen in my experience with UIDS and RAG projects, where nulls are filled only when it makes logical sense, and otherwise, missing values are handled explicitly to maintain data integrity.</li>
+<li>In summary, do not replace missing 'Amount' values with zero unless business logic specifically requires it; otherwise, treat them as missing to avoid incorrect interpretations.</li>
+</ul>
+<hr>
+<p><strong>Q: Statistically, what is the minimum number of samples needed for a machine learning model to work properly?</strong></p>
+<ul>
+<li>There is no strict universal rule for the minimum number of samples required for a machine learning model, as it depends on:</li>
+<li>The complexity of the model (e.g., deep learning models need more data than simple linear models).</li>
+<li>The number of features (dimensionality) in the dataset.</li>
+<li>The variability and distribution of the data.</li>
+<li>The specific use case and acceptable error margin.</li>
+<li>As a general guideline:</li>
+<li>For simple models (like linear regression), you typically need at least 10 times as many samples as features (the "10:1 rule").</li>
+<li>For deep learning or high-dimensional data, thousands to tens of thousands of samples are often needed for stable training and to avoid overfitting.</li>
+<li>For classification tasks, having at least 50-100 samples per class is a common minimum, but more is always better.</li>
+<li>In industry practice, we often start with as much data as possible, then use techniques like cross-validation to assess if the model is generalizing well.</li>
+<li>In my experience with enterprise AI systems (like UIDS), we ensure data sufficiency by analyzing class balance, using data augmentation, and monitoring model performance metrics to decide if more data is needed before production deployment.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the minimum sample size required for statistical significance in experiments or datasets?</strong></p>
+<ul>
+<li>Statistically, the minimum sample size for significance depends on the test being used, the expected effect size, and the desired confidence level (typically 95%).</li>
+<li>As a general rule in statistics:</li>
+<li>For most parametric tests (like t-tests), a minimum of 30 samples is often cited as the threshold for the Central Limit Theorem to apply, making the sample mean approximately normally distributed.</li>
+<li>For very basic statistical analysis, at least 10-20 samples are sometimes used, but results are less reliable and have wider confidence intervals.</li>
+<li>For machine learning, as mentioned earlier, at least 10 samples per feature is a common rule of thumb, but more is always better for model stability.</li>
+<li>In industry and research, power analysis is used to determine the minimum sample size needed to detect a given effect size with a specified confidence and power (commonly 80%).</li>
+<li>In summary:</li>
+<li><strong>Below 30 samples</strong>, statistical significance is weak and results are not robust.</li>
+<li><strong>30 or more samples</strong> is a practical minimum for most statistical tests to be considered reliable.</li>
+<li>For production ML pipelines (like in UIDS), we always aim for larger datasets to ensure both statistical and practical significance before deploying models.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the minimum number of rows required for a dataset to be statistically significant for machine learning?</strong></p>
+<ul>
+<li>For any machine learning model to be statistically significant and reliable, a dataset with only 6 rows is far too small.</li>
+<li>As a practical industry guideline:</li>
+<li><strong>Minimum 30 samples</strong> is often cited for basic statistical significance (Central Limit Theorem).</li>
+<li>For machine learning, <strong>at least 50–100 rows</strong> is a bare minimum for very simple models, but this is still quite low and may not generalize well.</li>
+<li>For more robust results, especially with multiple features or classes, <strong>hundreds or thousands of rows</strong> are preferred.</li>
+<li>In my experience with enterprise AI projects like UIDS, we set minimum thresholds for training data size during preprocessing (for example, filtering out intents with fewer than a set number of samples).</li>
+<li>If I were advising a client, I would recommend <strong>at least 30–50 rows per class or intent</strong> as an absolute minimum, but ideally <strong>several hundred rows</strong> for meaningful model training and evaluation.</li>
+<li>With only 6 rows, any model built would not be statistically valid or reliable for production use.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the single minimum number of rows required for a machine learning model?</strong></p>
+<ul>
+<li>The absolute minimum number of rows I would recommend for any machine learning model is <strong>30</strong>.</li>
+<li>This is based on statistical principles (Central Limit Theorem) and is commonly used as a threshold for basic significance.</li>
+<li>However, for practical and reliable results, especially in industry projects, I always aim for at least <strong>50 rows</strong> as a starting point, even for the simplest models.</li>
+<li>In my experience with enterprise AI pipelines (like UIDS), we set such minimum thresholds in preprocessing to ensure the model has enough data to learn meaningful patterns.</li>
+<li>So, the minimum single value I would give is <strong>30 rows</strong>, but ideally, more data is always better for model stability and accuracy.</li>
+</ul>
+<hr>
+<p><strong>Q: Why is 50 chosen as the minimum number of rows, and what happens if you have less than that?</strong></p>
+<ul>
+<li>Choosing 50 as the minimum is based on practical experience and statistical guidelines:</li>
+<li>With fewer than 50 samples, models are highly prone to overfitting and cannot generalize well.</li>
+<li>Small datasets do not capture enough variability, so the model may learn noise instead of real patterns.</li>
+<li>Many statistical tests and machine learning algorithms require a reasonable sample size to estimate parameters reliably and produce stable results.</li>
+<li>In my enterprise AI projects (like UIDS), we set such thresholds to ensure the model has enough data for meaningful training and evaluation.</li>
+<li>If you use less than 50 rows:</li>
+<li>The model’s predictions will be unstable and unreliable.</li>
+<li>Performance metrics (like accuracy or F1-score) will not be trustworthy.</li>
+<li>The model may fail to detect real trends or patterns, leading to poor results in production.</li>
+<li>In summary, 50 is a practical minimum to balance statistical significance and model reliability, but more data is always better for robust AI solutions.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the impact of having 48 rows versus 52 rows in your dataset?</strong></p>
+<ul>
+<li>The difference between 48 and 52 rows is very small and will not have a significant impact on model performance or statistical significance.</li>
+<li>Both numbers are close to the practical minimum threshold (around 50) that I recommend for simple models.</li>
+<li>In practice:</li>
+<li>With such small datasets, the model will still be sensitive to noise and may not generalize well.</li>
+<li>The slight increase from 48 to 52 rows may help a little with stability, but it will not solve the core issue of limited data.</li>
+<li>For robust and reliable results, it is always better to collect more data—ideally several hundred rows or more.</li>
+<li>In my experience with enterprise AI pipelines (like UIDS), we set minimum thresholds (for example, 50 rows per intent) to filter out classes with too little data, but always aim for higher counts for production models.</li>
+<li>So, while 52 is marginally better than 48, both are still at the lower end, and the impact is minimal unless you cross a threshold set in your pipeline configuration (such as a hard minimum of 50 rows).</li>
+</ul>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

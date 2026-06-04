@@ -1,0 +1,5107 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_32/">
+      
+      
+        <link rel="prev" href="../interview_31/">
+      
+      
+        <link rel="next" href="../interview_33/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 32 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-1-interview-32" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 32
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-1-interview-32">Generative AI Engineer (Part 1) — Interview 32<a class="headerlink" href="#generative-ai-engineer-part-1-interview-32" title="Permanent link">¶</a></h1>
+<p><strong>Q: How do you ensure semantic understanding in your intent classification model, given that cosine similarity alone doesn't capture semantics and new/unseen intents may cause hallucination?</strong></p>
+<ul>
+<li>We address semantic understanding in our intent classification pipeline by leveraging pre-trained sentence transformer models, which are specifically designed to capture deep semantic relationships between text inputs.</li>
+<li>Here’s how semantic understanding is incorporated and hallucination is mitigated:</li>
+</ul>
+<hr>
+<p><strong>1. Semantic Embeddings:</strong>
+ - We use pre-trained sentence transformers (e.g., from HuggingFace) as the backbone for our SetFit model.
+ - These models are trained on large, diverse corpora and encode input queries into high-dimensional vectors that capture semantic meaning, not just surface-level similarity.
+ - When we fine-tune on our labeled intent data, the model learns to map semantically similar queries closer together in the embedding space, even if the wording is different.</p>
+<p><strong>2. Few-Shot Learning with SetFit:</strong>
+ - SetFit enables efficient few-shot learning, allowing the model to generalize better to variations in user queries for each intent.
+ - This helps the model understand the underlying intent, not just memorize specific phrases.</p>
+<p><strong>3. Data Augmentation &amp; Synthetic Data:</strong>
+ - We augment our dataset using LLM-driven synthetic data generation (as described in our RAG labelling process).
+ - By generating paraphrased and reworded examples for each intent, we expose the model to a broader range of semantic variations, improving robustness and reducing overfitting to specific phrasings.</p>
+<p><strong>4. Vector-Based Retrieval for Out-of-Distribution Handling:</strong>
+ - For inference, we embed incoming queries and compare them to intent embeddings using cosine similarity.
+ - Since the embeddings are semantically rich, the model can match queries to intents even if the wording is novel.
+ - We also set a similarity threshold—if a query’s embedding is not close enough to any known intent, we can flag it as “unknown” or “fallback,” reducing hallucination.</p>
+<p><strong>5. Continuous Evaluation &amp; Monitoring:</strong>
+ - We monitor misclassified and low-confidence predictions using offline analytics pipelines.
+ - This allows us to identify and address cases where the model might hallucinate or fail to capture semantics, and iteratively improve the training data.</p>
+<p><strong>6. Support for New Intents:</strong>
+ - The pipeline is designed to be easily extensible—new intents can be added by providing a few labeled examples, and the model can be retrained or fine-tuned without starting from scratch.</p>
+<hr>
+<ul>
+<li>In summary, semantic understanding is achieved through the use of sentence transformer embeddings, data augmentation, and robust evaluation strategies. This ensures the model generalizes well to real-world queries and minimizes hallucination for unseen or ambiguous inputs.</li>
+</ul>
+<hr>
+<p><strong>Q: How does an encoder-based sentence transformer acquire and represent semantic knowledge?</strong></p>
+<ul>
+<li>Encoder-based sentence transformers (like paraphrase-MPNet or MiniLM) acquire semantic knowledge through large-scale pre-training on diverse text corpora, where they learn to map semantically similar sentences to nearby points in a high-dimensional embedding space.</li>
+<li>Here’s how semantic understanding is achieved in practice:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Pre-training on Semantic Tasks:</strong> </li>
+<li>These models are pre-trained using objectives such as next sentence prediction, masked language modeling, or contrastive learning, which force the encoder to capture the meaning and context of sentences, not just word-level information.</li>
+<li>
+<p>For example, in contrastive learning, the model is trained to bring embeddings of paraphrased or semantically similar sentences closer together, and push apart unrelated ones.</p>
+</li>
+<li>
+<p><strong>Fine-tuning on Domain Data:</strong> </p>
+</li>
+<li>In our pipeline, we further fine-tune the pre-trained sentence transformer on our intent classification dataset using SetFit.</li>
+<li>
+<p>This step adapts the semantic space to our specific intents and query patterns, improving the model’s ability to distinguish between nuanced intent categories.</p>
+</li>
+<li>
+<p><strong>Semantic Embeddings for Retrieval and Classification:</strong> </p>
+</li>
+<li>When a new query comes in, the encoder generates an embedding that reflects its semantic meaning.</li>
+<li>
+<p>During inference, we compare this embedding to those of labeled intent examples (using cosine similarity), allowing the model to match queries to intents based on meaning, not just keywords.</p>
+</li>
+<li>
+<p><strong>Data Augmentation with Synthetic Examples:</strong> </p>
+</li>
+<li>We enhance semantic coverage by generating synthetic, paraphrased queries for each intent using LLMs (as described in our RAG labelling process).</li>
+<li>
+<p>This exposes the model to a wider variety of phrasings and contexts, further strengthening its semantic understanding.</p>
+</li>
+<li>
+<p><strong>Vector Store for Fast Semantic Search:</strong> </p>
+</li>
+<li>All embeddings (including synthetic examples) are indexed in a vector store, enabling efficient semantic retrieval and few-shot prompting during inference.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, the encoder-based sentence transformer captures semantic knowledge through its pre-training and fine-tuning processes, and we further reinforce this by augmenting our data and leveraging vector-based retrieval, ensuring robust semantic understanding for intent classification.</li>
+</ul>
+<hr>
+<p><strong>Q: Which model and ML pipeline are you using to update (fine-tune) the sentence transformer for intent classification?</strong></p>
+<ul>
+<li>For updating and fine-tuning the sentence transformer in our intent classification system, we use the <strong>SetFit pipeline</strong> as our primary model training path.</li>
+<li>The pipeline is orchestrated on <strong>AWS SageMaker</strong> and is defined via a YAML configuration (e.g., <code>model-training-pipeline.yaml</code>), which specifies all training parameters, data sources, and model registry steps.</li>
+<li>The backbone model is a <strong>pre-trained sentence transformer</strong> from HuggingFace (such as paraphrase-MPNet or MiniLM), which is then fine-tuned using the SetFit approach for our specific intent classification task.</li>
+<li>The pipeline includes:</li>
+<li><strong>Data Preparation:</strong> Preprocessing and encoding of labeled intent data.</li>
+<li><strong>Model Selection:</strong> SetFit is the default, but the pipeline also supports alternative models like CatBoost (using sentence embeddings + CatBoostClassifier) and experimental Falcon-7B fine-tuning.</li>
+<li><strong>Training:</strong> Fine-tuning the sentence transformer using SetFitTrainer, optimizing for intent classification accuracy.</li>
+<li><strong>Hyperparameter Tuning:</strong> Automated via SageMaker’s HyperparameterTuner for optimal performance.</li>
+<li><strong>Model Evaluation:</strong> Automated evaluation and analytics, including misclassification and similarity analysis.</li>
+<li><strong>Model Registration &amp; Deployment:</strong> Trained models are registered and deployed as SageMaker endpoints for real-time inference.</li>
+<li>The pipeline is modular, supports experiment tracking, and is designed for reproducibility and scalability in an enterprise environment.</li>
+</ul>
+<hr>
+<p><strong>Q: How are the weights of the sentence transformer updated during fine-tuning—are they overwritten, joined, or updated in another way?</strong></p>
+<ul>
+<li>When fine-tuning a pre-trained sentence transformer (such as in our SetFit pipeline), the process involves <strong>updating the existing weights</strong> of the model through gradient descent, not simply overwriting or joining them.</li>
+<li>Here’s how it works in our pipeline:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Initialization with Pre-trained Weights:</strong></li>
+<li>The model starts with weights from a pre-trained checkpoint (e.g., paraphrase-MPNet from HuggingFace).</li>
+<li>
+<p>These weights already encode general semantic knowledge from large-scale pre-training.</p>
+</li>
+<li>
+<p><strong>Fine-tuning Process:</strong></p>
+</li>
+<li>During fine-tuning, we train the model further on our labeled intent classification data.</li>
+<li>The training process uses backpropagation and gradient descent to adjust (update) the existing weights based on our specific dataset and task.</li>
+<li>
+<p>The weights are <strong>incrementally updated</strong>—they are not replaced or merged with new weights, but rather refined to better fit our domain.</p>
+</li>
+<li>
+<p><strong>No Overwriting or Joining:</strong></p>
+</li>
+<li>We do <strong>not</strong> overwrite the pre-trained weights with random new values.</li>
+<li>We do <strong>not</strong> join (concatenate or average) the weights with another model.</li>
+<li>
+<p>Instead, the model’s parameters are gradually adjusted from their pre-trained state to better represent our intent classification task.</p>
+</li>
+<li>
+<p><strong>Saving the Fine-tuned Model:</strong></p>
+</li>
+<li>After training, the updated (fine-tuned) weights are saved as a new model checkpoint.</li>
+<li>
+<p>This checkpoint contains all the learned knowledge from both the original pre-training and our domain-specific fine-tuning.</p>
+</li>
+<li>
+<p><strong>Technical Implementation:</strong></p>
+</li>
+<li>In our SageMaker pipeline, this is handled by the SetFitTrainer, which loads the pre-trained model, fine-tunes it on our data, and saves the updated model to the specified directory (as shown in the code: <code>model.save_pretrained(transformer_fine_tuned_model_path)</code>).</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, the fine-tuning process <strong>updates</strong> the pre-trained weights using our labeled data, refining the model’s semantic understanding for our specific use case, without overwriting or joining weights in a destructive or additive way.</li>
+</ul>
+<hr>
+<p><strong>Q: Which transfer (activation/loss) function is used during backpropagation when fine-tuning a sentence transformer?</strong></p>
+<ul>
+<li>In our SetFit-based fine-tuning pipeline for intent classification, we use the <strong>CosineSimilarityLoss</strong> as the primary loss function during backpropagation.</li>
+<li>This loss function is specifically designed for sentence embedding models, encouraging the model to bring embeddings of semantically similar sentences closer together and push apart those of different intents.</li>
+<li>The CosineSimilarityLoss computes the cosine similarity between pairs of sentence embeddings and optimizes the model to maximize similarity for positive pairs (same intent) and minimize for negative pairs (different intents).</li>
+<li>This approach is well-suited for intent classification tasks where semantic closeness in the embedding space is crucial.</li>
+<li>The activation functions within the transformer layers themselves are typically <strong>GELU</strong> (Gaussian Error Linear Unit), as is standard in models like MPNet and BERT, but the key transfer function for training is the <strong>CosineSimilarityLoss</strong>.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, we use <strong>CosineSimilarityLoss</strong> as the transfer (loss) function during backpropagation to fine-tune the sentence transformer for semantic intent classification.</li>
+</ul>
+<hr>
+<p><strong>Q: Which transfer (link) function is used during backpropagation when fine-tuning a sentence transformer?</strong></p>
+<ul>
+<li>In our sentence transformer fine-tuning pipeline, we use the <strong>CosineSimilarityLoss</strong> as the transfer (link) function during backpropagation.</li>
+<li>This loss function is specifically designed for sentence embedding models and is implemented via the <code>sentence_transformers.losses.CosineSimilarityLoss</code> class.</li>
+<li>The CosineSimilarityLoss measures the cosine similarity between pairs of sentence embeddings, encouraging the model to bring embeddings of semantically similar sentences closer together and push apart those of different intents.</li>
+<li>This approach is highly effective for intent classification, as it directly optimizes the semantic closeness in the embedding space.</li>
+<li>The CosineSimilarityLoss is set as the <code>loss_class</code> in our SetFitTrainer, as shown in our training pipeline and codebase.</li>
+<li>Internally, the transformer layers use the GELU activation function, but for the overall model optimization, CosineSimilarityLoss is the key transfer function guiding the weight updates.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, <strong>CosineSimilarityLoss</strong> is the transfer (link) function used for backpropagation in our sentence transformer fine-tuning process.</li>
+</ul>
+<hr>
+<p><strong>Q: In which scenarios would you use async functions versus non-async functions when designing a scalable AI system?</strong></p>
+<ul>
+<li>In a scalable AI system, choosing between async and non-async (synchronous) functions depends on the nature of the workload, I/O patterns, and system bottlenecks.</li>
+<li>Here’s how I decide:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Use Async Functions When:</strong></li>
+<li><strong>I/O-Bound Operations:</strong> </li>
+<li>For tasks that involve waiting for external resources, such as API calls (e.g., calling LLM endpoints, vector DB queries), database access, file I/O, or network requests.</li>
+<li>Example: In our RAG pipeline, async functions are used for parallel document retrieval from vector stores or when making concurrent OpenAI API calls for embeddings or completions.</li>
+<li><strong>High Concurrency Needs:</strong> </li>
+<li>When the system must handle many simultaneous requests efficiently, such as serving multiple user queries in a web API (e.g., FastAPI with async endpoints).</li>
+<li>Example: In the MCP server, async endpoints are used to process multiple agentic tool invocations or webhook events concurrently, improving throughput and reducing latency.</li>
+<li><strong>Event-Driven Architectures:</strong> </li>
+<li>
+<p>For serverless or event-driven components (e.g., AWS Lambda, webhooks) where rapid, non-blocking execution is required.</p>
+</li>
+<li>
+<p><strong>Use Non-Async (Synchronous) Functions When:</strong></p>
+</li>
+<li><strong>CPU-Bound Operations:</strong> </li>
+<li>For tasks that are computation-heavy and do not benefit from async, such as model inference (if running locally), data preprocessing, or batch computations.</li>
+<li>Example: When running a local ML model prediction or heavy data transformation, synchronous functions are preferred for simplicity and easier debugging.</li>
+<li><strong>Simple, Sequential Logic:</strong> </li>
+<li>When the logic is straightforward, and there’s no need for concurrency, keeping it synchronous reduces complexity.</li>
+<li><strong>Third-Party Library Limitations:</strong> </li>
+<li>
+<p>If dependencies or libraries do not support async (e.g., some ML frameworks), synchronous code is necessary.</p>
+</li>
+<li>
+<p><strong>Best Practices:</strong></p>
+</li>
+<li>Use async for I/O-bound, high-concurrency, or event-driven workloads to maximize scalability and resource utilization.</li>
+<li>Use sync for CPU-bound or simple sequential tasks to keep the codebase maintainable and avoid unnecessary complexity.</li>
+<li>In hybrid systems (like our MCP and RAG pipelines), combine both approaches: async for external calls and sync for internal processing.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, async functions are ideal for I/O-bound and concurrent workloads (API calls, DB access), while non-async functions are better for CPU-bound or simple sequential tasks. This hybrid approach ensures both scalability and maintainability in production AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you synchronize or merge results from multiple async tasks running in parallel in a scalable AI system?</strong></p>
+<ul>
+<li>When using async functions to handle multiple parallel tasks (such as API calls, DB queries, or external service requests), it’s essential to synchronize or aggregate their results before proceeding to the next step in the workflow.</li>
+<li>In Python (especially with frameworks like FastAPI or asyncio), this is typically managed using constructs like <code>asyncio.gather()</code> or similar concurrency primitives.</li>
+<li>Here’s how we handle it in practice:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Launching Parallel Tasks:</strong></li>
+<li>For example, in our Knowledge GPT API, we run multiple validators (e.g., injection detection, PII detection, product validation) in parallel using a thread pool or async tasks.</li>
+<li>
+<p>Each async function executes independently and returns its result when done.</p>
+</li>
+<li>
+<p><strong>Synchronization/Aggregation:</strong></p>
+</li>
+<li>We use <code>asyncio.gather()</code> (for async coroutines) or <code>concurrent.futures.ThreadPoolExecutor</code> (for thread-based parallelism) to launch all tasks and wait for all to complete.</li>
+<li><code>asyncio.gather()</code> returns the results as a list, preserving the order of the tasks, so we can easily merge or process the results together.</li>
+<li>Example:
+ <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task1</span><span class="p">():</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Simulate async work</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">return</span> <span class="s2">"result1"</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task2</span><span class="p">():</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Simulate async work</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">return</span> <span class="s2">"result2"</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">task1</span><span class="p">(),</span> <span class="n">task2</span><span class="p">())</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># results = ["result1", "result2"]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Now you can merge/process results as needed</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</span></code></pre></div></li>
+<li>
+<p>In our API, after all parallel checks complete, we aggregate their outputs and proceed only if all validations pass.</p>
+</li>
+<li>
+<p><strong>Error Handling:</strong></p>
+</li>
+<li>
+<p>We handle exceptions within each async task and aggregate errors if needed, ensuring robust error reporting and fallback logic.</p>
+</li>
+<li>
+<p><strong>Use Case Example:</strong></p>
+</li>
+<li>In the Knowledge GPT API, after JWT authentication, three validators run in parallel. Only after all complete do we proceed to business logic (search + LLM), ensuring all required checks are synchronized.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, we synchronize parallel async tasks using constructs like <code>asyncio.gather()</code> to aggregate results, ensuring all necessary outputs are available before moving to the next processing step. This approach maintains both concurrency and data consistency in scalable AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the basic construct of LangGraph?</strong></p>
+<ul>
+<li><strong>LangGraph</strong> is a state machine-based orchestration framework built on top of LangChain, designed for managing complex, multi-step, and conditional workflows in LLM and RAG pipelines.</li>
+<li>The core construct in LangGraph is the <strong>state graph</strong>, which models the pipeline as a series of nodes (steps) and edges (transitions/conditions).</li>
+<li><strong>Key Components:</strong></li>
+<li><strong>StateGraph:</strong> The main object representing the workflow. It defines the sequence and branching logic for each pipeline step.</li>
+<li><strong>Nodes:</strong> Each node represents a discrete processing step (e.g., data cleaning, translation, indexing, inference, evaluation).</li>
+<li><strong>Edges:</strong> Define the order of execution and conditional transitions between nodes (e.g., if translation is enabled, go to translation node; else, skip).</li>
+<li><strong>State Schema:</strong> Defines the data structure (state) passed between nodes, ensuring consistency and traceability.</li>
+<li><strong>How it works in practice:</strong></li>
+<li>You define each pipeline step as a node function.</li>
+<li>The state graph connects these nodes, specifying the execution flow and any conditional logic.</li>
+<li>The workflow is executed by passing an initial state, and LangGraph manages the transitions and data flow between steps.</li>
+<li><strong>Benefits:</strong></li>
+<li>Highly modular and extensible—easy to add, remove, or modify steps.</li>
+<li>Supports both sequential and conditional execution, making it ideal for complex AI pipelines (like RAG, data labeling, or multi-agent workflows).</li>
+<li>Integrates seamlessly with LangChain tools and LLM endpoints.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, the basic construct of LangGraph is a state machine (StateGraph) composed of nodes (pipeline steps) and edges (execution logic), enabling flexible orchestration of complex AI workflows.</li>
+</ul>
+<hr>
+<p><strong>Q: Which packages do you import to use LangGraph, and what are its supporting packages?</strong></p>
+<ul>
+<li>To use <strong>LangGraph</strong> in a pipeline, the primary package you import is:</li>
+<li><code>langgraph</code> (the main LangGraph library)</li>
+<li>Supporting packages commonly used alongside LangGraph include:</li>
+<li><code>langchain</code> — for LLM integration, prompt management, and chaining steps.</li>
+<li><code>pydantic</code> — for defining state schemas and data validation between nodes.</li>
+<li><code>asyncio</code> — for managing asynchronous execution of pipeline steps.</li>
+<li><code>typing</code> — for type annotations, especially when defining state schemas and node signatures.</li>
+<li><code>openai</code> or <code>azure-ai</code> — for LLM endpoints, if your nodes interact with LLMs.</li>
+<li><code>boto3</code> or <code>s3fs</code> — for AWS S3 integration if your pipeline reads/writes data from cloud storage.</li>
+<li><code>pandas</code> — for data preparation and manipulation within nodes.</li>
+<li>Example import block for a typical LangGraph-based pipeline:
+ <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">langgraph</span> <span class="c1"># Main LangGraph state machine framework</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.llms</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span> <span class="c1"># LLM integration</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span> <span class="c1"># State schema definition</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span> <span class="c1"># Async orchestration</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1"># Data handling</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span> <span class="c1"># AWS S3 integration (if needed)</span>
+</span></code></pre></div></li>
+<li>In our UIDS RAG Labelling pipeline, we also use modular scripts for each node (e.g., <code>prepare_dataset.py</code>, <code>synthetic_data_gen.py</code>, <code>index.py</code>), and these may import additional libraries as needed for their specific tasks.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, you import <code>langgraph</code> as the core package, with supporting packages like <code>langchain</code>, <code>pydantic</code>, <code>asyncio</code>, and others (e.g., <code>openai</code>, <code>boto3</code>, <code>pandas</code>) depending on your pipeline’s requirements and integrations.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you construct a workflow using LangGraph?</strong></p>
+<ul>
+<li>To construct a workflow with LangGraph, you follow a state machine pattern where each processing step is modeled as a node, and the execution flow is defined by edges (including conditional branches).</li>
+<li>Here’s the practical process:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Define the State Schema:</strong> </li>
+<li>Use a class (often with <code>pydantic.BaseModel</code>) to define the data structure (state) that will be passed between nodes.</li>
+<li>
+<p>Example:
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="c1"># Holds intermediate data/results</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>2. Initialize the StateGraph:</strong> </p>
+</li>
+<li>
+<p>Create a <code>StateGraph</code> object, specifying the state schema.
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">state_schema</span><span class="o">=</span><span class="n">State</span><span class="p">)</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>3. Add Nodes:</strong> </p>
+</li>
+<li>Each node represents a pipeline step (e.g., data preparation, translation, indexing, inference).</li>
+<li>
+<p>Nodes are typically functions or callable objects.
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"prepare_dataset"</span><span class="p">,</span> <span class="n">data_prep_graph</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"language_translation"</span><span class="p">,</span> <span class="n">lang_translation_graph</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Add more nodes as needed</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>4. Define Edges and Conditional Logic:</strong> </p>
+</li>
+<li>Use <code>add_conditional_edges</code> to specify the order and branching between nodes.</li>
+<li>
+<p>This allows for conditional execution (e.g., skip translation if not required).
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"START"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">state</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="s2">"language_translation"</span><span class="p">,</span> <span class="s2">"prepare_dataset"</span><span class="p">])</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>5. Run the Workflow:</strong> </p>
+</li>
+<li>
+<p>Pass the initial state to the workflow and execute it.
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>6. Modularization:</strong> </p>
+</li>
+<li>Each node can be implemented in a separate script/module (e.g., <code>prepare_dataset.py</code>, <code>synthetic_data_gen.py</code>), making the pipeline easy to extend and maintain.</li>
+</ul>
+<hr>
+<ul>
+<li>In summary, you construct a LangGraph workflow by defining a state schema, initializing a <code>StateGraph</code>, adding nodes for each pipeline step, connecting them with edges (including conditional logic), and then running the workflow with your input state. This modular, state-machine approach enables scalable and maintainable AI pipelines.</li>
+</ul>
+<hr>
+<p><strong>Q: What level of agent (level one, two, or three) is being used in your multi-agent orchestration?</strong></p>
+<ul>
+<li>In the context of agentic AI systems, agent levels typically refer to the complexity and autonomy of the agents:</li>
+<li><strong>Level 1 Agent:</strong> Executes a single, well-defined task or tool call per invocation. No memory or multi-step reasoning.</li>
+<li><strong>Level 2 Agent:</strong> Capable of multi-step reasoning, can chain together multiple tool calls or actions based on intermediate results, often with some short-term memory or state.</li>
+<li>
+<p><strong>Level 3 Agent:</strong> Highly autonomous, can plan, reason, and adapt dynamically, often with persistent memory, goal decomposition, and the ability to interact with other agents or orchestrate sub-agents.</p>
+</li>
+<li>
+<p>In our multi-agent orchestration (for example, in the MCP-based KGPT or UIDS RAG pipelines), we typically implement <strong>Level 2 agents</strong>:</p>
+</li>
+<li>These agents can perform multi-step workflows, make decisions based on intermediate state, and invoke multiple tools or services as needed.</li>
+<li>The orchestration layer (using LangGraph or similar frameworks) manages the state and transitions, allowing agents to process complex tasks that require chaining several actions (e.g., validation, retrieval, LLM inference, post-processing).</li>
+<li>
+<p>While the architecture is modular and can be extended towards Level 3 (with more autonomy and dynamic planning), the current production systems focus on robust, deterministic multi-step execution (Level 2).</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The agents in our current multi-agent orchestration are primarily <strong>Level 2 agents</strong>—capable of multi-step reasoning and tool chaining, but not fully autonomous planners (Level 3). This strikes a balance between reliability, control, and workflow complexity in enterprise AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How would you upgrade a LangGraph-based agentic workflow from level two to level three agent capabilities?</strong></p>
+<ul>
+<li>To elevate a LangGraph-based orchestration from a level two agent (multi-step, deterministic tool chaining) to a level three agent (autonomous, adaptive, persistent memory, dynamic planning), you need to introduce several advanced capabilities:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Persistent and Contextual Memory:</strong></li>
+<li>Integrate a long-term memory store (e.g., Redis, DynamoDB, or a vector database) to persist conversation history, user preferences, and intermediate states across sessions.</li>
+<li>
+<p>Update the state schema and node logic to read from and write to this memory, enabling agents to recall past interactions and context over multiple turns.</p>
+</li>
+<li>
+<p><strong>2. Dynamic Planning and Goal Decomposition:</strong></p>
+</li>
+<li>Implement a planning module (using LLMs or symbolic planners) that can break down high-level goals into sub-tasks dynamically, rather than following a fixed pipeline.</li>
+<li>
+<p>Nodes can be selected or sequenced at runtime based on the current state, user intent, or external signals, not just static edges.</p>
+</li>
+<li>
+<p><strong>3. Adaptive Decision-Making:</strong></p>
+</li>
+<li>Allow the agent to adapt its workflow based on real-time feedback, user corrections, or changing requirements.</li>
+<li>
+<p>Use conditional logic and feedback loops within the state graph to re-route, retry, or modify actions as needed.</p>
+</li>
+<li>
+<p><strong>4. Multi-Agent Collaboration:</strong></p>
+</li>
+<li>Enable orchestration of multiple specialized agents (sub-graphs or microservices) that can communicate, delegate tasks, and share state.</li>
+<li>
+<p>Use message passing or shared memory to coordinate between agents for complex workflows.</p>
+</li>
+<li>
+<p><strong>5. Tool and Skill Discovery:</strong></p>
+</li>
+<li>
+<p>Integrate a registry or discovery mechanism for tools/skills, allowing the agent to select and invoke new tools at runtime based on task requirements.</p>
+</li>
+<li>
+<p><strong>6. Enhanced Guardrails and Governance:</strong></p>
+</li>
+<li>Implement advanced guardrails for safety, compliance, and auditability (e.g., using Bedrock Agents, Azure Agent 365, or custom governance modules).</li>
+<li>
+<p>Track all actions, decisions, and state transitions for transparency and debugging.</p>
+</li>
+<li>
+<p><strong>7. Autonomous Error Recovery:</strong></p>
+</li>
+<li>Add logic for self-healing, such as automatic retries, fallback strategies, or escalation to human-in-the-loop when encountering failures.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Example (from our architecture):</strong></li>
+<li>In the KGPT MCP design, to move towards level three, we would:</li>
+<li>Use Redis or a database for persistent conversation and context storage.</li>
+<li>Add a planning node that uses LLMs to dynamically generate the next steps based on user goals and current state.</li>
+<li>Allow the orchestrator to spawn or coordinate multiple agentic sub-flows (e.g., for search, summarization, validation).</li>
+<li>Integrate with external tool registries and governance modules for dynamic tool selection and compliance.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>To upgrade to level three, you enhance the LangGraph workflow with persistent memory, dynamic planning, adaptive logic, multi-agent collaboration, tool discovery, advanced guardrails, and autonomous recovery—enabling the agent to reason, plan, and adapt like an autonomous system.</li>
+</ul>
+<hr>
+<p><strong>Q: How can you construct agent state and enable agents to communicate and reason together in a LangGraph-based multi-agent system?</strong></p>
+<ul>
+<li>To enable multi-agent reasoning and communication in a LangGraph-based system, you need to design a shared state schema and implement mechanisms for inter-agent messaging and collaborative planning. Here’s how you can approach this:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Shared State Schema:</strong></li>
+<li>Define a central state object (using <code>pydantic.BaseModel</code>) that holds:</li>
+<li>The global context (e.g., conversation history, task list, shared memory).</li>
+<li>Individual agent states (e.g., status, assigned tasks, outputs).</li>
+<li>A message queue or log for agent-to-agent communication.</li>
+<li>
+<p>Example:
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">AgentState</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">status</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">assigned_tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">last_message</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">MultiAgentState</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">global_context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="n">agents</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AgentState</span><span class="p">]</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">message_log</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">task_queue</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>2. Node Design for Agents:</strong></p>
+</li>
+<li>Each agent is represented as a node (or subgraph) in the LangGraph workflow.</li>
+<li>
+<p>Nodes read from and write to the shared state, updating their own status and communicating via the message log or task queue.</p>
+</li>
+<li>
+<p><strong>3. Communication Mechanism:</strong></p>
+</li>
+<li>Agents communicate by appending messages to the <code>message_log</code> or updating the <code>task_queue</code> in the shared state.</li>
+<li>Supervisor agent can assign tasks by updating the <code>task_queue</code> and setting flags in agent states.</li>
+<li>
+<p>Worker agents poll the queue, pick up tasks, and update their status/results.</p>
+</li>
+<li>
+<p><strong>4. Reasoning and Planning:</strong></p>
+</li>
+<li>Use LLM-based planning nodes to dynamically assign tasks, decompose goals, and coordinate agent actions based on the current state and message history.</li>
+<li>
+<p>Agents can reason about their next action by analyzing the shared state and recent messages.</p>
+</li>
+<li>
+<p><strong>5. Example Workflow:</strong></p>
+</li>
+<li>Supervisor node analyzes the global context and distributes tasks to worker agents by updating the <code>task_queue</code>.</li>
+<li>Worker agent nodes process their assigned tasks, update their state, and send status/completion messages.</li>
+<li>
+<p>Agents can send queries or requests to each other via the message log, enabling collaborative reasoning.</p>
+</li>
+<li>
+<p><strong>6. Extensibility:</strong></p>
+</li>
+<li>This architecture supports adding more agents, new communication protocols, or advanced reasoning modules (e.g., negotiation, consensus).</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>Construct a shared state schema that includes agent-specific data and a message log.</li>
+<li>Implement each agent as a node that reads/writes to this state.</li>
+<li>Use the message log or task queue for inter-agent communication and collaborative reasoning.</li>
+<li>This enables agents to coordinate, plan, and reason together dynamically within the LangGraph orchestration framework—supporting advanced multi-agent workflows as required in enterprise AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you design and implement a multi-agent intelligence system using LangGraph, given that LangGraph does not provide built-in multi-agent intelligence?</strong></p>
+<ul>
+<li>To implement a multi-agent intelligence system with LangGraph, you architect the workflow and state management to enable agent collaboration, communication, and reasoning, even though LangGraph itself is agnostic to agent intelligence. Here’s how you approach it from an AI Architect perspective:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Shared State Schema Design:</strong></li>
+<li>Define a central state schema (using <code>pydantic.BaseModel</code>) that holds:</li>
+<li>Global context (e.g., user query, conversation history, shared memory).</li>
+<li>Individual agent states (status, assigned tasks, outputs).</li>
+<li>Message log or queue for inter-agent communication.</li>
+<li>
+<p>Task queue for dynamic task assignment and tracking.</p>
+</li>
+<li>
+<p><strong>2. Modular Node Implementation:</strong></p>
+</li>
+<li>Each agent is implemented as a node (or subgraph) in the LangGraph workflow.</li>
+<li>Nodes represent specialized agents (e.g., Supervisor, Worker, Validator) and operate on the shared state.</li>
+<li>
+<p>Each node can read/write its own state, update the global context, and communicate via the message log.</p>
+</li>
+<li>
+<p><strong>3. Communication &amp; Coordination Logic:</strong></p>
+</li>
+<li>Agents communicate by appending messages to the message log or updating the task queue in the shared state.</li>
+<li>The Supervisor agent assigns tasks by updating the task queue; Worker agents pick up tasks, process them, and update their status/results.</li>
+<li>
+<p>Agents can send requests, responses, or status updates to each other, enabling collaborative reasoning.</p>
+</li>
+<li>
+<p><strong>4. Dynamic Planning &amp; Reasoning:</strong></p>
+</li>
+<li>Integrate LLM-based planning nodes that can analyze the current state, decompose high-level goals into sub-tasks, and dynamically assign tasks to agents.</li>
+<li>
+<p>Use conditional edges in LangGraph to route execution based on agent decisions, task completion, or feedback.</p>
+</li>
+<li>
+<p><strong>5. Extensibility &amp; Observability:</strong></p>
+</li>
+<li>The modular design allows you to add or replace agents (nodes) easily.</li>
+<li>
+<p>Centralized logging (as in <code>log_manager.py</code>) and structured state transitions enable debugging, monitoring, and auditability.</p>
+</li>
+<li>
+<p><strong>6. Example (UIDS RAG Labelling Pipeline):</strong></p>
+</li>
+<li>The pipeline is orchestrated as a state machine where each step (node) can be an agent.</li>
+<li>The state graph manages the sequence and conditional execution, while the shared state enables agents to collaborate and reason together.</li>
+<li>Logging, S3 integration, and modular prompts further support extensibility and robustness.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>You create a multi-agent intelligence system in LangGraph by designing a shared state schema, implementing each agent as a node, enabling communication via shared state/message logs, and orchestrating dynamic planning and reasoning through LLM-based nodes and conditional logic. This approach provides flexibility, scalability, and maintainability for complex enterprise AI workflows.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the key packages in LangChain for agent reasoning, and how are they included?</strong></p>
+<ul>
+<li>LangChain provides a modular framework for building reasoning workflows with LLMs, agents, and tools. To enable reasoning and orchestration, you typically use the following core packages and supporting libraries:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Core LangChain Packages:</strong></li>
+<li><code>langchain</code>: The main package for chains, agents, prompts, memory, and tools.</li>
+<li><code>langchain.agents</code>: For agent orchestration, tool integration, and multi-step reasoning.</li>
+<li><code>langchain.prompts</code>: For prompt templates and prompt engineering.</li>
+<li><code>langchain.memory</code>: For managing conversation and persistent memory.</li>
+<li><code>langchain.chains</code>: For building sequential or branching workflows (chains of steps).</li>
+<li><code>langchain.tools</code>: For integrating external APIs, functions, or custom tools into agent workflows.</li>
+<li>
+<p><code>langchain.callbacks</code>: For logging, tracing, and monitoring agent reasoning steps.</p>
+</li>
+<li>
+<p><strong>2. Supporting Packages:</strong></p>
+</li>
+<li><code>pydantic</code>: For defining state schemas and data validation.</li>
+<li><code>openai</code> or <code>azure-ai</code>: For LLM integration (OpenAI, Azure OpenAI, etc.).</li>
+<li><code>typing</code>: For type hints and structured state definitions.</li>
+<li><code>fastapi</code> or <code>flask</code>: For exposing APIs if needed.</li>
+<li><code>s3fs</code>, <code>boto3</code>, or <code>pyyaml</code>: For cloud storage, configuration, and artifact management.</li>
+<li>
+<p><code>sentence-transformers</code>, <code>chromadb</code>, <code>elasticsearch</code>: For embeddings, vector search, and RAG pipelines.</p>
+</li>
+<li>
+<p><strong>3. How to Include These Packages:</strong></p>
+</li>
+<li>Add them to your <code>requirements.txt</code> or <code>pyproject.toml</code>:
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>langchain
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>openai
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>pydantic
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>fastapi
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sentence-transformers
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>chromadb
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>elasticsearch
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a># ...other dependencies as needed
+</span></code></pre></div></li>
+<li>Install via pip:
+ <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pip<span class="w"> </span>install<span class="w"> </span>langchain<span class="w"> </span>openai<span class="w"> </span>pydantic<span class="w"> </span>fastapi<span class="w"> </span>sentence-transformers<span class="w"> </span>chromadb<span class="w"> </span>elasticsearch
+</span></code></pre></div></li>
+<li>
+<p>Import in your Python scripts:
+ </p><div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMChain</span><span class="p">,</span> <span class="n">PromptTemplate</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">initialize_agent</span><span class="p">,</span> <span class="n">Tool</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConversationBufferMemory</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">openai</span>
+</span></code></pre></div><p></p>
+</li>
+<li>
+<p><strong>4. Example from UIDS/Knowledge GPT Projects:</strong></p>
+</li>
+<li>The UIDS pipeline uses <code>langchain</code>, <code>pydantic</code>, <code>sentence-transformers</code>, and cloud-native packages for modular, extensible, and testable reasoning workflows.</li>
+<li>Modular scripts (e.g., <code>data_mapping_loader.py</code>, <code>prompt_template_loader.py</code>) help manage prompts, templates, and configuration for reasoning steps.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>Use <code>langchain</code> and its submodules (<code>agents</code>, <code>prompts</code>, <code>memory</code>, <code>chains</code>, <code>tools</code>) as the core reasoning framework.</li>
+<li>Support with <code>pydantic</code>, LLM SDKs (<code>openai</code>, <code>azure-ai</code>), and cloud/data libraries.</li>
+<li>Include these packages in your environment via <code>requirements.txt</code> and import them in your code to build robust, modular reasoning pipelines.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you enable agent reasoning using only memory, without using the ReAct framework?</strong></p>
+<ul>
+<li>Even without the ReAct (Reasoning + Acting) framework, you can enable agent reasoning in LangChain by leveraging memory modules, prompt engineering, and structured workflows. Here’s how this is achieved in practical, production-grade systems:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Memory-Driven Contextual Reasoning:</strong></li>
+<li>Use <code>langchain.memory</code> modules (e.g., <code>ConversationBufferMemory</code>, <code>ConversationSummaryMemory</code>) to persist conversation history and context.</li>
+<li>
+<p>The agent retrieves relevant past interactions, user intents, and intermediate results from memory, allowing it to make context-aware decisions at each step.</p>
+</li>
+<li>
+<p><strong>2. Prompt Engineering for Reasoning:</strong></p>
+</li>
+<li>Design prompts that explicitly instruct the LLM to consider previous context, summarize past actions, or infer next steps based on memory.</li>
+<li>
+<p>Example: “Given the previous conversation: {history}, and the current user query: {input}, what should be the next action?”</p>
+</li>
+<li>
+<p><strong>3. Stateful Workflow Orchestration:</strong></p>
+</li>
+<li>Implement a state schema (using <code>pydantic.BaseModel</code>) that tracks the current state, memory, and agent outputs.</li>
+<li>
+<p>Each node in the workflow reads from and writes to this state, enabling stepwise reasoning and decision-making.</p>
+</li>
+<li>
+<p><strong>4. Tool and Action Selection via Memory:</strong></p>
+</li>
+<li>The agent can select tools or actions based on the current state and memory, even without explicit ReAct-style intermediate reasoning steps.</li>
+<li>
+<p>For example, in the KGPT MCP system, the LLM uses memory to decide whether to search, summarize, or validate, based on the evolving context.</p>
+</li>
+<li>
+<p><strong>5. Example (from KGPT/UIDS):</strong></p>
+</li>
+<li>In the KGPT MCP architecture, persistent memory (e.g., Redis) stores conversation state and token cache.</li>
+<li>The orchestrator (MCPManager) uses this memory to maintain context and guide the agent’s next action, without requiring ReAct-style reasoning traces.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>By combining persistent memory, context-aware prompts, and stateful orchestration, you enable agents to reason and make decisions based on historical context—even without the ReAct framework. This approach is robust, scalable, and aligns with enterprise requirements for traceability and modularity.</li>
+</ul>
+<hr>
+<p><strong>Q: How many tokens are required for storing conversation history in memory for agent reasoning?</strong></p>
+<ul>
+<li>The number of tokens required for storing conversation history in memory depends on several factors:</li>
+<li>The length and number of previous messages you want to retain.</li>
+<li>The token limits of your LLM model (e.g., GPT-3.5, GPT-4, etc.).</li>
+<li>The memory management strategy (e.g., buffer size, summary memory, or truncation policy).</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Practical Approach (as used in KGPT MCP):</strong></li>
+<li>In production systems like KGPT MCP, conversation history is stored in Redis with a policy to trim or summarize history to fit within the LLM’s context window.</li>
+<li>Typically, only the last N turns (e.g., last 10 exchanges) are kept in memory to avoid exceeding token limits.</li>
+<li>
+<p>For GPT-4o-mini or similar models, the context window can be 8k, 16k, or more tokens, but you should aim to keep the total prompt (system + history + user input) well within this limit for reliable performance.</p>
+</li>
+<li>
+<p><strong>Token Calculation Example:</strong></p>
+</li>
+<li>If each message averages 50 tokens and you keep the last 10 exchanges (user + agent), that’s roughly 1,000 tokens (10 exchanges × 2 messages × 50 tokens).</li>
+<li>
+<p>Add system prompts and any additional context, and you typically stay within 1,500–2,000 tokens for most enterprise use cases.</p>
+</li>
+<li>
+<p><strong>Memory Management Strategies:</strong></p>
+</li>
+<li>Use a rolling buffer (e.g., <code>ConversationBufferMemory</code>) to keep only the most recent messages.</li>
+<li>Use <code>ConversationSummaryMemory</code> to summarize older history, reducing token usage while preserving context.</li>
+<li>
+<p>In KGPT MCP, Redis is configured with a maxmemory policy (e.g., 2GB, LRU) to manage storage efficiently.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The required tokens depend on your retention policy, but for most practical agent reasoning tasks, keeping the last 10–20 exchanges (1,000–2,000 tokens) is sufficient.</li>
+<li>Always ensure the total tokens (system prompt + history + user input) fit within your LLM’s context window for optimal performance and reliability.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you prevent infinite loops when agents communicate with each other in a multi-agent system?</strong></p>
+<ul>
+<li>Preventing infinite loops in multi-agent systems is critical for stability and resource management. Here’s how you can address this in practical, production-grade AI architectures:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Max Iteration/Turn Limit:</strong></li>
+<li>Set a hard cap on the number of agent-to-agent exchanges per request or workflow execution.</li>
+<li>
+<p>Example: In a LangGraph or state machine workflow, define a <code>max_turns</code> parameter (e.g., 10 or 20). If the turn count exceeds this, halt execution and return a fallback or error message.</p>
+</li>
+<li>
+<p><strong>2. State Change Detection:</strong></p>
+</li>
+<li>
+<p>Track the state after each agent interaction. If the state does not change (i.e., no new information, no progress), terminate the loop to avoid redundant cycles.</p>
+</li>
+<li>
+<p><strong>3. Goal/Task Completion Check:</strong></p>
+</li>
+<li>
+<p>Define clear exit conditions: if the main goal is achieved, or if all tasks are completed, stop further agent communication.</p>
+</li>
+<li>
+<p><strong>4. Timeout Mechanism:</strong></p>
+</li>
+<li>
+<p>Implement a time-based cutoff (e.g., max 5 seconds per workflow). If exceeded, abort the process and return a timeout response.</p>
+</li>
+<li>
+<p><strong>5. Message/History Inspection:</strong></p>
+</li>
+<li>
+<p>Maintain a log of recent messages or actions. If the same message or action repeats (indicating a loop), break the cycle.</p>
+</li>
+<li>
+<p><strong>6. Fallback and Error Handling:</strong></p>
+</li>
+<li>
+<p>Use fallback levels (as in the Knowledge GPT API) to gracefully degrade or exit when abnormal behavior is detected (e.g., fallback_level 2 returns only links, no LLM call).</p>
+</li>
+<li>
+<p><strong>7. Logging and Monitoring:</strong></p>
+</li>
+<li>Centralized logging (e.g., <code>log_manager.py</code>) helps detect and debug looping behavior in production. Use correlation IDs for traceability.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Example Implementation (KGPT/UIDS):</strong></li>
+<li>In the Knowledge GPT API, each request is stateless and bounded by API-level limits (e.g., max tokens, max message count).</li>
+<li>In UIDS RAG pipelines, the state machine (LangGraph) enforces step limits and conditional exits.</li>
+<li>Fallback logic and validators ensure the system exits gracefully on errors or abnormal patterns.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>Use a combination of max turn limits, state change checks, goal completion conditions, and robust logging to prevent infinite agent loops.</li>
+<li>These controls ensure reliability, prevent resource exhaustion, and maintain predictable system behavior in enterprise AI workflows.</li>
+</ul>
+<hr>
+<p><strong>Q: How do transformers get updated during parameter-efficient fine-tuning methods like QLoRA or PEFT, and what exactly gets updated in the model?</strong></p>
+<ul>
+<li>In parameter-efficient fine-tuning (PEFT) methods like QLoRA (Quantized Low-Rank Adapter) or LoRA (Low-Rank Adapter), only a small subset of the transformer's parameters are updated, not the entire model. This approach is designed to reduce memory, computation, and training time, making it suitable for large models and production SLAs.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Standard Transformer Fine-Tuning:</strong></li>
+<li>In full fine-tuning, all model parameters (weights in attention layers, feed-forward layers, embeddings, etc.) are updated during backpropagation.</li>
+<li>
+<p>This is resource-intensive and often impractical for large LLMs.</p>
+</li>
+<li>
+<p><strong>2. PEFT (LoRA/QLoRA) Approach:</strong></p>
+</li>
+<li>Instead of updating all weights, LoRA/QLoRA injects small trainable adapter modules (low-rank matrices) into specific layers (usually attention and/or feed-forward layers).</li>
+<li>During training, only these adapter parameters are updated; the original model weights remain frozen.</li>
+<li>
+<p>In QLoRA, quantization is applied to further reduce memory usage, and adapters are trained on top of the quantized base model.</p>
+</li>
+<li>
+<p><strong>3. What Gets Updated:</strong></p>
+</li>
+<li>Only the parameters of the adapter modules (e.g., <code>lora_A</code>, <code>lora_B</code> matrices) are updated.</li>
+<li>The main transformer weights (e.g., <code>W_q</code>, <code>W_k</code>, <code>W_v</code>, <code>W_o</code> in attention layers) are kept frozen.</li>
+<li>
+<p>This allows efficient adaptation to new tasks or domains with minimal resource overhead.</p>
+</li>
+<li>
+<p><strong>4. Practical Example (UIDS Falcon Path):</strong></p>
+</li>
+<li>In the UIDS project, Falcon-7B is fine-tuned using a QLoRA-like approach with the <code>peft</code> and <code>bitsandbytes</code> libraries.</li>
+<li>
+<p>The training script loads the base model in quantized mode, injects LoRA adapters, and only updates the adapter weights during training.</p>
+</li>
+<li>
+<p><strong>5. Benefits:</strong></p>
+</li>
+<li>Dramatically reduces GPU memory and compute requirements.</li>
+<li>Enables fast adaptation to new tasks (e.g., intent classification, domain-specific chatbots) while meeting strict SLA requirements (e.g., 3–5 seconds per response).</li>
+<li>The base model remains unchanged, so you can easily switch or share adapters for different tasks.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>In PEFT methods like LoRA/QLoRA, only the small adapter modules are updated during training, while the main transformer weights remain frozen. This enables efficient, scalable fine-tuning for large models, supporting production SLAs and rapid deployment in enterprise AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the terminology for the part of the transformer that gets updated during parameter-efficient fine-tuning (like LoRA/QLoRA)?</strong></p>
+<ul>
+<li>In parameter-efficient fine-tuning (PEFT) methods such as LoRA or QLoRA, the part of the transformer that gets updated is called the <strong>adapter modules</strong> or <strong>LoRA adapters</strong>.</li>
+<li>Specifically, these are small trainable matrices (often referred to as <code>lora_A</code> and <code>lora_B</code>) that are injected into certain layers of the transformer, typically the attention and/or feed-forward layers.</li>
+<li>The main transformer weights (the original model parameters) remain <strong>frozen</strong> and are not updated during training.</li>
+<li>Only the parameters of these adapter modules are updated, which allows for efficient fine-tuning with minimal resource usage.</li>
+<li>In the context of Hugging Face and PEFT libraries, these are often referred to as <strong>adapter weights</strong> or <strong>LoRA parameters</strong>.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The terminology for the part of the transformer that gets updated in LoRA/QLoRA is <strong>adapter modules</strong> or <strong>LoRA adapters</strong>. These are the only trainable parameters during PEFT, while the rest of the model remains unchanged.</li>
+</ul>
+<hr>
+<p><strong>Q: When using adapter modules (like LoRA adapters) in transformers, are the adapter parameters updated, added, or do they replace existing model parameters?</strong></p>
+<ul>
+<li>In parameter-efficient fine-tuning with adapters (such as LoRA/QLoRA), the adapter parameters are <strong>added</strong> to the model and only these new parameters are <strong>updated</strong> during training.</li>
+<li>The original transformer parameters (the base model weights) are <strong>not replaced</strong> or modified—they remain frozen.</li>
+<li>The adapters are injected into specific layers (typically attention or feed-forward layers) and act as additional trainable components.</li>
+<li>During inference, the output of the original layer is combined with the output from the adapter (e.g., via addition), allowing the model to leverage both the pre-trained knowledge and the new task-specific adaptation.</li>
+<li>This approach ensures that:</li>
+<li>The base model remains unchanged and reusable for other tasks.</li>
+<li>Only the small adapter modules are trained and updated, making the process efficient and modular.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The adapter parameters are <strong>added</strong> to the transformer and <strong>updated</strong> during fine-tuning. The original model parameters are <strong>not replaced</strong> or modified. This allows for efficient, modular adaptation to new tasks.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the key parameters used in the training control modules for fine-tuning transformer models?</strong></p>
+<ul>
+<li>In practical enterprise AI pipelines (like UIDS and KGPT), the training control modules are configured with several key hyperparameters to manage and optimize the fine-tuning process. These parameters ensure efficient resource utilization, reproducibility, and model performance.</li>
+</ul>
+<hr>
+<p><strong>Typical Training Control Parameters:</strong></p>
+<ul>
+<li><strong>num_epochs</strong>: Number of times the entire training dataset is passed through the model. Controls convergence and overfitting.</li>
+<li><strong>batch_size</strong>: Number of samples processed before the model is updated. Affects memory usage and training stability.</li>
+<li><strong>learning_rate</strong>: Step size for updating model parameters. Critical for convergence speed and stability.</li>
+<li><strong>body_learning_rate</strong>: Sometimes used for differential learning rates (e.g., lower for base model, higher for adapters).</li>
+<li><strong>num_iterations</strong>: Total number of training steps or iterations (can be used instead of epochs for more granular control).</li>
+<li><strong>pretrained_model_name_or_path</strong>: Specifies which base model to load for fine-tuning (e.g., Falcon-7B, BERT, etc.).</li>
+<li><strong>output_dir / model_dir</strong>: Directories for saving trained models and outputs.</li>
+<li><strong>bucket_name</strong>: For cloud storage integration (e.g., saving checkpoints or logs to S3).</li>
+<li><strong>instance_type / num_gpus / num_cpus</strong>: Hardware configuration for distributed or cloud-based training.</li>
+<li><strong>text_column</strong>: Specifies which column in the dataset contains the input text.</li>
+<li><strong>train_dir / test_dir</strong>: Paths to training and testing datasets.</li>
+</ul>
+<hr>
+<p><strong>Example from UIDS Project:</strong>
+- The UIDS pipeline uses parameters like <code>num_epochs</code>, <code>batch_size</code>, <code>learning_rate</code>, <code>body_learning_rate</code>, <code>num_iterations</code>, <code>pretrained_model_name_or_path</code>, and storage/output directories.
+- These are set via environment variables or command-line arguments for reproducibility and automation in cloud environments (e.g., AWS SageMaker).</p>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The main parameters in training control modules are: <code>num_epochs</code>, <code>batch_size</code>, <code>learning_rate</code>, <code>body_learning_rate</code>, <code>num_iterations</code>, <code>pretrained_model_name_or_path</code>, and paths for data/model storage. These control the training process, resource allocation, and model output in production AI pipelines.</li>
+</ul>
+<hr>
+<p><strong>Q: What does "rank" mean in the context of model evaluation, especially for search or retrieval systems?</strong></p>
+<ul>
+<li>In search and retrieval systems (like Knowledge GPT or RAG pipelines), "rank" refers to the position of a specific document or result within the list of items returned by the system for a given query.</li>
+<li>For each query, the system returns a ranked list of documents based on their relevance scores.</li>
+<li>The "rank" of a document is the integer position (1-based) where the expected or ground-truth document appears in the returned results.</li>
+<li><strong>Rank = 1</strong>: The document is the top (first) result.</li>
+<li><strong>Rank = 2</strong>: The document is the second result, and so on.</li>
+<li><strong>Rank = 0</strong>: The document is not found in the returned results.</li>
+<li>Rank is used to compute evaluation metrics like Reciprocal Rank and Mean Reciprocal Rank (MRR), which measure how well the system surfaces relevant documents at the top of the results.</li>
+<li>In the Knowledge GPT evaluation pipeline, rank is determined by checking the position of the expected document in the Search API results for each query.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>"Rank" is the position of a document in the returned results for a query, used to evaluate how effectively a search or retrieval system surfaces relevant information.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the key parameters used in evaluation metrics like MRR (Mean Reciprocal Rank) or retrieval evaluation for search systems?</strong></p>
+<ul>
+<li>In retrieval and ranking evaluation (such as for RAG pipelines or semantic search), several key parameters are used to assess system performance:</li>
+</ul>
+<hr>
+<p><strong>Key Evaluation Parameters:</strong></p>
+<ul>
+<li><strong>Rank</strong>: The integer position where the ground-truth or expected document appears in the returned results for a query.</li>
+<li><strong>Reciprocal Rank</strong>: Calculated as 1 divided by the rank of the first relevant document. If the relevant document is at position 1, reciprocal rank is 1.0; at position 2, it is 0.5, and so on.</li>
+<li><strong>Mean Reciprocal Rank (MRR)</strong>: The average of reciprocal ranks across all queries in the evaluation set. It measures how well the system ranks relevant documents at the top.</li>
+<li><strong>Top-K</strong>: The number of top results considered for evaluation (e.g., Top-1, Top-3, Top-5). Used to compute metrics like Top-K accuracy or recall.</li>
+<li><strong>Precision@K</strong>: The proportion of relevant documents in the top K results.</li>
+<li><strong>Recall@K</strong>: The proportion of all relevant documents that appear in the top K results.</li>
+<li><strong>Hit Rate</strong>: Whether the relevant document appears in the top K results (binary: 1 if yes, 0 if no).</li>
+<li><strong>Ground Truth</strong>: The expected or correct document(s) for each query, used as a reference for evaluation.</li>
+<li><strong>Query</strong>: The input question or search phrase used to retrieve documents.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The main parameters for retrieval evaluation are: rank, reciprocal rank, mean reciprocal rank (MRR), top-K, precision@K, recall@K, hit rate, ground truth, and query. These metrics help measure the effectiveness of search and retrieval systems in surfacing relevant information.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the main training parameters used in fine-tuning (e.g., with LoRA or similar methods)?</strong></p>
+<ul>
+<li>In practical fine-tuning pipelines (including LoRA or standard transformer fine-tuning), the following key parameters are commonly used to control and optimize the training process:</li>
+</ul>
+<hr>
+<p><strong>Core Training Parameters:</strong>
+- <strong>num_epochs</strong>: Number of times the model iterates over the entire training dataset.
+- <strong>batch_size</strong>: Number of samples processed before updating model weights.
+- <strong>learning_rate</strong>: Step size for updating parameters during optimization.
+- <strong>body_learning_rate</strong>: Sometimes used for differential learning rates (e.g., a separate rate for adapter layers vs. the base model).
+- <strong>num_iterations</strong>: Total number of training steps (can be used instead of epochs for more granular control).
+- <strong>pretrained_model_name_or_path</strong>: Specifies which base model to load for fine-tuning (e.g., BERT, Falcon-7B, etc.).
+- <strong>output_dir / model_dir</strong>: Directories for saving trained models and outputs.
+- <strong>bucket_name</strong>: For cloud storage integration (e.g., S3 bucket for checkpoints or logs).
+- <strong>instance_type / num_gpus / num_cpus</strong>: Hardware configuration for distributed or cloud-based training.
+- <strong>text_column</strong>: Specifies which column in the dataset contains the input text.
+- <strong>train_dir / test_dir</strong>: Paths to training and testing datasets.</p>
+<hr>
+<ul>
+<li>These parameters are typically set via environment variables, configuration files, or command-line arguments to ensure reproducibility and automation in enterprise AI pipelines (as seen in the UIDS project).</li>
+<li>They allow for flexible scaling, efficient resource usage, and robust model management during the fine-tuning process.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The main training parameters are: <code>num_epochs</code>, <code>batch_size</code>, <code>learning_rate</code>, <code>body_learning_rate</code>, <code>num_iterations</code>, <code>pretrained_model_name_or_path</code>, and data/model storage paths. These control the training workflow and are essential for effective and reproducible fine-tuning in production AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: Clarification on discussion about ranks and updating adapters in training.</strong></p>
+<ul>
+<li>For training transformer models with adapters (like LoRA), the main parameters you configure are:</li>
+<li><strong>num_epochs</strong>: Number of times the dataset is iterated over.</li>
+<li><strong>batch_size</strong>: Number of samples per training step.</li>
+<li><strong>learning_rate</strong> and <strong>body_learning_rate</strong>: Control how quickly model and adapter parameters are updated.</li>
+<li><strong>num_iterations</strong>: Total training steps.</li>
+<li><strong>instance_type</strong>: Hardware used for training (e.g., GPU/CPU type).</li>
+<li>When using adapters, only the adapter parameters are updated during training; the base model weights remain frozen.</li>
+<li>In evaluation (especially for retrieval systems like Knowledge GPT), "rank" refers to the position of the expected document in the returned results, and is used to compute metrics like Reciprocal Rank and MRR.</li>
+<li>These evaluation metrics help measure how well the system retrieves relevant information, while the training parameters control the learning process for adapters or the model itself.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the mathematical mechanism for how weights are updated in adapters (e.g., LoRA) during training?</strong></p>
+<ul>
+<li><strong>Adapters</strong> (like LoRA) are lightweight modules inserted into transformer layers, allowing efficient fine-tuning by updating only a small subset of parameters.</li>
+<li><strong>Mathematical Mechanism:</strong></li>
+<li>During training, only the adapter parameters are set as trainable; the base model weights remain frozen.</li>
+<li>The adapter typically consists of a down-projection (W_down), a non-linearity, and an up-projection (W_up).</li>
+<li>For an input activation <span class="arithmatex">\( h \)</span>, the adapter output is:
+ [
+ \text{Adapter}(h) = W_{up} \cdot f(W_{down} \cdot h)
+ ]
+ where <span class="arithmatex">\( f \)</span> is a non-linear activation (e.g., ReLU).</li>
+<li>The output of the transformer layer with adapter is:
+ [
+ h_{out} = h + \text{Adapter}(h)
+ ]</li>
+<li><strong>Backpropagation</strong>:</li>
+<li>During training, gradients are computed only for the adapter weights (<span class="arithmatex">\( W_{down}, W_{up} \)</span>).</li>
+<li>The loss (e.g., cross-entropy) is backpropagated, and the optimizer (e.g., Adam) updates only these adapter weights using:
+ [
+ W \leftarrow W - \eta \cdot \frac{\partial L}{\partial W}
+ ]
+ where <span class="arithmatex">\( \eta \)</span> is the learning rate, <span class="arithmatex">\( L \)</span> is the loss, and <span class="arithmatex">\( W \)</span> are the adapter parameters.</li>
+<li>This selective update ensures efficient training with minimal memory and compute overhead.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>In adapter-based fine-tuning (like LoRA), only the adapter weights are updated via backpropagation, using standard gradient descent. The base model remains unchanged, and the adapter learns task-specific transformations by minimizing the loss function with respect to its own parameters. This enables efficient and scalable adaptation of large models to new tasks.</li>
+</ul>
+<hr>
+<p><strong>Q: What is an activation in the context of neural networks and transformers?</strong></p>
+<ul>
+<li><strong>Activation</strong> refers to the output value produced by a neuron or a layer in a neural network after applying a transformation (usually a linear operation followed by a non-linear function).</li>
+<li>In transformers and deep learning models:</li>
+<li>Each layer processes its input (which could be the output from the previous layer) through a linear transformation (matrix multiplication with weights), then applies a non-linear activation function (like ReLU, GELU, or Tanh).</li>
+<li>The result of this process is called the "activation" for that layer.</li>
+<li><strong>Mathematically</strong>:</li>
+<li>For a given input vector <span class="arithmatex">\( x \)</span> and weight matrix <span class="arithmatex">\( W \)</span>, the pre-activation is <span class="arithmatex">\( z = W \cdot x + b \)</span>.</li>
+<li>The activation is <span class="arithmatex">\( a = f(z) \)</span>, where <span class="arithmatex">\( f \)</span> is the activation function.</li>
+<li><strong>In transformers</strong>:</li>
+<li>Activations are the intermediate representations (hidden states) passed between layers, and are also the inputs to adapter modules or attention mechanisms.</li>
+<li><strong>Purpose</strong>:</li>
+<li>Activations introduce non-linearity, enabling the network to learn complex patterns and representations.</li>
+<li>They are essential for the model's ability to approximate non-linear functions and solve real-world tasks.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>An activation is the output of a neuron or layer after applying a transformation and a non-linear function. In transformers, activations are the hidden states passed between layers and are used as inputs to adapters or other modules.</li>
+</ul>
+<hr>
+<p><strong>Q: What activation functions do you prefer and why?</strong></p>
+<ul>
+<li>In practical AI engineering, the choice of activation function depends on the model architecture and the specific task:</li>
+<li><strong>ReLU (Rectified Linear Unit)</strong> is my default choice for most deep learning models, including transformers and feedforward networks, because:</li>
+<li>It introduces non-linearity while being computationally efficient.</li>
+<li>It helps mitigate the vanishing gradient problem, enabling deeper networks to train effectively.</li>
+<li>It is widely supported and works well in practice for a variety of tasks.</li>
+<li><strong>GELU (Gaussian Error Linear Unit)</strong> is commonly used in transformer architectures (like BERT, GPT, Falcon-7B) because:</li>
+<li>It provides smoother activation compared to ReLU.</li>
+<li>Empirically, it has shown to improve convergence and model performance in large language models.</li>
+<li>For adapter modules or custom layers, I typically stick with ReLU or GELU, depending on the base model’s convention.</li>
+<li>For output layers:</li>
+<li><strong>Softmax</strong> is used for multi-class classification to convert logits into probabilities.</li>
+<li>
+<p><strong>Sigmoid</strong> is used for binary classification or multi-label tasks.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>My preferred activation functions are ReLU for general deep learning, GELU for transformer-based models, and Softmax/Sigmoid for output layers, as they provide a good balance of performance, stability, and practical effectiveness in production AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the difference between ReLU and tanh (hyperbolic tangent) activation functions?</strong></p>
+<ul>
+<li><strong>ReLU (Rectified Linear Unit):</strong></li>
+<li>Formula: <span class="arithmatex">\( f(x) = \max(0, x) \)</span></li>
+<li>Output range: [0, ∞)</li>
+<li>Introduces sparsity (outputs zero for negative inputs).</li>
+<li>Simple and computationally efficient.</li>
+<li>Helps mitigate the vanishing gradient problem, making it suitable for deep networks.</li>
+<li>
+<p>Commonly used in modern deep learning architectures, including transformers.</p>
+</li>
+<li>
+<p><strong>Tanh (Hyperbolic Tangent):</strong></p>
+</li>
+<li>Formula: <span class="arithmatex">\( f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} \)</span></li>
+<li>Output range: [-1, 1]</li>
+<li>Outputs are centered around zero, which can help with optimization in some cases.</li>
+<li>Can still suffer from vanishing gradients for large positive or negative inputs (gradients become very small).</li>
+<li>
+<p>Used in some older neural network architectures and certain RNNs.</p>
+</li>
+<li>
+<p><strong>Key Differences:</strong></p>
+</li>
+<li><strong>Range:</strong> ReLU outputs only non-negative values; tanh outputs both positive and negative values, centered at zero.</li>
+<li><strong>Gradient Behavior:</strong> ReLU avoids vanishing gradients for positive values; tanh can suffer from vanishing gradients at both extremes.</li>
+<li><strong>Usage:</strong> ReLU is preferred for deep networks due to its simplicity and effectiveness; tanh is less common in modern architectures but can be useful when zero-centered outputs are needed.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>ReLU is widely used for its simplicity and effectiveness in deep networks, while tanh provides zero-centered outputs but can suffer from vanishing gradients. The choice depends on the model architecture and the specific requirements of the task.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the function and purpose of the sigmoid activation (often referred to as the "S-shaped" or "gate" function) in neural networks?</strong></p>
+<ul>
+<li><strong>Sigmoid Activation Function:</strong></li>
+<li>Formula: <span class="arithmatex">\( f(x) = \frac{1}{1 + e^{-x}} \)</span></li>
+<li>Output range: (0, 1)</li>
+<li>Produces an "S-shaped" curve, mapping any real-valued input to a value between 0 and 1.</li>
+<li><strong>Purpose and Usage:</strong></li>
+<li>Commonly used in the output layer for binary classification tasks, as it converts logits into probabilities.</li>
+<li>Acts as a "gate" in neural network architectures (such as LSTM and GRU cells), controlling the flow of information by squashing values between 0 and 1, effectively deciding how much information to let through.</li>
+<li>Helps interpret outputs as probabilities, making it suitable for tasks where a probabilistic interpretation is needed.</li>
+<li><strong>Key Characteristics:</strong></li>
+<li>Not zero-centered (outputs always positive).</li>
+<li>Can suffer from vanishing gradients for very large or very small input values, which can slow down learning in deep networks.</li>
+<li>Still widely used for gating mechanisms and binary outputs.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>The sigmoid activation function maps inputs to the (0, 1) range, making it ideal for binary classification and gating mechanisms in neural networks, where it controls the flow of information or interprets outputs as probabilities.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the basic difference between RNN (Recurrent Neural Network) and CNN (Convolutional Neural Network)?</strong></p>
+<ul>
+<li><strong>RNN (Recurrent Neural Network):</strong></li>
+<li>Designed for sequential data where order and context matter (e.g., time series, text, speech).</li>
+<li>Maintains a hidden state that captures information from previous time steps, enabling the model to learn temporal dependencies.</li>
+<li>Each output depends not only on the current input but also on the previous hidden state.</li>
+<li>Commonly used for tasks like language modeling, sequence prediction, and machine translation.</li>
+<li>
+<p>Variants include LSTM and GRU, which address issues like vanishing gradients.</p>
+</li>
+<li>
+<p><strong>CNN (Convolutional Neural Network):</strong></p>
+</li>
+<li>Designed for spatial data, especially images and grids.</li>
+<li>Uses convolutional layers to extract local features by applying filters/kernels across the input.</li>
+<li>Captures spatial hierarchies and patterns (edges, textures, shapes) through multiple layers.</li>
+<li>Each neuron is connected only to a local region of the input, making it efficient for high-dimensional data like images.</li>
+<li>
+<p>Commonly used for image classification, object detection, and computer vision tasks.</p>
+</li>
+<li>
+<p><strong>Key Differences:</strong></p>
+</li>
+<li><strong>Data Type:</strong> RNNs are best for sequential data; CNNs are best for spatial data.</li>
+<li><strong>Architecture:</strong> RNNs have recurrent connections (feedback loops); CNNs use convolutional and pooling layers.</li>
+<li><strong>Information Flow:</strong> RNNs process data step-by-step, maintaining memory of previous steps; CNNs process data in parallel, focusing on local spatial features.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>RNNs are specialized for handling sequences and temporal dependencies, while CNNs excel at extracting spatial features from images or grid-like data. The choice depends on the nature of the input data and the problem being solved.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the basic difference between *args and </strong>kwargs in Python?**</p>
+<ul>
+<li><strong>*args (Positional Arguments):</strong></li>
+<li>Used to pass a variable number of positional arguments to a function.</li>
+<li>Inside the function, <code>args</code> is a tuple containing all extra positional arguments passed.</li>
+<li>Example:
+ <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># func(1, 2, 3) will print 1, 2, 3</span>
+</span></code></pre></div></li>
+<li>
+<p>Useful when you don't know in advance how many positional arguments will be passed.</p>
+</li>
+<li>
+<p><strong>**kwargs (Keyword Arguments):</strong></p>
+</li>
+<li>Used to pass a variable number of keyword (named) arguments to a function.</li>
+<li>Inside the function, <code>kwargs</code> is a dictionary containing all extra keyword arguments.</li>
+<li>Example:
+ <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># func(a=1, b=2) will print 'a: 1', 'b: 2'</span>
+</span></code></pre></div></li>
+<li>
+<p>Useful for handling named arguments that you may not know in advance.</p>
+</li>
+<li>
+<p><strong>Key Differences:</strong></p>
+</li>
+<li><code>*args</code> collects extra positional arguments as a tuple.</li>
+<li><code>**kwargs</code> collects extra keyword arguments as a dictionary.</li>
+<li>Both can be used together in a function definition, but <code>*args</code> must come before <code>**kwargs</code>.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li><code>*args</code> is for variable-length positional arguments (tuple), while <code>**kwargs</code> is for variable-length keyword arguments (dictionary). Both provide flexibility in function definitions and are widely used in Python for building generic, reusable code.</li>
+</ul>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

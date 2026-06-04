@@ -1,0 +1,4950 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_28/">
+      
+      
+        <link rel="prev" href="../interview_27/">
+      
+      
+        <link rel="next" href="../interview_29/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 28 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-1-interview-28" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 28
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-1-interview-28">Generative AI Engineer (Part 1) — Interview 28<a class="headerlink" href="#generative-ai-engineer-part-1-interview-28" title="Permanent link">¶</a></h1>
+<p><strong>Q: How would you initialize and architect a scalable fraud detection pipeline using scikit-learn with very large transactional data stored in BigQuery?</strong></p>
+<ul>
+<li>For a scalable fraud detection pipeline with large transactional data in BigQuery and scikit-learn as the modeling framework, I would approach the initialization and architecture as follows:</li>
+</ul>
+<p><strong>1. Data Ingestion &amp; Preprocessing</strong>
+ - Use a distributed data processing framework (like Apache Beam or Spark) or leverage BigQuery’s export capabilities to efficiently extract data in manageable batches.
+ - For initial prototyping, use pandas-gbq or Google Cloud’s BigQuery client to pull sample data for feature exploration and schema validation.
+ - For production, orchestrate data extraction jobs (using Airflow or Cloud Composer) to export data to Google Cloud Storage in Parquet/CSV format for downstream processing.</p>
+<p><strong>2. Data Pipeline Design</strong>
+ - Build modular ETL scripts to:
+ - Clean and preprocess data (handle missing values, outliers, categorical encoding, normalization).
+ - Feature engineering (transaction patterns, user behavior, time-based features).
+ - Save processed datasets to cloud storage for reproducibility and versioning.</p>
+<p><strong>3. Model Training (scikit-learn)</strong>
+ - Due to scikit-learn’s in-memory limitations, use incremental learning algorithms (e.g., SGDClassifier, partial_fit) or sample/partition data for batch training.
+ - For large-scale training, consider using Dask-ML or joblib for parallelization, or migrate to frameworks like XGBoost or TensorFlow if data size exceeds scikit-learn’s capabilities.
+ - Track experiments, hyperparameters, and metrics using MLFlow or similar tools.</p>
+<p><strong>4. Model Evaluation &amp; Validation</strong>
+ - Split data into train/validation/test sets, ensuring temporal splits to avoid data leakage.
+ - Evaluate using appropriate metrics (precision, recall, F1, ROC-AUC) due to class imbalance in fraud detection.
+ - Implement cross-validation and stratified sampling for robust performance estimation.</p>
+<p><strong>5. Model Deployment</strong>
+ - Package the trained model using joblib or pickle.
+ - Deploy as a REST API using FastAPI or Flask, containerized with Docker for scalability.
+ - Integrate with upstream systems for real-time or batch inference.</p>
+<p><strong>6. MLOps &amp; Monitoring</strong>
+ - Automate the pipeline using CI/CD (GitHub Actions, Cloud Build).
+ - Monitor model drift, prediction latency, and data quality.
+ - Schedule regular retraining and evaluation jobs.</p>
+<p><strong>7. Security &amp; Compliance</strong>
+ - Ensure secure access to BigQuery and storage using IAM roles and secrets management.
+ - Log all data access and model predictions for auditability.</p>
+<p><strong>Summary of Key Steps:</strong>
+- Efficient data extraction from BigQuery (batching/streaming).
+- Modular ETL and feature engineering pipeline.
+- Scalable model training (incremental learning or distributed frameworks).
+- Robust evaluation and experiment tracking.
+- Containerized model deployment with REST API.
+- Automated CI/CD and monitoring for production reliability.</p>
+<p>This approach ensures the pipeline is scalable, maintainable, and production-ready, leveraging best practices from both data engineering and MLOps.</p>
+<hr>
+<p><strong>Q: What steps would you take after receiving a ready-made notebook with all feature engineering and selection already completed?</strong></p>
+<ul>
+<li>Once I receive a notebook where all feature engineering and selection are already implemented, my focus shifts to operationalizing and scaling the model pipeline for production use, especially given the large data volume and enterprise requirements.</li>
+</ul>
+<p><strong>Key Steps After Feature Engineering Is Done:</strong></p>
+<ul>
+<li><strong>1. Data Extraction &amp; Preparation for Training</strong></li>
+<li>Use the notebook’s functions to process data in batches, ensuring compatibility with BigQuery and handling large-scale data efficiently.</li>
+<li>
+<p>Export processed data to a cloud storage location (e.g., Google Cloud Storage or AWS S3) for downstream steps and reproducibility.</p>
+</li>
+<li>
+<p><strong>2. Model Training at Scale</strong></p>
+</li>
+<li>For large datasets, avoid loading all data into memory. Use incremental learning algorithms (e.g., scikit-learn’s partial_fit) or distributed frameworks (like Dask or Spark MLlib) if scikit-learn becomes a bottleneck.</li>
+<li>
+<p>If using cloud ML platforms (e.g., AWS SageMaker, Vertex AI), containerize the notebook logic and submit distributed training jobs, leveraging spot instances for cost efficiency if possible.</p>
+</li>
+<li>
+<p><strong>3. Model Evaluation &amp; Validation</strong></p>
+</li>
+<li>Implement robust evaluation using stratified train/test splits and appropriate fraud detection metrics (precision, recall, F1, ROC-AUC).</li>
+<li>
+<p>Automate evaluation scripts to generate reports and save metrics/artifacts to cloud storage for traceability.</p>
+</li>
+<li>
+<p><strong>4. Model Serialization &amp; Deployment</strong></p>
+</li>
+<li>Serialize the trained model using joblib or pickle.</li>
+<li>Deploy the model as a REST API (using FastAPI/Flask), containerized with Docker for scalability and portability.</li>
+<li>
+<p>Integrate with upstream systems for real-time or batch inference.</p>
+</li>
+<li>
+<p><strong>5. Pipeline Orchestration &amp; Automation</strong></p>
+</li>
+<li>Orchestrate the end-to-end workflow using tools like Airflow, Cloud Composer, or custom state machines (as in LangGraph).</li>
+<li>
+<p>Parameterize the pipeline for environment variables, data paths, and model configs for reproducibility and automation.</p>
+</li>
+<li>
+<p><strong>6. Monitoring, Logging &amp; MLOps</strong></p>
+</li>
+<li>Set up monitoring for model drift, prediction quality, and data anomalies.</li>
+<li>Automate retraining and redeployment pipelines using CI/CD tools (e.g., GitHub Actions, Cloud Build).</li>
+<li>
+<p>Log all predictions and data access for auditability and compliance.</p>
+</li>
+<li>
+<p><strong>7. Security &amp; Compliance</strong></p>
+</li>
+<li>Manage credentials and secrets securely (using environment variables or secrets managers).</li>
+<li>Ensure access controls and audit logging for all data and model endpoints.</li>
+</ul>
+<p><strong>Summary:</strong> 
+After feature engineering is complete, I focus on scalable model training, robust evaluation, production deployment, pipeline orchestration, and MLOps best practices to ensure the solution is enterprise-ready, reproducible, and maintainable.</p>
+<hr>
+<p><strong>Q: What are the potential issues with reading all large data into memory for model training using scikit-learn?</strong></p>
+<ul>
+<li>The main issue with reading very large datasets into memory for model training with scikit-learn is that scikit-learn operates in-memory and is not optimized for out-of-core or distributed processing.</li>
+<li>If the dataset size exceeds the available RAM, this can lead to:</li>
+<li>Memory errors (OutOfMemoryError), causing the process to crash or the system to become unresponsive.</li>
+<li>Severe performance degradation due to excessive swapping or paging.</li>
+<li>Inability to scale the solution for production or real-world big data scenarios.</li>
+<li>scikit-learn’s standard estimators (like RandomForest, SVM, etc.) require the entire dataset to fit in memory, which is not feasible for very large transactional datasets.</li>
+<li>Incremental learning in scikit-learn is only supported by a limited set of algorithms (e.g., SGDClassifier, Perceptron, MiniBatchKMeans), and even then, you must process data in batches rather than loading everything at once.</li>
+<li>For truly large-scale data, it’s better to:</li>
+<li>Use batch generators or data streaming to feed data incrementally to the model.</li>
+<li>Consider distributed frameworks like Dask-ML, Spark MLlib, or migrate to cloud-native ML platforms (e.g., SageMaker, Vertex AI) that support distributed training.</li>
+<li>Use cloud storage (like BigQuery, S3, or GCS) to stage and process data in chunks.</li>
+</ul>
+<p><strong>Summary:</strong> 
+Loading all large data into memory with scikit-learn is not scalable and can cause memory errors. The solution is to use incremental learning with batch processing or leverage distributed ML frameworks for big data scenarios.</p>
+<hr>
+<p><strong>Q: How can we mitigate the issue of memory errors when training models with very large datasets in scikit-learn?</strong></p>
+<ul>
+<li>
+<p>To address memory limitations with large datasets in scikit-learn, several practical strategies can be applied:</p>
+</li>
+<li>
+<p><strong>1. Use Incremental Learning Algorithms:</strong></p>
+</li>
+<li>Leverage scikit-learn estimators that support incremental learning (e.g., <code>SGDClassifier</code>, <code>SGDRegressor</code>, <code>MiniBatchKMeans</code>, <code>Perceptron</code>).</li>
+<li>
+<p>These models provide a <code>partial_fit</code> method, allowing you to train on data in small batches rather than loading the entire dataset into memory.</p>
+</li>
+<li>
+<p><strong>2. Batch Data Processing:</strong></p>
+</li>
+<li>Read and process data in manageable chunks (batches) from BigQuery or cloud storage.</li>
+<li>
+<p>Use generators or data loaders to stream data batch-by-batch into the model training loop.</p>
+</li>
+<li>
+<p><strong>3. Distributed or Parallel Processing:</strong></p>
+</li>
+<li>For even larger datasets, consider distributed frameworks like Dask-ML or Spark MLlib, which can handle data that exceeds a single machine’s memory.</li>
+<li>
+<p>These frameworks parallelize data processing and model training across multiple nodes.</p>
+</li>
+<li>
+<p><strong>4. Cloud-Based ML Platforms:</strong></p>
+</li>
+<li>Use cloud services such as AWS SageMaker, Google Vertex AI, or Azure ML, which support distributed training and can scale resources as needed.</li>
+<li>
+<p>As seen in my UIDS project, I used AWS SageMaker to orchestrate data processing and model training, leveraging cloud compute and storage for scalability.</p>
+</li>
+<li>
+<p><strong>5. Data Sampling or Downsampling:</strong></p>
+</li>
+<li>
+<p>For initial prototyping, work with a representative sample of the data to validate the pipeline before scaling up.</p>
+</li>
+<li>
+<p><strong>6. Efficient Data Formats:</strong></p>
+</li>
+<li>Store and process data in efficient formats (e.g., Parquet) to reduce memory footprint and speed up I/O operations.</li>
+</ul>
+<p><strong>Summary:</strong> 
+By using incremental learning, batch processing, distributed frameworks, and cloud-based ML platforms, we can efficiently train models on large datasets without running into memory errors. This ensures scalability and production-readiness for enterprise AI solutions.</p>
+<hr>
+<p><strong>Q: How would you feed batch-processed data from distributed frameworks like Apache Spark into an incremental learning model in scikit-learn?</strong></p>
+<ul>
+<li>
+<p>To efficiently feed large-scale, batch-processed data from distributed frameworks (like Apache Spark) into an incremental learning model in scikit-learn, I would follow these practical steps:</p>
+</li>
+<li>
+<p><strong>1. Batch Data Extraction:</strong></p>
+</li>
+<li>Use Spark (or similar) to read and preprocess data from BigQuery or cloud storage in distributed fashion.</li>
+<li>
+<p>Partition the data into manageable batches (e.g., using Spark’s <code>.repartition()</code> or <code>.foreachPartition()</code>).</p>
+</li>
+<li>
+<p><strong>2. Batch Export:</strong></p>
+</li>
+<li>Write each processed batch to an intermediate storage location, such as AWS S3 or Google Cloud Storage, in a format like CSV or Parquet.</li>
+<li>
+<p>Ensure each batch file is independent and can be loaded sequentially.</p>
+</li>
+<li>
+<p><strong>3. Batch Loading in Python:</strong></p>
+</li>
+<li>In the Python training script, iterate over the batch files one by one.</li>
+<li>For each batch:</li>
+<li>Load the batch into memory using pandas or numpy.</li>
+<li>
+<p>Extract features and labels.</p>
+</li>
+<li>
+<p><strong>4. Incremental Model Training:</strong></p>
+</li>
+<li>Use scikit-learn’s incremental estimators (e.g., <code>SGDClassifier</code>, <code>SGDRegressor</code>) and call the <code>.partial_fit()</code> method on each batch.</li>
+<li>
+<p>Repeat this process for all batches, effectively training the model on the entire dataset without ever loading all data into memory at once.</p>
+</li>
+<li>
+<p><strong>5. Automation &amp; Orchestration:</strong></p>
+</li>
+<li>Orchestrate the entire process using workflow tools (e.g., Airflow, SageMaker Pipelines, or custom scripts).</li>
+<li>As seen in my UIDS project, I used AWS SageMaker Processing and Training steps to handle batch data from S3, ensuring scalable and reproducible training.</li>
+</ul>
+<p><strong>Example Workflow:</strong>
+- Spark processes and exports batches → Batches stored in S3/Cloud Storage → Python script loads each batch → <code>.partial_fit()</code> called for each batch → Model incrementally trained.</p>
+<p><strong>Summary:</strong> 
+By exporting distributed batches to cloud storage and sequentially loading them for incremental training, we bridge distributed data processing with scikit-learn’s incremental learning, enabling scalable model training on large datasets. This approach is robust, cloud-friendly, and aligns with industry MLOps best practices.</p>
+<hr>
+<p><strong>Q: What is the potential issue with feeding Spark DataFrames directly into scikit-learn models?</strong></p>
+<ul>
+<li>The main issue is that scikit-learn does not natively support Spark DataFrames as input; it expects data in the form of numpy arrays or pandas DataFrames.</li>
+<li>Spark DataFrames are distributed across a cluster and are not designed to be processed directly by scikit-learn, which is a single-node, in-memory library.</li>
+<li>Attempting to convert a large Spark DataFrame to a pandas DataFrame (using <code>.toPandas()</code>) can cause:</li>
+<li>Severe memory issues or crashes if the data does not fit into the memory of a single machine.</li>
+<li>Loss of the distributed processing advantage provided by Spark, leading to scalability bottlenecks.</li>
+<li>This incompatibility creates a data pipeline gap between distributed data processing (Spark) and single-node model training (scikit-learn).</li>
+</ul>
+<p><strong>Summary:</strong> 
+The potential issue is that Spark DataFrames cannot be fed directly into scikit-learn models due to format incompatibility and memory constraints. Converting large Spark DataFrames to pandas DataFrames can cause memory errors and scalability problems, breaking the distributed processing pipeline.</p>
+<hr>
+<p><strong>Q: As the person in charge, how would you mitigate the incompatibility and memory issues between Spark DataFrames and scikit-learn for large-scale model training?</strong></p>
+<ul>
+<li>
+<p>To bridge the gap between distributed data processing (Spark) and single-node model training (scikit-learn), and to avoid memory issues, I would implement the following mitigation strategies:</p>
+</li>
+<li>
+<p><strong>1. Batch Export from Spark:</strong></p>
+</li>
+<li>Instead of converting the entire Spark DataFrame to pandas at once, partition the Spark DataFrame into smaller, manageable batches.</li>
+<li>
+<p>Write each batch to intermediate storage (e.g., cloud storage like AWS S3, Google Cloud Storage, or local disk) in efficient formats such as Parquet or CSV.</p>
+</li>
+<li>
+<p><strong>2. Incremental Data Loading:</strong></p>
+</li>
+<li>In the model training pipeline, sequentially load each batch into memory as a pandas DataFrame or numpy array.</li>
+<li>
+<p>Use scikit-learn’s incremental learning estimators (e.g., <code>SGDClassifier</code>, <code>SGDRegressor</code>) and call <code>.partial_fit()</code> on each batch, allowing the model to learn from the data incrementally without exceeding memory limits.</p>
+</li>
+<li>
+<p><strong>3. Distributed ML Frameworks (if needed):</strong></p>
+</li>
+<li>
+<p>For even larger datasets or more complex models, consider using distributed ML frameworks like Spark MLlib or Dask-ML, which can train models directly on Spark DataFrames without the need for conversion to pandas.</p>
+</li>
+<li>
+<p><strong>4. Cloud-Native Pipelines:</strong></p>
+</li>
+<li>Leverage cloud ML platforms (e.g., AWS SageMaker, Google Vertex AI) that support distributed data processing and scalable training jobs.</li>
+<li>
+<p>As demonstrated in my UIDS project, I used SageMaker Processing jobs to handle batch data from S3 and orchestrated incremental training, ensuring scalability and reproducibility.</p>
+</li>
+<li>
+<p><strong>5. Data Sampling for Prototyping:</strong></p>
+</li>
+<li>For initial development and testing, work with a representative sample of the data that fits in memory, then scale up using the batch/incremental approach for full training.</li>
+</ul>
+<p><strong>Summary:</strong> 
+By exporting Spark data in batches, loading each batch incrementally for model training, and leveraging cloud or distributed ML frameworks when necessary, I can efficiently mitigate memory and compatibility issues, ensuring a scalable and robust end-to-end AI pipeline. This approach maintains the benefits of distributed preprocessing while enabling effective model training with scikit-learn or other frameworks.</p>
+<hr>
+<p><strong>Q: After completing model training, what are the next steps in the end-to-end machine learning pipeline?</strong></p>
+<ul>
+<li>
+<p>Once model training is complete, the next steps in a robust ML pipeline typically include:</p>
+</li>
+<li>
+<p><strong>1. Model Evaluation &amp; Validation:</strong></p>
+</li>
+<li>Evaluate the trained model using validation/test datasets.</li>
+<li>Calculate key metrics (e.g., F1-score, ROC-AUC, accuracy) to ensure the model meets business and technical requirements.</li>
+<li>
+<p>In my UIDS project, this was automated using SageMaker Processing steps and validation scripts, with evaluation reports stored in S3.</p>
+</li>
+<li>
+<p><strong>2. Model Packaging &amp; Artifact Management:</strong></p>
+</li>
+<li>Package the trained model and its dependencies as a model artifact (e.g., model.tar.gz).</li>
+<li>
+<p>Store the artifact in a versioned location, such as an S3 bucket, for traceability and reproducibility.</p>
+</li>
+<li>
+<p><strong>3. Model Registration (Optional):</strong></p>
+</li>
+<li>
+<p>Register the model in a model registry or catalog for governance and lifecycle management.</p>
+</li>
+<li>
+<p><strong>4. Model Deployment:</strong></p>
+</li>
+<li>Deploy the model as a real-time inference endpoint (e.g., using AWS SageMaker Endpoint or similar).</li>
+<li>
+<p>Automate deployment using CI/CD pipelines (as in my UIDS project, where deployment was managed via Azure DevOps or Jenkins).</p>
+</li>
+<li>
+<p><strong>5. Inference Service Integration:</strong></p>
+</li>
+<li>Integrate the deployed model with API Gateway and Lambda (or similar) to expose prediction services to applications.</li>
+<li>
+<p>Ensure request validation, security, and monitoring are in place.</p>
+</li>
+<li>
+<p><strong>6. Monitoring &amp; Feedback Loop:</strong></p>
+</li>
+<li>Monitor model performance in production (latency, accuracy, drift).</li>
+<li>Capture inference events and user feedback for continuous improvement.</li>
+<li>
+<p>In UIDS, inference events were persisted asynchronously to DynamoDB and PostgreSQL for monitoring and retraining triggers.</p>
+</li>
+<li>
+<p><strong>7. Automation &amp; CI/CD:</strong></p>
+</li>
+<li>Use automated pipelines for retraining, redeployment, and rollback as needed.</li>
+<li>Maintain infrastructure as code (CloudFormation, Terraform) for reproducibility.</li>
+</ul>
+<p><strong>Summary:</strong> 
+After training, I evaluate and validate the model, package and register the artifact, deploy it as an endpoint, integrate with inference services, and set up monitoring and feedback loops. This ensures a production-ready, scalable, and maintainable AI solution, as demonstrated in my enterprise projects.</p>
+<hr>
+<p><strong>Q: Why is real-time inference important for a fraud detection use case?</strong></p>
+<ul>
+<li>In fraud detection, real-time inference is critical because:</li>
+<li><strong>Immediate Decision Making:</strong> Transactions must be evaluated instantly to prevent fraudulent activity before it completes. Delays can result in financial loss or reputational damage.</li>
+<li><strong>User Experience:</strong> Customers expect seamless and fast transaction approvals. Real-time inference ensures legitimate transactions are not unnecessarily delayed.</li>
+<li><strong>Dynamic Threat Landscape:</strong> Fraud patterns evolve rapidly. Real-time systems can leverage the latest models and data to adapt to new threats as they emerge.</li>
+<li><strong>Automated Actions:</strong> Real-time predictions enable automated blocking, flagging, or escalation of suspicious transactions without manual intervention.</li>
+<li>
+<p><strong>Compliance and Risk Management:</strong> Many industries require immediate fraud checks to comply with regulatory standards and minimize risk exposure.</p>
+</li>
+<li>
+<p>In my experience designing enterprise AI systems, such as intent classification and knowledge assistants, exposing models via real-time APIs (using AWS SageMaker Endpoints or Azure ML Endpoints) is a standard approach for use cases where immediate, automated decisions are essential—fraud detection being a prime example. This architecture ensures high availability, low latency, and scalable integration with transactional systems.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Q: After deploying the model artifact to the cloud, what are the next steps in the production inference pipeline?</strong></p>
+<ul>
+<li>
+<p>After deploying the model artifact (e.g., tar.gz with pickle and inference code) to the cloud, the next steps in the production inference pipeline are:</p>
+</li>
+<li>
+<p><strong>1. Endpoint Configuration &amp; Exposure:</strong></p>
+</li>
+<li>Configure a managed inference endpoint (e.g., AWS SageMaker Endpoint, Azure ML Endpoint) using the deployed model artifact.</li>
+<li>
+<p>The endpoint loads the model and exposes it as a REST API for real-time or batch inference.</p>
+</li>
+<li>
+<p><strong>2. API Gateway &amp; Security:</strong></p>
+</li>
+<li>Set up an API Gateway (e.g., AWS API Gateway) in front of the inference endpoint to manage external requests, authentication, and throttling.</li>
+<li>
+<p>Implement security best practices, such as Lambda authorizers or OAuth, to control access.</p>
+</li>
+<li>
+<p><strong>3. Inference Request Handling:</strong></p>
+</li>
+<li>Client applications or upstream services send inference requests (e.g., transaction data for fraud detection) to the API Gateway.</li>
+<li>
+<p>The request is routed to a Lambda function or directly to the inference endpoint, which invokes the model for prediction.</p>
+</li>
+<li>
+<p><strong>4. Response Delivery:</strong></p>
+</li>
+<li>
+<p>The model processes the input and returns predictions (e.g., fraud/not fraud) via the API Gateway back to the client application.</p>
+</li>
+<li>
+<p><strong>5. Asynchronous Event Persistence &amp; Feedback:</strong></p>
+</li>
+<li>Inference events and results are asynchronously persisted (e.g., via SQS) into databases like DynamoDB or PostgreSQL for monitoring, auditing, and feedback loops.</li>
+<li>
+<p>User feedback or post-inference actions can update these stores for continuous improvement.</p>
+</li>
+<li>
+<p><strong>6. Monitoring &amp; Scaling:</strong></p>
+</li>
+<li>Monitor endpoint health, latency, and prediction accuracy.</li>
+<li>
+<p>Auto-scale endpoints based on traffic and performance requirements.</p>
+</li>
+<li>
+<p><strong>Reference from UIDS Project:</strong></p>
+</li>
+<li>In my UIDS project, this flow was implemented using SageMaker endpoints, API Gateway, Lambda, and asynchronous persistence to DynamoDB/PostgreSQL, all orchestrated via CI/CD pipelines (Azure DevOps, Jenkins) and defined in CloudFormation templates.</li>
+</ul>
+<p><strong>Summary:</strong> 
+After deploying the model, I configure and expose a secure inference endpoint, integrate it with API Gateway, handle real-time prediction requests, persist results asynchronously, and monitor the system for reliability and scalability—ensuring a robust, production-grade AI service.</p>
+<hr>
+<p><strong>Q: What approach should be used for model inference if real-time predictions are not required and cost is a concern?</strong></p>
+<ul>
+<li>If real-time inference is not required and cost efficiency is a priority, batch inference is the optimal approach.</li>
+<li><strong>Batch Inference Workflow:</strong></li>
+<li>Collect input data (e.g., transactions) over a defined period (hourly, daily, etc.).</li>
+<li>Store the data in a cost-effective storage solution like AWS S3 or Azure Blob Storage.</li>
+<li>Schedule batch processing jobs (using AWS SageMaker Batch Transform, Azure ML Batch Endpoints, or custom scripts) to process the accumulated data in bulk.</li>
+<li>The batch job loads the model artifact, processes the input data, and writes predictions back to storage or a database.</li>
+<li><strong>Advantages:</strong></li>
+<li>Significantly reduces infrastructure costs compared to always-on real-time endpoints.</li>
+<li>Allows for efficient resource utilization by running jobs during off-peak hours or on spot instances.</li>
+<li>Suitable for use cases where immediate feedback is not necessary, such as periodic fraud analysis, reporting, or compliance checks.</li>
+<li><strong>Industry Practice:</strong></li>
+<li>In my UIDS project, the pipeline supports both real-time and batch inference modes. For batch, we use SageMaker Processing or Batch Transform jobs, orchestrated via CI/CD (Azure DevOps, Jenkins), to process large datasets efficiently and cost-effectively.</li>
+<li><strong>Summary:</strong> </li>
+<li>For non-real-time, cost-sensitive scenarios, batch inference is preferred. It processes data in bulk, optimizes resource usage, and minimizes operational costs while still delivering accurate model predictions.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the common architectures for post-training model inference and serving, apart from model training itself?</strong></p>
+<ul>
+<li>After model training, there are two primary architectures for model inference and serving in production pipelines:</li>
+</ul>
+<hr>
+<p><strong>1. Real-Time (Online) Inference Architecture</strong>
+ - <strong>Purpose:</strong> Immediate predictions for each incoming request (e.g., fraud detection, chatbots).
+ - <strong>Components:</strong>
+ - <strong>Model Endpoint:</strong> Deployed on a managed service (e.g., AWS SageMaker Endpoint, Azure ML Endpoint).
+ - <strong>API Gateway:</strong> Exposes the model as a REST API for external applications.
+ - <strong>Authentication &amp; Security:</strong> Managed via OAuth, API keys, or similar (as in MCP PoC using Apigee/OAuth).
+ - <strong>Monitoring &amp; Logging:</strong> Real-time tracking of requests, latency, and errors.
+ - <strong>Async Persistence:</strong> In UIDS, inference events are asynchronously stored (e.g., via Lambda to DynamoDB/PostgreSQL).
+ - <strong>Use Case:</strong> Required when instant decision-making is critical.</p>
+<hr>
+<p><strong>2. Batch (Offline) Inference Architecture</strong>
+ - <strong>Purpose:</strong> Process large volumes of data at scheduled intervals, not requiring immediate response.
+ - <strong>Components:</strong>
+ - <strong>Batch Data Storage:</strong> Input data is collected in storage (e.g., AWS S3, Azure Blob).
+ - <strong>Batch Processing Jobs:</strong> Scheduled jobs (e.g., SageMaker Batch Transform, Azure ML Batch Endpoints, or custom scripts) load the model artifact and process data in bulk.
+ - <strong>Output Storage:</strong> Predictions are written back to storage or a database for downstream use.
+ - <strong>Orchestration:</strong> Automated via CI/CD pipelines (e.g., Azure DevOps, Jenkins as in UIDS project) and infrastructure-as-code (CloudFormation, YAML pipelines).
+ - <strong>Use Case:</strong> Suitable for periodic analytics, reporting, or when cost efficiency is a priority.</p>
+<hr>
+<p><strong>3. Hybrid Architecture</strong>
+ - <strong>Purpose:</strong> Supports both real-time and batch inference, depending on business needs.
+ - <strong>Implementation:</strong> The same model artifact can be deployed to both real-time endpoints and batch jobs, orchestrated via CI/CD (as seen in UIDS with both SageMaker endpoints and batch pipelines).</p>
+<hr>
+<p><strong>Summary from UIDS Project:</strong>
+- In my UIDS project, both real-time and batch inference architectures are supported:
+ - Real-time: SageMaker endpoints, API Gateway, Lambda, async persistence.
+ - Batch: SageMaker Batch Transform or Processing jobs, orchestrated via Azure DevOps/Jenkins, with input/output in S3.
+- The choice depends on latency requirements, cost, and business use case.</p>
+<p><strong>In practice, most enterprise AI systems use a combination of these architectures to balance responsiveness, scalability, and cost.</strong></p>
+<hr>
+<p><strong>Q: What are the top three metrics you would use to evaluate if a classification model is performing well?</strong></p>
+<ul>
+<li>
+<p>For evaluating a classification model, especially in use cases like fraud detection or intent classification, the top three metrics I would use are:</p>
+</li>
+<li>
+<p><strong>Accuracy</strong></p>
+</li>
+<li>Measures the overall proportion of correct predictions (both true positives and true negatives) out of all predictions.</li>
+<li>
+<p>Useful for balanced datasets but can be misleading if classes are imbalanced.</p>
+</li>
+<li>
+<p><strong>F1 Score (Weighted or Macro)</strong></p>
+</li>
+<li>Harmonic mean of precision and recall, providing a balance between the two.</li>
+<li>Especially important in imbalanced datasets, as it considers both false positives and false negatives.</li>
+<li>
+<p>In my UIDS project, I used multiple F1 variants (micro, macro, weighted) for comprehensive evaluation.</p>
+</li>
+<li>
+<p><strong>Precision or Recall (depending on business priority)</strong></p>
+</li>
+<li><strong>Precision:</strong> Measures the proportion of true positives among all positive predictions (important when false positives are costly).</li>
+<li><strong>Recall:</strong> Measures the proportion of true positives detected among all actual positives (important when missing a positive is costly, e.g., missing a fraud).</li>
+<li>
+<p>For fraud detection, recall is often prioritized to catch as many fraudulent cases as possible.</p>
+</li>
+<li>
+<p><strong>Industry Practice (UIDS Reference):</strong></p>
+</li>
+<li>In my UIDS pipeline, I implemented and tracked these metrics using automated scripts:</li>
+<li>Accuracy</li>
+<li>F1 Score (micro, macro, weighted)</li>
+<li>Precision and Recall (weighted)</li>
+<li>These metrics were logged and used for model selection and validation.</li>
+</ul>
+<p><strong>Summary:</strong> 
+The top three metrics I use to evaluate classification models are Accuracy, F1 Score, and either Precision or Recall, depending on the business context. This ensures a balanced and practical assessment of model performance.</p>
+<hr>
+<p><strong>Q: Are accuracy, F1 score, and precision the right metrics for classification model evaluation?</strong></p>
+<ul>
+<li>Yes, accuracy, F1 score, and precision are standard and highly relevant metrics for evaluating classification models.</li>
+<li><strong>Accuracy</strong> measures the overall correctness of predictions, but can be misleading in imbalanced datasets.</li>
+<li><strong>F1 Score</strong> (especially weighted or macro) balances precision and recall, making it suitable for both balanced and imbalanced classification problems.</li>
+<li><strong>Precision</strong> is important when the cost of false positives is high (e.g., flagging legitimate transactions as fraud).</li>
+<li>In industry practice, especially in projects like UIDS, these metrics are calculated and tracked for every classification model, as shown in the project’s evaluation scripts.</li>
+<li>Additionally, metrics like <strong>recall</strong> and <strong>balanced accuracy</strong> are also valuable, particularly when missing positive cases (false negatives) is costly, such as in fraud detection.</li>
+<li>In summary, these metrics are not only appropriate but are considered best practice for classification model evaluation in both binary and multi-class scenarios.</li>
+</ul>
+<hr>
+<p><strong>Q: Are there any other evaluation metrics besides accuracy, F1 score, and precision that provide clearer insights for classification models?</strong></p>
+<ul>
+<li>
+<p>Yes, there are additional metrics that can provide deeper or clearer insights into classification model performance, especially in cases of class imbalance or specific business requirements:</p>
+</li>
+<li>
+<p><strong>Balanced Accuracy</strong></p>
+</li>
+<li>Accounts for imbalanced datasets by averaging recall across all classes.</li>
+<li>Useful when class distribution is skewed, as it prevents misleadingly high accuracy from majority class dominance.</li>
+<li>
+<p>In the UIDS project, balanced accuracy is calculated and tracked alongside other metrics.</p>
+</li>
+<li>
+<p><strong>Recall</strong></p>
+</li>
+<li>Measures the proportion of actual positives correctly identified.</li>
+<li>Critical in scenarios where missing a positive case (e.g., fraud, disease) is costly.</li>
+<li>
+<p>Tracked as a weighted metric in the UIDS evaluation pipeline.</p>
+</li>
+<li>
+<p><strong>ROC-AUC (Receiver Operating Characteristic - Area Under Curve)</strong></p>
+</li>
+<li>Evaluates the trade-off between true positive rate and false positive rate across thresholds.</li>
+<li>
+<p>Provides a threshold-independent measure of model discrimination capability.</p>
+</li>
+<li>
+<p><strong>Confusion Matrix</strong></p>
+</li>
+<li>Offers a granular view of true positives, false positives, true negatives, and false negatives.</li>
+<li>
+<p>Helps diagnose specific types of errors and guides further model improvements.</p>
+</li>
+<li>
+<p><strong>Industry Practice (UIDS Reference):</strong></p>
+</li>
+<li>In my UIDS pipeline, we calculate and log accuracy, balanced accuracy, F1 scores (micro, macro, weighted), precision, and recall for every classification run.</li>
+<li>These metrics are used for model selection, validation, and continuous monitoring.</li>
+</ul>
+<p><strong>Summary:</strong> 
+In addition to accuracy, F1 score, and precision, I recommend tracking balanced accuracy, recall, ROC-AUC, and confusion matrix for a comprehensive and clear evaluation of classification models, especially in real-world, imbalanced scenarios.</p>
+<hr>
+<p><strong>Q: How would you design a system that provides evidence for each step in the ML pipeline, ensuring traceability and auditability?</strong></p>
+<ul>
+<li>
+<p>To design a system that provides evidence for every step (ensuring traceability, auditability, and compliance), I would implement the following architectural and process components:</p>
+</li>
+<li>
+<p><strong>Module Inventory &amp; Component Tracking</strong></p>
+</li>
+<li>Maintain a detailed inventory of all pipeline modules (data ingestion, preprocessing, training, evaluation, inference, deployment).</li>
+<li>
+<p>Each module should have clear ownership and documentation (as practiced in the UIDS project).</p>
+</li>
+<li>
+<p><strong>Input/Output Contracts</strong></p>
+</li>
+<li>Define and enforce input/output schemas for each pipeline step.</li>
+<li>
+<p>Store sample inputs/outputs and schema definitions for reproducibility and validation.</p>
+</li>
+<li>
+<p><strong>Config &amp; Runtime Logging</strong></p>
+</li>
+<li>Log all configuration parameters, hyperparameters, and environment details for every run.</li>
+<li>
+<p>Use centralized logging (e.g., log_manager.py in UIDS-RAG-Labelling) to capture step-wise execution details, errors, and warnings.</p>
+</li>
+<li>
+<p><strong>Artifact Versioning &amp; Model Registry</strong></p>
+</li>
+<li>Store all intermediate and final artifacts (datasets, models, metrics, reports) in versioned storage (e.g., S3, MLflow, DVC).</li>
+<li>
+<p>Register models with metadata (training data version, code version, metrics) for traceability.</p>
+</li>
+<li>
+<p><strong>End-to-End Flow Documentation</strong></p>
+</li>
+<li>Document the main production path, training flow, and inference flow.</li>
+<li>
+<p>Include diagrams and runtime sequences (as in KGPT and UIDS documentation).</p>
+</li>
+<li>
+<p><strong>Evaluation &amp; Evidence Reports</strong></p>
+</li>
+<li>Generate and store evaluation reports (accuracy, F1, ROC-AUC, confusion matrix, etc.) for each model version.</li>
+<li>
+<p>Save these reports in a structured format (CSV, JSON, or Excel) and link them to model artifacts.</p>
+</li>
+<li>
+<p><strong>Deployment &amp; Monitoring Evidence</strong></p>
+</li>
+<li>Log deployment events, endpoint configurations, and monitoring metrics (latency, error rates, drift).</li>
+<li>
+<p>Store deployment manifests and change logs for audit trails.</p>
+</li>
+<li>
+<p><strong>Known Risks &amp; Validation</strong></p>
+</li>
+<li>Maintain a list of known risks, quirks, and validation test results for each pipeline component.</li>
+<li>
+<p>Include automated test results and validation scripts as evidence.</p>
+</li>
+<li>
+<p><strong>File Ownership &amp; Access Logs</strong></p>
+</li>
+<li>
+<p>Map file ownership and maintain access logs for sensitive artifacts and data.</p>
+</li>
+<li>
+<p><strong>Industry Practice Reference:</strong></p>
+</li>
+<li>In the UIDS and KGPT projects, we followed a structured approach:</li>
+<li>All pipeline steps are modular and logged.</li>
+<li>Artifacts and evaluation reports are versioned and stored in S3.</li>
+<li>Configurations, contracts, and runtime logs are maintained for every run.</li>
+<li>Evidence is available for audits, compliance, and troubleshooting.</li>
+</ul>
+<p><strong>Summary:</strong> 
+A robust evidence-driven ML system requires comprehensive logging, artifact versioning, input/output contracts, evaluation reporting, and documentation at every step. This ensures full traceability, auditability, and compliance with enterprise and regulatory standards.</p>
+<hr>
+<p><strong>Q: What challenges might arise if you build a chatbot or prompt-based GUI without using modern frameworks like LangChain or LangGraph?</strong></p>
+<ul>
+<li>
+<p>Building a chatbot or prompt-based application without frameworks like LangChain or LangGraph introduces several practical challenges:</p>
+</li>
+<li>
+<p><strong>Manual Orchestration of Workflow</strong></p>
+</li>
+<li>You must manually manage the sequence of steps (prompt construction, context management, API calls, response parsing), increasing code complexity and risk of errors.</li>
+<li>
+<p>Frameworks like LangChain/LangGraph provide built-in state machines and workflow orchestration (as seen in UIDS-RAG-Labelling), making it easier to define and maintain multi-step conversational flows.</p>
+</li>
+<li>
+<p><strong>Context and Conversation State Management</strong></p>
+</li>
+<li>Handling conversation history, user context, and token limits becomes cumbersome.</li>
+<li>
+<p>Without built-in memory modules (like those in LangChain), you need to implement your own context storage (e.g., Redis, as used in KGPT MCP design), which adds development overhead.</p>
+</li>
+<li>
+<p><strong>Prompt Engineering and Modularity</strong></p>
+</li>
+<li>Frameworks offer modular prompt templates and easy prompt chaining, allowing for rapid experimentation and tuning.</li>
+<li>
+<p>Without them, prompt management is ad hoc, making it harder to maintain and scale as requirements evolve.</p>
+</li>
+<li>
+<p><strong>Integration with LLMs and Tools</strong></p>
+</li>
+<li>Direct integration with multiple LLM providers (OpenAI, Azure, Bedrock) and external tools (search, databases) is streamlined in frameworks.</li>
+<li>
+<p>Without these abstractions, you must write and maintain custom adapters for each provider and tool, increasing maintenance burden.</p>
+</li>
+<li>
+<p><strong>Extensibility and Testing</strong></p>
+</li>
+<li>Frameworks support modular, node-based design (each step as a node), making it easy to add, replace, or test components independently.</li>
+<li>
+<p>Without this, the codebase becomes monolithic and harder to extend or test (as highlighted in UIDS-RAG-Labelling best practices).</p>
+</li>
+<li>
+<p><strong>Observability and Logging</strong></p>
+</li>
+<li>Modern frameworks often include hooks for logging, monitoring, and debugging.</li>
+<li>
+<p>Without them, you need to build your own centralized logging and monitoring (e.g., log_manager.py in UIDS), which can be error-prone and inconsistent.</p>
+</li>
+<li>
+<p><strong>Error Handling and Guardrails</strong></p>
+</li>
+<li>Frameworks provide built-in error handling, retries, and guardrails for prompt safety.</li>
+<li>
+<p>Without these, you must implement your own mechanisms to handle API failures, content filtering, and fallback logic (as seen in Knowledge GPT API architecture).</p>
+</li>
+<li>
+<p><strong>Summary from Industry Experience:</strong></p>
+</li>
+<li>In my projects (KGPT, UIDS), using frameworks like LangChain and LangGraph significantly reduced development time, improved maintainability, and enabled rapid prototyping.</li>
+<li>Not using such frameworks leads to increased complexity, slower iteration, and higher risk of bugs or inconsistent user experience.</li>
+</ul>
+<p><strong>In summary:</strong> 
+Building without modern frameworks means more manual work for workflow orchestration, context management, integration, and observability, leading to slower development and higher maintenance overhead.</p>
+<hr>
+<p><strong>Q: How would you manage chunking and request handling in a chatbot or prompt-based system without using frameworks like LangChain or LangGraph?</strong></p>
+<ul>
+<li>
+<p>Without modern frameworks, you need to implement chunking and request orchestration manually. Here’s how I would approach it, referencing practical patterns from my KGPT and Knowledge GPT projects:</p>
+</li>
+<li>
+<p><strong>Manual Chunking Logic</strong></p>
+</li>
+<li>Implement custom functions to split large documents or user inputs into manageable chunks (e.g., 25 KB per chunk as in KGPT).</li>
+<li>Use logic to merge small adjacent chunks and ensure each chunk is semantically meaningful.</li>
+<li>
+<p>Example: In KGPT, <code>consolidate_chunks()</code> merges small chunks, and <code>process_chunk_embedding()</code> processes each chunk for embedding.</p>
+</li>
+<li>
+<p><strong>Chunk Embedding and Storage</strong></p>
+</li>
+<li>For each chunk, generate embeddings using the LLM API (e.g., OpenAI, Azure OpenAI).</li>
+<li>
+<p>Store chunk metadata, embeddings, and chunk IDs in a vector database or search index (e.g., OpenSearch, ChromaDB).</p>
+</li>
+<li>
+<p><strong>Request Handling and Orchestration</strong></p>
+</li>
+<li>Build a request handler that:</li>
+<li>Validates incoming requests (e.g., payload validation, content length checks).</li>
+<li>Manages authentication and authorization (e.g., JWT token validation, as in <code>auth_token_validator.py</code>).</li>
+<li>Assigns unique correlation IDs for traceability (as in Knowledge GPT’s <code>CorrelationID</code> pattern).</li>
+<li>
+<p>Logs input/output for auditability, with masking for sensitive data.</p>
+</li>
+<li>
+<p><strong>Context Management</strong></p>
+</li>
+<li>Store and retrieve conversation history or previous chunks using a fast key-value store (e.g., Redis, as in KGPT MCP design).</li>
+<li>
+<p>Implement logic to trim or paginate history to stay within token limits.</p>
+</li>
+<li>
+<p><strong>Response Generation</strong></p>
+</li>
+<li>Orchestrate the flow: select relevant chunks, build the prompt, call the LLM API, and handle the response.</li>
+<li>
+<p>Implement fallback mechanisms for content filtering or API failures (as in <code>fallback_handler.py</code>).</p>
+</li>
+<li>
+<p><strong>Error Handling and Observability</strong></p>
+</li>
+<li>Add robust error handling for API failures, timeouts, and invalid inputs.</li>
+<li>
+<p>Centralize logging and monitoring for all steps (input, output, errors, performance metrics).</p>
+</li>
+<li>
+<p><strong>Challenges Without Frameworks:</strong></p>
+</li>
+<li>Increased development time and complexity.</li>
+<li>Higher risk of bugs and inconsistencies.</li>
+<li>More effort required for scaling, maintenance, and extensibility.</li>
+</ul>
+<p><strong>Summary:</strong> 
+Without frameworks like LangChain, you must manually implement chunking, embedding, context management, request validation, and orchestration. This requires careful design of modular functions, robust logging, and storage solutions, as demonstrated in my KGPT and Knowledge GPT architectures.</p>
+<hr>
+<p><strong>Q: What is the best strategy to manage authentication tokens in a custom chatbot system without using frameworks like LangChain?</strong></p>
+<ul>
+<li>
+<p>In a custom implementation (without LangChain), robust token management is critical for secure API access and user session handling. Here’s an industry-standard approach, as used in my KGPT and Knowledge GPT projects:</p>
+</li>
+<li>
+<p><strong>JWT (JSON Web Token) for Authentication</strong></p>
+</li>
+<li>Use JWTs (preferably signed with RS256) for stateless, secure authentication.</li>
+<li>Validate the JWT signature and claims on every API request using a public key or JWKS endpoint.</li>
+<li>
+<p>Example: In Knowledge GPT, <code>auth_token_validator.py</code> handles JWT RS256 verification and JWKS loading/caching.</p>
+</li>
+<li>
+<p><strong>Token Validation and Claims Extraction</strong></p>
+</li>
+<li>Extract and validate all relevant claims (user ID, roles, scopes, expiry) from the token.</li>
+<li>
+<p>Use a typed container (like <code>jwt_access_token_data.py</code>) to control API behavior based on claims.</p>
+</li>
+<li>
+<p><strong>Token Caching and Refresh</strong></p>
+</li>
+<li>Cache validated tokens in a fast in-memory store (e.g., Redis) to reduce repeated validation overhead.</li>
+<li>
+<p>For long-lived sessions, implement refresh tokens with a secure TTL (e.g., 30 days, as in KGPT MCP design with DynamoDB).</p>
+</li>
+<li>
+<p><strong>Centralized Token Management</strong></p>
+</li>
+<li>Use a dedicated token manager module to handle token issuance, validation, refresh, and revocation.</li>
+<li>
+<p>Example: In Knowledge GPT, token management is separated from business logic for maintainability.</p>
+</li>
+<li>
+<p><strong>Secrets Management</strong></p>
+</li>
+<li>Store all sensitive credentials (JWT signing keys, client secrets) in a secure secrets manager (e.g., AWS Secrets Manager).</li>
+<li>
+<p>Never hardcode secrets in code or config files.</p>
+</li>
+<li>
+<p><strong>Audit Logging and Correlation</strong></p>
+</li>
+<li>Log token usage and authentication events with unique correlation IDs for traceability and auditability.</li>
+<li>
+<p>Example: Knowledge GPT uses a "CorrelationID" pattern for end-to-end request tracing.</p>
+</li>
+<li>
+<p><strong>Fallback and Error Handling</strong></p>
+</li>
+<li>Implement clear error responses for expired, invalid, or unauthorized tokens.</li>
+<li>Ensure all endpoints enforce authentication and authorization checks before processing requests.</li>
+</ul>
+<p><strong>Summary:</strong> 
+The best strategy is to use JWT-based authentication with robust validation, caching, and refresh mechanisms, backed by secure secrets management and audit logging. This approach ensures security, scalability, and maintainability in a custom chatbot system, as demonstrated in my enterprise AI projects.</p>
+<hr>
+<p><strong>Q: How do you manage the number of tokens passed to the language model (LLM) in a custom system without frameworks like LangChain?</strong></p>
+<ul>
+<li>
+<p>Managing the number of tokens sent to the LLM is crucial to avoid exceeding model limits, control costs, and ensure prompt completeness. Here’s how I handle it in custom RAG and chatbot systems:</p>
+</li>
+<li>
+<p><strong>Token Counting Before API Call</strong></p>
+</li>
+<li>Use a reliable tokenization library (e.g., <code>tiktoken</code> for OpenAI models) to count tokens in both the prompt and context before sending the request.</li>
+<li>
+<p>Calculate the total tokens: sum of system prompt, user input, conversation history, and retrieved context chunks.</p>
+</li>
+<li>
+<p><strong>Dynamic Context Window Management</strong></p>
+</li>
+<li>Implement logic to trim or prioritize context chunks so the total token count stays within the model’s maximum limit (e.g., 8k, 16k, or 32k tokens).</li>
+<li>Prioritize the most relevant or recent chunks using similarity scores or recency.</li>
+<li>
+<p>Example from KGPT: <code>consolidate_chunks()</code> merges and selects chunks to fit within a 25 KB or token window.</p>
+</li>
+<li>
+<p><strong>Prompt Truncation and Summarization</strong></p>
+</li>
+<li>If the context is too large, truncate less relevant parts or summarize long sections before including them in the prompt.</li>
+<li>
+<p>Use summarization APIs (e.g., Azure OpenAI) to condense large documents, as done in the Knowledge GPT pipeline.</p>
+</li>
+<li>
+<p><strong>Pre-Validation and Error Handling</strong></p>
+</li>
+<li>Validate the token count before making the LLM API call.</li>
+<li>
+<p>If the request exceeds the limit, return a clear error or automatically trim the input and notify the user.</p>
+</li>
+<li>
+<p><strong>Configuration and Monitoring</strong></p>
+</li>
+<li>Store model-specific token limits in configuration files (e.g., <code>config.toml</code> in Knowledge GPT).</li>
+<li>
+<p>Log token usage per request for monitoring and optimization.</p>
+</li>
+<li>
+<p><strong>Industry Practice Reference:</strong></p>
+</li>
+<li>In Knowledge GPT and KGPT, token management is handled by pre-counting tokens, dynamically adjusting context, and using configuration-driven limits to ensure robust and efficient LLM interactions.</li>
+</ul>
+<p><strong>Summary:</strong> 
+I manage LLM token limits by pre-counting tokens, dynamically trimming or summarizing context, and enforcing model-specific limits through configuration and validation—ensuring efficient, reliable, and cost-effective prompt construction in custom AI systems.</p>
+<hr>
+<p><strong>Q: Hypothetically, if you don’t have a tokenization library, how would you manage the number of tokens sent to the LLM to avoid exceeding limits?</strong></p>
+<ul>
+<li>
+<p>If a tokenization library is unavailable, I would use the following practical strategies to manage token limits when calling an LLM:</p>
+</li>
+<li>
+<p><strong>Estimate Token Count Using Character or Word Heuristics</strong></p>
+</li>
+<li>Approximate the number of tokens by dividing the character count or word count by an average token size (e.g., for English, 1 token ≈ 4 characters or ≈ 0.75 words).</li>
+<li>
+<p>For example, if the LLM supports 4,000 tokens, I’d limit the prompt to roughly 3,000 words or 16,000 characters as a conservative estimate.</p>
+</li>
+<li>
+<p><strong>Set Hard Limits on Input Size</strong></p>
+</li>
+<li>Enforce strict maximums on input length (characters or words) at the API layer.</li>
+<li>
+<p>Reject or truncate inputs that exceed these limits before constructing the prompt.</p>
+</li>
+<li>
+<p><strong>Chunking and Prioritization</strong></p>
+</li>
+<li>When dealing with cascaded or multi-part information, split the input into smaller, prioritized chunks.</li>
+<li>
+<p>Only include the most relevant or recent chunks in the prompt, based on business logic or recency.</p>
+</li>
+<li>
+<p><strong>Progressive Truncation</strong></p>
+</li>
+<li>
+<p>If the estimated size is still too large, progressively remove less important context (e.g., oldest conversation turns, least relevant documents) until the input fits within the estimated safe window.</p>
+</li>
+<li>
+<p><strong>User Feedback and Error Handling</strong></p>
+</li>
+<li>If truncation is necessary, notify the user that some context was omitted due to size constraints.</li>
+<li>
+<p>Optionally, provide a summary of omitted content if possible.</p>
+</li>
+<li>
+<p><strong>Monitoring and Logging</strong></p>
+</li>
+<li>
+<p>Log the estimated token usage and any truncation events for future tuning and debugging.</p>
+</li>
+<li>
+<p><strong>Industry Reference:</strong></p>
+</li>
+<li>In the KGPT and Knowledge GPT projects, we use strict input validation and chunking logic, and fallback to conservative heuristics when tokenization is unavailable, ensuring robust and predictable LLM interactions.</li>
+</ul>
+<p><strong>Summary:</strong> 
+Without a tokenization library, I’d use character/word-based heuristics, enforce hard input limits, prioritize and chunk context, and implement progressive truncation—ensuring the prompt stays within safe bounds for the LLM. This approach balances reliability and user experience even in constrained environments.</p>
+<hr>
+<p><strong>Q: How do you manage token accumulation in cascaded/multi-step LLM workflows, where tokens from previous tasks are carried forward and can cause prompt size to grow excessively?</strong></p>
+<ul>
+<li>
+<p>In cascaded or multi-step LLM workflows, token accumulation is a real challenge—especially when each step’s output/context is appended to the next prompt. Here’s how I handle this in practical, production-grade AI systems:</p>
+</li>
+<li>
+<p><strong>Sliding Window or Rolling Context</strong></p>
+</li>
+<li>Maintain only the most recent or most relevant context within a fixed token/character window.</li>
+<li>As new tasks are added, remove the oldest or least relevant context until the total estimated tokens fit within the LLM’s limit.</li>
+<li>
+<p>This is similar to a “sliding window” approach, ensuring continuity without exceeding limits.</p>
+</li>
+<li>
+<p><strong>Context Summarization</strong></p>
+</li>
+<li>Summarize previous steps’ outputs before appending them to the next prompt.</li>
+<li>Use a lightweight summarization model or even the LLM itself to condense earlier task results, reducing token usage while preserving essential information.</li>
+<li>
+<p>In Knowledge GPT, summarization is used for large context chains to keep prompts concise.</p>
+</li>
+<li>
+<p><strong>Selective Context Inclusion</strong></p>
+</li>
+<li>Only include outputs from previous tasks that are strictly necessary for the current step.</li>
+<li>Use metadata or task dependency graphs to determine which prior results are relevant.</li>
+<li>
+<p>For example, in UIDS-RAG-Labelling, only the most contextually relevant chunks are included in downstream prompts.</p>
+</li>
+<li>
+<p><strong>Token Estimation and Pre-Validation</strong></p>
+</li>
+<li>Before constructing the prompt for each new task, estimate the total token count (using heuristics or a tokenizer if available).</li>
+<li>
+<p>If the prompt would exceed the limit, trigger truncation, summarization, or selective inclusion as above.</p>
+</li>
+<li>
+<p><strong>Pipeline Orchestration</strong></p>
+</li>
+<li>Design the workflow as a state machine (as in UIDS-RAG-Labelling with LangGraph), where each node/task manages its own context window and passes only essential state forward.</li>
+<li>
+<p>This modular approach makes it easier to control and audit context propagation.</p>
+</li>
+<li>
+<p><strong>Logging and Monitoring</strong></p>
+</li>
+<li>Log token usage at each step for observability and future optimization.</li>
+<li>
+<p>Use centralized logging (as in log_manager.py from both UIDS and Knowledge GPT) to track prompt sizes and truncation events.</p>
+</li>
+<li>
+<p><strong>Industry Example:</strong></p>
+</li>
+<li>In Knowledge GPT and UIDS pipelines, we use a combination of sliding window, summarization, and selective context strategies to ensure that even in cascaded workflows, the prompt never exceeds the LLM’s token limit, while maintaining task coherence and relevance.</li>
+</ul>
+<p><strong>Summary:</strong> 
+I manage token accumulation in cascaded LLM workflows by applying a sliding window to context, summarizing previous outputs, and selectively including only the most relevant information—ensuring each prompt stays within token limits and the workflow remains efficient and coherent.</p>
+<hr>
+<p><strong>Q: If you only keep the most recent context to manage token limits, how do you access or utilize previous conversation history when needed?</strong></p>
+<ul>
+<li>
+<p>To balance token limits with the need for long-term context, I use a hybrid approach combining short-term memory (recent turns) and long-term memory (full conversation history), as implemented in enterprise systems like KGPT:</p>
+</li>
+<li>
+<p><strong>Short-Term Context (Sliding Window)</strong></p>
+</li>
+<li>For each LLM call, include only the most recent N turns (e.g., last 10 exchanges) in the prompt to stay within token limits.</li>
+<li>
+<p>This ensures immediate context and continuity for the current interaction.</p>
+</li>
+<li>
+<p><strong>Long-Term Memory Storage</strong></p>
+</li>
+<li>Persist the entire conversation history in a fast, scalable store like Redis or a database.</li>
+<li>
+<p>In KGPT, each chat session is assigned a unique <code>chat_session_id</code>, and all messages are stored in Redis for quick retrieval.</p>
+</li>
+<li>
+<p><strong>On-Demand Retrieval of Older Context</strong></p>
+</li>
+<li>When the user or workflow requires information from earlier in the conversation, fetch relevant past turns from Redis using the session ID.</li>
+<li>Selectively summarize or extract only the necessary information from older messages to fit within the token window.</li>
+<li>
+<p>For example, if a user references something from much earlier, retrieve and summarize those specific turns, then append the summary to the current prompt.</p>
+</li>
+<li>
+<p><strong>Context Summarization</strong></p>
+</li>
+<li>Periodically summarize older parts of the conversation and store these summaries alongside the raw history.</li>
+<li>
+<p>When needed, use the summary instead of the full text to save tokens while preserving key information.</p>
+</li>
+<li>
+<p><strong>Configurable Context Management</strong></p>
+</li>
+<li>
+<p>The number of recent turns and summarization thresholds are configurable (e.g., via <code>config.py</code> in KGPT MCP), allowing tuning based on model limits and use case requirements.</p>
+</li>
+<li>
+<p><strong>Industry Example:</strong></p>
+</li>
+<li>In KGPT’s MCPManager, the Conversation Context Store in Redis maintains both recent and historical context, enabling efficient retrieval and dynamic context assembly for each LLM request.</li>
+</ul>
+<p><strong>Summary:</strong> 
+I maintain recent context in the prompt for immediate continuity, while storing the full conversation in Redis for long-term memory. When older context is needed, I retrieve and (if necessary) summarize it before including it in the prompt—ensuring both efficiency and completeness without exceeding token limits.</p>
+<hr>
+<p><strong>Q: What is the purpose of the <code>__init__.py</code> file in Python?</strong></p>
+<ul>
+<li>The <code>__init__.py</code> file is used to mark a directory as a Python package, enabling the directory’s modules to be imported as part of a package.</li>
+<li>When Python encounters a directory containing <code>__init__.py</code>, it treats the directory as a package, allowing you to use import statements like <code>import mypackage.module</code>.</li>
+<li>The file can be empty, but it can also execute package initialization code or expose specific objects at the package level.</li>
+<li>In large AI projects (like Knowledge GPT and UIDS pipelines), <code>__init__.py</code> is used to organize code into logical modules and sub-packages, supporting maintainable and scalable codebases.</li>
+<li>It also helps control what is imported when using <code>from package import *</code> by defining the <code>__all__</code> list inside <code>__init__.py</code>.</li>
+</ul>
+<p><strong>Summary:</strong> 
+<code>__init__.py</code> designates a directory as a Python package, enables module imports, and can contain initialization logic or control package exports—supporting clean, modular project structure in production AI systems.</p>
+<hr>
+<p><strong>Q: Why is <code>__init__.py</code> important in a Python package, and what happens if you don’t include it?</strong></p>
+<ul>
+<li><code>__init__.py</code> is crucial because it tells Python to treat the directory as a package, enabling module imports using dot notation (e.g., <code>import mypackage.module</code>).</li>
+<li>If you don’t include <code>__init__.py</code>:</li>
+<li>In Python versions before 3.3, the directory will <strong>not</strong> be recognized as a package, and you won’t be able to import its modules using package syntax.</li>
+<li>In Python 3.3 and above, implicit namespace packages are supported, so you can sometimes import modules without <code>__init__.py</code>. However, you lose the ability to run initialization code, define package-level variables, or control what gets imported with <code>from package import *</code>.</li>
+<li>In large AI projects (like Knowledge GPT and UIDS pipelines), <code>__init__.py</code> is used to:</li>
+<li>Organize code into logical, importable modules.</li>
+<li>Ensure consistent imports across the codebase.</li>
+<li>Run any package-level setup or expose specific objects.</li>
+<li>Omitting <code>__init__.py</code> can lead to import errors, especially in complex or legacy codebases, and can break automation scripts or pipelines that expect explicit packages.</li>
+</ul>
+<p><strong>Summary:</strong> 
+<code>__init__.py</code> is essential for defining Python packages, enabling reliable imports and package initialization. Without it, your code may not be recognized as a package (especially in older Python versions), leading to import errors and reduced maintainability in production systems.</p>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

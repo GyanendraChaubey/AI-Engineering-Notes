@@ -1,0 +1,4541 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_07/">
+      
+      
+        <link rel="prev" href="../interview_06/">
+      
+      
+        <link rel="next" href="../interview_08/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 7 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-1-interview-7" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 7
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-1-interview-7">Generative AI Engineer (Part 1) — Interview 7<a class="headerlink" href="#generative-ai-engineer-part-1-interview-7" title="Permanent link">¶</a></h1>
+<p><strong>Q: Apart from feedback loops, how can you improve the accuracy and reduce hallucinations in LLM outputs within a RAG pipeline?</strong></p>
+<ul>
+<li>To improve the accuracy of LLM outputs and reduce hallucinations in a RAG (Retrieval-Augmented Generation) pipeline, several practical strategies can be implemented beyond just feedback loops:</li>
+</ul>
+<p><strong>1. Enhance Retrieval Quality</strong>
+ - <strong>Improve Embedding Models:</strong> Use domain-adapted or fine-tuned embedding models for better semantic matching between queries and documents.
+ - <strong>Chunk Optimization:</strong> Carefully design document chunking strategies (e.g., overlapping windows, context-aware chunking) to ensure relevant context is always retrieved.
+ - <strong>Top-K and Filtering:</strong> Tune the number of retrieved documents (top-k) and apply additional filtering (e.g., confidence thresholds, metadata filters) to ensure only highly relevant passages are passed to the LLM.</p>
+<p><strong>2. Prompt Engineering</strong>
+ - <strong>Contextual Prompts:</strong> Structure prompts to include clear instructions, retrieved context, and explicit constraints to guide the LLM toward grounded answers.
+ - <strong>Few-Shot Examples:</strong> Incorporate few-shot or in-context examples within prompts to demonstrate the expected answer style and reduce ambiguity.
+ - <strong>Negative Examples:</strong> Add counter-examples or clarify what should not be included to minimize hallucinations.</p>
+<p><strong>3. Post-Processing and Validation</strong>
+ - <strong>Answer Validation:</strong> Implement rule-based or secondary model checks to validate LLM outputs against retrieved context (e.g., string matching, semantic similarity).
+ - <strong>LLM-as-a-Judge:</strong> Use a secondary LLM to compare the generated answer with the retrieved documents and flag or filter out unsupported content.
+ - <strong>Confidence Scoring:</strong> Assign confidence scores to answers based on retrieval relevance and LLM certainty, and only return high-confidence responses.</p>
+<p><strong>4. Retrieval-Augmented Re-Ranking</strong>
+ - <strong>Re-Ranking Models:</strong> Use cross-encoders or re-ranking models to prioritize the most relevant retrieved passages before passing them to the LLM.
+ - <strong>Hybrid Retrieval:</strong> Combine dense (vector-based) and sparse (keyword-based) retrieval to maximize recall and precision.</p>
+<p><strong>5. Continuous Data and Model Improvement</strong>
+ - <strong>Dataset Expansion:</strong> Regularly update and expand the knowledge base with new, validated documents.
+ - <strong>Synthetic Data Generation:</strong> Use LLMs to generate synthetic Q&amp;A pairs for underrepresented intents or edge cases, then validate and add them to the training set.
+ - <strong>Active Learning:</strong> Use user interactions and flagged errors to identify weak spots and retrain models accordingly.</p>
+<p><strong>6. Monitoring and Evaluation</strong>
+ - <strong>Automated Evaluation Pipelines:</strong> Continuously monitor output quality using automated metrics (e.g., factual consistency, relevance) and human-in-the-loop review.
+ - <strong>A/B Testing:</strong> Experiment with different retrieval, prompt, and post-processing strategies to empirically measure improvements.</p>
+<p><strong>Industry Example from My Experience:</strong>
+- In the UIDS project, we implemented a RAG pipeline with:
+ - Advanced prompt engineering (few-shot, context-rich prompts).
+ - LLM-as-a-judge for label validation.
+ - Semantic re-ranking using ChromaDB.
+ - Automated evaluation and monitoring frameworks to track accuracy and consistency.
+- These steps significantly improved the factual accuracy and reduced hallucinations in production.</p>
+<p>By combining these strategies, you can systematically enhance the reliability and accuracy of LLM outputs in enterprise RAG systems, even before real-time feedback is incorporated.</p>
+<hr>
+<p><strong>Q: Beyond tuning embeddings and chunking, what additional steps can you take to further improve LLM output accuracy and reduce hallucinations in a RAG pipeline?</strong></p>
+<ul>
+<li>
+<p>In addition to optimizing embeddings and chunking, several advanced strategies can be implemented to further enhance LLM output accuracy and minimize hallucinations in a RAG system:</p>
+</li>
+<li>
+<p><strong>Hybrid Retrieval Strategies:</strong></p>
+</li>
+<li>Use a combination of lexical (BM25) and semantic (KNN vector) search in parallel.</li>
+<li>
+<p>Apply Reciprocal Rank Fusion (RRF) or linear hybrid ranking to blend results, ensuring both keyword and semantic relevance are captured (as implemented in Knowledge GPT).</p>
+</li>
+<li>
+<p><strong>Prompt Engineering Enhancements:</strong></p>
+</li>
+<li>Dynamically construct prompts by injecting top-ranked context chunks, metadata, and user history.</li>
+<li>
+<p>Use prompt templates tailored to the use case, language, and persona, as well as explicit instructions to constrain the LLM’s response to retrieved content only.</p>
+</li>
+<li>
+<p><strong>Context Window Optimization:</strong></p>
+</li>
+<li>Consolidate small adjacent chunks (up to a size threshold, e.g., 25 KB) to provide richer, more coherent context to the LLM.</li>
+<li>
+<p>Ensure that context passed to the LLM is both relevant and sufficiently comprehensive, reducing the chance of unsupported generation.</p>
+</li>
+<li>
+<p><strong>Post-Processing and Validation:</strong></p>
+</li>
+<li>Implement LLM-as-a-judge or answer validation steps, where a secondary LLM or rule-based system checks if the generated answer is grounded in the retrieved context.</li>
+<li>
+<p>Use confidence scoring and only return answers above a certain threshold, or flag low-confidence responses for human review.</p>
+</li>
+<li>
+<p><strong>Synthetic Data Generation and Augmentation:</strong></p>
+</li>
+<li>Generate synthetic Q&amp;A pairs using LLMs to augment underrepresented intents or edge cases in the training data (as done in UIDS RAG Labelling).</li>
+<li>
+<p>Use these to retrain or fine-tune both retrieval and generation components.</p>
+</li>
+<li>
+<p><strong>Re-Ranking and Filtering:</strong></p>
+</li>
+<li>Apply cross-encoder or re-ranking models to prioritize the most contextually relevant passages before passing them to the LLM.</li>
+<li>
+<p>Filter out low-quality or irrelevant chunks before prompt construction.</p>
+</li>
+<li>
+<p><strong>Continuous Monitoring and Evaluation:</strong></p>
+</li>
+<li>Set up automated pipelines to monitor output quality, track hallucination rates, and evaluate factual consistency.</li>
+<li>
+<p>Use both automated metrics and human-in-the-loop review for ongoing improvement.</p>
+</li>
+<li>
+<p><strong>Knowledge Base Maintenance:</strong></p>
+</li>
+<li>
+<p>Regularly update and curate the document repository to ensure all information is current, accurate, and well-structured.</p>
+</li>
+<li>
+<p><strong>Multilingual and Localization Support:</strong></p>
+</li>
+<li>For global deployments, ensure context and prompts are localized, and embeddings/models are adapted for each language as needed.</li>
+</ul>
+<p>By combining these strategies—many of which are reflected in the Knowledge GPT and UIDS RAG architectures—you can systematically drive down hallucinations and improve the factual reliability of LLM-powered enterprise solutions.</p>
+<hr>
+<p><strong>Q: How many documents do you retrieve from the vector database for your use case?</strong></p>
+<ul>
+<li>In our production RAG pipeline (as implemented in Knowledge GPT), we typically retrieve the top 20 candidates from both the lexical (BM25) and semantic (KNN vector) searches in parallel.</li>
+<li>These two result sets are then combined using Reciprocal Rank Fusion (RRF), which merges and re-ranks the results based on their positions in each list, ensuring both keyword and semantic relevance are captured.</li>
+<li>After applying RRF, we select the top N documents (where N is usually set by the <code>result_limit</code> parameter, commonly 5) to construct the final context for the LLM prompt.</li>
+<li>This approach ensures that the LLM receives a concise, highly relevant set of context chunks, maximizing answer quality while staying within the model’s context window constraints.</li>
+<li>The exact number of documents can be tuned based on the use case, but the standard configuration is: </li>
+<li><strong>Top 20</strong> from each searcher (lexical and vector) </li>
+<li><strong>RRF applied</strong> </li>
+<li><strong>Final top 5</strong> (or as per <code>result_limit</code>) passed to the LLM</li>
+</ul>
+<p>This hybrid retrieval and ranking strategy is designed to balance recall and precision, ensuring the LLM is grounded in the most relevant and diverse context available.</p>
+<hr>
+<p><strong>Q: What is Reciprocal Rank Fusion (RRF) in your retrieval pipeline?</strong></p>
+<ul>
+<li>Reciprocal Rank Fusion (RRF) is a hybrid ranking algorithm used in our retrieval pipeline to combine results from both lexical (BM25 keyword-based) and semantic (vector-based KNN) searches.</li>
+<li>Here’s how it works in our implementation:</li>
+<li>We run BM25 (lexical) and KNN (vector) searches in parallel, each retrieving the top 20 candidate chunks from the vector database.</li>
+<li>Each result set assigns a rank position to every document (e.g., 1st, 2nd, …, 20th).</li>
+<li>For every unique document ID across both result sets, we calculate an RRF score using the formula: 
+ <strong>rrf_score = 1/(lexical_rank + k) + 1/(vector_rank + k)</strong> 
+ where <code>k</code> is a constant (set to 60 in our system) to smooth the influence of lower-ranked results.</li>
+<li>If a document appears in only one result set, its rank in the other set defaults to the window size (20).</li>
+<li>We then sort all documents by their RRF score in descending order and select the top N (typically 5) as the final context chunks for the LLM.</li>
+<li>The advantage of RRF is that it leverages both exact keyword matches and semantic similarity, ensuring that the most relevant and diverse context is provided to the language model.</li>
+<li>This approach is not score-based but rank-based, making it robust to differences in scoring scales between BM25 and vector search.</li>
+</ul>
+<p>This hybrid RRF strategy is the default and main search mode in our Knowledge GPT architecture, providing the best overall relevance for downstream LLM generation.</p>
+<hr>
+<p><strong>Q: How would you implement a system that allows users to search over (1) only their uploaded documents, (2) only permanent documents, or (3) both, based on intent?</strong></p>
+<ul>
+<li>This is a classic multi-tenant, context-aware retrieval problem, often encountered in enterprise GenAI and RAG systems.</li>
+<li>The solution requires clear separation of user-uploaded (ephemeral) data and permanent (global/corporate) data, with flexible retrieval logic based on user intent.</li>
+<li>Here’s a practical, scalable approach:</li>
+</ul>
+<hr>
+<p><strong>1. Data Ingestion &amp; Indexing:</strong>
+ - <strong>Permanent Documents:</strong> 
+ - Ingested, chunked, embedded, and indexed in the main vector DB (e.g., OpenSearch, ChromaDB) with metadata flag <code>doc_type: "permanent"</code>.
+ - <strong>User-Uploaded Documents:</strong> 
+ - When a user uploads a document (PDF, Word, CSV), process it in real-time:
+ - Normalize (convert to markdown or plain text).
+ - Chunk and embed using the same embedding model as permanent docs.
+ - Index these chunks in the vector DB with metadata: 
+ - <code>doc_type: "uploaded"</code>
+ - <code>user_id: &lt;user_id&gt;</code>
+ - <code>session_id</code> or <code>upload_id</code> for further isolation if needed.
+ - Optionally, store raw files in S3 or similar for audit/download.</p>
+<hr>
+<p><strong>2. Retrieval Logic (Search API):</strong>
+ - <strong>Intent Detection:</strong> 
+ - Use your intent classification system (like UIDS) to determine which search mode to activate: 
+ - <code>"uploaded_only"</code> 
+ - <code>"permanent_only"</code> 
+ - <code>"both"</code>
+ - <strong>Query Construction:</strong> 
+ - For <code>"uploaded_only"</code>: 
+ - Add filter: <code>doc_type: "uploaded"</code> AND <code>user_id: &lt;current_user&gt;</code>
+ - For <code>"permanent_only"</code>: 
+ - Add filter: <code>doc_type: "permanent"</code>
+ - For <code>"both"</code>: 
+ - Use filter: <code>(doc_type: "permanent") OR (doc_type: "uploaded" AND user_id: &lt;current_user&gt;)</code>
+ - <strong>Hybrid Retrieval:</strong> 
+ - Run BM25 and KNN vector search in parallel as usual, but always apply the above filters.
+ - Use RRF or linear hybrid ranking as in your current pipeline.
+ - <strong>Result Construction:</strong> 
+ - Return only the filtered, ranked chunks as context for the LLM.</p>
+<hr>
+<p><strong>3. Security &amp; Isolation:</strong>
+ - Ensure user-uploaded data is only accessible to the uploading user (row-level security in DB, API checks).
+ - Clean up user-uploaded chunks after session expiry or as per retention policy.</p>
+<hr>
+<p><strong>4. Scalability &amp; Performance:</strong>
+ - For high-volume uploads, consider a separate index or namespace per user or per session for uploaded docs.
+ - Use metadata filtering in OpenSearch/ChromaDB for efficient retrieval.</p>
+<hr>
+<p><strong>5. User Experience:</strong>
+ - Expose a UI toggle or API parameter for users to select search scope (uploaded, permanent, both).
+ - Clearly indicate in results which source each chunk comes from.</p>
+<hr>
+<p><strong>Summary of Steps:</strong>
+- Tag all indexed chunks with <code>doc_type</code> and <code>user_id</code>.
+- Filter search queries based on intent and user context.
+- Use your existing hybrid retrieval and ranking pipeline, applying the appropriate filters.
+- Enforce security and data isolation for user-uploaded content.</p>
+<p>This approach is robust, scalable, and aligns with best practices for enterprise RAG systems, as implemented in projects like Knowledge GPT and UIDS.</p>
+<hr>
+<p><strong>Q: How does the system determine whether to search uploaded documents, permanent documents, or both, based on the user's query, especially when the user doesn't explicitly specify?</strong></p>
+<ul>
+<li>The system uses an intent classification module to automatically infer the user's search scope from their query or context, without requiring the user to manually select the collection.</li>
+<li>
+<p>Here’s how it works in practice (as implemented in enterprise RAG systems like Knowledge GPT and UIDS):</p>
+</li>
+<li>
+<p><strong>Intent Detection Pipeline:</strong></p>
+</li>
+<li>When a user submits a query, the system first passes it through an intent classification model (such as the Universal Intent Determination System, UIDS).</li>
+<li>This model analyzes the query, user session context, and possibly recent interactions to predict the intended search scope:</li>
+<li><code>"uploaded_only"</code>: Search only the user’s uploaded documents.</li>
+<li><code>"permanent_only"</code>: Search only the permanent, global document collection.</li>
+<li><code>"both"</code>: Search across both uploaded and permanent documents.</li>
+<li>
+<p>The intent classifier can be trained on historical user queries, annotated with the correct scope, or use rule-based heuristics for initial deployment.</p>
+</li>
+<li>
+<p><strong>Dynamic Query Construction:</strong></p>
+</li>
+<li>Based on the detected intent, the backend dynamically constructs the search query with appropriate filters:</li>
+<li>For <code>"uploaded_only"</code>: Filter by <code>doc_type: "uploaded"</code> and <code>user_id: &lt;current_user&gt;</code>.</li>
+<li>For <code>"permanent_only"</code>: Filter by <code>doc_type: "permanent"</code>.</li>
+<li>For <code>"both"</code>: Use a filter that includes both conditions.</li>
+<li>
+<p>This filtering is applied at the vector DB or search engine level (e.g., OpenSearch, ChromaDB) to ensure only relevant chunks are retrieved.</p>
+</li>
+<li>
+<p><strong>Hybrid Retrieval and Ranking:</strong></p>
+</li>
+<li>The system then performs hybrid retrieval (BM25 + KNN) with Reciprocal Rank Fusion (RRF) or linear hybrid ranking, as described in the Knowledge GPT architecture.</li>
+<li>
+<p>Only the filtered, intent-matched chunks are ranked and returned as context for the LLM.</p>
+</li>
+<li>
+<p><strong>User Transparency:</strong></p>
+</li>
+<li>
+<p>The user does not need to know or select the collection; the system’s intent detection and query construction logic handle the routing automatically, providing a seamless experience.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The selection of which collection(s) to search is determined by the intent classification system, which analyzes the user’s query and context, and then dynamically applies the correct filters during query construction and retrieval. This ensures accurate, context-aware search without requiring explicit user input about the data source.</li>
+</ul>
+<hr>
+<p><strong>Q: Where does the system capture and store the metadata that distinguishes uploaded, permanent, and combined document sources for retrieval?</strong></p>
+<ul>
+<li>The system captures and stores document source metadata during the ingestion and indexing phase, embedding this information as metadata fields alongside each document chunk in the vector database.</li>
+<li>
+<p>Here’s how it works in the Knowledge GPT pipeline (as detailed in the provided architecture docs):</p>
+</li>
+<li>
+<p><strong>Metadata Extraction and Assignment:</strong></p>
+</li>
+<li>When documents are ingested (whether uploaded by users or part of the permanent collection), the pipeline extracts and normalizes metadata from raw JSON files stored in S3.</li>
+<li>Key metadata fields include: <code>docSource</code>, <code>store</code>, <code>chunkID</code>, <code>contentTypeHeader</code>, <code>disclosureLevel</code>, <code>user_id</code> (for uploaded docs), and <code>doc_type</code> (e.g., "uploaded" or "permanent").</li>
+<li>For user-uploaded documents, additional metadata such as <code>user_id</code>, <code>session_id</code>, and upload timestamps are attached.</li>
+<li>
+<p>For permanent documents, fields like <code>docSource</code>, <code>publicationID</code>, and <code>disclosureLevel</code> are used to identify and filter them.</p>
+</li>
+<li>
+<p><strong>Indexing in Vector DB:</strong></p>
+</li>
+<li>Each chunk, along with its metadata, is indexed into the vector database (e.g., OpenSearch, ChromaDB).</li>
+<li>The metadata fields are stored as part of the document schema, enabling efficient filtering during retrieval.</li>
+<li>Example metadata structure for a chunk:</li>
+<li><code>doc_type</code>: "uploaded" or "permanent"</li>
+<li><code>user_id</code>: (present for uploaded docs)</li>
+<li>
+<p><code>docSource</code>, <code>contentTypeHeader</code>, <code>disclosureLevel</code>, etc.</p>
+</li>
+<li>
+<p><strong>Retrieval and Filtering:</strong></p>
+</li>
+<li>During search, the system applies filters on these metadata fields to select the appropriate document set (uploaded, permanent, or both) as determined by the intent classifier.</li>
+<li>
+<p>This ensures that only the relevant chunks are retrieved and passed to the LLM for context.</p>
+</li>
+<li>
+<p><strong>Source of Metadata:</strong></p>
+</li>
+<li>For permanent documents: Metadata is extracted from S3 JSON files and CMS fields (e.g., <code>docSource</code>, <code>publicationID</code>).</li>
+<li>
+<p>For uploaded documents: Metadata is generated at upload time and stored with the chunk during real-time ingestion.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The distinction between uploaded, permanent, and combined sources is managed by embedding rich metadata into each chunk at ingestion, storing it in the vector DB, and leveraging these fields for precise filtering during retrieval. This metadata-driven approach is central to scalable, multi-source RAG systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How would you implement an automatic deletion policy to remove user-uploaded (temporary) documents after 24 hours?</strong></p>
+<ul>
+<li>To enforce a 24-hour retention policy for user-uploaded documents, I would leverage the metadata and bulk deletion capabilities already present in the pipeline, as described in the Knowledge GPT Data Pipeline Architecture.</li>
+<li>Here’s a practical, robust approach:</li>
+</ul>
+<hr>
+<p><strong>1. Metadata Tagging at Ingestion:</strong>
+ - When a user uploads a document, the ingestion pipeline assigns metadata fields such as:
+ - <code>doc_type: "uploaded"</code>
+ - <code>user_id: &lt;user_id&gt;</code>
+ - <code>upload_timestamp</code> or <code>kgptCreateDateTime</code>: set to the current datetime (ISO format).
+ - This timestamp is crucial for tracking document age.</p>
+<hr>
+<p><strong>2. Scheduled Deletion Job (e.g., via Cron or Cloud Scheduler):</strong>
+ - Set up a scheduled job (runs every hour or as needed) that:
+ - Queries the vector DB (e.g., OpenSearch) for all chunks where:
+ - <code>doc_type: "uploaded"</code>
+ - <code>kgptCreateDateTime</code> (or <code>upload_timestamp</code>) is older than 24 hours from the current time.
+ - Example OpenSearch query:
+ </p><div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">"bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">"must"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span><span class="w"> </span><span class="nt">"term"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"doc_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploaded"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">{</span><span class="w"> </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"kgptCreateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"lt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOW-24HOURS"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">]</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+ - Retrieve all matching chunk IDs.<p></p>
+<hr>
+<p><strong>3. Bulk Deletion with Retry Logic:</strong>
+ - Use the pipeline’s existing bulk deletion logic (as described in the architecture docs):
+ - For each chunk ID, run <code>delete_by_query</code> with <code>refresh=True</code> to ensure immediate removal.
+ - Implement retry logic with exponential backoff for robustness (as already present in the pipeline).</p>
+<hr>
+<p><strong>4. S3/Blob Cleanup (if raw files are stored):</strong>
+ - If the original uploaded files are stored in S3 or similar, the same scheduled job can also delete these files based on their metadata and upload timestamp.</p>
+<hr>
+<p><strong>5. Audit and Logging:</strong>
+ - Log all deletions for audit purposes, including document IDs, user IDs, and timestamps.</p>
+<hr>
+<p><strong>Summary of Steps:</strong>
+- Tag uploaded documents with a creation timestamp at ingestion.
+- Run a scheduled job to find and delete all user-uploaded chunks older than 24 hours using metadata filters.
+- Use robust, retry-enabled bulk deletion logic to ensure consistency.
+- Optionally, clean up raw files in S3 or other storage.</p>
+<p>This approach is scalable, leverages existing pipeline features, and ensures compliance with temporary data retention policies in enterprise GenAI systems.</p>
+<hr>
+<p><strong>Q: What is the best practice for implementing a 24-hour deletion policy for user-uploaded documents, considering the limitations of scheduled jobs and direct deletion in the vector DB?</strong></p>
+<ul>
+<li>While scheduled jobs querying the vector DB for expired documents is a common approach, it has limitations:</li>
+<li>Jobs running at fixed intervals (e.g., once daily) can result in documents lingering longer than 24 hours (e.g., up to 36 hours if uploaded just after the last run).</li>
+<li>Frequent polling increases system load and may not scale well.</li>
+<li>Relying solely on the vector DB for retention policies can be suboptimal, as vector DBs are not designed for lifecycle management.</li>
+</ul>
+<p><strong>Best Practice Approach:</strong></p>
+<p><strong>1. Event-Driven Deletion with TTL (Time-To-Live):</strong>
+ - <strong>Leverage Storage Layer TTL:</strong> 
+ - If using S3 or a similar object store for raw files, configure a lifecycle policy to automatically delete files after 24 hours.
+ - This ensures raw data is always cleaned up, regardless of application logic.
+ - <strong>Metadata-Driven TTL in Vector DB:</strong> 
+ - At ingestion, store an explicit <code>expiry_timestamp</code> (current time + 24 hours) in each chunk’s metadata.
+ - Use a lightweight, frequent scheduled job (e.g., every 10–15 minutes) to query for chunks where <code>expiry_timestamp &lt; now()</code>.
+ - This minimizes the window where documents exceed the 24-hour limit.</p>
+<p><strong>2. Immediate Deletion via Message Queue (Recommended for Scale):</strong>
+ - When a document is uploaded, enqueue a delayed deletion task (using AWS SQS with delay, Celery, or similar) set to trigger exactly 24 hours after upload.
+ - The worker consumes the task at the scheduled time and deletes the corresponding chunks from the vector DB and raw storage.
+ - This guarantees precise deletion timing and avoids polling inefficiencies.</p>
+<p><strong>3. Bulk Deletion with Retry Logic:</strong>
+ - Use the pipeline’s robust bulk deletion logic (as described in Knowledge GPT docs), including retry with exponential backoff, to ensure all chunks are reliably removed.
+ - Always set <code>refresh=True</code> to make deletions immediately visible.</p>
+<p><strong>4. Audit and Monitoring:</strong>
+ - Log all deletions with document IDs, user IDs, and timestamps for compliance and troubleshooting.
+ - Set up alerts for failed deletions or orphaned data.</p>
+<p><strong>Summary of Steps:</strong>
+- Store an <code>expiry_timestamp</code> in metadata at ingestion.
+- Use event-driven or frequent scheduled deletion jobs to remove expired chunks precisely after 24 hours.
+- Clean up both vector DB entries and raw files in storage.
+- Use robust, retry-enabled deletion logic and maintain audit logs.</p>
+<p>This approach ensures compliance with retention policies, minimizes data exposure, and aligns with scalable, production-grade GenAI system design.</p>
+<hr>
+<p><strong>Q: How can you enable users to manually delete their own uploaded documents from the system?</strong></p>
+<ul>
+<li>To allow users to manually delete their uploaded documents, you should expose a secure, user-specific deletion API endpoint and integrate it with the UI or client application.</li>
+<li>Here’s a practical, industry-standard approach:</li>
+</ul>
+<hr>
+<p><strong>1. API Endpoint for Deletion:</strong>
+ - Implement a REST API endpoint (e.g., <code>DELETE /documents/{document_id}</code>) that allows authenticated users to request deletion of their own uploaded documents.
+ - The endpoint should:
+ - Authenticate the user (using JWT or session token).
+ - Authorize the request by verifying that the <code>user_id</code> in the document metadata matches the requesting user.
+ - Accept the <code>document_id</code> (or a list of IDs for batch deletion).</p>
+<hr>
+<p><strong>2. Backend Deletion Logic:</strong>
+ - On receiving a valid request:
+ - Query the vector DB (e.g., OpenSearch) for all chunks with:
+ - <code>documentID</code> = provided <code>document_id</code>
+ - <code>user_id</code> = current user’s ID
+ - <code>doc_type</code> = "uploaded"
+ - Retrieve all associated <code>chunkID</code>s.
+ - Use the existing <code>delete_documents_by_dataid()</code> function (as described in the Knowledge GPT Data Pipeline Architecture) to delete each chunk:
+ - For each chunk ID, run a <code>delete_by_query</code> with <code>{"match": {"_id": chunk_id}}</code> and <code>refresh=True</code>.
+ - Leverage built-in retry logic with exponential backoff for reliability.</p>
+<hr>
+<p><strong>3. S3/Blob Storage Cleanup:</strong>
+ - If the raw file is stored in S3 or another object store, also delete the corresponding file using the <code>documentID</code> and user context.</p>
+<hr>
+<p><strong>4. UI/UX Integration:</strong>
+ - In the user interface, provide a “Delete” button or option next to each uploaded document.
+ - When the user clicks delete, call the API endpoint with the relevant <code>document_id</code>.</p>
+<hr>
+<p><strong>5. Audit and Security:</strong>
+ - Log all deletion actions with user ID, document ID, and timestamp for audit and compliance.
+ - Ensure users can only delete documents they own (enforced at the API and DB query level).</p>
+<hr>
+<p><strong>Summary of Steps:</strong>
+- Expose a secure API endpoint for document deletion.
+- Authenticate and authorize user requests.
+- Use metadata filters to identify and delete all relevant chunks from the vector DB.
+- Clean up raw files in object storage.
+- Integrate the feature into the UI for user-initiated deletion.</p>
+<p>This approach is secure, user-friendly, and leverages the robust deletion mechanisms already present in the Knowledge GPT pipeline.</p>
+<hr>
+<p><strong>Q: How can you allow an end user to delete all their uploaded (temporary) documents, even if they don't know the specific document IDs, and ensure their searches only use permanent documents?</strong></p>
+<ul>
+<li>To support this user scenario, the system should provide both a user-friendly way to delete all of a user's uploaded documents and a mechanism to restrict search results to permanent documents only.</li>
+</ul>
+<hr>
+<p><strong>1. Bulk Deletion of User’s Uploaded Documents (Without Document IDs):</strong>
+ - <strong>API Endpoint:</strong> 
+ - Expose an endpoint like <code>DELETE /documents/uploaded</code> that, when called by an authenticated user, deletes all documents where:
+ - <code>user_id</code> matches the current user
+ - <code>doc_type</code> is <code>"uploaded"</code>
+ - <strong>Backend Logic:</strong> 
+ - Query the vector DB (e.g., OpenSearch) for all chunks with <code>user_id = &lt;current_user&gt;</code> and <code>doc_type = "uploaded"</code>.
+ - Retrieve all associated <code>chunkID</code>s.
+ - Use the existing <code>delete_documents_by_dataid()</code> function (as described in the Knowledge GPT Data Pipeline Architecture) to delete each chunk.
+ - Also delete any corresponding raw files in S3 or object storage.
+ - <strong>Security:</strong> 
+ - Ensure the endpoint is protected by JWT authentication (as implemented in <code>auth_token_validator.py</code>), so only the authenticated user can delete their own data.
+ - Log all deletion actions for audit purposes.</p>
+<hr>
+<p><strong>2. Restricting Search to Permanent Documents:</strong>
+ - <strong>Intent Classification:</strong> 
+ - If the user wants to search only permanent documents, the intent classifier (UIDS) should detect this preference (e.g., via a UI toggle or user profile setting).
+ - The backend then constructs the search query with a filter: <code>doc_type = "permanent"</code>.
+ - <strong>API Payload:</strong> 
+ - Allow the user to specify in the search request (or via UI) that only permanent documents should be included.
+ - The backend enforces this by dropping any less-permissive disclosure levels or temporary document types before executing the search (as described in <code>completions_payload_validator.py</code> and <code>search_payload_validator.py</code>).</p>
+<hr>
+<p><strong>3. User Experience:</strong>
+ - In the UI, provide:
+ - A “Delete All My Uploaded Documents” button, which calls the bulk deletion endpoint.
+ - A toggle or filter to restrict searches to permanent documents only.</p>
+<hr>
+<p><strong>Summary of Steps:</strong>
+- Provide a bulk deletion API for users to remove all their uploaded documents without needing document IDs.
+- Use secure authentication and metadata filtering to ensure only the user’s own data is deleted.
+- Allow users to restrict searches to permanent documents via intent classification or UI controls.
+- Leverage existing Knowledge GPT pipeline features for robust, auditable, and user-friendly data management.</p>
+<hr>
+<p><strong>Q: How can the UI help users delete all their uploaded documents, even if they don't know document IDs?</strong></p>
+<ul>
+<li>The UI can play a crucial role in making document deletion intuitive and user-friendly, especially when users lack specific document IDs.</li>
+<li>Here’s how to enable this functionality:</li>
+</ul>
+<hr>
+<p><strong>1. “Delete All My Uploaded Documents” Button:</strong>
+ - Add a clear button or option in the user’s dashboard or document management section labeled “Delete All My Uploaded Documents.”
+ - When clicked, this triggers a call to a backend API endpoint (e.g., <code>DELETE /documents/uploaded</code>) that deletes all documents where:
+ - <code>user_id</code> matches the current user
+ - <code>doc_type</code> is <code>"uploaded"</code></p>
+<hr>
+<p><strong>2. Document List View (Optional):</strong>
+ - Display a list of the user’s uploaded documents (retrieved by querying the backend with <code>user_id</code> and <code>doc_type = "uploaded"</code>).
+ - Allow users to select individual or multiple documents for deletion, or provide a “Select All” option.</p>
+<hr>
+<p><strong>3. Confirmation Dialog:</strong>
+ - Before deletion, show a confirmation dialog to prevent accidental data loss.
+ - Example: “Are you sure you want to delete all your uploaded documents? This action cannot be undone.”</p>
+<hr>
+<p><strong>4. Feedback and Status:</strong>
+ - After deletion, display a success message or update the document list to reflect the changes.
+ - Handle and display any errors gracefully.</p>
+<hr>
+<p><strong>5. Backend Integration:</strong>
+ - The UI interacts with secure, authenticated API endpoints that handle the actual deletion logic as described in the Knowledge GPT Data Pipeline Architecture (using user ID and document type filters).</p>
+<hr>
+<p><strong>Summary:</strong>
+- The UI should provide a simple, accessible way for users to delete all their uploaded documents without needing document IDs.
+- This improves user experience and ensures compliance with data privacy and user control requirements.</p>
+<hr>
+<p><strong>Q: What is an embedding, and what does it mean to update or change embeddings in the context of language models?</strong></p>
+<ul>
+<li><strong>Definition of Embedding:</strong></li>
+<li>An embedding is a dense, fixed-size vector representation of data (such as text, words, sentences, or documents) that captures semantic meaning and relationships in a high-dimensional space.</li>
+<li>In NLP and GenAI systems, embeddings are typically generated by neural network models (like BERT, GPT, or OpenAI Embedding APIs) and are used to represent the meaning of text in a way that is machine-understandable.</li>
+<li>
+<p>For example, similar sentences or documents will have embeddings that are close together in the vector space, enabling semantic search, clustering, and retrieval.</p>
+</li>
+<li>
+<p><strong>Purpose of Embeddings in GenAI Pipelines:</strong></p>
+</li>
+<li>Embeddings are used for tasks like semantic search, intent classification, document retrieval, and context building for LLM prompts.</li>
+<li>
+<p>In the Knowledge GPT pipeline, each document chunk is embedded (e.g., into a 1536-dimensional vector using OpenAI or Azure models) and stored in a vector database (like OpenSearch or ChromaDB) along with metadata.</p>
+</li>
+<li>
+<p><strong>What Does "Updating Embeddings" Mean?</strong></p>
+</li>
+<li>Updating embeddings refers to re-generating or replacing the vector representations for your data.</li>
+<li>This is typically done when:</li>
+<li>You switch to a newer or more accurate embedding model (e.g., upgrading from OpenAI Ada to a more recent model).</li>
+<li>You improve your chunking, preprocessing, or normalization logic, which changes the input text and thus its embedding.</li>
+<li>You want to capture new semantic relationships or domain-specific nuances.</li>
+<li>
+<p>After updating, you re-index the new embeddings in your vector store, which can improve the accuracy and relevance of downstream tasks like search or retrieval.</p>
+</li>
+<li>
+<p><strong>Why Does Updating Embeddings Improve Accuracy?</strong></p>
+</li>
+<li>Newer or better-trained embedding models capture semantic meaning more effectively, leading to more accurate similarity comparisons and retrieval.</li>
+<li>
+<p>Improved embeddings reduce noise, increase contextual relevance, and help the LLM generate more precise and context-aware responses.</p>
+</li>
+<li>
+<p><strong>Industry Practice:</strong></p>
+</li>
+<li>Regularly review and update embeddings as models evolve or as your data and use cases change.</li>
+<li>Always ensure backward compatibility and validate improvements through evaluation metrics and user feedback.</li>
+</ul>
+<p><strong>In summary:</strong> 
+An embedding is a vector representation of text that encodes its meaning for machine processing. Updating embeddings means regenerating these vectors—often with a better model or improved preprocessing—to enhance the accuracy and relevance of AI-driven tasks like search, retrieval, and question answering.</p>
+<hr>
+<p><strong>Q: What is the embedding vector dimension for GPT-4 or GPT-4o models, and is it different from Ada-002?</strong></p>
+<ul>
+<li>The embedding dimension used in the <strong>Knowledge GPT pipeline</strong> is <strong>1536</strong>, from the <code>text-embedding-ada-002</code> model.</li>
+<li>GPT-4 and GPT-4o are <strong>chat/completion</strong> models — they do not directly produce embeddings. Embeddings come from separate dedicated embedding models.</li>
+</ul>
+<p><strong>OpenAI Embedding Models (current):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Dimensions</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text-embedding-ada-002</code></td>
+<td>1536</td>
+<td>Legacy standard, widely deployed</td>
+</tr>
+<tr>
+<td><code>text-embedding-3-small</code></td>
+<td>1536</td>
+<td>Newer, cheaper, same dimensions</td>
+</tr>
+<tr>
+<td><code>text-embedding-3-large</code></td>
+<td><strong>3072</strong></td>
+<td>Best quality, higher cost</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The KGPT pipeline uses <code>text-embedding-ada-002</code> (1536-dim) — this is consistent throughout ingestion and query time.</li>
+<li><code>text-embedding-3-large</code> (3072-dim) is the newer, higher-quality model but requires re-indexing all documents if you switch.</li>
+<li>There is no "GPT-4 embedding model" — GPT-4/4o are not used for embeddings.</li>
+</ul>
+<p><strong>Summary:</strong> 
+The pipeline uses <strong>1536 dimensions</strong> (ada-002). The newer <code>text-embedding-3-large</code> uses <strong>3072 dimensions</strong>. GPT-4/4o are chat models, not embedding models.</p>
+<hr>
+<p><strong>Q: What is the embedding vector dimension for GPT-3 models?</strong></p>
+<ul>
+<li>For embedding generation, OpenAI provides dedicated embedding models rather than using the GPT-3 completion models directly.</li>
+<li>The most commonly used embedding model for GPT-3 era is <code>text-embedding-ada-002</code>, which produces a <strong>1536-dimensional</strong> vector.</li>
+<li>Previous OpenAI embedding models (like <code>text-similarity-babbage-001</code> or <code>text-similarity-curie-001</code>) had different dimensions:</li>
+<li><code>text-similarity-babbage-001</code>: 2048 dimensions</li>
+<li><code>text-similarity-curie-001</code>: 4096 dimensions</li>
+<li><code>text-similarity-ada-001</code>: 1024 dimensions</li>
+<li>However, in modern GenAI pipelines (including Knowledge GPT), the standard is to use <code>text-embedding-ada-002</code> (1536 dims) for both GPT-3 and GPT-3.5-based systems.</li>
+<li>The GPT-3 completion models themselves (like <code>text-davinci-003</code>) do not expose embedding vectors; embeddings are always generated via the dedicated embedding API.</li>
+</ul>
+<p><strong>Summary:</strong> 
+For GPT-3 and GPT-3.5, the embedding dimension is typically <strong>1536</strong> (using <code>text-embedding-ada-002</code>). Older models had higher dimensions, but 1536 is the current industry standard for OpenAI embeddings.</p>
+<hr>
+<p><strong>Q: What are "attention" and "MLP" in the context of transformer models?</strong></p>
+<ul>
+<li>In transformer architectures, each layer is typically composed of two main subcomponents: the <strong>attention mechanism</strong> (usually multi-head self-attention) and the <strong>MLP</strong> (Multi-Layer Perceptron, also called the feed-forward network).</li>
+<li>Here’s what each means:</li>
+</ul>
+<hr>
+<p><strong>1. Attention (Self-Attention / Multi-Head Attention):</strong>
+ - The attention mechanism allows the model to weigh the importance of different tokens (words or subwords) in the input sequence when encoding a particular token.
+ - <strong>Self-attention</strong> computes a weighted sum of all tokens for each token, enabling the model to capture contextual relationships and dependencies, regardless of their position in the sequence.
+ - <strong>Multi-head attention</strong> means the model runs several attention mechanisms in parallel, each learning different aspects of the relationships, and then concatenates their outputs for richer representations.
+ - This is crucial for capturing context, long-range dependencies, and semantic meaning in language tasks.</p>
+<p><strong>2. MLP (Multi-Layer Perceptron / Feed-Forward Network):</strong>
+ - After the attention block, each token’s representation is passed through a position-wise feed-forward neural network (MLP).
+ - This MLP typically consists of two linear (dense) layers with a non-linear activation (like GELU or ReLU) in between.
+ - The MLP helps the model learn complex transformations and feature interactions for each token independently, enhancing the representational power of the network.</p>
+<p><strong>Summary:</strong>
+- <strong>Attention</strong>: Learns contextual relationships between tokens.
+- <strong>MLP</strong>: Applies non-linear transformations to each token’s embedding, independently, to enrich feature representations.</p>
+<p>Both components are essential for the power and flexibility of transformer models in NLP and generative AI tasks.</p>
+<hr>
+<p><strong>Q: What are query, key, and value in the context of attention mechanisms in transformers?</strong></p>
+<ul>
+<li>In the transformer’s attention mechanism, <strong>query</strong>, <strong>key</strong>, and <strong>value</strong> are three distinct vector representations derived from the input embeddings for each token.</li>
+<li>They are fundamental to how attention scores are computed and how information is aggregated across the sequence.</li>
+</ul>
+<hr>
+<p><strong>1. Query (Q):</strong>
+ - For each token, a query vector is generated by multiplying the token’s embedding with a learned weight matrix.
+ - The query represents what this token is “looking for” in other tokens.</p>
+<p><strong>2. Key (K):</strong>
+ - Each token also generates a key vector, again via a learned weight matrix.
+ - The key represents the “content” or “identity” of the token, used to match against queries from other tokens.</p>
+<p><strong>3. Value (V):</strong>
+ - Each token produces a value vector, which contains the actual information to be aggregated or passed along.
+ - The value is what gets combined (weighted and summed) to produce the output of the attention mechanism.</p>
+<hr>
+<p><strong>How They Work Together:</strong>
+- For each token, the attention mechanism computes a similarity score between its query and the keys of all other tokens (often using dot product).
+- These scores are normalized (softmax) to produce attention weights.
+- The output for each token is a weighted sum of the value vectors from all tokens, where the weights are determined by the query-key similarity.</p>
+<hr>
+<p><strong>Summary:</strong>
+- <strong>Query</strong>: What the token is searching for.
+- <strong>Key</strong>: What the token offers for matching.
+- <strong>Value</strong>: The information to be aggregated.
+- This mechanism allows the model to dynamically focus on relevant parts of the input sequence for each token, enabling rich contextual understanding.</p>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

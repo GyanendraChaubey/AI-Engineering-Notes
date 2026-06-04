@@ -1,0 +1,5163 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-1/interview_42/">
+      
+      
+        <link rel="prev" href="../interview_41/">
+      
+      
+        <link rel="next" href="../interview_43/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 42 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-1-interview-42" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 42
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-2/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-1-interview-42">Generative AI Engineer (Part 1) — Interview 42<a class="headerlink" href="#generative-ai-engineer-part-1-interview-42" title="Permanent link">¶</a></h1>
+<p><strong>Q: Write a simple Python class for a calculator with addition and subtraction, taking input via the constructor.</strong></p>
+<ul>
+<li>The task is to create a Python class named <code>Calculator</code>.</li>
+<li>The class should accept two numbers as input through its constructor.</li>
+<li>It should have two methods: one for addition and one for subtraction.</li>
+<li>Both methods should operate on the numbers provided during initialization.</li>
+</ul>
+<hr>
+<p><strong>💻 Code</strong>:
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Calculator</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> <span class="c1"># Store the two numbers as instance variables</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> <span class="c1"># Store the first number</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> <span class="bp">self</span><span class="o">.</span><span class="n">num2</span> <span class="o">=</span> <span class="n">num2</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> <span class="c1"># Store the second number</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> <span class="c1"># Return the sum of the two numbers</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num2</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> <span class="c1"># Perform addition and return the result</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a> <span class="k">def</span><span class="w"> </span><span class="nf">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a> <span class="c1"># Return the difference between the two numbers</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num2</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a> <span class="c1"># Perform subtraction and return the result</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># Example usage:</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># calc = Calculator(10, 5)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1"># print(calc.add()) # Output: 15</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1"># print(calc.subtract()) # Output: 5</span>
+</span></code></pre></div><p></p>
+<hr>
+<p>⭐️ <strong>Explanation</strong>:</p>
+<ul>
+<li>The <code>__init__</code> method initializes the class with two numbers.</li>
+<li>The <code>add</code> method returns the sum of the two numbers.</li>
+<li>The <code>subtract</code> method returns the difference (first minus second).</li>
+<li>This structure is simple, readable, and follows Python best practices for class design.</li>
+<li>Time complexity for both operations is O(1) since they are basic arithmetic operations.</li>
+<li>This approach is practical and aligns with industry standards for writing clean, maintainable code.</li>
+</ul>
+<hr>
+<p><strong>Q: Flatten a nested list in Python (e.g., x = [1, 2, 3, [4, 6, [7]]] → output = [1, 2, 3, 4, 5, 6, 7])</strong></p>
+<ul>
+<li>The problem is to flatten a nested list of arbitrary depth into a single list of integers.</li>
+<li>We need a recursive approach to handle any level of nesting.</li>
+<li>We'll define a function that checks if an element is a list; if so, it recursively flattens it, otherwise, it adds the element to the result.</li>
+</ul>
+<p><strong>🔑 Key Steps</strong>:
+- Define a function <code>flatten_list</code> that takes a list as input.
+- Iterate through each element in the list.
+- If the element is a list, recursively call <code>flatten_list</code> on it and extend the result.
+- If the element is not a list, append it to the result.
+- Return the flattened list.</p>
+<p><strong>💻 Code</strong>:
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">flatten_list</span><span class="p">(</span><span class="n">nested_list</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> <span class="c1"># Initialize an empty list to store the flattened elements</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> <span class="n">flat</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> <span class="c1"># Iterate through each element in the input list</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">nested_list</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> <span class="c1"># Check if the current item is a list</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> <span class="c1"># If it is a list, recursively flatten it and extend the result</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a> <span class="n">flat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a> <span class="c1"># Add all elements from the flattened sublist to the main list</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a> <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a> <span class="c1"># If it is not a list, append the item directly to the result</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a> <span class="n">flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a> <span class="c1"># Add the non-list item to the result</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a> <span class="c1"># Return the fully flattened list</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a> <span class="k">return</span> <span class="n">flat</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="c1"># Example usage:</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]]</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># Call the flatten_list function with the nested list</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">output</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c1"># Print the flattened output</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="c1"># Output: [1, 2, 3, 4, 5, 6, 7]</span>
+</span></code></pre></div><p></p>
+<p><strong>💡 Explanation</strong>:
+- The function uses recursion to handle any level of nesting.
+- For each element, if it's a list, it flattens it further; otherwise, it adds the element to the result.
+- This approach ensures all nested elements are extracted in order.
+- <strong>Time Complexity</strong>: O(N), where N is the total number of elements (including all nested elements).
+- <strong>Space Complexity</strong>: O(N), due to the storage of the flattened list and recursion stack.
+- This is a standard, industry-accepted way to flatten arbitrarily nested lists in Python.</p>
+<hr>
+<p><strong>Q: What is "faithfulness" in the context of RAG/LLM evaluation, especially when given components like query and context?</strong></p>
+<ul>
+<li>In the context of Retrieval-Augmented Generation (RAG) and LLM evaluation, "faithfulness" refers to how accurately the generated answer reflects the facts and information present in the provided context or source documents.</li>
+<li>A faithful answer does not introduce hallucinations, fabrications, or unsupported claims; it strictly adheres to the evidence in the retrieved context.</li>
+<li>Faithfulness is a critical metric for evaluating RAG systems because it ensures that the LLM's output is grounded in the retrieved knowledge and not just plausible-sounding but incorrect information.</li>
+</ul>
+<p><strong>Industry Practice &amp; Project Experience:</strong>
+- In my recent work on the Knowledge GPT (KGPT) evaluation pipeline, we measured faithfulness using an "Answer Correctness Evaluator."
+ - This evaluator checks if the generated answer is factually and semantically correct compared to the ground truth.
+ - We use a combination of LLM-based (e.g., GPT-4o as a judge) and embedding-based metrics to assess factual accuracy and semantic similarity.
+ - The evaluation pipeline sends the answer and ground truth to the LLM, which returns a factual accuracy score, ensuring the answer is faithful to the context.
+- Faithfulness is often weighted heavily in the overall evaluation score, as unfaithful answers can lead to misinformation and erode user trust.</p>
+<p><strong>Summary:</strong>
+- Faithfulness = factual alignment of the answer with the provided context.
+- It is measured by checking if the answer is supported by the retrieved context and does not introduce unsupported information.
+- In production RAG systems, automated evaluators (often LLM-based) are used to score faithfulness as part of the quality assurance process.</p>
+<hr>
+<p><strong>Q: For measuring faithfulness in a RAG/LLM system, which components among query, context, output, and ground truth are required?</strong></p>
+<ul>
+<li>To accurately measure faithfulness in a RAG or LLM system, the key components required are:</li>
+<li><strong>Output (Generated Answer)</strong></li>
+<li><strong>Context (Retrieved Evidence)</strong></li>
+<li>Optionally, <strong>Ground Truth</strong> is used for more robust evaluation, but for strict faithfulness (i.e., is the answer grounded in the provided context), the primary focus is on the Output and Context.</li>
+</ul>
+<p><strong>Detailed Reasoning:</strong>
+- <strong>Faithfulness</strong> evaluates whether the generated answer is factually supported by the retrieved context, not just whether it matches the ground truth.
+- In the KGPT Evaluation Pipeline, faithfulness (termed as "Answer Correctness") is primarily measured by comparing the output to the context:
+ - The system uses an LLM (e.g., GPT-4o) to judge if the answer is factually accurate and semantically aligned with the context.
+ - The ground truth is used for additional correctness and benchmarking, but the core faithfulness metric is about grounding in the context.
+- <strong>Query</strong> is important for relevance and context retrieval, but not directly for faithfulness scoring.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Faithfulness Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query</td>
+<td>Not directly required</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Required (retrieved evidence)</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Required (generated answer)</td>
+</tr>
+<tr>
+<td>Ground Truth</td>
+<td>Optional (for benchmarking)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In practice, for faithfulness: <strong>Context + Output</strong> are essential; <strong>Ground Truth</strong> is used for additional validation but not strictly necessary for faithfulness itself.</li>
+</ul>
+<hr>
+<p><strong>Q: For context precision in RAG/LLM evaluation, which two components are required to measure it?</strong></p>
+<blockquote>
+<p>⚠️ <strong>Important distinction:</strong> This question conflates two different metrics. The KGPT project uses a custom <strong>Context Utilization</strong> metric, which is NOT the same as the standard RAGAS <strong>Context Precision</strong> metric. Both are described below.</p>
+</blockquote>
+<p><strong>Standard RAGAS Definition — Context Precision:</strong>
+- Components required: <strong>Retrieved Context</strong> + <strong>Ground Truth</strong> (reference answer)
+- Measures the signal-to-noise ratio in retrieval: what fraction of retrieved chunks are actually relevant to answering the question?
+- A chunk is "relevant" if it contains information needed to produce the ground truth answer.
+- Formula: weighted precision across retrieved chunks = relevant_chunks / total_retrieved_chunks</p>
+<p><strong>KGPT Project's Custom Metric — Context Utilization (≠ RAGAS Context Precision):</strong>
+- Components required: <strong>Context (Retrieved Chunks)</strong> + <strong>Output (Generated Answer)</strong>
+- Measures how much of the retrieved context is actually reflected in the generated answer (utilization rate).
+- According to the KGPT Evaluation Pipeline: the <strong>ContextUtilizationEvaluator</strong> uses <code>CHUNK_ALIGNMENT_PROMPT</code> to analyze which sentences from retrieved chunks appear in the answer.
+- This is closer to <strong>faithfulness from the retrieval side</strong>, not standard context precision.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Component 1</th>
+<th>Component 2</th>
+<th>Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision (RAGAS)</td>
+<td>Retrieved Context</td>
+<td>Ground Truth</td>
+<td>Are retrieved chunks relevant to GT answer?</td>
+</tr>
+<tr>
+<td>Context Utilization (KGPT)</td>
+<td>Retrieved Context</td>
+<td>Generated Answer</td>
+<td>How much of context was used in answer?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In an interview, if asked about <strong>RAGAS context precision</strong>, answer with: <strong>Retrieved Context + Ground Truth</strong>.</li>
+</ul>
+<hr>
+<p><strong>Q: For context precision, what exactly are the two things that need to be compared?</strong></p>
+<blockquote>
+<p>⚠️ <strong>Clarification:</strong> The answer depends on whether you are using the standard <strong>RAGAS framework</strong> or the <strong>KGPT project's custom evaluation</strong>.</p>
+</blockquote>
+<p><strong>Standard RAGAS — Context Precision:</strong>
+- Compare: <strong>Retrieved Context Chunks</strong> ↔ <strong>Ground Truth (reference answer)</strong>
+- For each retrieved chunk, ask: "Does this chunk contain information needed to produce the ground truth answer?"
+- This tells you whether the retrieval is fetching relevant content (signal-to-noise ratio).</p>
+<p><strong>KGPT Custom — Context Utilization (what KGPT calls "context precision"):</strong>
+- Compare: <strong>Retrieved Context Chunks</strong> ↔ <strong>Generated Answer</strong>
+- The <strong>ContextUtilizationEvaluator</strong> uses <code>CHUNK_ALIGNMENT_PROMPT</code> to check which sentences from retrieved chunks were reflected in the generated answer.
+- This measures utilization rate — how much of what was retrieved was actually used.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Compare Component 1</th>
+<th>With Component 2</th>
+<th>Framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision (RAGAS)</td>
+<td>Retrieved Context Chunks</td>
+<td>Ground Truth</td>
+<td>RAGAS</td>
+</tr>
+<tr>
+<td>Context Utilization (KGPT)</td>
+<td>Retrieved Context Chunks</td>
+<td>Generated Answer</td>
+<td>KGPT Custom</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>For interviews:</strong> Always use the RAGAS definition unless asked specifically about the KGPT project.</li>
+</ul>
+<hr>
+<p><strong>Q: What exactly is context precision in RAG/LLM evaluation, and how is it measured?</strong></p>
+<blockquote>
+<p>⚠️ <strong>Two definitions exist — make sure to use the right one in the right context.</strong></p>
+</blockquote>
+<p><strong>Definition 1: RAGAS Context Precision (Industry Standard)</strong>
+- Measures the <strong>signal-to-noise ratio</strong> in the retrieved context: what fraction of retrieved chunks are actually relevant to the question?
+- A chunk is "relevant" if it contains information that supports the ground truth answer.
+- <strong>Components:</strong> Retrieved Context + Ground Truth
+- <strong>Formula:</strong> weighted precision = <code>Σ (precision@k × relevance_k) / total_relevant_chunks</code>
+- High context precision = most retrieved chunks are useful, not noise.
+- Low context precision = many irrelevant chunks retrieved, diluting the signal.</p>
+<p><strong>Definition 2: KGPT Context Utilization (Custom Project Metric)</strong>
+- In the KGPT project, the <code>ContextUtilizationEvaluator</code> uses <code>CHUNK_ALIGNMENT_PROMPT</code> to measure how much of the retrieved context was reflected in the generated answer.
+- <strong>Components:</strong> Retrieved Context + Generated Answer
+- Returns per-chunk utilization scores and a weighted <code>context_utilization_score</code>.
+- This metric is internally named "context precision" in the KGPT pipeline but is better described as <strong>context utilization</strong> — it is NOT the same as RAGAS context precision.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What’s Compared</th>
+<th>Framework</th>
+<th>Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision (RAGAS)</td>
+<td>Retrieved Context vs. Ground Truth</td>
+<td>RAGAS</td>
+<td>Signal-to-noise in retrieval</td>
+</tr>
+<tr>
+<td>Context Utilization (KGPT)</td>
+<td>Retrieved Context vs. Generated Answer</td>
+<td>KGPT</td>
+<td>How much retrieved context was used</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Interview default:</strong> Use the RAGAS definition (context vs. ground truth = signal-to-noise).</li>
+</ul>
+<hr>
+<p><strong>Q: For context precision, should the retrieved context be compared with the query or the ground truth?</strong></p>
+<ul>
+<li>For <strong>standard RAGAS context precision</strong>, the retrieved context is compared with the <strong>ground truth</strong> (reference answer).</li>
+</ul>
+<p><strong>Why ground truth, not query alone?</strong>
+- The query is used to <em>retrieve</em> chunks, but it does not tell you if what was retrieved is actually <em>correct and sufficient</em>.
+- Ground truth lets you check whether the retrieved chunks contain the information needed to produce the correct answer.
+- A chunk may match the query semantically but still not contain the right answer — ground truth catches this.</p>
+<p><strong>The RAGAS approach:</strong>
+- For each retrieved chunk, ask: "Does this chunk contain information that supports or is required by the ground truth answer?"
+- If yes → relevant chunk (contributes to precision).
+- If no → irrelevant chunk (noise, lowers precision).</p>
+<p><strong>KGPT Note:</strong>
+- The KGPT pipeline also computes a <code>context_relevance_score</code> using both the <strong>question</strong> and <strong>context</strong> (via <code>CONTEXT_RELEVANCE_PROMPT</code>) — this is a relevance score, not the same as context precision.
+- Separately, the <code>ContextUtilizationEvaluator</code> compares <strong>retrieved context</strong> with <strong>generated answer</strong> — this is context utilization.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Compare</th>
+<th>With</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision (RAGAS)</td>
+<td>Retrieved Context</td>
+<td>Ground Truth ✅</td>
+</tr>
+<tr>
+<td>Context Relevance (KGPT)</td>
+<td>Retrieved Context</td>
+<td>Query</td>
+</tr>
+<tr>
+<td>Context Utilization (KGPT)</td>
+<td>Retrieved Context</td>
+<td>Generated Answer</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Interview answer:</strong> Context precision = retrieved context vs. <strong>ground truth</strong> (RAGAS standard).</li>
+</ul>
+<hr>
+<p><strong>Q: What is context recall in RAG/LLM evaluation, and how is it measured?</strong></p>
+<ul>
+<li><strong>Context recall</strong> measures how much of the ground truth information (i.e., the reference answer or evidence) is actually present in the retrieved context.</li>
+<li>It evaluates whether the retrieved context contains all the necessary information required to answer the question as per the ground truth.</li>
+</ul>
+<p><strong>How It’s Measured (Based on Knowledge GPT Evaluation Pipeline):</strong>
+- The process involves comparing the <strong>ground truth</strong> (reference answer or expected evidence) with the <strong>retrieved context</strong> (chunks).
+- The metric checks what proportion of the ground truth content is covered or matched by the retrieved context.
+- High context recall means the retrieved context includes most or all of the information needed to answer the question correctly (as per the ground truth).
+- Low context recall indicates that important parts of the ground truth are missing from the retrieved context.</p>
+<p><strong>Key Components Compared:</strong>
+- <strong>Ground Truth</strong> (reference answer/evidence)
+- <strong>Retrieved Context Chunks</strong> (evidence retrieved by the system)</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Compare Component 1</th>
+<th>With Component 2</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Recall</td>
+<td>Ground Truth</td>
+<td>Retrieved Context</td>
+<td>Measures how much of the ground truth is present in the retrieved context</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, <strong>context recall</strong> is about ensuring the retrieved context is comprehensive and covers all the key information from the ground truth, which is critical for accurate and complete answers in RAG/LLM systems.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the two components compared for context precision?</strong></p>
+<ul>
+<li>For <strong>context precision</strong>, the two components you compare are:</li>
+<li><strong>Retrieved Context Chunks</strong> (the evidence or context retrieved by the system)</li>
+<li><strong>Ground Truth</strong> (the reference answer or evidence)</li>
+</ul>
+<p><strong>Industry Practice &amp; Documentation Reference:</strong>
+- Context precision measures how much of the retrieved context is actually relevant to the ground truth.
+- According to the Knowledge GPT Evaluation Pipeline, context precision is about aligning the retrieved context with the ground truth, ensuring that what you retrieve is not just related to the query, but is actually correct and necessary for the answer.
+- This is distinct from context recall, which checks if all necessary ground truth information is present in the retrieved context.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Compare Component 1</th>
+<th>With Component 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision</td>
+<td>Retrieved Context</td>
+<td>Ground Truth</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, for context precision, you compare the <strong>retrieved context</strong> with the <strong>ground truth</strong> to determine the proportion of retrieved information that is actually correct and relevant.</li>
+</ul>
+<hr>
+<p><strong>Q: What does context precision mean, and is it measured by comparing the retrieved context with the query?</strong></p>
+<ul>
+<li><strong>Context precision</strong> is typically not measured by comparing the retrieved context with the query.</li>
+<li>In standard RAG/LLM evaluation pipelines (including Knowledge GPT), context precision refers to how much of the retrieved context is actually relevant to the <strong>ground truth</strong> (i.e., the reference answer or evidence), not just the query.</li>
+<li>Comparing context with the query is more related to <strong>context relevance</strong> (i.e., does the retrieved context relate to the user's question), but not precision in the strict evaluation sense.</li>
+</ul>
+<p><strong>Industry Standard Mapping:</strong>
+- <strong>Context Recall:</strong> Retrieved context vs. ground truth (measures coverage of ground truth in context)
+- <strong>Faithfulness:</strong> Generated answer vs. context (measures if the answer is grounded in the retrieved context)
+- <strong>Context Precision:</strong> Retrieved context vs. ground truth (measures how much of the retrieved context is actually correct/relevant)
+- <strong>Context Relevance:</strong> Retrieved context vs. query (measures if the context is related to the question, but not precision)</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Compare Component 1</th>
+<th>With Component 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Precision</td>
+<td>Retrieved Context</td>
+<td>Ground Truth</td>
+</tr>
+<tr>
+<td>Context Recall</td>
+<td>Ground Truth</td>
+<td>Retrieved Context</td>
+</tr>
+<tr>
+<td>Faithfulness</td>
+<td>Generated Answer</td>
+<td>Retrieved Context</td>
+</tr>
+<tr>
+<td>Context Relevance</td>
+<td>Retrieved Context</td>
+<td>Query</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>So, <strong>context precision</strong> is not about context vs. query, but about context vs. ground truth. Context vs. query is context relevance.</li>
+</ul>
+<p><strong>interviewee</strong>: Versus query will be the final presence. Exactly. That is the key. You have give it. If you do not know the answer. Also, the answer should be no no, no. That is because there are two things you have already said. Okay. Good. Uh, can you tell me what is called the answer relevancy.</p>
+<hr>
+<p><strong>Q: What is answer relevance in LLM/RAG evaluation, and how is it measured?</strong></p>
+<ul>
+<li><strong>Answer relevance</strong> measures whether the generated answer actually addresses the question asked, regardless of whether it is factually correct.</li>
+<li>It focuses on the alignment between the answer and the user's query, ensuring the response is on-topic and covers the intent of the question.</li>
+</ul>
+<p><strong>How It’s Measured (Knowledge GPT Evaluation Pipeline):</strong>
+- The <strong>Answer Relevance Evaluator</strong> uses two sub-metrics:
+ 1. <strong>Answer Conformity</strong> (LLM-based): Checks if the answer covers all parts of the question.
+ - Uses GPT-4o with a specific prompt, scoring from 0.0 (does not address the question) to 1.0 (fully answers all parts).
+ 2. <strong>Question Conformity</strong> (Embeddings-based): Checks if the answer, when used as a query, would retrieve a similar question.
+ - Uses embeddings to compute cosine similarity between the answer and the question.</p>
+<ul>
+<li>The final <strong>answer_relevance_score</strong> is a weighted sum:</li>
+<li><code>answer_relevance_score = (answer_conformity_score × 0.7) + (question_conformity_score × 0.3)</code></li>
+</ul>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What’s Compared</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Answer Relevance</td>
+<td>Answer vs. Question</td>
+<td>Measures if the answer addresses the question</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, answer relevance ensures that the generated response is contextually appropriate and directly responds to the user's query, even before checking for factual correctness. This is critical for user satisfaction and system usability in real-world applications.</li>
+</ul>
+<hr>
+<p><strong>Q: In a RAG system, if the generated answer is correct but the supporting evidence is only available on the internet (not in your internal knowledge base), how do you evaluate answer correctness?</strong></p>
+<ul>
+<li>In a RAG (Retrieval-Augmented Generation) system, the evaluation of answer correctness typically relies on comparing the generated answer to a ground truth reference, not just the internal knowledge base.</li>
+<li>If the answer is factually correct but the supporting evidence is not present in your internal corpus, you can still evaluate correctness using external ground truth data.</li>
+</ul>
+<p><strong>Industry-Standard Approach (as per Knowledge GPT Evaluation Pipeline):</strong>
+- <strong>Answer Correctness</strong> is measured by comparing the generated answer to the ground truth, regardless of where the evidence is stored.
+ - Uses LLM-based factual accuracy scoring (e.g., GPT-4o as a judge).
+ - Uses semantic similarity (embeddings) between the answer and the ground truth.
+ - Optionally, checks reference health if URLs are cited.
+- The evaluation does not require the answer to be grounded in your internal knowledge base for correctness scoring.
+ - If the answer matches the ground truth (factually and semantically), it is considered correct.
+ - If you want to enforce that answers must be grounded in your internal data, you would use a separate metric like <strong>faithfulness</strong> or <strong>context utilization</strong>.</p>
+<p><strong>Practical Steps:</strong>
+- Use your evaluation pipeline to compare the generated answer with the ground truth (which may be sourced from the internet or a curated dataset).
+- Score factual accuracy and semantic similarity.
+- If the answer is correct but not grounded in your internal context, it will score high on correctness but may score low on faithfulness/context utilization.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What’s Compared</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Answer Correctness</td>
+<td>Answer vs. Ground Truth</td>
+<td>Is the answer factually/semantically correct?</td>
+</tr>
+<tr>
+<td>Faithfulness</td>
+<td>Answer vs. Retrieved Context</td>
+<td>Is the answer grounded in internal evidence?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, you do not need to retrain the model. You evaluate correctness by comparing the answer to the ground truth, even if the evidence is not in your internal knowledge base. If you want to ensure answers are only based on internal data, use faithfulness/context utilization metrics in addition to correctness.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you obtain or define ground truth for answer correctness evaluation when the answer is not in the internal knowledge base?</strong></p>
+<ul>
+<li>In practical RAG/LLM evaluation pipelines, the <strong>ground truth</strong> is a curated reference answer or evidence set, typically prepared in advance and stored as part of your evaluation dataset.</li>
+<li>The ground truth is <strong>not dynamically generated from your RAG system</strong>; instead, it is manually or semi-automatically created by subject matter experts, data annotators, or by leveraging trusted external sources (such as the internet, documentation, or authoritative datasets).</li>
+<li>During evaluation, the generated answer is compared against this pre-existing ground truth, regardless of whether the RAG system’s internal corpus contains the supporting evidence.</li>
+<li>This approach ensures that answer correctness can be objectively measured, even if the RAG system’s knowledge base is incomplete or missing relevant information.</li>
+</ul>
+<p><strong>Industry Practice (as implemented in Knowledge GPT Evaluation Pipeline):</strong>
+- The evaluation pipeline loads a ground truth dataset (often in CSV/JSON format) where each question is paired with its reference answer(s).
+- When a generated answer is produced, it is compared to the ground truth using:
+ - LLM-based factual accuracy scoring (e.g., GPT-4o as judge)
+ - Semantic similarity (embeddings)
+ - Reference health (if URLs are cited)
+- The ground truth is essential for objective, repeatable evaluation and is <strong>independent of the RAG’s current knowledge base</strong>.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Source/How Obtained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ground Truth</td>
+<td>Curated reference answers (manual/expert/external)</td>
+</tr>
+<tr>
+<td>Generated Answer</td>
+<td>Output from RAG/LLM system</td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>Compare generated answer to ground truth</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, to measure answer correctness, you must maintain a separate, high-quality ground truth dataset. This allows you to evaluate the factual and semantic accuracy of generated answers, even if the RAG system itself does not contain the supporting evidence. This is a standard practice in industry-grade AI evaluation pipelines.</li>
+</ul>
+<hr>
+<p><strong>Q: If a RAG system cannot retrieve the answer from its knowledge base, how should the code handle such cases?</strong></p>
+<ul>
+<li>In a RAG (Retrieval-Augmented Generation) system, if the retrieval step does not return relevant context (i.e., the answer is not found in the knowledge base), the system should handle this gracefully to avoid generating hallucinated or unsupported answers.</li>
+<li>Industry-standard approaches for handling such cases include:</li>
+<li>Returning a fallback response indicating insufficient information.</li>
+<li>Logging the query for future knowledge base expansion.</li>
+<li>Optionally, allowing the LLM to answer based on its pre-trained knowledge, but clearly flagging that the answer is not grounded in retrieved context.</li>
+</ul>
+<p><strong>Practical Implementation Steps:</strong>
+- <strong>Step 1:</strong> After retrieval, check if the retrieved context is empty or below a relevance threshold.
+- <strong>Step 2:</strong> If no relevant context is found:
+ - Return a response like: "Sorry, I do not have enough information to answer this question based on the available knowledge base."
+ - Optionally, log the query for review and future data ingestion.
+- <strong>Step 3:</strong> If you allow the LLM to answer anyway, clearly indicate in the response or metadata that the answer is not grounded in the internal knowledge base.</p>
+<p><strong>Example Python Pseudocode:</strong>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Retrieve context for the query</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">retrieved_context</span> <span class="o">=</span> <span class="n">retrieve_context</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="c1"># Retrieves relevant documents/chunks</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Check if context is sufficient</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">retrieved_context</span> <span class="ow">or</span> <span class="n">relevance_score</span><span class="p">(</span><span class="n">retrieved_context</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a> <span class="c1"># Not enough information found in the knowledge base</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> <span class="s2">"answer"</span><span class="p">:</span> <span class="s2">"Sorry, I do not have enough information to answer this question based on the available knowledge base."</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> <span class="s2">"grounded"</span><span class="p">:</span> <span class="kc">False</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> <span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> <span class="c1"># Proceed with RAG pipeline (context + LLM generation)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> <span class="n">answer</span> <span class="o">=</span> <span class="n">generate_answer</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">retrieved_context</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a> <span class="s2">"answer"</span><span class="p">:</span> <span class="n">answer</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a> <span class="s2">"grounded"</span><span class="p">:</span> <span class="kc">True</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a> <span class="p">}</span>
+</span></code></pre></div><p></p>
+<h1 id="each-line-is-commented-for-clarity">Each line is commented for clarity.<a class="headerlink" href="#each-line-is-commented-for-clarity" title="Permanent link">¶</a></h1>
+<p><strong>Industry Best Practices:</strong>
+- This approach prevents hallucinations and maintains user trust.
+- Logging unanswered queries helps improve the knowledge base over time.
+- Clearly distinguishing between grounded and ungrounded answers is critical for enterprise applications.</p>
+<ul>
+<li>In summary, always check retrieval results before generating an answer, and handle missing context with a clear, user-friendly fallback response. This is a standard, robust practice in production RAG systems.</li>
+</ul>
+<hr>
+<p><strong>Q: What is a context window in the context of LLMs and RAG systems?</strong></p>
+<ul>
+<li>The <strong>context window</strong> refers to the maximum number of tokens (words, subwords, or characters) that a language model (like GPT-4, Gemini, etc.) can process in a single input sequence.</li>
+<li>It defines how much information (including the user query, retrieved context, system prompts, and conversation history) can be provided to the model at once.</li>
+<li>In RAG systems, the context window limits how much retrieved knowledge (document chunks, passages) can be included alongside the user query for answer generation.</li>
+<li>If the combined input exceeds the context window, you must truncate, summarize, or select the most relevant context to fit within the limit.</li>
+</ul>
+<p><strong>Practical Details:</strong>
+- For example, GPT-4o supports up to 128k tokens, while older models like GPT-3.5 support 4k or 16k tokens.
+- The context window impacts retrieval strategies, chunk sizing, and prompt engineering in production RAG pipelines.
+- Efficient use of the context window is critical for maximizing answer quality and minimizing hallucinations.</p>
+<p><strong>Industry Practice:</strong>
+- Always monitor and manage the total token count (query + context + system instructions) to avoid truncation or errors.
+- Use chunking, ranking, and summarization to fit the most relevant information within the context window.</p>
+<ul>
+<li>In summary, the context window is the model’s memory span for a single request, directly affecting how much information can be used for reasoning and answer generation.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the input components that make up the context window in a RAG (Retrieval-Augmented Generation) pipeline?</strong></p>
+<ul>
+<li>In a RAG pipeline, the context window is filled with several key input components that together form the prompt for the LLM. These components must all fit within the model’s maximum token limit.</li>
+</ul>
+<p><strong>Typical Input Components in a RAG Context Window:</strong>
+- <strong>User Query:</strong> The original question or prompt from the user.
+- <strong>Retrieved Context:</strong> Top-ranked document chunks or passages fetched from the knowledge base (using vector/semantic and/or lexical search).
+ - Each chunk may include: content, source, title, and sometimes metadata.
+- <strong>System Instructions/Prompt Template:</strong> System-level instructions or persona settings that guide the LLM’s behavior (e.g., “You are an enterprise assistant…”).
+- <strong>Conversation History (if applicable):</strong> Previous turns in the conversation, if maintaining context across multiple exchanges.
+- <strong>Additional Metadata (optional):</strong> Such as language, product, disclosure level, or other parameters relevant to the query.</p>
+<p><strong>Example Breakdown (as per Knowledge GPT API Architecture):</strong>
+- System prompt (from PROMPT_TEMPLATE)
+- User input (query)
+- Retrieved context (concatenated top chunks with source/title)
+- (Optional) Conversation history</p>
+<p><strong>Practical Considerations:</strong>
+- All these components are concatenated and must not exceed the model’s context window (max tokens).
+- If the combined input is too large, you must truncate or prioritize the most relevant context chunks.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Instructions</td>
+<td>Prompt template/system message</td>
+</tr>
+<tr>
+<td>User Query</td>
+<td>The user’s question or command</td>
+</tr>
+<tr>
+<td>Retrieved Context</td>
+<td>Top document chunks/passages from search</td>
+</tr>
+<tr>
+<td>Conversation History</td>
+<td>Previous Q&amp;A turns (if multi-turn)</td>
+</tr>
+<tr>
+<td>Metadata (optional)</td>
+<td>Language, product, disclosure, etc.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In summary, the context window in a RAG pipeline is composed of the system prompt, user query, retrieved context, and optionally conversation history and metadata—all of which must fit within the model’s maximum token limit for effective answer generation.</li>
+</ul>
+<hr>
+<p><strong>Q: In hybrid search (semantic + lexical), if you retrieve five results from each method, how do you select the best five overall?</strong></p>
+<ul>
+<li>In a hybrid search setup, both semantic (vector/KNN) and lexical (BM25) searches are run in parallel, each returning their top N results (e.g., 5 each).</li>
+<li>To select the best five overall, you need to combine and rank these results in a way that leverages the strengths of both methods.</li>
+</ul>
+<p><strong>Industry-Standard Approach (as per Knowledge GPT API Architecture):</strong>
+- Use a <strong>Reciprocal Rank Fusion (RRF)</strong> algorithm to merge and rank results from both searchers.
+ - RRF assigns a score to each document based on its rank in each result set.
+ - The formula is: 
+ <code>rrf_score = 1 / (rank_in_lexical + k) + 1 / (rank_in_semantic + k)</code>
+ - <code>k</code> is a constant (e.g., 60), used to smooth the scores.
+ - If a document appears in both lists, it gets a higher combined score.
+ - If a document is missing from one list, its rank defaults to the window size (e.g., 5 or 20).
+- After calculating RRF scores for all unique documents, sort them in descending order of score.
+- Select the top five documents as the final best results.</p>
+<p><strong>Key Steps:</strong>
+- Run both searches in parallel.
+- Build rank maps for each result set.
+- Calculate RRF scores for all unique documents.
+- Sort by RRF score and select the top five.</p>
+<p><strong>Summary Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Retrieve</td>
+<td>Get top 5 from semantic, top 5 from lexical</td>
+</tr>
+<tr>
+<td>2. Rank Mapping</td>
+<td>Map document IDs to their ranks in each list</td>
+</tr>
+<tr>
+<td>3. RRF Scoring</td>
+<td>Compute RRF score for each unique document</td>
+</tr>
+<tr>
+<td>4. Sort &amp; Select</td>
+<td>Sort by RRF score, pick top 5 overall</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>This approach ensures a balanced, relevance-optimized selection that combines both semantic meaning and exact keyword matching, as implemented in enterprise RAG systems like Knowledge GPT.</li>
+</ul>
+<hr>
+<p><strong>Q: How does a Decision Tree algorithm work?</strong></p>
+<ul>
+<li>A Decision Tree is a supervised machine learning algorithm used for both classification and regression tasks.</li>
+<li>It works by recursively splitting the dataset into subsets based on feature values, aiming to maximize the separation of classes (for classification) or minimize prediction error (for regression).</li>
+<li>The tree is built from a root node, with each internal node representing a decision based on a feature, and each leaf node representing a final prediction or class label.</li>
+</ul>
+<p><strong>Key Steps in Decision Tree Construction:</strong>
+- <strong>1. Select the Best Feature to Split:</strong> 
+ - At each node, evaluate all features and choose the one that best separates the data. 
+ - For classification, common criteria are Gini impurity or Information Gain (entropy). 
+ - For regression, criteria like Mean Squared Error (MSE) are used.
+- <strong>2. Split the Data:</strong> 
+ - Partition the dataset into subsets based on the selected feature’s values (for categorical) or threshold (for numerical).
+- <strong>3. Repeat Recursively:</strong> 
+ - For each subset, repeat the process to create child nodes, until a stopping condition is met (e.g., all samples in a node belong to the same class, or a maximum tree depth is reached).
+- <strong>4. Assign Leaf Nodes:</strong> 
+ - When a node can’t be split further, it becomes a leaf node and is assigned a class label (classification) or a value (regression).</p>
+<p><strong>Example (Classification):</strong>
+- At the root, the algorithm checks all features and splits on the one that best separates the classes.
+- This process continues recursively, creating a tree structure where each path from root to leaf represents a sequence of decisions.</p>
+<p><strong>Advantages:</strong>
+- Easy to interpret and visualize.
+- Handles both numerical and categorical data.
+- No need for feature scaling.</p>
+<p><strong>Limitations:</strong>
+- Prone to overfitting (can be mitigated by pruning or setting max depth).
+- Can be unstable with small data changes.</p>
+<ul>
+<li>In summary, a Decision Tree splits data based on feature values to create a flowchart-like structure, making decisions at each node to reach a final prediction at the leaves. This approach is widely used for its interpretability and flexibility in both classification and regression tasks.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the key criteria (keywords) used for splitting nodes in a Decision Tree?</strong></p>
+<ul>
+<li>
+<p>The main "keywords" or criteria used for splitting nodes in a Decision Tree are mathematical measures that evaluate the quality of a split. These are:</p>
+</li>
+<li>
+<p><strong>Gini Impurity:</strong> </p>
+</li>
+<li>Measures the probability of incorrectly classifying a randomly chosen element if it was randomly labeled according to the distribution of labels in the subset.</li>
+<li>
+<p>Used by default in algorithms like CART (Classification and Regression Trees).</p>
+</li>
+<li>
+<p><strong>Information Gain (Entropy):</strong> </p>
+</li>
+<li>Entropy measures the impurity or randomness in the data.</li>
+<li>Information Gain calculates the reduction in entropy after a dataset is split on a feature.</li>
+<li>
+<p>Used in algorithms like ID3 and C4.5.</p>
+</li>
+<li>
+<p><strong>Gain Ratio:</strong> </p>
+</li>
+<li>
+<p>Adjusts Information Gain by taking into account the intrinsic information of a split (used in C4.5).</p>
+</li>
+<li>
+<p><strong>Mean Squared Error (MSE):</strong> </p>
+</li>
+<li>
+<p>Used for regression trees to measure the variance of the target variable within the subsets.</p>
+</li>
+<li>
+<p><strong>Summary Table:</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Used For</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gini Impurity</td>
+<td>Classification</td>
+<td>Measures node impurity (lower is better)</td>
+</tr>
+<tr>
+<td>Entropy/Info Gain</td>
+<td>Classification</td>
+<td>Measures reduction in randomness after split</td>
+</tr>
+<tr>
+<td>Gain Ratio</td>
+<td>Classification</td>
+<td>Normalizes Info Gain for feature selection</td>
+</tr>
+<tr>
+<td>Mean Squared Error</td>
+<td>Regression</td>
+<td>Measures variance within splits</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In practice, the Decision Tree algorithm evaluates all possible splits for each feature using these criteria and selects the split that results in the highest "purity" (lowest impurity or highest information gain) at each node.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you detect and handle issues when a model is deployed in production?</strong></p>
+<ul>
+<li>In production, robust observability and monitoring are critical to detect, diagnose, and handle issues with deployed AI models and systems.</li>
+<li>My approach is to implement a comprehensive observability stack covering logging, metrics, distributed tracing, and alerting, as outlined in the MCP (Model Context Protocol) architecture for enterprise AI deployments.</li>
+</ul>
+<p><strong>Key Steps for Detection and Handling:</strong></p>
+<ul>
+<li><strong>1. Logging:</strong> </li>
+<li>Capture structured logs (e.g., JSON format) for all key events: API requests, model inferences, errors, and system actions.</li>
+<li>Use centralized log aggregation (e.g., AWS CloudWatch Logs, Fluent Bit, Grafana) for real-time visibility.</li>
+<li>
+<p>Include correlation IDs for tracing requests end-to-end across microservices.</p>
+</li>
+<li>
+<p><strong>2. Metrics Collection:</strong> </p>
+</li>
+<li>Track key metrics such as request rate, latency (p50/p95/p99), error rates, and model-specific metrics (accuracy, drift, etc.).</li>
+<li>
+<p>Use CloudWatch Metrics and Grafana dashboards for visualization and trend analysis.</p>
+</li>
+<li>
+<p><strong>3. Distributed Tracing:</strong> </p>
+</li>
+<li>
+<p>Implement distributed tracing (AWS X-Ray, OpenTelemetry) to follow requests across all components, enabling root cause analysis for failures or performance bottlenecks.</p>
+</li>
+<li>
+<p><strong>4. Alerting:</strong> </p>
+</li>
+<li>Set up automated alerts (SNS, Slack, PagerDuty) for anomalies such as high error rates, latency spikes, or degraded model performance.</li>
+<li>
+<p>Alerts trigger incident response workflows for rapid investigation and mitigation.</p>
+</li>
+<li>
+<p><strong>5. Audit Logging &amp; Governance:</strong> </p>
+</li>
+<li>
+<p>Maintain audit trails (CloudTrail) for all critical actions, supporting compliance and post-incident analysis.</p>
+</li>
+<li>
+<p><strong>6. Automated Rollback &amp; Safe Deployment:</strong> </p>
+</li>
+<li>Use CI/CD pipelines (Azure DevOps, GitHub Actions) with automated testing and canary deployments to minimize risk.</li>
+<li>
+<p>If an issue is detected, roll back to a previous stable version or switch traffic to a healthy endpoint.</p>
+</li>
+<li>
+<p><strong>7. Incident Handling:</strong> </p>
+</li>
+<li>Investigate logs, traces, and metrics to identify the root cause.</li>
+<li>Apply hotfixes, retrain or redeploy models as needed.</li>
+<li>Document incidents and update monitoring rules to prevent recurrence.</li>
+</ul>
+<p><strong>Industry Example (from MCP/Knowledge GPT):</strong>
+- All production traffic is monitored via CloudWatch and Grafana.
+- Distributed tracing with correlation IDs enables quick diagnosis.
+- Alerts are configured for error spikes and latency issues.
+- Audit logs ensure traceability for all actions.</p>
+<ul>
+<li>In summary, I ensure production reliability by combining real-time monitoring, structured logging, distributed tracing, automated alerting, and robust incident response, leveraging cloud-native observability tools and best practices for enterprise AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you detect and handle issues in production when the data distribution changes (data drift), not just code failures?</strong></p>
+<ul>
+<li>In production, data drift—where the input data distribution changes over time—can degrade model performance even if the code is stable.</li>
+<li>Proactively detecting and handling data drift is critical for maintaining reliable AI systems.</li>
+</ul>
+<p><strong>Detection Strategies:</strong>
+- <strong>Monitor Input Data Statistics:</strong> 
+ - Continuously track key statistics (mean, variance, value distributions) of incoming data and compare them to training data.
+ - Use tools like AWS SageMaker Model Monitor or custom scripts to automate this process.
+- <strong>Drift Detection Metrics:</strong> 
+ - Implement statistical tests (e.g., Kolmogorov-Smirnov, Population Stability Index) to quantify drift between current and baseline data.
+- <strong>Monitor Model Output Metrics:</strong> 
+ - Track prediction distributions, confidence scores, and output class frequencies for unexpected shifts.
+- <strong>Performance Monitoring:</strong> 
+ - Continuously evaluate model performance using ground truth labels (if available) and metrics like accuracy, F1-score, or MAPE.
+ - Use automated evaluation pipelines (as in Knowledge GPT and UIDS projects) to generate regular reports on model quality.</p>
+<p><strong>Handling Data Drift:</strong>
+- <strong>Alerting:</strong> 
+ - Set up automated alerts when drift metrics exceed predefined thresholds.
+- <strong>Retraining Pipelines:</strong> 
+ - Trigger model retraining workflows using the latest data to adapt to new patterns.
+ - Use MLOps tools (e.g., SageMaker Pipelines, MLFlow) for automated retraining, versioning, and deployment.
+- <strong>Data Quality Checks:</strong> 
+ - Implement validation steps to catch anomalies, missing values, or schema changes before data reaches the model.
+- <strong>A/B Testing and Canary Releases:</strong> 
+ - Deploy updated models to a subset of traffic to validate improvements before full rollout.
+- <strong>Audit and Governance:</strong> 
+ - Maintain audit trails of data changes, model versions, and retraining events for traceability and compliance.</p>
+<p><strong>Industry Example (from my experience):</strong>
+- In the UIDS and Knowledge GPT projects, we implemented automated monitoring pipelines that:
+ - Track input data distributions and model outputs.
+ - Generate evaluation reports (accuracy, F1, MRR) and upload them to S3.
+ - Alert the team if significant drift or performance drop is detected.
+ - Support rapid retraining and redeployment using CI/CD and cloud-native MLOps.</p>
+<ul>
+<li>In summary, I ensure production model reliability by combining automated data drift detection, continuous performance monitoring, alerting, and robust retraining pipelines—enabling the system to adapt quickly to changing data and maintain high-quality predictions.</li>
+</ul>
+<hr>
+<p><strong>Q: What threshold value of Population Stability Index (PSI) indicates that model retraining is needed due to data drift?</strong></p>
+<ul>
+<li>The Population Stability Index (PSI) is a widely used metric to quantify data drift by comparing the distribution of a feature (or model input) in current (production) data versus baseline (training) data.</li>
+<li>PSI values help determine when the drift is significant enough to warrant model retraining.</li>
+</ul>
+<p><strong>Industry-Standard PSI Thresholds:</strong>
+- <strong>PSI &lt; 0.1:</strong> 
+ - No significant drift. 
+ - Model is stable; no action needed.
+- <strong>0.1 ≤ PSI &lt; 0.25:</strong> 
+ - Moderate drift detected. 
+ - Monitor closely; consider retraining if performance metrics also degrade.
+- <strong>PSI ≥ 0.25:</strong> 
+ - Significant drift. 
+ - Immediate investigation and likely model retraining required.</p>
+<p><strong>Practical Approach (as used in enterprise pipelines):</strong>
+- Set automated alerts when PSI exceeds 0.25 for any critical feature or overall input distribution.
+- Trigger retraining pipelines if PSI crosses this threshold, or if moderate drift (0.1–0.25) is accompanied by a drop in key model metrics (e.g., accuracy, F1-score, balanced accuracy).
+- Regularly monitor PSI alongside model performance metrics (as seen in the UIDS project, where metrics like balanced accuracy, F1-score, and recall are tracked).</p>
+<ul>
+<li>In summary, a PSI value of <strong>0.25 or higher</strong> is a strong indicator that retraining is needed due to significant data drift. For values between 0.1 and 0.25, monitor closely and consider retraining if other metrics also show degradation.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you handle significant data drift (PSI &gt; 0.25) in production, and what type of retraining should be performed?</strong></p>
+<ul>
+<li>When Population Stability Index (PSI) exceeds 0.25, it indicates significant data drift, which can lead to model performance degradation.</li>
+<li>The best practice is to initiate a robust retraining workflow to adapt the model to the new data distribution.</li>
+</ul>
+<p><strong>Steps to Handle Significant Data Drift:</strong></p>
+<ul>
+<li><strong>1. Trigger Automated Retraining Pipeline:</strong></li>
+<li>Use MLOps tools (e.g., AWS SageMaker Pipelines, MLFlow) to automate the retraining process.</li>
+<li>
+<p>In the UIDS project, retraining is triggered when drift or performance thresholds are breached.</p>
+</li>
+<li>
+<p><strong>2. Data Preparation:</strong></p>
+</li>
+<li>Aggregate recent production data reflecting the new distribution.</li>
+<li>Combine with a portion of historical data if needed to avoid overfitting to recent anomalies.</li>
+<li>
+<p>Apply preprocessing steps: data cleaning, balancing, and feature engineering as per pipeline configuration.</p>
+</li>
+<li>
+<p><strong>3. Model Retraining:</strong></p>
+</li>
+<li>Retrain the model from scratch or use incremental learning if supported by the algorithm.</li>
+<li>Use the same architecture and hyperparameters unless there is evidence that changes are needed.</li>
+<li>
+<p>In UIDS, retraining uses the latest labeled data and tracks metrics like balanced accuracy, F1-score, and recall.</p>
+</li>
+<li>
+<p><strong>4. Model Evaluation:</strong></p>
+</li>
+<li>Evaluate the retrained model on a hold-out validation set and compare key metrics (e.g., balanced accuracy, F1-score, recall) to previous versions.</li>
+<li>
+<p>Only promote the new model if it meets or exceeds predefined accuracy thresholds (as configured in the pipeline).</p>
+</li>
+<li>
+<p><strong>5. Deployment and Monitoring:</strong></p>
+</li>
+<li>Deploy the new model using CI/CD pipelines with safe rollout strategies (canary or blue-green deployment).</li>
+<li>
+<p>Continue monitoring for further drift or performance issues.</p>
+</li>
+<li>
+<p><strong>6. Documentation and Governance:</strong></p>
+</li>
+<li>Log all retraining events, data versions, and model metrics for auditability and compliance.</li>
+</ul>
+<p><strong>Types of Retraining:</strong>
+- <strong>Full Retraining:</strong> 
+ - Retrain the model from scratch using the latest and historical data. Preferred when drift is significant.
+- <strong>Incremental/Online Learning:</strong> 
+ - Update the model incrementally if the algorithm supports it (e.g., some tree-based or neural network models).
+- <strong>Transfer Learning:</strong> 
+ - Fine-tune a pre-trained model on the new data if using deep learning architectures.</p>
+<ul>
+<li>In summary, when PSI &gt; 0.25, I initiate a full retraining pipeline using the latest production data, validate the new model against key metrics, and deploy it only if it meets accuracy and stability requirements—ensuring the system remains robust against data drift.</li>
+</ul>
+<hr>
+<p><strong>Q: In production, after detecting significant data drift, how do you select and prepare the data for retraining—what data do you include or exclude?</strong></p>
+<ul>
+<li>When retraining a model due to data drift, careful data selection and preparation are crucial to ensure the new model adapts to recent trends without overfitting or introducing bias.</li>
+</ul>
+<p><strong>Practical Steps for Data Selection and Preparation:</strong></p>
+<ul>
+<li><strong>1. Aggregate Recent Production Data:</strong></li>
+<li>Collect a window of the most recent production data that reflects the new distribution causing the drift.</li>
+<li>
+<p>The window size (e.g., last 2–4 weeks) depends on data volume and business context.</p>
+</li>
+<li>
+<p><strong>2. Combine with Historical Data (if needed):</strong></p>
+</li>
+<li>To avoid overfitting to short-term anomalies, blend recent data with a representative sample of historical data.</li>
+<li>
+<p>This helps maintain model generalization and robustness.</p>
+</li>
+<li>
+<p><strong>3. Data Cleaning and Validation:</strong></p>
+</li>
+<li>Use automated scripts (as in <code>prepare_dataset.py</code> and <code>data_preparation.py</code> from the UIDS pipeline) to:</li>
+<li>Remove duplicates, handle missing values, and ensure schema consistency.</li>
+<li>
+<p>Validate data quality and filter out corrupted or irrelevant records.</p>
+</li>
+<li>
+<p><strong>4. Data Balancing and Bias Mitigation:</strong></p>
+</li>
+<li>Apply balancing techniques if class imbalance is detected (see <code>apply_data_balance</code> and <code>remove_biased_intents</code> in the pipeline).</li>
+<li>
+<p>Exclude or downsample overrepresented or biased classes using configuration lists (e.g., <code>biased_intents_list</code>).</p>
+</li>
+<li>
+<p><strong>5. Data Augmentation (if needed):</strong></p>
+</li>
+<li>Generate synthetic examples for rare or underrepresented classes using LLM-based augmentation (as in <code>synthetic_data_gen.py</code>).</li>
+<li>
+<p>This improves model robustness and generalization.</p>
+</li>
+<li>
+<p><strong>6. Feature Engineering:</strong></p>
+</li>
+<li>Recompute features as per the latest schema and business logic.</li>
+<li>
+<p>Ensure all preprocessing steps are consistent with the original pipeline.</p>
+</li>
+<li>
+<p><strong>7. Store and Version Artifacts:</strong></p>
+</li>
+<li>Save processed datasets and metadata as versioned artifacts (locally or to S3) for reproducibility and auditability.</li>
+</ul>
+<p><strong>Industry Example (UIDS Project):</strong>
+- The pipeline orchestrated by <code>full.py</code> automates these steps:
+ - Loads and cleans both local and S3 data sources.
+ - Applies balancing, bias removal, and augmentation as configured.
+ - Indexes the final dataset for downstream training and evaluation.</p>
+<ul>
+<li>In summary, I select recent production data reflecting the drift, blend with historical data if needed, clean and balance the dataset, augment rare classes, and ensure all artifacts are versioned—using automated, configurable pipelines to guarantee data quality and reproducibility for retraining.</li>
+</ul>
+<hr>
+<p><strong>Q: What are the concrete steps to retrain a model using current production data after detecting data drift?</strong></p>
+<ul>
+<li>When significant data drift is detected, the retraining process should be systematic, automated, and reproducible to ensure the new model adapts to the latest data patterns while maintaining quality.</li>
+</ul>
+<p><strong>Step-by-Step Retraining Workflow (as implemented in UIDS and similar enterprise pipelines):</strong></p>
+<ul>
+<li><strong>1. Data Aggregation:</strong></li>
+<li>Collect a window of recent production data that reflects the drift (e.g., last few weeks).</li>
+<li>
+<p>Optionally, blend with a sample of historical data to maintain generalization or apply exponential weighting to give more importance to recent data.</p>
+</li>
+<li>
+<p><strong>2. Data Preprocessing:</strong></p>
+</li>
+<li>Clean the aggregated data: remove duplicates, handle missing values, and ensure schema consistency.</li>
+<li>Use automated preprocessing scripts (e.g., <code>preprocessing.py</code> in the pipeline) to standardize and validate the dataset.</li>
+<li>
+<p>Store cleaned data in designated S3 locations for traceability.</p>
+</li>
+<li>
+<p><strong>3. Data Splitting:</strong></p>
+</li>
+<li>Split the cleaned data into training and test sets (as shown in the pipeline: outputs for "train" and "test").</li>
+<li>
+<p>Ensure the split maintains class balance and represents the current data distribution.</p>
+</li>
+<li>
+<p><strong>4. Model Training:</strong></p>
+</li>
+<li>Launch a training job using the prepared training data (e.g., via SageMaker TrainingStep).</li>
+<li>Use the same or updated model architecture, depending on performance needs.</li>
+<li>
+<p>Configure training parameters (e.g., use spot instances, set max run time) for cost and efficiency.</p>
+</li>
+<li>
+<p><strong>5. Model Evaluation:</strong></p>
+</li>
+<li>Evaluate the trained model on the test set using automated evaluation scripts (e.g., SKLearnProcessor).</li>
+<li>Calculate key metrics (accuracy, F1-score, recall, etc.).</li>
+<li>
+<p>Compare metrics against predefined thresholds (e.g., <code>accuracy_threshold</code> in the pipeline).</p>
+</li>
+<li>
+<p><strong>6. Conditional Promotion:</strong></p>
+</li>
+<li>Only proceed to model packaging and deployment if evaluation metrics meet or exceed thresholds (handled by <code>ConditionStep</code> in the pipeline).</li>
+<li>
+<p>If not, trigger alerts for manual review or further data investigation.</p>
+</li>
+<li>
+<p><strong>7. Model Deployment:</strong></p>
+</li>
+<li>Package and deploy the validated model to production endpoints.</li>
+<li>
+<p>Use CI/CD and safe deployment strategies (canary, blue-green) to minimize risk.</p>
+</li>
+<li>
+<p><strong>8. Monitoring and Logging:</strong></p>
+</li>
+<li>Continuously monitor model performance and data drift post-deployment.</li>
+<li>Log all steps, metrics, and artifacts for auditability and compliance.</li>
+</ul>
+<p><strong>Summary:</strong> 
+I follow a robust, automated pipeline: aggregate and clean recent production data, split into train/test, retrain and evaluate the model, promote only if metrics are met, and deploy with full traceability—ensuring the model stays aligned with evolving data in production.</p>
+<hr>
+<p><strong>Q: If you have perfectly balanced, clean data with no outliers, and one model gives 70% accuracy while another gives 10% accuracy, which model should you choose?</strong></p>
+<ul>
+<li>In this scenario, with 100% balanced data, no outliers, and no data leakage or feature issues, the expected baseline accuracy for a random classifier would be around 1/number_of_classes (e.g., 10% for 10 classes).</li>
+<li>A model achieving 70% accuracy is significantly above random chance, while a model with 10% accuracy is at the level of random guessing.</li>
+<li>
+<p>However, the question is described as "tricky," so let's consider possible interpretations:</p>
+</li>
+<li>
+<p><strong>If the problem is a standard classification task:</strong> </p>
+</li>
+<li>The 70% accuracy model is clearly better and should be chosen, as it demonstrates meaningful learning and predictive power.</li>
+<li>
+<p>The 10% accuracy model is performing at random chance, indicating it has not learned any useful patterns.</p>
+</li>
+<li>
+<p><strong>If the question is testing for overfitting or label inversion:</strong> </p>
+</li>
+<li>
+<p>Sometimes, a model with very low accuracy (close to 0% or 10% in a 10-class problem) could indicate systematic label inversion or a bug, but the question explicitly rules out such issues.</p>
+</li>
+<li>
+<p><strong>If the question is about model reliability:</strong> </p>
+</li>
+<li>
+<p>With all else being equal and no data or feature issues, the higher accuracy model is always preferred.</p>
+</li>
+<li>
+<p><strong>Conclusion:</strong> </p>
+</li>
+<li>I would select the model with 70% accuracy, as it is performing significantly better than random and there are no confounding issues in the data or features.</li>
+<li>
+<p>The 10% accuracy model is not useful in this context.</p>
+</li>
+<li>
+<p>In practical industry scenarios, I always validate that the model's performance is above the random baseline and investigate any model performing at or below chance, but in this clean, balanced scenario, the higher accuracy model is the clear choice.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Q: In a binary classification scenario with a perfectly balanced dataset and no data issues, would you still choose the model with 70% accuracy over one with 50% or 10%?</strong></p>
+<ul>
+<li>Yes, in a binary classification problem with a perfectly balanced dataset (i.e., equal number of positive and negative samples), the baseline accuracy for random guessing is 50%.</li>
+<li>A model achieving 70% accuracy is performing significantly better than random, indicating it has learned meaningful patterns from the data.</li>
+<li>A model with 10% accuracy is performing far below random chance, which could indicate systematic misclassification, but as per the question, there are no data or feature issues.</li>
+<li>In practical industry scenarios, we always compare model performance against the random baseline (50% for binary, 1/N for N-class).</li>
+<li>Therefore, I would confidently select the 70% accuracy model, as it demonstrates strong predictive power and adds value over random guessing.</li>
+<li>This approach aligns with standard model evaluation practices, as also reflected in the UIDS project, where accuracy and balanced accuracy are key metrics for model selection and promotion in the pipeline.</li>
+</ul>
+<hr>
+<p><strong>Q: In a gambling scenario where one person can predict outcomes with 70% accuracy and another with 1% accuracy, whom would you choose to rely on?</strong></p>
+<ul>
+<li>In a gambling context, the goal is to maximize the probability of winning or making correct predictions.</li>
+<li>A person with 70% accuracy is significantly better than random chance (which is 50% in binary outcomes), providing a clear statistical advantage.</li>
+<li>A person with 1% accuracy is far worse than random and would almost always be wrong.</li>
+<li>Logically and mathematically, I would always choose the person with 70% accuracy, as this gives me a consistent edge in the game.</li>
+<li>This is analogous to model selection in machine learning, where a model performing well above the baseline is preferred for deployment and decision-making.</li>
+<li>In both AI systems and real-world scenarios like gambling, leveraging the most accurate predictor maximizes success and minimizes risk.</li>
+</ul>
+<hr>
+<p><strong>Q: In a binary gambling game, would you choose the person with 70% accuracy or the one with 1% accuracy to maximize your chances of winning?</strong></p>
+<ul>
+<li>In a binary classification or gambling scenario, the objective is to maximize the probability of making correct predictions and winning.</li>
+<li>A person with 70% accuracy consistently predicts the correct outcome much better than random chance (which is 50% in binary).</li>
+<li>A person with 1% accuracy is almost always wrong, offering no practical value for winning.</li>
+<li>Logically and mathematically, I would always choose the person with 70% accuracy, as this gives a clear statistical advantage and increases my expected winnings over time.</li>
+<li>This is the same principle used in AI model selection: in the UIDS project, for example, models are only promoted if they meet or exceed a minimum accuracy threshold, ensuring only high-performing predictors are used in production.</li>
+<li>In summary, to maximize success in any predictive or decision-making scenario, I always select the most accurate and reliable predictor available.</li>
+</ul>
+<hr>
+<p><strong>Q: In a coin toss game, if one person can predict 70 out of 100 outcomes correctly and another can only predict 1 out of 100, which person would you choose?</strong></p>
+<ul>
+<li>In a binary outcome scenario like a coin toss, the probability of random guessing is 50%.</li>
+<li>A person who can predict 70 out of 100 tosses correctly (70% accuracy) is performing significantly better than chance, indicating a strong predictive advantage.</li>
+<li>A person who can only predict 1 out of 100 correctly (1% accuracy) is performing far below random chance, offering no practical value.</li>
+<li>To maximize my probability of winning in a gambling or prediction scenario, I would always choose the person with 70% accuracy.</li>
+<li>This is consistent with industry best practices in AI model selection, where models are evaluated using metrics like accuracy, balanced accuracy, and F1-score (as implemented in the UIDS project), and only those performing significantly above baseline are promoted to production.</li>
+<li>In summary, I would always rely on the predictor with the highest demonstrated accuracy to maximize my chances of success.</li>
+</ul>
+<hr>
+<p><strong>Q: If one person is 70% accurate and another is 0% accurate (always wrong), which person would you choose for a binary guessing game?</strong></p>
+<ul>
+<li>In a binary guessing scenario, a person with 70% accuracy is clearly better than random (50%) and provides a strong advantage.</li>
+<li>A person with 0% accuracy is always wrong—meaning, if you simply invert their prediction, you would get 100% accuracy.</li>
+<li>If you know with certainty that someone is always wrong (0% accurate), you can use their prediction and always choose the opposite, effectively achieving perfect (100%) accuracy.</li>
+<li>In practical terms:</li>
+<li>If you can invert the 0% accurate person's prediction, they become the optimal choice.</li>
+<li>If you cannot invert (for example, if you must use their answer as-is), then the 70% accurate person is better.</li>
+<li>In AI model evaluation (as in the UIDS project), we always look for models that perform above random, but if a model is systematically wrong, inverting its output can be a valid strategy.</li>
+<li>
+<p>So, if allowed to invert, I would choose the 0% accurate person and always do the opposite. If not, I would choose the 70% accurate person.</p>
+</li>
+<li>
+<p>This logic is also reflected in model pipelines, where systematic errors can sometimes be leveraged if detected, but generally, models with higher direct accuracy are preferred for reliability and simplicity.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Q: Is accuracy a good metric for evaluating models on imbalanced datasets (e.g., 70/30 split), and why or why not?</strong></p>
+<ul>
+<li>Accuracy is generally <strong>not a good metric</strong> for imbalanced datasets because it can be misleading.</li>
+<li>In a 70/30 split, a model predicting only the majority class can achieve 70% accuracy without learning anything meaningful about the minority class.</li>
+<li>This means high accuracy does not necessarily indicate good performance on the minority class, which is often the class of interest in real-world scenarios (e.g., fraud detection, rare disease diagnosis).</li>
+<li>Instead, <strong>metrics that account for class imbalance</strong> should be used:</li>
+<li><strong>Balanced Accuracy</strong>: Averages recall obtained on each class, giving equal weight to both classes regardless of their frequency.</li>
+<li><strong>Precision, Recall, and F1-Score</strong>: Especially the macro or weighted versions, which provide a better sense of performance across all classes.</li>
+<li><strong>ROC-AUC or PR-AUC</strong>: Useful for binary classification, especially when the positive class is rare.</li>
+<li>In my recent projects (e.g., UIDS – Universal Intent Determination System), I always report balanced accuracy, macro/micro/weighted F1-scores, precision, and recall to ensure robust evaluation on imbalanced datasets.</li>
+<li>This approach ensures the model is evaluated fairly on both majority and minority classes, leading to more reliable and actionable results in production.</li>
+</ul>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

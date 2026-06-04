@@ -1,0 +1,4417 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive LLM engineering interview preparation guide with detailed answers and code examples">
+      
+      
+        <meta name="author" content="Gyanendra Chaubey">
+      
+      
+        <link rel="canonical" href="https://gyanendrachaubey.github.io/AI-Engineering-Notes/17-interview-questions/company_wise/generative-ai-engineer-part-2/interview_03/">
+      
+      
+        <link rel="prev" href="../interview_02/">
+      
+      
+        <link rel="next" href="../interview_04/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Interview 3 - AI Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generative-ai-engineer-part-2-interview-3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AI Engineering Notes" class="md-header__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interview 3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../01-prompt-engineering/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI Engineering Notes" class="md-nav__button md-logo" aria-label="AI Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    AI Engineering Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GyanendraChaubey/AI-Engineering-Notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GyanendraChaubey/AI-Engineering-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Prompt Engineering &amp; LLM Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Retrieval Augmented Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Document Digitization &amp; Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../04-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Embedding Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../05-vector-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../06-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Advanced Search Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../07-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Language Models Internal Working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../08-fine-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Supervised Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../09-preference-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Preference Alignment (RLHF/DPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. LLM Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11-hallucination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Hallucination Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../12-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. LLM Deployment &amp; Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../13-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Agent-Based Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../14-prompt-hacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Prompt Hacking &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../15-miscellaneous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Miscellaneous Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../16-case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. Interview Questions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Question List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2" id="__nav_2_17_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Wise Interviews
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_17_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Company Wise Interviews
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../company_wise_interviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_2" id="__nav_2_17_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 19
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 21
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 22
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 24
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 26
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 27
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 29
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 30
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 31
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 34
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 35
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 36
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 37
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 38
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 39
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 40
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 41
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 43
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_44/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 44
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_45/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 45
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 46
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_47/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 47
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 48
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_49/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 49
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_50/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 50
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generative-ai-engineer-part-1/interview_session_51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 51 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_3" id="__nav_2_17_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative AI Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_17_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Generative AI Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_4" id="__nav_2_17_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI (General)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI (General)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_5" id="__nav_2_17_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp-engineer/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_6" id="__nav_2_17_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_7" id="__nav_2_17_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Solutions Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Solutions Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-solutions-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_8">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_8" id="__nav_2_17_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 1)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-1/interview_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_9">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_9" id="__nav_2_17_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI Solution Architect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-solution-architect/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_10" id="__nav_2_17_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GenAI NLP Engineer (Part 2)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../genai-nlp-engineer-part-2/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_11" id="__nav_2_17_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML Engineering Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML Engineering Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-engineering-lead/interview_session_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Session 2 (Deep Dive)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_12" id="__nav_2_17_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Science Lead
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Science Lead
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-science-lead/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_17_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_17_2_13" id="__nav_2_17_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vision Pipeline Engineer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_17_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_17_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vision Pipeline Engineer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vision-pipeline-engineer/interview_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topic_deep_dive_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive (RAG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="generative-ai-engineer-part-2-interview-3">Generative AI Engineer (Part 2) — Interview 3<a class="headerlink" href="#generative-ai-engineer-part-2-interview-3" title="Permanent link">¶</a></h1>
+<p><strong>Q: What is an "intent" in the context of an intent classification project, and what does it mean to have 630+ intents?</strong></p>
+<ul>
+<li>In the context of the Universal Intent Determination System (UIDS) project, an <strong>intent</strong> represents the underlying purpose or goal behind a user's query or message when they interact with [Company]'s support channels.</li>
+<li>Each intent corresponds to a specific type of customer need or support scenario, such as "printer setup," "wifi connection issue," "order status," or "warranty claim."</li>
+<li>The system was trained to recognize over <strong>630 unique intents</strong>, meaning it can classify incoming customer queries into one of these predefined categories.</li>
+<li>For example:</li>
+<li>If a customer asks, "How do I connect my printer to WiFi?", the model identifies the intent as "printer setup wifi connection."</li>
+<li>If a customer says, "My laptop battery is not charging," the intent might be "laptop battery issue."</li>
+<li>These intents are mapped to relevant support documentation and resolution workflows, enabling the system to provide precise and immediate solutions.</li>
+<li>The large number of intents ensures comprehensive coverage of [Company]'s global support scenarios, improving automation, routing accuracy, and customer experience.</li>
+<li>Mathematically, the model treats this as a <strong>multi-class classification problem</strong>, where each input utterance is mapped to one of the 630+ intent classes based on learned patterns in the training data. The model outputs the most probable intent label for each query.</li>
+</ul>
+<hr>
+<p><strong>Q: How would you solve the scalability and latency problem in a RAG-based application when query load increases, to prevent response times from rising to several minutes?</strong></p>
+<ul>
+<li>To ensure a RAG-based (Retrieval-Augmented Generation) system remains performant under high load, I would architect the solution with the following strategies:</li>
+</ul>
+<p><strong>1. Asynchronous and Parallel Processing</strong>
+ - All I/O-bound operations (vector search, LLM inference, API calls) should be handled asynchronously using frameworks like Python’s <code>asyncio</code> or concurrent thread pools.
+ - This allows the system to process multiple queries in parallel, reducing bottlenecks and maximizing throughput.</p>
+<p><strong>2. Efficient Vector Search and Indexing</strong>
+ - Use high-performance vector databases (e.g., OpenSearch, Pinecone, FAISS) optimized for ANN (Approximate Nearest Neighbor) search.
+ - Store only essential metadata and chunked summaries, not full documents, to minimize retrieval payload and memory usage.
+ - Pre-chunk and pre-embed documents offline, so runtime only involves fast vector lookups.</p>
+<p><strong>3. Caching Layer</strong>
+ - Implement a caching mechanism (e.g., Redis, Memcached) for frequently accessed queries and their results, reducing redundant LLM calls and vector searches.
+ - Cache LLM responses for common queries and popular document chunks.</p>
+<p><strong>4. Batch and Bulk Inference</strong>
+ - Where possible, batch multiple LLM inference requests together to leverage model parallelism and reduce per-query overhead.
+ - Use LLM endpoints that support high concurrency and autoscaling.</p>
+<p><strong>5. Load Balancing and Auto-Scaling</strong>
+ - Deploy the API and inference services behind load balancers (e.g., AWS ALB) with auto-scaling groups to dynamically allocate compute resources based on real-time traffic.
+ - Use stateless microservices (e.g., FastAPI, Flask) to enable horizontal scaling.</p>
+<p><strong>6. Rate Limiting and Queue Management</strong>
+ - Implement rate limiting at the API gateway to prevent overload and ensure fair resource allocation.
+ - Use message queues (e.g., AWS SQS, Kafka) to buffer incoming requests during traffic spikes, allowing for graceful degradation.</p>
+<p><strong>7. Monitoring and Proactive Scaling</strong>
+ - Continuously monitor key metrics (latency, throughput, error rates) using tools like AWS CloudWatch, Prometheus, or Grafana.
+ - Set up automated alerts and scaling policies to add/remove resources before latency degrades.</p>
+<p><strong>8. Fallback and Graceful Degradation</strong>
+ - If LLM or vector DB is under heavy load, provide fallback responses (e.g., direct search, cached answers) to maintain acceptable user experience.</p>
+<p><strong>Mathematical Intuition:</strong>
+ - By parallelizing independent operations, total response time is bounded by the slowest component, not the sum.
+ - Caching and batching reduce the number of expensive LLM calls, amortizing cost and latency across requests.</p>
+<p><strong>Summary Example Flow:</strong>
+ 1. Query received → async embedding + parallel vector/lexical search.
+ 2. Top-k chunks retrieved → prompt constructed.
+ 3. Prompt sent to LLM (async/batched).
+ 4. Response cached and returned.
+ 5. System auto-scales and load balances as needed.</p>
+<ul>
+<li>With this architecture, even as load increases, the system maintains low response times and avoids the multi-minute latency spikes seen in poorly optimized RAG deployments.</li>
+</ul>
+<hr>
+<p><strong>Q: In which scenarios would batching be effective in a RAG-based system, and when would you use it?</strong></p>
+<ul>
+<li><strong>Batching</strong> is most effective when you have a high volume of similar or independent requests that can be processed together, especially for operations that are computationally expensive or have external rate limits.</li>
+<li>In a RAG-based system, batching is particularly useful in the following scenarios:</li>
+<li><strong>LLM Inference:</strong> </li>
+<li>When multiple user queries arrive within a short time window, you can group them and send them as a batch to the LLM endpoint (e.g., Azure OpenAI, OpenAI API).</li>
+<li>This is efficient because many LLM providers support batch inference, allowing you to process multiple prompts in a single API call, reducing per-request overhead and maximizing throughput.</li>
+<li>Example: During peak hours, if 100 queries arrive per second, you can batch them into groups of 10–20 and send each batch for inference, leveraging model parallelism.</li>
+<li><strong>Vector Embedding Generation:</strong> </li>
+<li>When embedding new documents or user queries, batching multiple texts together for embedding API calls improves efficiency and reduces latency.</li>
+<li>Example: During data ingestion or when processing a backlog of queries for semantic search, batch embedding minimizes API round-trips.</li>
+<li><strong>Evaluation Pipelines:</strong> </li>
+<li>As seen in the Knowledge GPT evaluation pipeline, batch processing is used for evaluating answer quality, reference health, or semantic similarity across many records, using async tasks with concurrency limits to avoid overwhelming the LLM or vector DB.</li>
+<li><strong>When Batching Works Best:</strong></li>
+<li>When requests are independent and do not require immediate, real-time responses (e.g., offline processing, bulk data ingestion, evaluation jobs).</li>
+<li>When the underlying API or model supports batch operations and can handle the increased payload efficiently.</li>
+<li><strong>When Batching May Not Be Suitable:</strong></li>
+<li>For real-time, low-latency user interactions where each query must be answered immediately (e.g., live chatbots), batching may introduce unacceptable delays.</li>
+<li>
+<p>If requests are highly variable in size or complexity, batching could lead to uneven processing times.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>Batching is ideal for LLM inference, embedding generation, and evaluation tasks in high-throughput or offline scenarios, but should be used judiciously for real-time user-facing endpoints to avoid added latency.</li>
+</ul>
+<hr>
+<p><strong>Q: What intelligent criteria or logic would you use to decide which queries to batch together in a RAG-based system, considering user experience and latency?</strong></p>
+<ul>
+<li>In a production RAG-based system, batching must balance efficiency with user-perceived latency. I would use the following intelligent criteria to decide when and how to batch queries:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Time-Window Based Batching:</strong></li>
+<li>Implement a short, configurable time window (e.g., 100–200 ms) where incoming queries are collected before dispatching a batch.</li>
+<li>This ensures minimal added latency (well below user-noticeable thresholds) while maximizing batch size during high-traffic periods.</li>
+<li>
+<p>Example: If 20 queries arrive within 100 ms, batch and process them together; if only 1 arrives, process it immediately after the window expires.</p>
+</li>
+<li>
+<p><strong>Queue Length Threshold:</strong></p>
+</li>
+<li>Set a maximum batch size (e.g., 16 or 32 queries). If the queue reaches this size before the time window expires, immediately dispatch the batch.</li>
+<li>
+<p>This prevents excessive waiting during traffic spikes and ensures efficient resource utilization.</p>
+</li>
+<li>
+<p><strong>Request Type or Similarity:</strong></p>
+</li>
+<li>For offline or background tasks (e.g., bulk document embedding, evaluation jobs), batch by task type or data similarity to optimize LLM/model throughput.</li>
+<li>
+<p>For real-time user queries, avoid batching across very different endpoints or priorities to prevent unnecessary delays for urgent requests.</p>
+</li>
+<li>
+<p><strong>Dynamic Batching Based on Load:</strong></p>
+</li>
+<li>Monitor real-time system load and dynamically adjust batching parameters (window size, batch size) to optimize for current traffic patterns.</li>
+<li>
+<p>During peak load, slightly increase the batching window to improve throughput; during low load, reduce batching to minimize latency.</p>
+</li>
+<li>
+<p><strong>User Experience Safeguards:</strong></p>
+</li>
+<li>Set a strict upper bound on batching delay (e.g., 200 ms) to ensure no user waits longer than acceptable for a response.</li>
+<li>For high-priority or VIP users, bypass batching and process immediately.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Example Scenario from Knowledge GPT:</strong></li>
+<li>During peak hours, the API receives 100+ queries per second.</li>
+<li>The system uses a 100 ms batching window and a max batch size of 16.</li>
+<li>If 16 queries arrive in 60 ms, they are immediately batched and sent for LLM inference.</li>
+<li>If only 5 queries arrive in 100 ms, those 5 are batched and processed at the window’s end.</li>
+<li>This approach ensures high throughput with minimal, controlled latency.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>Intelligent batching in RAG systems is driven by a combination of short time windows, batch size thresholds, request type, and dynamic adjustment based on real-time load, always prioritizing user experience and system efficiency.</li>
+</ul>
+<hr>
+<p><strong>Q: How will you intelligently choose which queries to batch together in a RAG-based system, beyond just using a time window?</strong></p>
+<ul>
+<li>To intelligently select which queries to batch together, I would use a combination of contextual, operational, and business logic criteria, not just timing. Here’s how I’d approach it:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Query Similarity and Intent Clustering</strong></li>
+<li>Analyze incoming queries for semantic similarity or shared intent category (using fast embedding comparison or intent classification).</li>
+<li>Batch queries that are likely to hit the same downstream resources (e.g., same intent, similar document clusters) to maximize cache hits and reduce redundant LLM/context construction.</li>
+<li>
+<p>Example: If multiple users are asking about "printer setup" or "Wi-Fi connection," batch these together for efficient prompt construction and LLM inference.</p>
+</li>
+<li>
+<p><strong>2. Request Type and Processing Path</strong></p>
+</li>
+<li>Separate real-time, user-facing queries from background or bulk processing jobs.</li>
+<li>
+<p>Batch only those queries that are not latency-critical (e.g., data labeling, evaluation, or offline analytics), as seen in the UIDS RAG Labelling Process where batch inference is used for test data evaluation.</p>
+</li>
+<li>
+<p><strong>3. System Load and Resource Utilization</strong></p>
+</li>
+<li>Dynamically adjust batching logic based on current system load and LLM/vector DB throughput.</li>
+<li>
+<p>During peak load, batch more aggressively for similar queries; during low load, prioritize immediate processing for user experience.</p>
+</li>
+<li>
+<p><strong>4. Metadata and Contextual Tags</strong></p>
+</li>
+<li>Use metadata (intent hierarchy, language, region, etc.) to group queries that will benefit from shared context or similar prompt templates.</li>
+<li>
+<p>Example from Knowledge GPT: If queries are for the same country/language or product line, batch them to leverage localized prompt templates and context data.</p>
+</li>
+<li>
+<p><strong>5. Business Priority and SLA</strong></p>
+</li>
+<li>Assign priority tags to queries (e.g., VIP users, urgent support cases) and exclude them from batching to ensure minimal latency.</li>
+<li>Batch only standard or low-priority queries where a slight delay is acceptable.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Practical Example from My Experience:</strong></li>
+<li>In the UIDS RAG data labeling pipeline, batch inference is used for test data where latency is not user-facing, and queries are grouped by intent for efficient LLM evaluation.</li>
+<li>In Knowledge GPT, batch embedding and chunk processing are used during data ingestion, where document chunks with similar metadata are grouped for bulk vectorization and summarization.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>Intelligent batching is not just about timing—it’s about grouping queries by semantic similarity, intent, processing path, metadata, and business priority to optimize both system efficiency and user experience. This ensures that batching adds value without degrading responsiveness for critical queries.</li>
+</ul>
+<hr>
+<p><strong>Q: What is ANN (Approximate Nearest Neighbor) in the context of RAG-based systems?</strong></p>
+<ul>
+<li><strong>ANN stands for Approximate Nearest Neighbor search.</strong></li>
+<li>In RAG (Retrieval-Augmented Generation) systems, ANN is a core technique used for fast and scalable semantic search over large vector databases.</li>
+<li><strong>How it works:</strong></li>
+<li>When a user query is embedded into a high-dimensional vector (using models like OpenAI, BERT, etc.), the system needs to find the most similar document chunks or passages from a large corpus.</li>
+<li>Exact nearest neighbor search (brute-force comparison with every vector) is computationally expensive and slow at scale.</li>
+<li>ANN algorithms (like HNSW, FAISS, or those in OpenSearch, Pinecone, ChromaDB) use clever data structures and heuristics to quickly find vectors that are "close enough" to the query vector, trading a tiny bit of accuracy for massive speed gains.</li>
+<li><strong>Industry Example:</strong></li>
+<li>In Knowledge GPT and UIDS RAG pipelines, ANN search is used to retrieve the top-k most relevant document chunks for a user query in milliseconds, even when the database contains millions of vectors.</li>
+<li><strong>Mathematical Intuition:</strong></li>
+<li>Given a query vector <span class="arithmatex">\( q \)</span> and a set of document vectors <span class="arithmatex">\( D = \{d_1, d_2, ..., d_n\} \)</span>, ANN algorithms efficiently find the subset of <span class="arithmatex">\( D \)</span> where the distance (e.g., cosine similarity or Euclidean distance) to <span class="arithmatex">\( q \)</span> is minimized.</li>
+<li>Instead of checking all <span class="arithmatex">\( n \)</span> vectors, ANN uses indexing structures (like graphs or trees) to prune the search space.</li>
+<li><strong>Summary:</strong> </li>
+<li>ANN is essential for making semantic retrieval in RAG systems both fast and scalable, enabling real-time user experiences even with large knowledge bases.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you implement Approximate Nearest Neighbor (ANN) search in a vector database for a RAG-based system?</strong></p>
+<ul>
+<li>In a RAG-based system, ANN search is implemented in the vector database to enable fast and scalable semantic retrieval of relevant document chunks for a given query. Here’s how I approach it in practice:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Embedding Generation</strong></li>
+<li>First, both documents (during ingestion) and user queries (at runtime) are converted into high-dimensional embedding vectors using a pre-trained model (e.g., OpenAI, Azure OpenAI, BERT).</li>
+<li>
+<p>Example: In Knowledge GPT, we use a 1536-dimensional embedding generated via Azure OpenAI.</p>
+</li>
+<li>
+<p><strong>2. Indexing Embeddings in the Vector Database</strong></p>
+</li>
+<li>All document chunk embeddings are stored in a vector database such as OpenSearch, Pinecone, FAISS, or ChromaDB.</li>
+<li>The vector DB builds an ANN index (e.g., HNSW, IVF, or other graph/tree-based structures) to enable efficient similarity search.</li>
+<li>
+<p>This index allows the system to quickly retrieve the top-k most similar vectors to a given query vector without scanning the entire dataset.</p>
+</li>
+<li>
+<p><strong>3. Query-Time ANN Search</strong></p>
+</li>
+<li>When a user submits a query, it is embedded into a vector using the same model as above.</li>
+<li>The system then performs a KNN (k-nearest neighbor) search in the vector DB to find the most semantically similar document chunks.</li>
+<li>
+<p>In Knowledge GPT, this is done in parallel with a lexical BM25 search, and results are fused using Reciprocal Rank Fusion (RRF) for optimal relevance.</p>
+</li>
+<li>
+<p><strong>4. Parallel and Hybrid Search</strong></p>
+</li>
+<li>Both ANN (vector) and BM25 (lexical) searches are executed in parallel using a thread pool (e.g., Python’s ThreadPoolExecutor).</li>
+<li>
+<p>The results are combined using RRF or linear hybrid scoring to balance semantic and keyword relevance.</p>
+</li>
+<li>
+<p><strong>5. Post-Processing and Filtering</strong></p>
+</li>
+<li>After retrieving the top-k candidates, additional filters (e.g., language, country code) are applied as post-filters to avoid interfering with ANN scoring.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Example from Knowledge GPT (from documentation):</strong></li>
+<li>Step 1: Embed the query using Azure OpenAI (1536-dim vector).</li>
+<li>Step 2: Run BM25 and KNN vector search in parallel on OpenSearch.</li>
+<li>Step 3: Use RRF to combine and rank results.</li>
+<li>Step 4: Return the top-ranked document chunks for prompt construction.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Mathematical Intuition:</strong></li>
+<li>Given a query vector <span class="arithmatex">\( q \)</span> and a set of document vectors <span class="arithmatex">\( D \)</span>, ANN algorithms efficiently approximate the set of vectors in <span class="arithmatex">\( D \)</span> that minimize the distance (e.g., cosine similarity) to <span class="arithmatex">\( q \)</span>, using indexing structures to avoid brute-force search.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>ANN search in a vector DB is implemented by embedding queries and documents, indexing embeddings with efficient ANN algorithms, and performing fast KNN search at runtime to retrieve semantically relevant content for RAG pipelines. This ensures both scalability and low latency in production systems.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you implement Approximate Nearest Neighbor (ANN) search in a vector database for semantic retrieval, and what libraries or frameworks are typically used?</strong></p>
+<ul>
+<li>In production RAG systems, ANN search is implemented using specialized vector databases or libraries that support efficient high-dimensional similarity search. Here’s how I approach it, with practical details:</li>
+</ul>
+<hr>
+<ul>
+<li><strong>1. Embedding Generation</strong></li>
+<li>All documents and user queries are converted into dense vector embeddings using models like OpenAI, Azure OpenAI, or BERT.</li>
+<li>
+<p>For example, in Knowledge GPT, we use 1536-dimensional embeddings from Azure OpenAI.</p>
+</li>
+<li>
+<p><strong>2. Indexing with ANN Algorithms</strong></p>
+</li>
+<li>The embeddings are stored in a vector database that supports ANN indexing.</li>
+<li>Common libraries and frameworks:</li>
+<li><strong>OpenSearch</strong> (with KNN plugin): Used in Knowledge GPT for scalable, distributed ANN search.</li>
+<li><strong>FAISS</strong> (Facebook AI Similarity Search): Popular for local or research-scale vector search.</li>
+<li><strong>Pinecone</strong>, <strong>ChromaDB</strong>, <strong>Milvus</strong>: Managed or open-source vector DBs with built-in ANN support.</li>
+<li><strong>HNSWlib</strong>: Efficient C++/Python library for Hierarchical Navigable Small World graphs.</li>
+<li>
+<p>The vector DB builds an ANN index (e.g., HNSW, IVF, PQ) to enable fast KNN (k-nearest neighbor) queries.</p>
+</li>
+<li>
+<p><strong>3. Query-Time Retrieval</strong></p>
+</li>
+<li>When a user submits a query, it is embedded and a KNN search is performed in the vector DB.</li>
+<li>In Knowledge GPT, both BM25 (lexical) and KNN (vector) searches are run in parallel using Python’s <code>ThreadPoolExecutor</code> for efficiency.</li>
+<li>Example code snippet (from Knowledge GPT docs):
+ <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">lexical_future</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">os_client</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_names</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">lexical_query</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">vector_future</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">os_client</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_names</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">vector_query</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">lexical_results</span> <span class="o">=</span> <span class="n">lexical_future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">vector_results</span> <span class="o">=</span> <span class="n">vector_future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span></code></pre></div></li>
+<li>
+<p>The KNN search retrieves the top-k most similar document chunks based on vector similarity (e.g., cosine similarity).</p>
+</li>
+<li>
+<p><strong>4. Hybrid Ranking</strong></p>
+</li>
+<li>Results from ANN (vector) and BM25 (lexical) searches are combined using Reciprocal Rank Fusion (RRF) or linear hybrid scoring for optimal relevance.</li>
+<li>RRF formula (from Knowledge GPT docs):
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rrf_score = 1/(lexical_rank + k) + 1/(vector_rank + k)
+</span></code></pre></div></li>
+<li>
+<p>This ensures both semantic and keyword relevance in the final ranked results.</p>
+</li>
+<li>
+<p><strong>5. Post-Processing</strong></p>
+</li>
+<li>Additional filters (e.g., language, country) are applied after retrieval to further refine results.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary of Tools Used:</strong></li>
+<li><strong>OpenSearch KNN plugin</strong> for distributed, production-scale ANN search.</li>
+<li><strong>FAISS</strong>, <strong>HNSWlib</strong> for local or research use.</li>
+<li><strong>Pinecone</strong>, <strong>ChromaDB</strong>, <strong>Milvus</strong> for managed or open-source vector DBs.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Industry Example:</strong> </li>
+<li>In Knowledge GPT, we use OpenSearch with the KNN plugin to store and search embeddings, running both BM25 and KNN queries in parallel, and fusing results with RRF for best-in-class semantic retrieval.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Mathematical Intuition:</strong> </li>
+<li>ANN algorithms use graph or tree-based structures to quickly approximate the nearest vectors to a query, enabling millisecond-level retrieval even with millions of vectors.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>ANN search is implemented in vector DBs using libraries like OpenSearch KNN, FAISS, or Pinecone, enabling fast, scalable semantic retrieval for RAG pipelines by indexing and searching high-dimensional embeddings efficiently.</li>
+</ul>
+<hr>
+<p><strong>Q: How do you implement Approximate Nearest Neighbor (ANN) search in a vector database, what libraries do you use, and what are the trade-offs and limitations regarding accuracy?</strong></p>
+<ul>
+<li><strong>Implementation Approach:</strong></li>
+<li>In production RAG systems like Knowledge GPT, I implement ANN search using vector databases such as OpenSearch, Pinecone, FAISS, or ChromaDB.</li>
+<li><strong>Embedding Generation:</strong> </li>
+<li>Both documents and queries are embedded into high-dimensional vectors (e.g., 1536-dim using Azure OpenAI or OpenAI models).</li>
+<li><strong>Indexing:</strong> </li>
+<li>During ingestion, all document embeddings are indexed using ANN algorithms (e.g., HNSW, IVF) provided by the vector DB.</li>
+<li>In OpenSearch, KNN plugin supports HNSW for fast similarity search.</li>
+<li><strong>Query-Time Retrieval:</strong> </li>
+<li>At runtime, the query is embedded and a KNN search is performed to retrieve the top-k most similar vectors.</li>
+<li>
+<p>In Knowledge GPT, this is run in parallel with BM25 lexical search, and results are fused using Reciprocal Rank Fusion (RRF) for optimal relevance.</p>
+</li>
+<li>
+<p><strong>Libraries and Tools:</strong></p>
+</li>
+<li><strong>OpenSearch KNN Plugin:</strong> </li>
+<li>Used for scalable, production-grade ANN search with support for HNSW and other algorithms.</li>
+<li><strong>FAISS (Facebook AI Similarity Search):</strong> </li>
+<li>Popular for local or research-scale ANN indexing and retrieval.</li>
+<li><strong>Pinecone, ChromaDB:</strong> </li>
+<li>Managed vector DBs with built-in ANN support.</li>
+<li><strong>ThreadPoolExecutor (Python):</strong> </li>
+<li>
+<p>Used to run BM25 and KNN searches in parallel for hybrid retrieval.</p>
+</li>
+<li>
+<p><strong>Constraints and Limitations:</strong></p>
+</li>
+<li><strong>Accuracy vs. Speed Trade-off:</strong> </li>
+<li>ANN algorithms trade a small amount of recall/precision for significant speed gains.</li>
+<li>You may not always retrieve the exact nearest neighbors, but results are "close enough" for most semantic search use cases.</li>
+<li><strong>Index Build Time and Memory:</strong> </li>
+<li>Building and maintaining ANN indices (like HNSW graphs) can be memory-intensive, especially for millions of vectors.</li>
+<li>Index updates (adding/removing vectors) may require rebalancing or partial rebuilds.</li>
+<li><strong>Parameter Tuning:</strong> </li>
+<li>Parameters like <code>ef_search</code>, <code>ef_construction</code>, and <code>M</code> (for HNSW) control the balance between search accuracy and latency.</li>
+<li>Higher values improve recall but increase latency and resource usage.</li>
+<li><strong>Filtering:</strong> </li>
+<li>
+<p>Post-filtering (e.g., by language or country) is applied after KNN scoring to avoid interfering with similarity calculations, but this can reduce the effective recall if many results are filtered out.</p>
+</li>
+<li>
+<p><strong>Trade-offs in Accuracy:</strong></p>
+</li>
+<li><strong>Mathematical Intuition:</strong> </li>
+<li>ANN search finds vectors whose distance to the query is within a small margin of the true nearest neighbor.</li>
+<li>For example, with HNSW, recall can be tuned to 95–99% with proper parameter settings, but never 100% as in brute-force search.</li>
+<li><strong>Practical Impact:</strong> </li>
+<li>For most RAG applications, the slight loss in recall is acceptable given the massive speedup (milliseconds vs. seconds).</li>
+<li>
+<p>In hybrid retrieval (BM25 + ANN), the impact is further mitigated by combining semantic and lexical signals.</p>
+</li>
+<li>
+<p><strong>Summary Example (from Knowledge GPT):</strong></p>
+</li>
+<li>Query embedding (1536-dim) is generated via Azure OpenAI.</li>
+<li>KNN search is run in OpenSearch using HNSW, retrieving top-k candidates.</li>
+<li>BM25 and KNN results are fused using RRF for final ranking.</li>
+<li>Post-filters are applied for language/country.</li>
+<li>This approach delivers sub-second retrieval with high semantic relevance, suitable for real-time user support scenarios.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Summary:</strong> </li>
+<li>ANN search in vector DBs is implemented using libraries like OpenSearch KNN, FAISS, or Pinecone, balancing speed and accuracy via algorithm parameters. The main trade-off is a slight reduction in recall for much faster retrieval, which is generally acceptable in large-scale RAG systems.</li>
+</ul>
+<hr>
+<p><strong>Q: Which Approximate Nearest Neighbor (ANN) algorithm does Elasticsearch support for vector search?</strong></p>
+<ul>
+<li><strong>Elasticsearch (and OpenSearch) support the HNSW (Hierarchical Navigable Small World) algorithm for ANN vector search.</strong></li>
+<li>HNSW is a graph-based ANN algorithm that enables fast and scalable similarity search in high-dimensional spaces.</li>
+<li>
+<p>It is widely used in production systems for semantic retrieval due to its excellent balance of speed, recall, and scalability.</p>
+</li>
+<li>
+<p><strong>How it works in Elasticsearch:</strong></p>
+</li>
+<li>When you index document embeddings (e.g., 1536-dim vectors from OpenAI/Azure OpenAI), Elasticsearch builds an HNSW index for those vectors.</li>
+<li>At query time, the user query is embedded, and a KNN search is performed using the HNSW index to efficiently retrieve the top-k most similar vectors.</li>
+<li>
+<p>This is the core mechanism behind semantic search in Elasticsearch-based RAG systems like Knowledge GPT.</p>
+</li>
+<li>
+<p><strong>Key Points:</strong></p>
+</li>
+<li>HNSW is the default and most mature ANN algorithm in Elasticsearch for vector search.</li>
+<li>It supports configurable parameters (like <code>ef_search</code>, <code>ef_construction</code>, and <code>M</code>) to tune the trade-off between recall and latency.</li>
+<li>
+<p>Elasticsearch’s HNSW implementation is production-ready and supports large-scale, real-time semantic retrieval.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>In Elasticsearch, HNSW is the primary ANN algorithm for vector search, enabling efficient and accurate semantic retrieval in RAG and other AI-powered search applications.</li>
+</ul>
+<hr>
+<p><strong>Q: What is the trade-off when using HNSW for nearest neighbor search in Elasticsearch?</strong></p>
+<ul>
+<li><strong>HNSW (Hierarchical Navigable Small World) provides very fast and scalable approximate nearest neighbor (ANN) search, but the main trade-off is between retrieval speed and recall (accuracy of finding the true nearest neighbors).</strong></li>
+<li><strong>Key Trade-offs:</strong></li>
+<li><strong>Recall vs. Latency:</strong> </li>
+<li>HNSW does not guarantee finding the exact nearest neighbors every time. Instead, it finds results that are "close enough" with very high probability, typically achieving 95–99% recall.</li>
+<li>You can tune parameters like <code>ef_search</code> (search breadth) and <code>M</code> (graph connectivity) to increase recall, but this will also increase search time and resource usage.</li>
+<li>Lower <code>ef_search</code> values make search faster but may miss some relevant results; higher values improve accuracy but increase latency.</li>
+<li><strong>Memory Usage:</strong> </li>
+<li>HNSW builds a graph structure in memory, which can be memory-intensive, especially for large datasets with millions of vectors.</li>
+<li><strong>Index Build Time:</strong> </li>
+<li>Building and updating the HNSW index can take time and resources, especially during large-scale ingestion or frequent updates.</li>
+<li><strong>No Exact Guarantees:</strong> </li>
+<li>For most semantic search and RAG use cases, the slight loss in recall is acceptable because the speedup is significant (milliseconds vs. seconds for brute-force search).</li>
+<li>
+<p>In hybrid retrieval (as in Knowledge GPT), combining HNSW-based semantic search with BM25 lexical search further mitigates the impact of any missed neighbors.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The main trade-off with HNSW in Elasticsearch is a small reduction in recall (accuracy) for a large gain in speed and scalability. This is tunable and generally acceptable for real-time, large-scale semantic search applications.</li>
+</ul>
+<hr>
+<p><strong>Q: What do you lose (what is the downside) when using HNSW-based ANN search instead of exact nearest neighbor search?</strong></p>
+<ul>
+<li>The main thing you lose with HNSW-based ANN search is <strong>recall/accuracy</strong>—specifically, you may not always retrieve the true nearest neighbors for every query.</li>
+<li><strong>Details:</strong></li>
+<li><strong>Approximation:</strong> </li>
+<li>HNSW is designed for speed and scalability, so it uses heuristics and graph traversal to quickly find vectors that are very close to the query, but not always the absolute closest.</li>
+<li>In practice, this means you might miss some relevant results that would be found with a brute-force (exact) search.</li>
+<li><strong>Recall vs. Latency:</strong> </li>
+<li>You gain much faster retrieval (milliseconds instead of seconds), but recall (the percentage of true nearest neighbors found) is slightly reduced—typically 95–99% with good parameter tuning.</li>
+<li>For most RAG and semantic search applications, this small loss in recall is acceptable because the top results are still highly relevant.</li>
+<li><strong>Parameter Sensitivity:</strong> </li>
+<li>The trade-off is tunable: increasing parameters like <code>ef_search</code> improves recall but also increases search time and memory usage.</li>
+<li>Lower settings make search faster but can further reduce recall.</li>
+<li><strong>No Loss in Precision:</strong> </li>
+<li>Precision (the relevance of returned results) generally remains high, but you may miss some relevant documents (lower recall).</li>
+<li><strong>Not a Drop-in Replacement for All Use Cases:</strong> </li>
+<li>For applications where 100% recall is critical (e.g., legal discovery, compliance), brute-force search may still be required.</li>
+<li>
+<p>For most conversational AI, knowledge retrieval, and RAG systems, the speed/recall trade-off is well worth it.</p>
+</li>
+<li>
+<p><strong>Summary:</strong> </p>
+</li>
+<li>The key trade-off with HNSW ANN search is a small loss in recall (not always finding every true nearest neighbor) in exchange for much faster retrieval, which is generally acceptable for large-scale, real-time AI systems.</li>
+</ul>
+<hr>
+<p><strong>Q: When using HNSW-based ANN search, do you lose precision or accuracy (recall)?</strong></p>
+<ul>
+<li>With HNSW-based ANN search, the main loss is in <strong>recall (accuracy)</strong>, not precision.</li>
+<li><strong>Recall</strong> refers to the proportion of all relevant results that are actually retrieved. Since HNSW is approximate, you may miss some true nearest neighbors, so recall can be slightly lower than with exact search.</li>
+<li><strong>Precision</strong> refers to how relevant the retrieved results are. HNSW typically maintains high precision because the results it does return are still highly relevant to the query.</li>
+<li>In practical terms:</li>
+<li>You gain significant speed and scalability.</li>
+<li>You may not retrieve every possible relevant document (slight recall loss), but the results you do get are still highly relevant (precision remains high).</li>
+<li>For most RAG and semantic search applications, this trade-off is acceptable, especially when combined with hybrid retrieval strategies (like BM25 + KNN with Reciprocal Rank Fusion, as used in Knowledge GPT), which further mitigates any recall loss.</li>
+</ul>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/GyanendraChaubey" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
