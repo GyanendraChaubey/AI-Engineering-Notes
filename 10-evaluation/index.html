@@ -1204,6 +1204,390 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q5-what-metrics-are-used-to-evaluate-llm-systems-formulas-calculations-and-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5. What metrics are used to evaluate LLM systems — formulas, calculations, and examples?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5. What metrics are used to evaluate LLM systems — formulas, calculations, and examples?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-bleu-bilingual-evaluation-understudy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. BLEU — Bilingual Evaluation Understudy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. BLEU — Bilingual Evaluation Understudy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rouge-recall-oriented-understudy-for-gisting-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ROUGE — Recall-Oriented Understudy for Gisting Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ROUGE — Recall-Oriented Understudy for Gisting Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rouge-n-unigram-bigram-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROUGE-N (Unigram / Bigram Recall)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rouge-l-longest-common-subsequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROUGE-L (Longest Common Subsequence)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-meteor-metric-for-evaluation-of-translation-with-explicit-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. METEOR — Metric for Evaluation of Translation with Explicit ORdering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. METEOR — Metric for Evaluation of Translation with Explicit ORdering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formula_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-bertscore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. BERTScore
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. BERTScore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formula_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ragas-metrics-rag-system-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. RAGAS Metrics — RAG System Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. RAGAS Metrics — RAG System Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5a-faithfulness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5a. Faithfulness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5b-context-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5b. Context Precision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5c-context-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5c. Context Recall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5d-answer-relevancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5d. Answer Relevancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-perplexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Perplexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-passk-code-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pass@k — Code Generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Pass@k — Code Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formula_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-cohens-kappa-judge-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Cohen's Kappa — Judge Reliability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Cohen's Kappa — Judge Reliability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculating-p_e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculating \(p_e\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-production-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Production Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Production Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4896,6 +5280,556 @@ CoVe is devastating to production latency. It requires 4 sequential LLM calls. I
 <p><strong>4. Self-Reflection vs CoVe?</strong>
 Self-Reflection is a simpler, naive approach where you feed the LLM's output back to it and prompt: <em>"Is this correct? Are you sure? Fix any mistakes."</em> It often fails because the LLM is sycophantic; it will apologize profusely and change the answer even if the original answer was completely correct, degrading performance. CoVe provides a rigid, structural framework to prevent this.</p>
 </details>
+<hr>
+<h2 id="q5-what-metrics-are-used-to-evaluate-llm-systems-formulas-calculations-and-examples">Q5. What metrics are used to evaluate LLM systems — formulas, calculations, and examples?<a class="headerlink" href="#q5-what-metrics-are-used-to-evaluate-llm-systems-formulas-calculations-and-examples" title="Permanent link">¶</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h3>
+<p>LLM evaluation metrics fall into five families. Each measures a different property; no single metric is sufficient on its own.</p>
+<pre class="mermaid"><code>flowchart TD
+    M["LLM Evaluation Metrics"]
+    M --&gt; LEX["Lexical Overlap\nBLEU · ROUGE · METEOR"]
+    M --&gt; SEM["Semantic Similarity\nBERTScore · Embedding Cosine"]
+    M --&gt; RAG["RAG-Specific\nFaithfulness · Context Precision\nContext Recall · Answer Relevancy"]
+    M --&gt; INT["Intrinsic / Model Quality\nPerplexity · Pass@k"]
+    M --&gt; PRD["Production / Reliability\nLatency · Cost · Cohen's Kappa"]
+
+    style M fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style LEX fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style SEM fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style RAG fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style INT fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style PRD fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF</code></pre>
+<hr>
+<h3 id="1-bleu-bilingual-evaluation-understudy">1. BLEU — Bilingual Evaluation Understudy<a class="headerlink" href="#1-bleu-bilingual-evaluation-understudy" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> Modified n-gram precision between a candidate and one or more reference texts. Originally designed for machine translation.</p>
+<h4 id="formula">Formula<a class="headerlink" href="#formula" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[\text{BLEU} = \underbrace{\min\!\left(1,\ e^{1 - r/c}\right)}_{\text{Brevity Penalty}} \cdot \exp\!\left(\sum_{n=1}^{N} w_n \log p_n\right)\]</div>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(c\)</span></td>
+<td>length of the candidate sentence</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(r\)</span></td>
+<td>length of the reference sentence</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p_n\)</span></td>
+<td>modified n-gram precision at order <span class="arithmatex">\(n\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(w_n\)</span></td>
+<td>weight per n-gram order, usually <span class="arithmatex">\(\frac{1}{N}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(N\)</span></td>
+<td>max n-gram order, usually 4 (BLEU-4)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modified n-gram precision</strong> clips each candidate n-gram count to the maximum it appears in any reference, preventing a model from gaming the score by repeating a single correct word:</p>
+<div class="arithmatex">\[p_n = \frac{\displaystyle\sum_{\text{n-gram} \in C} \text{Count}_{\text{clip}}(\text{n-gram})}{\displaystyle\sum_{\text{n-gram} \in C} \text{Count}(\text{n-gram})}\]</div>
+<div class="arithmatex">\[\text{Count}_{\text{clip}}(\text{n-gram}) = \min\!\bigl(\text{Count in candidate},\ \max_{\text{ref}} \text{Count in reference}\bigr)\]</div>
+<h4 id="worked-example">Worked Example<a class="headerlink" href="#worked-example" title="Permanent link">¶</a></h4>
+<p><strong>Reference:</strong> <code>"The cat sat on the mat"</code><br>
+<strong>Candidate:</strong> <code>"The cat sat on the mat"</code> (perfect)</p>
+<ul>
+<li><span class="arithmatex">\(p_1 = 6/6 = 1.0\)</span>,  <span class="arithmatex">\(p_2 = 5/5 = 1.0\)</span>,  <span class="arithmatex">\(p_3 = 4/4 = 1.0\)</span>,  <span class="arithmatex">\(p_4 = 3/3 = 1.0\)</span></li>
+<li>BP <span class="arithmatex">\(= \min(1, e^{1-6/6}) = 1.0\)</span></li>
+<li><strong>BLEU-4 = 1.0</strong> ✓</li>
+</ul>
+<p><strong>Candidate (repeating word):</strong> <code>"the the the the the the"</code></p>
+<ul>
+<li>Count("the") in candidate = 6, max in reference = 2  →  <span class="arithmatex">\(\text{Count}_\text{clip} = 2\)</span></li>
+<li><span class="arithmatex">\(p_1 = 2/6 = 0.33\)</span></li>
+<li>BP <span class="arithmatex">\(= \min(1, e^{1-6/6}) = 1.0\)</span>  (same length, no penalty)</li>
+<li><strong>BLEU-1 ≈ 0.33</strong> — clipping prevents gaming ✓</li>
+</ul>
+<p><strong>Limitation:</strong> <code>"The feline rested on the rug"</code> scores 0 against the reference above despite being semantically equivalent, because zero n-grams overlap.</p>
+<hr>
+<h3 id="2-rouge-recall-oriented-understudy-for-gisting-evaluation">2. ROUGE — Recall-Oriented Understudy for Gisting Evaluation<a class="headerlink" href="#2-rouge-recall-oriented-understudy-for-gisting-evaluation" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> N-gram <em>recall</em> between candidate and reference. Designed for summarization — did the summary capture the reference's content?</p>
+<p>Three variants matter in practice:</p>
+<h4 id="rouge-n-unigram-bigram-recall">ROUGE-N (Unigram / Bigram Recall)<a class="headerlink" href="#rouge-n-unigram-bigram-recall" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[\text{ROUGE-N}_\text{Recall} = \frac{\displaystyle\sum_{\text{n-gram} \in R} \text{Count}_\text{match}(\text{n-gram})}{\displaystyle\sum_{\text{n-gram} \in R} \text{Count}(\text{n-gram})}\]</div>
+<div class="arithmatex">\[\text{ROUGE-N}_\text{Precision} = \frac{\displaystyle\sum_{\text{n-gram} \in C} \text{Count}_\text{match}(\text{n-gram})}{\displaystyle\sum_{\text{n-gram} \in C} \text{Count}(\text{n-gram})}\]</div>
+<div class="arithmatex">\[\text{ROUGE-N}_{F_1} = 2 \cdot \frac{P \cdot R}{P + R}\]</div>
+<h4 id="rouge-l-longest-common-subsequence">ROUGE-L (Longest Common Subsequence)<a class="headerlink" href="#rouge-l-longest-common-subsequence" title="Permanent link">¶</a></h4>
+<p>Rewards word-order preservation without requiring contiguous matches:</p>
+<div class="arithmatex">\[P_\text{LCS} = \frac{\text{LCS}(C, R)}{|C|}, \qquad R_\text{LCS} = \frac{\text{LCS}(C, R)}{|R|}\]</div>
+<div class="arithmatex">\[\text{ROUGE-L}_{F_1} = \frac{(1+\beta^2)\, P_\text{LCS} \cdot R_\text{LCS}}{R_\text{LCS} + \beta^2 P_\text{LCS}}, \quad \beta = P_\text{LCS}/R_\text{LCS}\]</div>
+<h4 id="worked-example_1">Worked Example<a class="headerlink" href="#worked-example_1" title="Permanent link">¶</a></h4>
+<p><strong>Reference:</strong> <code>"The police caught the thief yesterday"</code> (6 tokens)<br>
+<strong>Candidate:</strong> <code>"The thief was caught by police"</code> (6 tokens)</p>
+<p><strong>ROUGE-1:</strong>
+- Matching unigrams: <em>the, thief, caught, police</em> = 4
+- Recall <span class="arithmatex">\(= 4/6 = 0.667\)</span>, Precision <span class="arithmatex">\(= 4/6 = 0.667\)</span>, <strong>F1 = 0.667</strong></p>
+<p><strong>ROUGE-2:</strong>
+- Reference bigrams: <em>(The, police), (police, caught), (caught, the), (the, thief), (thief, yesterday)</em>
+- Candidate bigrams: <em>(The, thief), (thief, was), (was, caught), (caught, by), (by, police)</em>
+- Matching bigrams: 0 (none overlap)
+- <strong>ROUGE-2 = 0.0</strong> (word order divergence is penalized)</p>
+<p><strong>ROUGE-L:</strong>
+- LCS = <code>"The caught"</code> or <code>"The thief"</code> — length 2
+- <span class="arithmatex">\(R_\text{LCS} = 2/6 = 0.333\)</span>, <span class="arithmatex">\(P_\text{LCS} = 2/6 = 0.333\)</span>, <strong>F1 = 0.333</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Score</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROUGE-1</td>
+<td>0.667</td>
+<td>Good word coverage</td>
+</tr>
+<tr>
+<td>ROUGE-2</td>
+<td>0.000</td>
+<td>Poor phrase preservation</td>
+</tr>
+<tr>
+<td>ROUGE-L</td>
+<td>0.333</td>
+<td>Moderate sequence order</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3-meteor-metric-for-evaluation-of-translation-with-explicit-ordering">3. METEOR — Metric for Evaluation of Translation with Explicit ORdering<a class="headerlink" href="#3-meteor-metric-for-evaluation-of-translation-with-explicit-ordering" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> Improves on BLEU by incorporating <strong>stemming</strong> (run/running count as a match), <strong>synonym matching</strong> (cat ≈ feline via WordNet), and a <strong>chunk-order penalty</strong>.</p>
+<h4 id="formula_1">Formula<a class="headerlink" href="#formula_1" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[\text{METEOR} = F_{\text{mean}} \cdot (1 - \text{Penalty})\]</div>
+<p><strong>Harmonic mean</strong> with higher weight on recall (<span class="arithmatex">\(\alpha = 0.9\)</span> default):</p>
+<div class="arithmatex">\[F_{\text{mean}} = \frac{P \cdot R}{\alpha \cdot P + (1-\alpha) \cdot R}\]</div>
+<p><strong>Chunk penalty</strong> — penalizes fragmented alignments where matched words are spread across many non-contiguous chunks:</p>
+<div class="arithmatex">\[\text{Penalty} = \gamma \cdot \left(\frac{\text{chunks}}{\text{matches}}\right)^\theta, \quad \gamma=0.5,\ \theta=3\]</div>
+<p>If all matched words are adjacent (one chunk), penalty → 0. If every match is isolated (chunks = matches), penalty is maximum.</p>
+<h4 id="worked-example_2">Worked Example<a class="headerlink" href="#worked-example_2" title="Permanent link">¶</a></h4>
+<p><strong>Reference:</strong> <code>"The cat sat on the mat"</code><br>
+<strong>Candidate:</strong> <code>"The feline rested on the rug"</code></p>
+<p>After synonym expansion (feline → cat):
+- Matches: <em>the, cat (via feline), on, the</em> = 4 unigrams
+- Precision <span class="arithmatex">\(P = 4/6 = 0.667\)</span>, Recall <span class="arithmatex">\(R = 4/6 = 0.667\)</span>
+- <span class="arithmatex">\(F_\text{mean} = 0.667 \cdot 0.667 / (0.9 \times 0.667 + 0.1 \times 0.667) = 0.667\)</span>
+- Chunks: 2 (<em>the cat</em>, <em>on the</em>), Matches: 4
+- Penalty <span class="arithmatex">\(= 0.5 \times (2/4)^3 = 0.5 \times 0.125 = 0.0625\)</span>
+- <strong>METEOR</strong> <span class="arithmatex">\(= 0.667 \times (1 - 0.0625) \approx \mathbf{0.625}\)</span> — vs BLEU score of ~0.0</p>
+<hr>
+<h3 id="4-bertscore">4. BERTScore<a class="headerlink" href="#4-bertscore" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> Semantic similarity using contextual BERT embeddings rather than token overlap. Each token in the candidate is matched to the most similar token in the reference in embedding space.</p>
+<h4 id="formula_2">Formula<a class="headerlink" href="#formula_2" title="Permanent link">¶</a></h4>
+<p>Let <span class="arithmatex">\(\mathbf{x}_i\)</span> = BERT embedding of reference token <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(\hat{\mathbf{x}}_j\)</span> = embedding of candidate token <span class="arithmatex">\(j\)</span>, both L2-normalised so that <span class="arithmatex">\(\mathbf{x}_i^\top \hat{\mathbf{x}}_j = \cos(\mathbf{x}_i, \hat{\mathbf{x}}_j)\)</span>.</p>
+<div class="arithmatex">\[P_\text{BERT} = \frac{1}{|\hat{y}|} \sum_{j \in \hat{y}} \max_{i \in y}\; \mathbf{x}_i^\top \hat{\mathbf{x}}_j\]</div>
+<div class="arithmatex">\[R_\text{BERT} = \frac{1}{|y|} \sum_{i \in y} \max_{j \in \hat{y}}\; \mathbf{x}_i^\top \hat{\mathbf{x}}_j\]</div>
+<div class="arithmatex">\[F_\text{BERT} = 2 \cdot \frac{P_\text{BERT} \cdot R_\text{BERT}}{P_\text{BERT} + R_\text{BERT}}\]</div>
+<p><strong>Precision:</strong> for every candidate token, find its closest reference token → how many candidate tokens are "covered" by the reference.<br>
+<strong>Recall:</strong> for every reference token, find its closest candidate token → how much of the reference is "captured" by the candidate.</p>
+<h4 id="worked-example_3">Worked Example<a class="headerlink" href="#worked-example_3" title="Permanent link">¶</a></h4>
+<p><strong>Reference:</strong> <code>"The cat sat"</code> → embeddings <span class="arithmatex">\([\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3]\)</span><br>
+<strong>Candidate:</strong> <code>"The feline rested"</code> → embeddings <span class="arithmatex">\([\hat{\mathbf{x}}_1, \hat{\mathbf{x}}_2, \hat{\mathbf{x}}_3]\)</span></p>
+<p>Cosine similarity matrix (approximate):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>cat (<span class="arithmatex">\(\mathbf{x}_2\)</span>)</th>
+<th>sat (<span class="arithmatex">\(\mathbf{x}_3\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feline (<span class="arithmatex">\(\hat{\mathbf{x}}_2\)</span>)</td>
+<td><strong>0.92</strong></td>
+<td>0.21</td>
+</tr>
+<tr>
+<td>rested (<span class="arithmatex">\(\hat{\mathbf{x}}_3\)</span>)</td>
+<td>0.18</td>
+<td><strong>0.74</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="arithmatex">\(P_\text{BERT} = (1.0 + 0.92 + 0.74)/3 = 0.887\)</span></li>
+<li><span class="arithmatex">\(R_\text{BERT} = (1.0 + 0.92 + 0.74)/3 = 0.887\)</span></li>
+<li><strong><span class="arithmatex">\(F_\text{BERT} = 0.887\)</span></strong> — vs BLEU-1 score of 0.33 for this pair</li>
+</ul>
+<p>BERTScore correctly captures that <em>feline</em> ≈ <em>cat</em> and <em>rested</em> ≈ <em>sat</em> semantically.</p>
+<hr>
+<h3 id="5-ragas-metrics-rag-system-evaluation">5. RAGAS Metrics — RAG System Evaluation<a class="headerlink" href="#5-ragas-metrics-rag-system-evaluation" title="Permanent link">¶</a></h3>
+<p>RAGAS decomposes the RAG pipeline into four independently measurable signals. Each uses an LLM judge internally.</p>
+<pre class="mermaid"><code>flowchart LR
+    Q([Query]) --&gt; CTX[Retrieved\nContext]
+    CTX --&gt; ANS[Generated\nAnswer]
+
+    CTX -.Context Precision\nContext Recall.-&gt; Q
+    ANS -.Faithfulness.-&gt; CTX
+    ANS -.Answer Relevancy.-&gt; Q
+
+    style Q fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style CTX fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style ANS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
+<hr>
+<h4 id="5a-faithfulness">5a. Faithfulness<a class="headerlink" href="#5a-faithfulness" title="Permanent link">¶</a></h4>
+<p><strong>What it measures:</strong> Are all claims in the generated answer actually supported by the retrieved context? Detects hallucinations.</p>
+<div class="arithmatex">\[\text{Faithfulness} = \frac{\text{Number of claims in answer supported by context}}{\text{Total number of claims in answer}}\]</div>
+<p>The LLM judge decomposes the answer into atomic claims, then checks each claim against the context independently.</p>
+<p><strong>Worked Example:</strong></p>
+<blockquote>
+<p><strong>Context:</strong> <em>"Paris is the capital of France. The city has a population of approximately 2.1 million."</em><br>
+<strong>Answer:</strong> <em>"Paris is the capital of France (✓). It has a population of 2.1 million (✓). The Eiffel Tower was built in 1889 (✗ — not in context)."</em></p>
+</blockquote>
+<ul>
+<li>Supported claims: 2 · Unsupported: 1</li>
+<li><span class="arithmatex">\(\text{Faithfulness} = 2/3 \approx \mathbf{0.667}\)</span></li>
+</ul>
+<p>A score below 0.8 in production typically indicates a retrieval or grounding failure.</p>
+<hr>
+<h4 id="5b-context-precision">5b. Context Precision<a class="headerlink" href="#5b-context-precision" title="Permanent link">¶</a></h4>
+<p><strong>What it measures:</strong> Signal-to-noise ratio of retrieval. Of all the chunks retrieved, what fraction were actually relevant to the query? Penalizes over-retrieval that pollutes the context window.</p>
+<div class="arithmatex">\[\text{Context Precision@K} = \frac{\displaystyle\sum_{k=1}^{K} \bigl(\text{Precision}@k \times v_k\bigr)}{\text{Total relevant documents retrieved}}\]</div>
+<p>where <span class="arithmatex">\(v_k = 1\)</span> if the <span class="arithmatex">\(k\)</span>-th retrieved chunk is relevant, 0 otherwise, and <span class="arithmatex">\(\text{Precision}@k\)</span> is the fraction of the first <span class="arithmatex">\(k\)</span> chunks that are relevant.</p>
+<p><strong>Worked Example:</strong></p>
+<p>Retrieve 4 chunks; relevance sequence: <span class="arithmatex">\([1, 1, 0, 1]\)</span> (relevant, relevant, irrelevant, relevant).</p>
+<table>
+<thead>
+<tr>
+<th>k</th>
+<th><span class="arithmatex">\(v_k\)</span></th>
+<th>Precision@k</th>
+<th><span class="arithmatex">\(\text{P}@k \times v_k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1/1 = 1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>2/2 = 1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>2/3 = 0.67</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>3/4 = 0.75</td>
+<td>0.75</td>
+</tr>
+</tbody>
+</table>
+<p>Total relevant = 3</p>
+<div class="arithmatex">\[\text{Context Precision} = \frac{1.00 + 1.00 + 0.00 + 0.75}{3} = \frac{2.75}{3} \approx \mathbf{0.917}\]</div>
+<p>The irrelevant chunk at position 3 reduced the score from 1.0. If it had been retrieved last (<span class="arithmatex">\([1,1,1,0]\)</span>), precision would be 1.0 — ordering matters.</p>
+<hr>
+<h4 id="5c-context-recall">5c. Context Recall<a class="headerlink" href="#5c-context-recall" title="Permanent link">¶</a></h4>
+<p><strong>What it measures:</strong> Coverage. Of all the claims needed to fully answer the query (from the ground-truth answer), what fraction appear in the retrieved context? A recall of 0.6 means 40% of the information needed to answer was never retrieved.</p>
+<div class="arithmatex">\[\text{Context Recall} = \frac{\text{GT claims attributable to retrieved context}}{\text{Total claims in ground-truth answer}}\]</div>
+<p><strong>Worked Example:</strong></p>
+<blockquote>
+<p><strong>Ground-truth answer</strong> has 4 key claims:<br>
+(1) Einstein was born in 1879 · (2) in Ulm, Germany · (3) he developed special relativity · (4) he won the Nobel Prize in 1921</p>
+<p><strong>Retrieved context</strong> contains claims (1), (2), (3) but not (4).</p>
+</blockquote>
+<div class="arithmatex">\[\text{Context Recall} = 3/4 = \mathbf{0.75}\]</div>
+<p>The vector search failed to retrieve the Nobel Prize document — you'd need to investigate chunking strategy or embedding quality for that topic.</p>
+<hr>
+<h4 id="5d-answer-relevancy">5d. Answer Relevancy<a class="headerlink" href="#5d-answer-relevancy" title="Permanent link">¶</a></h4>
+<p><strong>What it measures:</strong> Does the answer actually address the question asked? Catches evasive or off-topic responses that are nonetheless factually grounded. Uses a reverse-generation trick — no ground truth needed.</p>
+<p><strong>Algorithm:</strong>
+1. Take the generated answer <span class="arithmatex">\(A\)</span>
+2. Use an LLM to generate <span class="arithmatex">\(N\)</span> hypothetical questions that <span class="arithmatex">\(A\)</span> would answer
+3. Embed each generated question <span class="arithmatex">\(q_i\)</span> and the original query <span class="arithmatex">\(q\)</span>
+4. Score = mean cosine similarity between generated questions and original query</p>
+<div class="arithmatex">\[\text{Answer Relevancy} = \frac{1}{N} \sum_{i=1}^{N} \cos(\mathbf{e}_{q_i},\, \mathbf{e}_q)\]</div>
+<p><strong>Worked Example:</strong></p>
+<blockquote>
+<p><strong>Query:</strong> <em>"What are the side effects of ibuprofen?"</em><br>
+<strong>Answer (evasive):</strong> <em>"Ibuprofen is an NSAID widely used for pain relief. It was first synthesised in 1961 by Stewart Adams."</em></p>
+</blockquote>
+<p>Generated reverse questions from this answer:
+- <span class="arithmatex">\(q_1\)</span>: <em>"What class of drug is ibuprofen?"</em> → similarity to original: 0.51
+- <span class="arithmatex">\(q_2\)</span>: <em>"Who invented ibuprofen?"</em> → similarity: 0.38
+- <span class="arithmatex">\(q_3\)</span>: <em>"When was ibuprofen discovered?"</em> → similarity: 0.35</p>
+<div class="arithmatex">\[\text{Answer Relevancy} = (0.51 + 0.38 + 0.35)/3 \approx \mathbf{0.41}\]</div>
+<p>Low score despite factual accuracy — the answer is Faithful but Irrelevant. This is the "penguin problem": a RAG system that correctly summarizes a retrieved document that happened to be tangentially related.</p>
+<hr>
+<h3 id="6-perplexity">6. Perplexity<a class="headerlink" href="#6-perplexity" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> How confidently does the model predict the next token? Lower perplexity = better language model fit. An intrinsic metric — does not require a reference text.</p>
+<div class="arithmatex">\[\text{PPL}(W) = \exp\!\left(-\frac{1}{N}\sum_{i=1}^{N} \log_e P(w_i \mid w_1, \ldots, w_{i-1})\right)\]</div>
+<p>Intuitively: a perplexity of <span class="arithmatex">\(k\)</span> means the model is as uncertain as if it were choosing uniformly among <span class="arithmatex">\(k\)</span> options at every token step.</p>
+<p><strong>Worked Example:</strong></p>
+<p>A 4-token sequence: <code>"The cat sat"</code></p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Model probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>sat</td>
+<td>0.05</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[\text{PPL} = \exp\!\left(-\frac{1}{3}\bigl(\log 0.50 + \log 0.20 + \log 0.05\bigr)\right)$$
+$$= \exp\!\left(-\frac{1}{3}(-0.693 - 1.609 - 2.996)\right) = \exp(1.766) \approx \mathbf{5.85}\]</div>
+<p>On average, the model is choosing between ~6 equally likely options at each step. GPT-4 on standard English text achieves PPL ~10–15. A random token predictor over a 50,000-token vocabulary scores PPL = 50,000.</p>
+<p><strong>Limitation:</strong> Perplexity measures fluency and language model fit, not truthfulness or task correctness. A model can achieve low perplexity while confidently hallucinating.</p>
+<hr>
+<h3 id="7-passk-code-generation">7. Pass@k — Code Generation<a class="headerlink" href="#7-passk-code-generation" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> For coding tasks (HumanEval, MBPP), generate <span class="arithmatex">\(n\)</span> candidate solutions per problem, then measure the probability that at least one of the top-<span class="arithmatex">\(k\)</span> passes all unit tests.</p>
+<h4 id="formula_3">Formula<a class="headerlink" href="#formula_3" title="Permanent link">¶</a></h4>
+<p>The unbiased estimator avoids running all <span class="arithmatex">\(\binom{n}{k}\)</span> subsets:</p>
+<div class="arithmatex">\[\text{Pass@}k = 1 - \frac{\dbinom{n - c}{k}}{\dbinom{n}{k}}\]</div>
+<p>where <span class="arithmatex">\(n\)</span> = total solutions generated per problem, <span class="arithmatex">\(c\)</span> = solutions that pass all tests, <span class="arithmatex">\(k\)</span> = the top-<span class="arithmatex">\(k\)</span> we report on.</p>
+<p><strong>Worked Example:</strong></p>
+<p>For one coding problem: generate <span class="arithmatex">\(n = 10\)</span> solutions. <span class="arithmatex">\(c = 3\)</span> pass all unit tests.</p>
+<div class="arithmatex">\[\text{Pass@1} = 1 - \frac{\binom{10-3}{1}}{\binom{10}{1}} = 1 - \frac{7}{10} = \mathbf{0.30}\]</div>
+<div class="arithmatex">\[\text{Pass@3} = 1 - \frac{\binom{7}{3}}{\binom{10}{3}} = 1 - \frac{35}{120} \approx \mathbf{0.708}\]</div>
+<div class="arithmatex">\[\text{Pass@5} = 1 - \frac{\binom{7}{5}}{\binom{10}{5}} = 1 - \frac{21}{252} \approx \mathbf{0.917}\]</div>
+<p>GPT-4 achieves Pass@1 ≈ 0.67 on HumanEval; Pass@10 approaches 0.95 because correct solutions exist but require sampling.</p>
+<hr>
+<h3 id="8-cohens-kappa-judge-reliability">8. Cohen's Kappa — Judge Reliability<a class="headerlink" href="#8-cohens-kappa-judge-reliability" title="Permanent link">¶</a></h3>
+<p><strong>What it measures:</strong> Agreement between two raters (human vs LLM judge, or human vs human) that accounts for chance agreement. Used to validate whether an automated judge can replace human annotation.</p>
+<div class="arithmatex">\[\kappa = \frac{p_o - p_e}{1 - p_e}\]</div>
+<p>where <span class="arithmatex">\(p_o\)</span> = observed proportion of agreement, <span class="arithmatex">\(p_e\)</span> = expected agreement by chance.</p>
+<h4 id="calculating-p_e">Calculating <span class="arithmatex">\(p_e\)</span><a class="headerlink" href="#calculating-p_e" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[p_e = \sum_{\text{category } c} P(\text{rater 1 chooses } c) \times P(\text{rater 2 chooses } c)\]</div>
+<p><strong>Worked Example:</strong></p>
+<p>100 LLM responses rated by a human and an LLM judge (binary: Good / Bad):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Judge: Good</th>
+<th>Judge: Bad</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Human: Good</strong></td>
+<td>45</td>
+<td>10</td>
+<td>55</td>
+</tr>
+<tr>
+<td><strong>Human: Bad</strong></td>
+<td>8</td>
+<td>37</td>
+<td>45</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>53</td>
+<td>47</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[p_o = \frac{45 + 37}{100} = 0.82\]</div>
+<div class="arithmatex">\[p_e = \frac{55}{100} \cdot \frac{53}{100} + \frac{45}{100} \cdot \frac{47}{100} = 0.2915 + 0.2115 = 0.503\]</div>
+<div class="arithmatex">\[\kappa = \frac{0.82 - 0.503}{1 - 0.503} = \frac{0.317}{0.497} \approx \mathbf{0.638}\]</div>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(\kappa\)</span> range</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 0.20</td>
+<td>Slight agreement — judge not usable</td>
+</tr>
+<tr>
+<td>0.20 – 0.40</td>
+<td>Fair</td>
+</tr>
+<tr>
+<td>0.40 – 0.60</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>0.60 – 0.80</td>
+<td>Substantial — judge is viable</td>
+</tr>
+<tr>
+<td><strong>&gt; 0.80</strong></td>
+<td><strong>Near-perfect — judge fully trusted</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A <span class="arithmatex">\(\kappa &gt; 0.8\)</span> is the threshold at which you can replace human annotators with the LLM judge and trust automated evaluation pipelines.</p>
+<hr>
+<h3 id="9-production-metrics">9. Production Metrics<a class="headerlink" href="#9-production-metrics" title="Permanent link">¶</a></h3>
+<p>Quality metrics alone are insufficient. Production systems require three additional measurement axes.</p>
+<h4 id="latency">Latency<a class="headerlink" href="#latency" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Formula</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TTFT (Time-to-First-Token)</td>
+<td><span class="arithmatex">\(t_\text{first token} - t_\text{request sent}\)</span></td>
+<td>&lt; 500ms</td>
+</tr>
+<tr>
+<td>TPS (Tokens per Second)</td>
+<td><span class="arithmatex">\(\text{output tokens} / (t_\text{last} - t_\text{first})\)</span></td>
+<td>&gt; 30 TPS</td>
+</tr>
+<tr>
+<td>E2E Latency</td>
+<td><span class="arithmatex">\(t_\text{response complete} - t_\text{request sent}\)</span></td>
+<td>p95 &lt; 5s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Measure percentiles, not averages.</strong> A p50 of 1.2s with p99 of 18s means 1% of users wait 18 seconds — the average hides the worst experience.</p>
+<h4 id="cost">Cost<a class="headerlink" href="#cost" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[\text{Cost per query} = \frac{\text{input tokens} \times \text{price}_\text{in} + \text{output tokens} \times \text{price}_\text{out}}{10^6}\]</div>
+<p><strong>Example (Claude Sonnet 4.6):</strong> 1,000 input tokens + 500 output tokens:</p>
+<div class="arithmatex">\[\text{Cost} = \frac{1000 \times 3.00 + 500 \times 15.00}{10^6} = \frac{3000 + 7500}{10^6} = \$0.0105 \text{ per query}\]</div>
+<p>At 10,000 queries/day: <span class="arithmatex">\(\$105\)</span>/day → <span class="arithmatex">\(\$3,150\)</span>/month. Tracking this with a 20% token-over-budget alert prevents cost blowouts from prompt changes that inflate output length.</p>
+<h4 id="error-rate">Error Rate<a class="headerlink" href="#error-rate" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[\text{Error Rate} = \frac{\text{Timeouts + Parsing failures + Context exceeded + Safety blocks}}{\text{Total requests}}\]</div>
+<p>A healthy production system targets &lt; 0.5% error rate. Break down by error type — a 2% context-exceeded rate means your chunking is producing inputs that consistently overflow the model's window.</p>
+<hr>
+<h3 id="summary-cheat-sheet">Summary Cheat Sheet<a class="headerlink" href="#summary-cheat-sheet" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Measures</th>
+<th>Needs Ground Truth</th>
+<th>Range</th>
+<th>Higher = Better</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BLEU-4</td>
+<td>N-gram precision (translation)</td>
+<td>Yes</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>ROUGE-1 F1</td>
+<td>Unigram recall (summarization)</td>
+<td>Yes</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>ROUGE-L F1</td>
+<td>Sequence order recall</td>
+<td>Yes</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>METEOR</td>
+<td>Precision + recall + synonyms</td>
+<td>Yes</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BERTScore F1</td>
+<td>Semantic token similarity</td>
+<td>Yes</td>
+<td>~0.8 – 1.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Faithfulness</td>
+<td>Hallucination absence</td>
+<td>No (uses LLM judge)</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Context Precision</td>
+<td>Retrieval signal-to-noise</td>
+<td>Yes (GT answer)</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Context Recall</td>
+<td>Retrieval coverage</td>
+<td>Yes (GT answer)</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Answer Relevancy</td>
+<td>Answer addresses query</td>
+<td>No (reverse generation)</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Perplexity</td>
+<td>Language model fluency</td>
+<td>No</td>
+<td>1 – ∞</td>
+<td>No (lower = better)</td>
+</tr>
+<tr>
+<td>Pass@k</td>
+<td>Code correctness</td>
+<td>Yes (unit tests)</td>
+<td>0 – 1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Cohen's Kappa</td>
+<td>Judge–human agreement</td>
+<td>Yes (human labels)</td>
+<td>-1 – 1</td>
+<td>Yes (target &gt; 0.8)</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <p><em>Interview Questions: <a href="interview-questions/">Evaluation Interview Q&amp;A →</a></em></p>
 <p><em>Next: <a href="../11-hallucination/">Hallucination Control →</a></em></p>
