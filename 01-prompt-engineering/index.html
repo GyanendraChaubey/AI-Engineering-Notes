@@ -1117,10 +1117,87 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deep-dive-react-reason-act" class="md-nav__link">
+  <a href="#technique-1-zero-shot-prompting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deep-Dive: ReAct (Reason + Act)
+        Technique 1 — Zero-Shot Prompting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-2-few-shot-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 2 — Few-Shot Prompting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-3-chain-of-thought-cot-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 3 — Chain-of-Thought (CoT) Prompting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-4-self-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 4 — Self-Consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-5-tree-of-thought-tot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 5 — Tree-of-Thought (ToT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-6-react-reason-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 6 — ReAct (Reason + Act)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technique-7-generated-knowledge-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technique 7 — Generated Knowledge Prompting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-when-to-use-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: When to Use What
       
     </span>
   </a>
@@ -5580,86 +5657,644 @@ In-context learning is an "emergent property". Small models (under 1B parameters
 <hr>
 <h2 id="q11-what-are-the-main-typestechniques-of-prompt-engineering">Q11. What are the main types/techniques of prompt engineering?<a class="headerlink" href="#q11-what-are-the-main-typestechniques-of-prompt-engineering" title="Permanent link">¶</a></h2>
 <h3 id="core-answer_10">Core Answer<a class="headerlink" href="#core-answer_10" title="Permanent link">¶</a></h3>
-<p>Advanced prompting techniques systematically guide the model's reasoning process.</p>
+<p>Advanced prompting techniques systematically guide the model's reasoning process. Each technique targets a different failure mode of LLMs — lack of examples, lack of reasoning, lack of consistency, or lack of real-world grounding.</p>
 <table>
 <thead>
 <tr>
 <th>Technique</th>
-<th>Description</th>
-<th>Example</th>
+<th>Core Idea</th>
+<th>Best For</th>
+<th>Cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Zero-Shot</strong></td>
-<td>Direct instruction without examples.</td>
-<td>"Translate to French: Hello"</td>
+<td>Direct instruction, no examples</td>
+<td>Simple well-defined tasks</td>
+<td>Cheapest</td>
 </tr>
 <tr>
 <td><strong>Few-Shot</strong></td>
-<td>Provide examples of input/output pairs.</td>
-<td>"Q: 2+2 A: 4. Q: 3+3 A: 6. Q: 4+4 A:"</td>
+<td>Provide 2–8 input/output examples</td>
+<td>Format-sensitive or domain-specific tasks</td>
+<td>Low</td>
 </tr>
 <tr>
 <td><strong>Chain-of-Thought (CoT)</strong></td>
-<td>Ask model to reason step-by-step.</td>
-<td>"Think step-by-step before answering."</td>
+<td>Force step-by-step reasoning</td>
+<td>Math, logic, multi-step problems</td>
+<td>Medium</td>
 </tr>
 <tr>
 <td><strong>Self-Consistency</strong></td>
-<td>Generate multiple CoT paths, take majority vote.</td>
-<td>Generate 5 answers, pick most frequent.</td>
+<td>Generate N CoT paths, majority vote</td>
+<td>High-stakes answers needing reliability</td>
+<td>N× CoT cost</td>
 </tr>
 <tr>
 <td><strong>Tree-of-Thought (ToT)</strong></td>
-<td>Explore multiple branches, backtrack if needed.</td>
-<td>Generate 3 next steps, evaluate, expand best.</td>
+<td>Explore branching reasoning paths, backtrack</td>
+<td>Complex planning, creative tasks</td>
+<td>Highest</td>
 </tr>
 <tr>
 <td><strong>ReAct</strong></td>
-<td>Interleave reasoning and action/tool use.</td>
-<td>"Thought: I need to search Wikipedia. Action: Search[RAG]"</td>
+<td>Interleave reasoning + external tool calls</td>
+<td>Factual Q&amp;A, agents needing live data</td>
+<td>Multi-call</td>
 </tr>
 <tr>
 <td><strong>Generated Knowledge</strong></td>
-<td>Ask model to generate facts first, then answer.</td>
-<td>"Write 3 facts about X. Now use them to solve Y."</td>
+<td>Generate facts first, then answer using them</td>
+<td>Commonsense reasoning, knowledge-intensive tasks</td>
+<td>2× Single call</td>
 </tr>
 </tbody>
 </table>
-<h3 id="deep-dive-react-reason-act">Deep-Dive: ReAct (Reason + Act)<a class="headerlink" href="#deep-dive-react-reason-act" title="Permanent link">¶</a></h3>
-<p>ReAct is the foundation of Agentic AI.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Question: What is the weather in the capital of France?
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Thought: I need to find the capital of France first.
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Action: Search[Capital of France]
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Observation: Paris
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Thought: Now I need to find the weather in Paris.
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>Action: GetWeather[Paris]
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>Observation: 72F and sunny
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>Thought: I have the answer.
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>Final Answer: The weather in Paris is 72F and sunny.
+<pre class="mermaid"><code>flowchart TD
+    Q[User Query] --&gt; ZS[Zero-Shot\nDirect instruction]
+    Q --&gt; FS[Few-Shot\nExamples injected]
+    Q --&gt; COT[Chain-of-Thought\nStep-by-step reasoning]
+    COT --&gt; SC[Self-Consistency\nN paths + majority vote]
+    COT --&gt; TOT[Tree-of-Thought\nBranching + backtrack]
+    Q --&gt; REACT[ReAct\nReason + Tool calls]
+    Q --&gt; GK[Generated Knowledge\nFacts first then answer]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style ZS fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style COT fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style SC fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style TOT fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style REACT fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style GK fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF</code></pre>
+<hr>
+<h3 id="technique-1-zero-shot-prompting">Technique 1 — Zero-Shot Prompting<a class="headerlink" href="#technique-1-zero-shot-prompting" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> You give the model only the instruction and the input. No examples whatsoever.</p>
+<p><strong>Why it works:</strong> Modern LLMs are pre-trained on trillions of tokens of internet text that contain implicit demonstrations of almost every task (translations, summaries, classifications, code, etc.). Zero-shot prompting relies entirely on this learned world knowledge — the model has "seen" the task before in pre-training.</p>
+<p><strong>Prompt anatomy:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[Task instruction]
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[Input]
 </span></code></pre></div>
+<p><strong>Concrete example:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Classify the sentiment of the following review as Positive, Negative, or Neutral.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Review: "The battery lasts all day and the screen is gorgeous, but the camera is just average."
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Sentiment:
+</span></code></pre></div>
+<p><strong>When to use it:</strong>
+- The task is simple and unambiguous (translation, classification, summarization)
+- You cannot afford context window space for examples
+- The model is large (GPT-4, Claude Opus) and capable enough</p>
+<p><strong>Failure modes:</strong>
+- Novel tasks the model hasn't implicitly learned (e.g., very domain-specific formats)
+- Tasks requiring precise output formats (JSON schema, specific field names) — model may guess wrong
+- Complex multi-step reasoning — model rushes to the answer</p>
+<p><strong>Engineering rule:</strong> Always try zero-shot first. If accuracy is insufficient, escalate to few-shot.</p>
+<hr>
+<h3 id="technique-2-few-shot-prompting">Technique 2 — Few-Shot Prompting<a class="headerlink" href="#technique-2-few-shot-prompting" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> You provide 2–8 worked examples of (input → output) pairs before the actual query. The model infers the pattern from the examples and applies it to the new input.</p>
+<p><strong>Why it works:</strong> This exploits <strong>in-context learning</strong> (ICL) — a capability that emerges in large enough models. The transformer's attention mechanism uses the examples as implicit "weights" — the model learns the task structure purely from the context window without any gradient update.</p>
+<p><strong>Prompt anatomy:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[Task instruction]
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>[Example 1 Input]
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>[Example 1 Output]
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>[Example 2 Input]
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>[Example 2 Output]
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>[Actual Input]
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>[Expected Output] ← model fills this in
+</span></code></pre></div>
+<p><strong>Concrete example (sentiment with output format):</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Classify the sentiment. Reply with ONLY a JSON object: {"sentiment": "...", "confidence": "high/medium/low"}
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Review: "Best phone I've ever owned."
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Output: {"sentiment": "Positive", "confidence": "high"}
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Review: "Works fine, nothing special."
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Output: {"sentiment": "Neutral", "confidence": "medium"}
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>Review: "Broke after two days. Terrible quality."
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>Output: {"sentiment": "Negative", "confidence": "high"}
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>Review: "Great camera but the battery drains by noon."
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>Output:
+</span></code></pre></div>
+<p><strong>The 5 golden rules for few-shot examples:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Format consistency</strong></td>
+<td>Even a missing space between label and newline degrades performance</td>
+</tr>
+<tr>
+<td><strong>Label balance</strong></td>
+<td>If 4/5 examples are "Positive", model is biased to output "Positive"</td>
+</tr>
+<tr>
+<td><strong>Recency bias mitigation</strong></td>
+<td>The last example has the highest influence — randomize example order</td>
+</tr>
+<tr>
+<td><strong>Diversity</strong></td>
+<td>Include edge cases: short inputs, long inputs, ambiguous inputs</td>
+</tr>
+<tr>
+<td><strong>Quality &gt; quantity</strong></td>
+<td>3 perfect examples outperform 10 mediocre ones</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dynamic Few-Shot (production pattern):</strong> Instead of hardcoding examples, store 500+ examples in a vector database. At query time, embed the input and retrieve the 3 most semantically similar examples. This is the most effective few-shot strategy at scale.</p>
+<p><strong>Surprising finding (Min et al., 2022):</strong> The <em>labels</em> in few-shot examples don't need to be correct. Using random wrong labels (tagging a "Positive" review as "Negative") still dramatically outperforms zero-shot. The model learns the <em>format</em> and <em>input distribution</em> from examples — the actual task logic comes from pre-training weights.</p>
+<hr>
+<h3 id="technique-3-chain-of-thought-cot-prompting">Technique 3 — Chain-of-Thought (CoT) Prompting<a class="headerlink" href="#technique-3-chain-of-thought-cot-prompting" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> Instead of asking for the answer directly, you instruct the model to write out its reasoning steps before giving the final answer. The reasoning is visible in the output.</p>
+<p><strong>Why it works — the token budget argument:</strong> An LLM performs exactly one transformer forward pass per output token. That forward pass is a fixed amount of computation regardless of what the token is. When you ask for a direct answer, the model must arrive at the correct conclusion in a <em>single token</em>. When you force step-by-step reasoning, you are allocating additional tokens (= additional compute passes) to the problem <em>before</em> demanding the final answer. More tokens = more computation = more reliable answers for hard problems.</p>
+<p><strong>Two variants:</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Zero-Shot CoT</label><label for="__tabbed_1_2">Few-Shot CoT</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Simply append "Let's think step by step." No examples needed.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. 
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>How much does the ball cost?
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>Let's think step by step.
+</span></code></pre></div>
+<p><strong>Model output:</strong>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Let the ball cost x cents.
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>The bat costs x + 100 cents (since it costs $1.00 more).
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Together: x + (x + 100) = 110
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>2x + 100 = 110
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>2x = 10
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>x = 5
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>The ball costs 5 cents ($0.05).
+</span></code></pre></div><p></p>
+</div>
+<div class="tabbed-block">
+<p>Provide worked examples with explicit reasoning chains.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Q: Roger has 5 tennis balls. He buys 2 more cans of 3 balls each. How many balls does he have?
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>A: Roger started with 5 balls. 2 cans × 3 balls = 6 new balls. 5 + 6 = 11. Answer: 11.
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Q: The cafeteria had 23 apples. They used 20 to make lunch and bought 6 more. How many apples do they have?
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>A:
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Critical constraint — model size:</strong> CoT only reliably works on models with ~100B+ parameters. On smaller models (7B, 13B), CoT sometimes makes performance <em>worse</em> because the model generates plausible-sounding but incorrect reasoning chains ("reasoning hallucination").</p>
+<p><strong>Implementation in production:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">"""You are a precise reasoning assistant.</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s2">When solving problems:</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s2">1. Write your reasoning inside &lt;thinking&gt; tags</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s2">2. Write only your final answer inside &lt;answer&gt; tags</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s2">Never skip the thinking step."""</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">user_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""Problem: </span><span class="si">{</span><span class="n">problem</span><span class="si">}</span><span class="s2">"""</span>
+</span></code></pre></div>
+<hr>
+<h3 id="technique-4-self-consistency">Technique 4 — Self-Consistency<a class="headerlink" href="#technique-4-self-consistency" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> An ensemble technique built on top of CoT. Instead of generating one reasoning path, you generate N independent CoT paths (at temperature &gt; 0) and take the majority vote on the final answers.</p>
+<p><strong>Why it works:</strong> Different temperature samples explore different reasoning trajectories through the problem. Some paths will make arithmetic errors; others will choose wrong operators; a few will get confused about the problem statement. But the <em>correct</em> reasoning path and its answer tend to be more common than any single wrong path, so majority vote reliably selects the correct answer.</p>
+<pre class="mermaid"><code>flowchart TD
+    Q[Hard Math Question] --&gt; P1[CoT Path 1\ntemp=0.7]
+    Q --&gt; P2[CoT Path 2\ntemp=0.7]
+    Q --&gt; P3[CoT Path 3\ntemp=0.7]
+    Q --&gt; P4[CoT Path 4\ntemp=0.7]
+    Q --&gt; P5[CoT Path 5\ntemp=0.7]
+
+    P1 --&gt; A1[Answer: 42]
+    P2 --&gt; A2[Answer: 42]
+    P3 --&gt; A3[Answer: 40]
+    P4 --&gt; A4[Answer: 42]
+    P5 --&gt; A5[Answer: 38]
+
+    A1 &amp; A2 &amp; A3 &amp; A4 &amp; A5 --&gt; VOTE[Majority Vote\n42 appears 3/5 times]
+    VOTE --&gt; FINAL[Final Answer: 42 ✅]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style VOTE fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style FINAL fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style P1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P4 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P5 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style A4 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A5 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF</code></pre>
+<p><strong>When to use it:</strong>
+- High-stakes answers where accuracy matters most (medical, financial, legal Q&amp;A)
+- Tasks with a single definitive correct answer (math, logic, factual lookup)
+- When you can afford N× the API cost</p>
+<p><strong>When NOT to use it:</strong>
+- Open-ended creative tasks (there is no "correct" answer to vote on)
+- Real-time applications (N parallel calls add latency)</p>
+<p><strong>Implementation:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">self_consistency</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">answers</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">)</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>        <span class="c1"># Extract final answer (assumes "Answer: X" format)</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Answer:\s*(.+)'</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>            <span class="n">answers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="c1"># Majority vote</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></code></pre></div>
+<p><strong>Key parameter:</strong> Use temperature 0.5–0.7. Too low (0.0) and all paths are identical. Too high (&gt;1.0) and paths are incoherent.</p>
+<hr>
+<h3 id="technique-5-tree-of-thought-tot">Technique 5 — Tree-of-Thought (ToT)<a class="headerlink" href="#technique-5-tree-of-thought-tot" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> A generalization of CoT where the reasoning process is a <em>tree</em> rather than a <em>chain</em>. At each step, the model generates multiple candidate next steps, evaluates them, and expands only the most promising ones. The model can backtrack when it reaches a dead end.</p>
+<p><strong>Analogy:</strong> CoT is like writing an essay in one continuous stream. ToT is like writing an essay where, at each paragraph, you draft 3 alternative continuations, read them all, pick the best one, and throw away the others.</p>
+<p><strong>The three components:</strong></p>
+<ol>
+<li><strong>Thought generator</strong> — "Generate 3 possible next steps for solving this problem."</li>
+<li><strong>State evaluator</strong> — "Rate each of these steps as promising / not promising / definitive dead end."</li>
+<li><strong>Search algorithm</strong> — BFS (explore all options at each depth) or DFS (follow one path to completion, backtrack on failure).</li>
+</ol>
+<pre class="mermaid"><code>flowchart TD
+    ROOT[Problem] --&gt; T1[Step A]
+    ROOT --&gt; T2[Step B]
+    ROOT --&gt; T3[Step C]
+
+    T1 --&gt; E1{Evaluate}
+    T2 --&gt; E2{Evaluate}
+    T3 --&gt; E3{Evaluate}
+
+    E1 --&gt;|Promising| T1A[Step A.1]
+    E1 --&gt;|Promising| T1B[Step A.2]
+    E2 --&gt;|Dead end ✗| DEAD1[Pruned]
+    E3 --&gt;|Promising| T3A[Step C.1]
+
+    T1A --&gt; E4{Evaluate}
+    T1B --&gt; E5{Evaluate}
+    T3A --&gt; E6{Evaluate}
+
+    E4 --&gt;|Best| SOLUTION[Solution ✅]
+    E5 --&gt;|Worse| DEAD2[Pruned]
+    E6 --&gt;|Dead end ✗| DEAD3[Pruned]
+
+    style ROOT fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style E1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E3 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style DEAD1 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style DEAD2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style DEAD3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style SOLUTION fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style T1A fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style T1B fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style T3A fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E4 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E5 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E6 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF</code></pre>
+<p><strong>Production implementation sketch:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">tree_of_thought</span><span class="p">(</span><span class="n">problem</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">breadth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="n">thoughts</span> <span class="o">=</span> <span class="p">[</span><span class="n">problem</span><span class="p">]</span>  <span class="c1"># BFS queue</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>        <span class="n">candidates</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>        <span class="k">for</span> <span class="n">thought</span> <span class="ow">in</span> <span class="n">thoughts</span><span class="p">:</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>            <span class="c1"># Step 1: Generate next steps</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>            <span class="n">next_steps</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>                <span class="sa">f</span><span class="s2">"Given progress so far:</span><span class="se">\n</span><span class="si">{</span><span class="n">thought</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Generate </span><span class="si">{</span><span class="n">breadth</span><span class="si">}</span><span class="s2"> possible next steps."</span><span class="p">,</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>                <span class="n">n</span><span class="o">=</span><span class="n">breadth</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>            <span class="p">)</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>            <span class="n">candidates</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">next_steps</span><span class="p">)</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>        <span class="c1"># Step 2: Evaluate all candidates</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>        <span class="n">scores</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>            <span class="sa">f</span><span class="s2">"Rate each of these solution steps as 'sure/maybe/impossible':</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>            <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidates</span><span class="p">))</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>        <span class="p">)</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>        <span class="c1"># Step 3: Keep only 'sure' or 'maybe' branches</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>        <span class="n">thoughts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span> <span class="k">if</span> <span class="s1">'impossible'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>    <span class="k">return</span> <span class="n">thoughts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Best remaining path</span>
+</span></code></pre></div>
+<p><strong>When to use:</strong>
+- Writing tasks requiring careful planning (e.g., "write a persuasive essay with 5 supporting arguments")
+- Mathematical proof discovery
+- Complex puzzle solving (Game of 24, crosswords)
+- Any task where dead-ends are common and backtracking has value</p>
+<p><strong>Trade-off:</strong> ToT requires many LLM calls (breadth × depth). A depth-4, breadth-3 tree = up to 12 LLM calls per query. Only justified for genuinely complex, high-value problems.</p>
+<p><strong>CoT vs Self-Consistency vs ToT:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CoT</th>
+<th>Self-Consistency</th>
+<th>ToT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structure</strong></td>
+<td>Single chain</td>
+<td>N parallel chains</td>
+<td>Tree with branching</td>
+</tr>
+<tr>
+<td><strong>LLM calls</strong></td>
+<td>1</td>
+<td>N</td>
+<td>breadth × depth</td>
+</tr>
+<tr>
+<td><strong>Backtracking</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Math, logic</td>
+<td>High-stakes answers</td>
+<td>Planning, creative</td>
+</tr>
+<tr>
+<td><strong>Introduced</strong></td>
+<td>Wei et al. 2022</td>
+<td>Wang et al. 2022</td>
+<td>Yao et al. 2023</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="technique-6-react-reason-act">Technique 6 — ReAct (Reason + Act)<a class="headerlink" href="#technique-6-react-reason-act" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> The model interleaves <strong>Thought</strong> (reasoning) with <strong>Action</strong> (external tool calls) and <strong>Observation</strong> (tool results) in a loop until it reaches a final answer. ReAct is the direct architectural foundation of every AI agent framework (LangChain, LangGraph, AutoGPT).</p>
+<p><strong>Why it works:</strong> Pure LLMs are frozen in time — their knowledge stops at training cutoff and they cannot query live systems. ReAct grounds the LLM's reasoning in real-world, up-to-date information by giving it tools (search, calculator, database, code executor, API) and teaching it <em>when and how</em> to use them.</p>
+<p><strong>The full loop:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+    Q[User Query] --&gt; T1["🧠 Thought: What do I need to find out?"]
+    T1 --&gt; A1["⚡ Action: Search / Calculate / Query"]
+    A1 --&gt; O1["👁️ Observation: Tool result returned"]
+    O1 --&gt; T2["🧠 Thought: What does this tell me? What's next?"]
+    T2 --&gt; A2["⚡ Action: Next tool call"]
+    A2 --&gt; O2["👁️ Observation: Second result"]
+    O2 --&gt; T3["🧠 Thought: I now have enough to answer."]
+    T3 --&gt; FA["✅ Final Answer"]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style O1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style O2 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FA fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
+<p><strong>Full concrete trace — "What is the GDP per capita of the country that hosted the 2020 Olympics?"</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Thought: I need to find which country hosted the 2020 Olympics.
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Action: Search["2020 Olympics host country"]
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Observation: The 2020 Summer Olympics were held in Tokyo, Japan.
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Thought: Now I need Japan's GDP per capita.
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>Action: Search["Japan GDP per capita 2023"]
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Observation: Japan's GDP per capita is approximately $33,800 USD (2023).
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>Thought: I have both pieces of information I need.
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>Final Answer: Japan hosted the 2020 Olympics. Its GDP per capita is approximately $33,800 USD.
+</span></code></pre></div>
+<p><strong>How the orchestrator works (what happens behind the scenes):</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">react_agent</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">max_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"Question: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps</span><span class="p">):</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>        <span class="c1"># LLM generates next Thought + Action</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Thought:"</span><span class="p">)</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Thought: </span><span class="si">{</span><span class="n">response</span><span class="p">[</span><span class="s1">'thought'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>        <span class="k">if</span> <span class="s2">"Final Answer:"</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">'thought'</span><span class="p">]:</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>            <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">'thought'</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"Final Answer:"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>        <span class="c1"># Parse the action</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>        <span class="n">action_name</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">'action'</span><span class="p">]</span>   <span class="c1"># e.g. "Search"</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>        <span class="n">action_input</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">'input'</span><span class="p">]</span>   <span class="c1"># e.g. "Japan GDP 2023"</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>        <span class="c1"># Execute the tool</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>        <span class="k">if</span> <span class="n">action_name</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">:</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>            <span class="n">observation</span> <span class="o">=</span> <span class="n">tools</span><span class="p">[</span><span class="n">action_name</span><span class="p">](</span><span class="n">action_input</span><span class="p">)</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>            <span class="n">observation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Error: unknown tool '</span><span class="si">{</span><span class="n">action_name</span><span class="si">}</span><span class="s2">'"</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Action: </span><span class="si">{</span><span class="n">action_name</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">action_input</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="k">return</span> <span class="s2">"Max steps reached without a final answer."</span>
+</span></code></pre></div>
+<p><strong>Available tool types in production ReAct agents:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Search</code></td>
+<td>Web search / RAG retrieval</td>
+<td>Find current facts</td>
+</tr>
+<tr>
+<td><code>Calculator</code></td>
+<td>Arithmetic operations</td>
+<td>Avoid math hallucination</td>
+</tr>
+<tr>
+<td><code>CodeExecutor</code></td>
+<td>Run Python / SQL</td>
+<td>Precise data processing</td>
+</tr>
+<tr>
+<td><code>APICall</code></td>
+<td>REST/GraphQL calls</td>
+<td>Jira, Slack, Salesforce</td>
+</tr>
+<tr>
+<td><code>ReadFile</code></td>
+<td>Read from filesystem or S3</td>
+<td>Process documents</td>
+</tr>
+<tr>
+<td><code>HumanInput</code></td>
+<td>Pause for human approval</td>
+<td>High-stakes actions</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical limitations:</strong></p>
+<ul>
+<li><strong>Sequential bottleneck:</strong> Each Thought → Action → Observation is a separate LLM call. A 5-step ReAct query = 5 API calls = 5× latency.</li>
+<li><strong>Loop failure:</strong> Model can get stuck calling the same failing search repeatedly. Fix: add a <code>visited_actions</code> set; if the same action+input appears twice, force the model to try a different approach.</li>
+<li><strong>Context explosion:</strong> Each observation appended to the prompt. After 10 steps, the prompt may exceed the context window.</li>
+<li><strong>Tool hallucination:</strong> Model may call tools that don't exist or pass malformed inputs.</li>
+</ul>
+<hr>
+<h3 id="technique-7-generated-knowledge-prompting">Technique 7 — Generated Knowledge Prompting<a class="headerlink" href="#technique-7-generated-knowledge-prompting" title="Permanent link">¶</a></h3>
+<p><strong>What it is:</strong> A two-stage prompting strategy where you first ask the model to <em>generate relevant background knowledge</em> about the topic, and then use that self-generated knowledge as context for answering the actual question.</p>
+<p><strong>Why it works:</strong> LLMs have rich knowledge distributed across their weights, but that knowledge must be "activated" by the right prompt context. Asking directly for an answer compresses two operations — knowledge retrieval and reasoning — into a single step. Generated Knowledge decouples them: Stage 1 forces the model to surface relevant facts into the context window, and Stage 2 uses those facts as explicit grounding for the final answer.</p>
+<p><strong>Analogy:</strong> It is the difference between asking a doctor "Is this symptom dangerous?" versus first asking them "What are all the conditions that cause this symptom?" and then asking "Given those conditions, which are dangerous?" The second approach activates a richer knowledge structure.</p>
+<p><strong>Two-stage prompt structure:</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    Q[Original Question] --&gt; S1["Stage 1 Prompt:\nGenerate N relevant facts\nabout this topic"]
+    S1 --&gt; FACTS["Generated Facts:\nFact 1: ...\nFact 2: ...\nFact 3: ..."]
+    FACTS --&gt; S2["Stage 2 Prompt:\nGiven these facts,\nanswer the question"]
+    S2 --&gt; ANS[Final Answer]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style S1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FACTS fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style S2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style ANS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF</code></pre>
+<p><strong>Concrete example — commonsense reasoning:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>=== STAGE 1 PROMPT ===
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Generate 4 relevant facts about how golf scoring works. Be concise.
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>=== MODEL OUTPUT (Stage 1) ===
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>1. In golf, a lower score is better — you want fewer strokes to complete each hole.
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>2. "Par" is the expected number of strokes for a hole. Par-3, Par-4, and Par-5 holes are most common.
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>3. A "birdie" means completing a hole in one stroke below par (e.g., 3 strokes on a Par-4).
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>4. A "bogey" means completing a hole in one stroke above par (e.g., 5 strokes on a Par-4).
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>=== STAGE 2 PROMPT ===
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>Facts about golf:
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>1. In golf, a lower score is better.
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>2. Par is the expected number of strokes per hole.
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>3. A birdie = one below par. A bogey = one above par.
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>4. Par-3, Par-4, Par-5 are the most common hole types.
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>Question: If a golfer scores 3 on a Par-4, and 5 on a Par-3, what is their score relative to par?
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>Answer:
+</span></code></pre></div>
+<p><strong>When to use it vs RAG:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Generated Knowledge</th>
+<th>RAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Knowledge source</strong></td>
+<td>Model's own weights</td>
+<td>External documents</td>
+</tr>
+<tr>
+<td><strong>Freshness</strong></td>
+<td>Limited to training cutoff</td>
+<td>Can be current/real-time</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>May hallucinate facts</td>
+<td>Grounded in real sources</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>2 LLM calls, no retrieval infra</td>
+<td>Retrieval + LLM call</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Commonsense, stable knowledge</td>
+<td>Live data, private documents</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Related techniques:</strong>
+- <strong>Self-Ask</strong> — Model generates sub-questions needed to answer the main question, then answers each one in sequence.
+- <strong>Least-to-Most Prompting</strong> — Break the problem into sub-problems from easiest to hardest, solve them in order.
+- <strong>Scratchpad Prompting</strong> — Give model a <code>&lt;scratchpad&gt;</code> block to jot notes before final output (essentially single-stage Generated Knowledge).</p>
+<hr>
+<h3 id="comparison-when-to-use-what">Comparison: When to Use What<a class="headerlink" href="#comparison-when-to-use-what" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    START[Do you need external\nlive data or tools?] --&gt;|Yes| REACT[Use ReAct]
+    START --&gt;|No| STEP2[Is the task complex\nmulti-step reasoning?]
+
+    STEP2 --&gt;|No| STEP3[Do you have\nlabeled examples?]
+    STEP3 --&gt;|Yes| FS[Use Few-Shot]
+    STEP3 --&gt;|No| ZS[Use Zero-Shot]
+
+    STEP2 --&gt;|Yes| STEP4[How important\nis reliability?]
+    STEP4 --&gt;|Critical — need\nhighest accuracy| STEP5[Can you afford\nmany LLM calls?]
+    STEP5 --&gt;|Yes — need\nbacktracking| TOT[Use Tree-of-Thought]
+    STEP5 --&gt;|Yes — task\nhas one right answer| SC[Use Self-Consistency]
+    STEP5 --&gt;|No — single call| STEP6[Is background\nknowledge the bottleneck?]
+    STEP4 --&gt;|Good enough| COT[Use Chain-of-Thought]
+
+    STEP6 --&gt;|Yes| GK[Use Generated Knowledge]
+    STEP6 --&gt;|No| COT
+
+    style START fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style REACT fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style FS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style ZS fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style COT fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style SC fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style TOT fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style GK fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style STEP2 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP3 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP4 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP5 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP6 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF</code></pre>
 <h3 id="related-questions_10">Related Questions<a class="headerlink" href="#related-questions_10" title="Permanent link">¶</a></h3>
 <div class="admonition question">
 <p class="admonition-title">Follow-up Interview Questions</p>
 <ol>
-<li>How does Chain-of-Thought improve math performance mathematically? (Increases computation time/tokens before final answer)</li>
-<li>What is zero-shot CoT and who discovered it? ("Let's think step by step")</li>
-<li>How would you implement Tree-of-Thought in a production system?</li>
-<li>What are the limitations of the ReAct framework?</li>
+<li>Why does Chain-of-Thought fail on small models (&lt;10B parameters)?</li>
+<li>What is the mathematical reason why more reasoning tokens improve LLM accuracy?</li>
+<li>How would you implement Self-Consistency in production without doubling latency?</li>
+<li>What is the key difference between ToT and Self-Consistency architecturally?</li>
+<li>How does ReAct prevent tool hallucination (calling tools that don't exist)?</li>
+<li>When would Generated Knowledge fail compared to RAG?</li>
+<li>What is "zero-shot CoT" and who discovered it?</li>
 </ol>
 </div>
 <details class="success">
 <summary>View Answers</summary>
-<p><strong>1. How does CoT improve math performance mathematically?</strong>
-LLMs have a fixed amount of computation per token (one forward pass through the transformer layers). By forcing the model to generate intermediate steps (<code>2 + 2 = 4</code>, <code>4 * 3 = 12</code>), you are allocating <em>more tokens</em>, which means allocating <em>more compute time</em> to the problem before demanding the final answer.</p>
-<p><strong>2. What is zero-shot CoT?</strong>
-Discovered by Kojima et al. (2022), simply appending the magic phrase "Let's think step by step" to a zero-shot prompt drastically increases reasoning performance on logic/math benchmarks, forcing the model to unroll its reasoning without needing few-shot examples.</p>
-<p><strong>3. Implementing Tree-of-Thought?</strong>
-ToT requires an orchestration script (like Python). The script asks the LLM to generate 3 possible next steps. The script then asks the LLM to score/evaluate those 3 steps. The script discards the lowest scores, and prompts the LLM to expand on the winning step. It uses a Search Algorithm (BFS or DFS) wrapped around the LLM API.</p>
-<p><strong>4. Limitations of ReAct?</strong>
-ReAct is slow and expensive because it requires multiple sequential API calls for a single user query. It is also prone to getting stuck in "loops" (e.g., repeatedly searching the same failing query) if the model lacks the reasoning capacity to realize an action is failing.</p>
+<p><strong>1. Why does CoT fail on small models?</strong>
+Chain-of-Thought requires the model to generate <em>coherent, logically connected</em> reasoning steps. Small models (&lt;10B parameters) lack the capacity to maintain logical consistency across long reasoning chains — they generate plausible-sounding steps that contain subtle logical errors ("reasoning hallucination"). The capability emerges around 100B parameters because at that scale the model has sufficient capacity to track logical dependencies across many tokens. On small models, CoT often performs <em>worse</em> than direct answering because the wrong reasoning chain anchors the model toward a wrong conclusion.</p>
+<p><strong>2. The mathematical reason CoT works?</strong>
+Each token generation is one forward pass through all transformer layers — a fixed amount of computation. A model asked for a direct answer to a hard math problem must arrive at the correct numerical result within that single computation step, which is impossible for problems requiring many sequential operations. Each reasoning step token you generate is an additional forward pass allocated to the problem <em>before</em> the final answer token must be emitted. More tokens = more computation = higher probability of reaching the correct state.</p>
+<p><strong>3. Self-Consistency without full latency overhead?</strong>
+Two production strategies: (a) <strong>Async parallel calls</strong> — fire N API calls simultaneously, wait for all to complete. Total latency = single call latency (not N×), but N× the cost. (b) <strong>Cached majority</strong> — run consistency checks only on new query types; cache the majority answer and re-use it for semantically similar future queries (semantic cache layer). In practice, N=3 is sufficient for most gains; diminishing returns beyond N=5.</p>
+<p><strong>4. ToT vs Self-Consistency — key architectural difference?</strong>
+Self-Consistency generates N complete independent reasoning chains in parallel and aggregates final answers. There is no communication between chains and no backtracking. Tree-of-Thought generates reasoning <em>step-by-step</em>, evaluating intermediate steps and <em>pruning dead-end branches before completing them</em>. ToT is sequential and adaptive; Self-Consistency is parallel and independent. ToT is superior for tasks with clear intermediate checkpoints (planning, puzzles); Self-Consistency is superior for tasks with a definitive final answer (math, factual Q&amp;A).</p>
+<p><strong>5. Preventing tool hallucination in ReAct?</strong>
+Three strategies: (a) <strong>Strict tool schema</strong> — provide the model with a precise JSON schema of available tools and their parameter types. The orchestrator validates every tool call against the schema before executing. Invalid calls return an error observation. (b) <strong>System prompt enforcement</strong> — explicitly list every available tool name. "You may ONLY call these tools: [Search, Calculator, ReadFile]. Any other action is invalid." (c) <strong>Output parsing with retry</strong> — if the model outputs a malformed tool call, feed the parse error back as an observation and ask it to retry.</p>
+<p><strong>6. When Generated Knowledge fails vs RAG?</strong>
+Generated Knowledge fails when: (a) The required facts are post-training-cutoff (the model literally doesn't know them). (b) The task requires precise, verifiable figures (e.g., "What was the exact revenue in Q3 2024?") — the model may generate plausible but incorrect numbers. (c) The knowledge domain is highly specialized (rare medical conditions, niche regulatory details) where pre-training data was sparse. In all these cases, RAG wins because it retrieves ground-truth documents instead of relying on the model's parameterized memory.</p>
+<p><strong>7. Zero-shot CoT?</strong>
+Discovered by Kojima et al. (2022) in the paper "Large Language Models are Zero-Shot Reasoners." They found that simply appending the phrase <strong>"Let's think step by step."</strong> to any zero-shot prompt dramatically improved performance on arithmetic, logic, and commonsense reasoning benchmarks — without any few-shot examples. This works because the phrase activates the model's learned "reasoning mode" — it has seen countless step-by-step explanations during pre-training and the phrase triggers that pattern.</p>
 </details>
 <hr>
 <h2 id="q12-what-are-the-key-considerations-when-using-few-shot-prompting">Q12. What are the key considerations when using few-shot prompting?<a class="headerlink" href="#q12-what-are-the-key-considerations-when-using-few-shot-prompting" title="Permanent link">¶</a></h2>
@@ -5706,9 +6341,9 @@ Surprisingly, no (Min et al., 2022). Research shows that providing random, incor
 <li><strong>Give the model "space" to think</strong>: Ask the model to generate a <code>&lt;scratchpad&gt;</code> or <code>&lt;reasoning&gt;</code> section before generating the final JSON output.</li>
 </ol>
 <h3 id="the-thinking-space-pattern">The "Thinking Space" Pattern<a class="headerlink" href="#the-thinking-space-pattern" title="Permanent link">¶</a></h3>
-<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Analyze the user's intent. 
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>First, write your thought process inside &lt;scratchpad&gt; tags.
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Then, output the final JSON inside &lt;result&gt; tags.
+<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Analyze the user's intent. 
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>First, write your thought process inside &lt;scratchpad&gt; tags.
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Then, output the final JSON inside &lt;result&gt; tags.
 </span></code></pre></div>
 <em>Why this works: LLMs cannot "think" silently. If forced to output JSON immediately, they must guess the answer on the first token. Giving them a scratchpad allows them to use tokens for computation.</em><p></p>
 <h3 id="related-questions_12">Related Questions<a class="headerlink" href="#related-questions_12" title="Permanent link">¶</a></h3>
