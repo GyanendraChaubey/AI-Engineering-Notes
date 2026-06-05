@@ -731,55 +731,588 @@ During pre-training, the model saw millions of examples of "pattern completion" 
 
 ### Core Answer
 
-Advanced prompting techniques systematically guide the model's reasoning process.
+Advanced prompting techniques systematically guide the model's reasoning process. Each technique targets a different failure mode of LLMs — lack of examples, lack of reasoning, lack of consistency, or lack of real-world grounding.
 
-| Technique | Description | Example |
-|---|---|---|
-| **Zero-Shot** | Direct instruction without examples. | "Translate to French: Hello" |
-| **Few-Shot** | Provide examples of input/output pairs. | "Q: 2+2 A: 4. Q: 3+3 A: 6. Q: 4+4 A:" |
-| **Chain-of-Thought (CoT)** | Ask model to reason step-by-step. | "Think step-by-step before answering." |
-| **Self-Consistency** | Generate multiple CoT paths, take majority vote. | Generate 5 answers, pick most frequent. |
-| **Tree-of-Thought (ToT)** | Explore multiple branches, backtrack if needed. | Generate 3 next steps, evaluate, expand best. |
-| **ReAct** | Interleave reasoning and action/tool use. | "Thought: I need to search Wikipedia. Action: Search[RAG]" |
-| **Generated Knowledge** | Ask model to generate facts first, then answer. | "Write 3 facts about X. Now use them to solve Y." |
+| Technique | Core Idea | Best For | Cost |
+|---|---|---|---|
+| **Zero-Shot** | Direct instruction, no examples | Simple well-defined tasks | Cheapest |
+| **Few-Shot** | Provide 2–8 input/output examples | Format-sensitive or domain-specific tasks | Low |
+| **Chain-of-Thought (CoT)** | Force step-by-step reasoning | Math, logic, multi-step problems | Medium |
+| **Self-Consistency** | Generate N CoT paths, majority vote | High-stakes answers needing reliability | N× CoT cost |
+| **Tree-of-Thought (ToT)** | Explore branching reasoning paths, backtrack | Complex planning, creative tasks | Highest |
+| **ReAct** | Interleave reasoning + external tool calls | Factual Q&A, agents needing live data | Multi-call |
+| **Generated Knowledge** | Generate facts first, then answer using them | Commonsense reasoning, knowledge-intensive tasks | 2× Single call |
 
-### Deep-Dive: ReAct (Reason + Act)
+```mermaid
+flowchart TD
+    Q[User Query] --> ZS[Zero-Shot\nDirect instruction]
+    Q --> FS[Few-Shot\nExamples injected]
+    Q --> COT[Chain-of-Thought\nStep-by-step reasoning]
+    COT --> SC[Self-Consistency\nN paths + majority vote]
+    COT --> TOT[Tree-of-Thought\nBranching + backtrack]
+    Q --> REACT[ReAct\nReason + Tool calls]
+    Q --> GK[Generated Knowledge\nFacts first then answer]
 
-ReAct is the foundation of Agentic AI.
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style ZS fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style COT fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style SC fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style TOT fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style REACT fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style GK fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+```
+
+---
+
+### Technique 1 — Zero-Shot Prompting
+
+**What it is:** You give the model only the instruction and the input. No examples whatsoever.
+
+**Why it works:** Modern LLMs are pre-trained on trillions of tokens of internet text that contain implicit demonstrations of almost every task (translations, summaries, classifications, code, etc.). Zero-shot prompting relies entirely on this learned world knowledge — the model has "seen" the task before in pre-training.
+
+**Prompt anatomy:**
 
 ```text
-Question: What is the weather in the capital of France?
+[Task instruction]
+[Input]
+```
 
-Thought: I need to find the capital of France first.
-Action: Search[Capital of France]
-Observation: Paris
-Thought: Now I need to find the weather in Paris.
-Action: GetWeather[Paris]
-Observation: 72F and sunny
-Thought: I have the answer.
-Final Answer: The weather in Paris is 72F and sunny.
+**Concrete example:**
+
+```text
+Classify the sentiment of the following review as Positive, Negative, or Neutral.
+
+Review: "The battery lasts all day and the screen is gorgeous, but the camera is just average."
+Sentiment:
+```
+
+**When to use it:**
+- The task is simple and unambiguous (translation, classification, summarization)
+- You cannot afford context window space for examples
+- The model is large (GPT-4, Claude Opus) and capable enough
+
+**Failure modes:**
+- Novel tasks the model hasn't implicitly learned (e.g., very domain-specific formats)
+- Tasks requiring precise output formats (JSON schema, specific field names) — model may guess wrong
+- Complex multi-step reasoning — model rushes to the answer
+
+**Engineering rule:** Always try zero-shot first. If accuracy is insufficient, escalate to few-shot.
+
+---
+
+### Technique 2 — Few-Shot Prompting
+
+**What it is:** You provide 2–8 worked examples of (input → output) pairs before the actual query. The model infers the pattern from the examples and applies it to the new input.
+
+**Why it works:** This exploits **in-context learning** (ICL) — a capability that emerges in large enough models. The transformer's attention mechanism uses the examples as implicit "weights" — the model learns the task structure purely from the context window without any gradient update.
+
+**Prompt anatomy:**
+
+```text
+[Task instruction]
+
+[Example 1 Input]
+[Example 1 Output]
+
+[Example 2 Input]
+[Example 2 Output]
+
+[Actual Input]
+[Expected Output] ← model fills this in
+```
+
+**Concrete example (sentiment with output format):**
+
+```text
+Classify the sentiment. Reply with ONLY a JSON object: {"sentiment": "...", "confidence": "high/medium/low"}
+
+Review: "Best phone I've ever owned."
+Output: {"sentiment": "Positive", "confidence": "high"}
+
+Review: "Works fine, nothing special."
+Output: {"sentiment": "Neutral", "confidence": "medium"}
+
+Review: "Broke after two days. Terrible quality."
+Output: {"sentiment": "Negative", "confidence": "high"}
+
+Review: "Great camera but the battery drains by noon."
+Output:
+```
+
+**The 5 golden rules for few-shot examples:**
+
+| Rule | Why It Matters |
+|---|---|
+| **Format consistency** | Even a missing space between label and newline degrades performance |
+| **Label balance** | If 4/5 examples are "Positive", model is biased to output "Positive" |
+| **Recency bias mitigation** | The last example has the highest influence — randomize example order |
+| **Diversity** | Include edge cases: short inputs, long inputs, ambiguous inputs |
+| **Quality > quantity** | 3 perfect examples outperform 10 mediocre ones |
+
+**Dynamic Few-Shot (production pattern):** Instead of hardcoding examples, store 500+ examples in a vector database. At query time, embed the input and retrieve the 3 most semantically similar examples. This is the most effective few-shot strategy at scale.
+
+**Surprising finding (Min et al., 2022):** The *labels* in few-shot examples don't need to be correct. Using random wrong labels (tagging a "Positive" review as "Negative") still dramatically outperforms zero-shot. The model learns the *format* and *input distribution* from examples — the actual task logic comes from pre-training weights.
+
+---
+
+### Technique 3 — Chain-of-Thought (CoT) Prompting
+
+**What it is:** Instead of asking for the answer directly, you instruct the model to write out its reasoning steps before giving the final answer. The reasoning is visible in the output.
+
+**Why it works — the token budget argument:** An LLM performs exactly one transformer forward pass per output token. That forward pass is a fixed amount of computation regardless of what the token is. When you ask for a direct answer, the model must arrive at the correct conclusion in a *single token*. When you force step-by-step reasoning, you are allocating additional tokens (= additional compute passes) to the problem *before* demanding the final answer. More tokens = more computation = more reliable answers for hard problems.
+
+**Two variants:**
+
+=== "Zero-Shot CoT"
+    Simply append "Let's think step by step." No examples needed.
+
+    ```text
+    A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. 
+    How much does the ball cost?
+    
+    Let's think step by step.
+    ```
+    
+    **Model output:**
+    ```text
+    Let the ball cost x cents.
+    The bat costs x + 100 cents (since it costs $1.00 more).
+    Together: x + (x + 100) = 110
+    2x + 100 = 110
+    2x = 10
+    x = 5
+    
+    The ball costs 5 cents ($0.05).
+    ```
+
+=== "Few-Shot CoT"
+    Provide worked examples with explicit reasoning chains.
+
+    ```text
+    Q: Roger has 5 tennis balls. He buys 2 more cans of 3 balls each. How many balls does he have?
+    A: Roger started with 5 balls. 2 cans × 3 balls = 6 new balls. 5 + 6 = 11. Answer: 11.
+    
+    Q: The cafeteria had 23 apples. They used 20 to make lunch and bought 6 more. How many apples do they have?
+    A:
+    ```
+
+**Critical constraint — model size:** CoT only reliably works on models with ~100B+ parameters. On smaller models (7B, 13B), CoT sometimes makes performance *worse* because the model generates plausible-sounding but incorrect reasoning chains ("reasoning hallucination").
+
+**Implementation in production:**
+
+```python
+system_prompt = """You are a precise reasoning assistant.
+When solving problems:
+1. Write your reasoning inside <thinking> tags
+2. Write only your final answer inside <answer> tags
+Never skip the thinking step."""
+
+user_prompt = f"""Problem: {problem}"""
+```
+
+---
+
+### Technique 4 — Self-Consistency
+
+**What it is:** An ensemble technique built on top of CoT. Instead of generating one reasoning path, you generate N independent CoT paths (at temperature > 0) and take the majority vote on the final answers.
+
+**Why it works:** Different temperature samples explore different reasoning trajectories through the problem. Some paths will make arithmetic errors; others will choose wrong operators; a few will get confused about the problem statement. But the *correct* reasoning path and its answer tend to be more common than any single wrong path, so majority vote reliably selects the correct answer.
+
+```mermaid
+flowchart TD
+    Q[Hard Math Question] --> P1[CoT Path 1\ntemp=0.7]
+    Q --> P2[CoT Path 2\ntemp=0.7]
+    Q --> P3[CoT Path 3\ntemp=0.7]
+    Q --> P4[CoT Path 4\ntemp=0.7]
+    Q --> P5[CoT Path 5\ntemp=0.7]
+
+    P1 --> A1[Answer: 42]
+    P2 --> A2[Answer: 42]
+    P3 --> A3[Answer: 40]
+    P4 --> A4[Answer: 42]
+    P5 --> A5[Answer: 38]
+
+    A1 & A2 & A3 & A4 & A5 --> VOTE[Majority Vote\n42 appears 3/5 times]
+    VOTE --> FINAL[Final Answer: 42 ✅]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style VOTE fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style FINAL fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style P1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P4 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style P5 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style A4 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style A5 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+```
+
+**When to use it:**
+- High-stakes answers where accuracy matters most (medical, financial, legal Q&A)
+- Tasks with a single definitive correct answer (math, logic, factual lookup)
+- When you can afford N× the API cost
+
+**When NOT to use it:**
+- Open-ended creative tasks (there is no "correct" answer to vote on)
+- Real-time applications (N parallel calls add latency)
+
+**Implementation:**
+
+```python
+import re
+from collections import Counter
+
+def self_consistency(prompt: str, n: int = 5, temperature: float = 0.7) -> str:
+    answers = []
+    for _ in range(n):
+        response = llm.generate(prompt, temperature=temperature)
+        # Extract final answer (assumes "Answer: X" format)
+        match = re.search(r'Answer:\s*(.+)', response)
+        if match:
+            answers.append(match.group(1).strip())
+    
+    # Majority vote
+    return Counter(answers).most_common(1)[0][0]
+```
+
+**Key parameter:** Use temperature 0.5–0.7. Too low (0.0) and all paths are identical. Too high (>1.0) and paths are incoherent.
+
+---
+
+### Technique 5 — Tree-of-Thought (ToT)
+
+**What it is:** A generalization of CoT where the reasoning process is a *tree* rather than a *chain*. At each step, the model generates multiple candidate next steps, evaluates them, and expands only the most promising ones. The model can backtrack when it reaches a dead end.
+
+**Analogy:** CoT is like writing an essay in one continuous stream. ToT is like writing an essay where, at each paragraph, you draft 3 alternative continuations, read them all, pick the best one, and throw away the others.
+
+**The three components:**
+
+1. **Thought generator** — "Generate 3 possible next steps for solving this problem."
+2. **State evaluator** — "Rate each of these steps as promising / not promising / definitive dead end."
+3. **Search algorithm** — BFS (explore all options at each depth) or DFS (follow one path to completion, backtrack on failure).
+
+```mermaid
+flowchart TD
+    ROOT[Problem] --> T1[Step A]
+    ROOT --> T2[Step B]
+    ROOT --> T3[Step C]
+
+    T1 --> E1{Evaluate}
+    T2 --> E2{Evaluate}
+    T3 --> E3{Evaluate}
+
+    E1 -->|Promising| T1A[Step A.1]
+    E1 -->|Promising| T1B[Step A.2]
+    E2 -->|Dead end ✗| DEAD1[Pruned]
+    E3 -->|Promising| T3A[Step C.1]
+
+    T1A --> E4{Evaluate}
+    T1B --> E5{Evaluate}
+    T3A --> E6{Evaluate}
+
+    E4 -->|Best| SOLUTION[Solution ✅]
+    E5 -->|Worse| DEAD2[Pruned]
+    E6 -->|Dead end ✗| DEAD3[Pruned]
+
+    style ROOT fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style E1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E3 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style DEAD1 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style DEAD2 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style DEAD3 fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style SOLUTION fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style T1A fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style T1B fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style T3A fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style E4 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E5 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style E6 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+```
+
+**Production implementation sketch:**
+
+```python
+def tree_of_thought(problem: str, breadth: int = 3, depth: int = 4) -> str:
+    thoughts = [problem]  # BFS queue
+
+    for _ in range(depth):
+        candidates = []
+        for thought in thoughts:
+            # Step 1: Generate next steps
+            next_steps = llm.generate(
+                f"Given progress so far:\n{thought}\n\nGenerate {breadth} possible next steps.",
+                n=breadth
+            )
+            candidates.extend(next_steps)
+
+        # Step 2: Evaluate all candidates
+        scores = llm.generate(
+            f"Rate each of these solution steps as 'sure/maybe/impossible':\n" +
+            "\n".join(f"{i+1}. {c}" for i, c in enumerate(candidates))
+        )
+
+        # Step 3: Keep only 'sure' or 'maybe' branches
+        thoughts = [c for c, s in zip(candidates, scores) if 'impossible' not in s]
+
+    return thoughts[0]  # Best remaining path
+```
+
+**When to use:**
+- Writing tasks requiring careful planning (e.g., "write a persuasive essay with 5 supporting arguments")
+- Mathematical proof discovery
+- Complex puzzle solving (Game of 24, crosswords)
+- Any task where dead-ends are common and backtracking has value
+
+**Trade-off:** ToT requires many LLM calls (breadth × depth). A depth-4, breadth-3 tree = up to 12 LLM calls per query. Only justified for genuinely complex, high-value problems.
+
+**CoT vs Self-Consistency vs ToT:**
+
+| | CoT | Self-Consistency | ToT |
+|---|---|---|---|
+| **Structure** | Single chain | N parallel chains | Tree with branching |
+| **LLM calls** | 1 | N | breadth × depth |
+| **Backtracking** | No | No | Yes |
+| **Best for** | Math, logic | High-stakes answers | Planning, creative |
+| **Introduced** | Wei et al. 2022 | Wang et al. 2022 | Yao et al. 2023 |
+
+---
+
+### Technique 6 — ReAct (Reason + Act)
+
+**What it is:** The model interleaves **Thought** (reasoning) with **Action** (external tool calls) and **Observation** (tool results) in a loop until it reaches a final answer. ReAct is the direct architectural foundation of every AI agent framework (LangChain, LangGraph, AutoGPT).
+
+**Why it works:** Pure LLMs are frozen in time — their knowledge stops at training cutoff and they cannot query live systems. ReAct grounds the LLM's reasoning in real-world, up-to-date information by giving it tools (search, calculator, database, code executor, API) and teaching it *when and how* to use them.
+
+**The full loop:**
+
+```mermaid
+flowchart TD
+    Q[User Query] --> T1["🧠 Thought: What do I need to find out?"]
+    T1 --> A1["⚡ Action: Search / Calculate / Query"]
+    A1 --> O1["👁️ Observation: Tool result returned"]
+    O1 --> T2["🧠 Thought: What does this tell me? What's next?"]
+    T2 --> A2["⚡ Action: Next tool call"]
+    A2 --> O2["👁️ Observation: Second result"]
+    O2 --> T3["🧠 Thought: I now have enough to answer."]
+    T3 --> FA["✅ Final Answer"]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style T1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A1 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style O1 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T2 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style A2 fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style O2 fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style T3 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FA fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+```
+
+**Full concrete trace — "What is the GDP per capita of the country that hosted the 2020 Olympics?"**
+
+```text
+Thought: I need to find which country hosted the 2020 Olympics.
+Action: Search["2020 Olympics host country"]
+Observation: The 2020 Summer Olympics were held in Tokyo, Japan.
+
+Thought: Now I need Japan's GDP per capita.
+Action: Search["Japan GDP per capita 2023"]
+Observation: Japan's GDP per capita is approximately $33,800 USD (2023).
+
+Thought: I have both pieces of information I need.
+Final Answer: Japan hosted the 2020 Olympics. Its GDP per capita is approximately $33,800 USD.
+```
+
+**How the orchestrator works (what happens behind the scenes):**
+
+```python
+def react_agent(query: str, tools: dict, max_steps: int = 10) -> str:
+    history = [f"Question: {query}"]
+    
+    for step in range(max_steps):
+        # LLM generates next Thought + Action
+        response = llm.generate("\n".join(history) + "\nThought:")
+        history.append(f"Thought: {response['thought']}")
+        
+        if "Final Answer:" in response['thought']:
+            return response['thought'].split("Final Answer:")[-1].strip()
+        
+        # Parse the action
+        action_name = response['action']   # e.g. "Search"
+        action_input = response['input']   # e.g. "Japan GDP 2023"
+        
+        # Execute the tool
+        if action_name in tools:
+            observation = tools[action_name](action_input)
+        else:
+            observation = f"Error: unknown tool '{action_name}'"
+        
+        history.append(f"Action: {action_name}[{action_input}]")
+        history.append(f"Observation: {observation}")
+    
+    return "Max steps reached without a final answer."
+```
+
+**Available tool types in production ReAct agents:**
+
+| Tool | Purpose | Example |
+|---|---|---|
+| `Search` | Web search / RAG retrieval | Find current facts |
+| `Calculator` | Arithmetic operations | Avoid math hallucination |
+| `CodeExecutor` | Run Python / SQL | Precise data processing |
+| `APICall` | REST/GraphQL calls | Jira, Slack, Salesforce |
+| `ReadFile` | Read from filesystem or S3 | Process documents |
+| `HumanInput` | Pause for human approval | High-stakes actions |
+
+**Critical limitations:**
+
+- **Sequential bottleneck:** Each Thought → Action → Observation is a separate LLM call. A 5-step ReAct query = 5 API calls = 5× latency.
+- **Loop failure:** Model can get stuck calling the same failing search repeatedly. Fix: add a `visited_actions` set; if the same action+input appears twice, force the model to try a different approach.
+- **Context explosion:** Each observation appended to the prompt. After 10 steps, the prompt may exceed the context window.
+- **Tool hallucination:** Model may call tools that don't exist or pass malformed inputs.
+
+---
+
+### Technique 7 — Generated Knowledge Prompting
+
+**What it is:** A two-stage prompting strategy where you first ask the model to *generate relevant background knowledge* about the topic, and then use that self-generated knowledge as context for answering the actual question.
+
+**Why it works:** LLMs have rich knowledge distributed across their weights, but that knowledge must be "activated" by the right prompt context. Asking directly for an answer compresses two operations — knowledge retrieval and reasoning — into a single step. Generated Knowledge decouples them: Stage 1 forces the model to surface relevant facts into the context window, and Stage 2 uses those facts as explicit grounding for the final answer.
+
+**Analogy:** It is the difference between asking a doctor "Is this symptom dangerous?" versus first asking them "What are all the conditions that cause this symptom?" and then asking "Given those conditions, which are dangerous?" The second approach activates a richer knowledge structure.
+
+**Two-stage prompt structure:**
+
+```mermaid
+flowchart LR
+    Q[Original Question] --> S1["Stage 1 Prompt:\nGenerate N relevant facts\nabout this topic"]
+    S1 --> FACTS["Generated Facts:\nFact 1: ...\nFact 2: ...\nFact 3: ..."]
+    FACTS --> S2["Stage 2 Prompt:\nGiven these facts,\nanswer the question"]
+    S2 --> ANS[Final Answer]
+
+    style Q fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style S1 fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style FACTS fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style S2 fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style ANS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+```
+
+**Concrete example — commonsense reasoning:**
+
+```text
+=== STAGE 1 PROMPT ===
+Generate 4 relevant facts about how golf scoring works. Be concise.
+
+=== MODEL OUTPUT (Stage 1) ===
+1. In golf, a lower score is better — you want fewer strokes to complete each hole.
+2. "Par" is the expected number of strokes for a hole. Par-3, Par-4, and Par-5 holes are most common.
+3. A "birdie" means completing a hole in one stroke below par (e.g., 3 strokes on a Par-4).
+4. A "bogey" means completing a hole in one stroke above par (e.g., 5 strokes on a Par-4).
+
+=== STAGE 2 PROMPT ===
+Facts about golf:
+1. In golf, a lower score is better.
+2. Par is the expected number of strokes per hole.
+3. A birdie = one below par. A bogey = one above par.
+4. Par-3, Par-4, Par-5 are the most common hole types.
+
+Question: If a golfer scores 3 on a Par-4, and 5 on a Par-3, what is their score relative to par?
+
+Answer:
+```
+
+**When to use it vs RAG:**
+
+| | Generated Knowledge | RAG |
+|---|---|---|
+| **Knowledge source** | Model's own weights | External documents |
+| **Freshness** | Limited to training cutoff | Can be current/real-time |
+| **Reliability** | May hallucinate facts | Grounded in real sources |
+| **Speed** | 2 LLM calls, no retrieval infra | Retrieval + LLM call |
+| **Best for** | Commonsense, stable knowledge | Live data, private documents |
+
+**Related techniques:**
+- **Self-Ask** — Model generates sub-questions needed to answer the main question, then answers each one in sequence.
+- **Least-to-Most Prompting** — Break the problem into sub-problems from easiest to hardest, solve them in order.
+- **Scratchpad Prompting** — Give model a `<scratchpad>` block to jot notes before final output (essentially single-stage Generated Knowledge).
+
+---
+
+### Comparison: When to Use What
+
+```mermaid
+flowchart TD
+    START[Do you need external\nlive data or tools?] -->|Yes| REACT[Use ReAct]
+    START -->|No| STEP2[Is the task complex\nmulti-step reasoning?]
+
+    STEP2 -->|No| STEP3[Do you have\nlabeled examples?]
+    STEP3 -->|Yes| FS[Use Few-Shot]
+    STEP3 -->|No| ZS[Use Zero-Shot]
+
+    STEP2 -->|Yes| STEP4[How important\nis reliability?]
+    STEP4 -->|Critical — need\nhighest accuracy| STEP5[Can you afford\nmany LLM calls?]
+    STEP5 -->|Yes — need\nbacktracking| TOT[Use Tree-of-Thought]
+    STEP5 -->|Yes — task\nhas one right answer| SC[Use Self-Consistency]
+    STEP5 -->|No — single call| STEP6[Is background\nknowledge the bottleneck?]
+    STEP4 -->|Good enough| COT[Use Chain-of-Thought]
+
+    STEP6 -->|Yes| GK[Use Generated Knowledge]
+    STEP6 -->|No| COT
+
+    style START fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style REACT fill:#16A085,stroke:#0E6655,stroke-width:2px,color:#FFFFFF
+    style FS fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style ZS fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style COT fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style SC fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style TOT fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style GK fill:#D4AC0D,stroke:#9A7D0A,stroke-width:2px,color:#FFFFFF
+    style STEP2 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP3 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP4 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP5 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+    style STEP6 fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
 ```
 
 ### Related Questions
 
 !!! question "Follow-up Interview Questions"
-    1. How does Chain-of-Thought improve math performance mathematically? (Increases computation time/tokens before final answer)
-    2. What is zero-shot CoT and who discovered it? ("Let's think step by step")
-    3. How would you implement Tree-of-Thought in a production system?
-    4. What are the limitations of the ReAct framework?
+    1. Why does Chain-of-Thought fail on small models (<10B parameters)?
+    2. What is the mathematical reason why more reasoning tokens improve LLM accuracy?
+    3. How would you implement Self-Consistency in production without doubling latency?
+    4. What is the key difference between ToT and Self-Consistency architecturally?
+    5. How does ReAct prevent tool hallucination (calling tools that don't exist)?
+    6. When would Generated Knowledge fail compared to RAG?
+    7. What is "zero-shot CoT" and who discovered it?
 
 ??? success "View Answers"
-    **1. How does CoT improve math performance mathematically?**
-    LLMs have a fixed amount of computation per token (one forward pass through the transformer layers). By forcing the model to generate intermediate steps (`2 + 2 = 4`, `4 * 3 = 12`), you are allocating *more tokens*, which means allocating *more compute time* to the problem before demanding the final answer.
+    **1. Why does CoT fail on small models?**
+    Chain-of-Thought requires the model to generate *coherent, logically connected* reasoning steps. Small models (<10B parameters) lack the capacity to maintain logical consistency across long reasoning chains — they generate plausible-sounding steps that contain subtle logical errors ("reasoning hallucination"). The capability emerges around 100B parameters because at that scale the model has sufficient capacity to track logical dependencies across many tokens. On small models, CoT often performs *worse* than direct answering because the wrong reasoning chain anchors the model toward a wrong conclusion.
 
-    **2. What is zero-shot CoT?**
-    Discovered by Kojima et al. (2022), simply appending the magic phrase "Let's think step by step" to a zero-shot prompt drastically increases reasoning performance on logic/math benchmarks, forcing the model to unroll its reasoning without needing few-shot examples.
+    **2. The mathematical reason CoT works?**
+    Each token generation is one forward pass through all transformer layers — a fixed amount of computation. A model asked for a direct answer to a hard math problem must arrive at the correct numerical result within that single computation step, which is impossible for problems requiring many sequential operations. Each reasoning step token you generate is an additional forward pass allocated to the problem *before* the final answer token must be emitted. More tokens = more computation = higher probability of reaching the correct state.
 
-    **3. Implementing Tree-of-Thought?**
-    ToT requires an orchestration script (like Python). The script asks the LLM to generate 3 possible next steps. The script then asks the LLM to score/evaluate those 3 steps. The script discards the lowest scores, and prompts the LLM to expand on the winning step. It uses a Search Algorithm (BFS or DFS) wrapped around the LLM API.
+    **3. Self-Consistency without full latency overhead?**
+    Two production strategies: (a) **Async parallel calls** — fire N API calls simultaneously, wait for all to complete. Total latency = single call latency (not N×), but N× the cost. (b) **Cached majority** — run consistency checks only on new query types; cache the majority answer and re-use it for semantically similar future queries (semantic cache layer). In practice, N=3 is sufficient for most gains; diminishing returns beyond N=5.
 
-    **4. Limitations of ReAct?**
-    ReAct is slow and expensive because it requires multiple sequential API calls for a single user query. It is also prone to getting stuck in "loops" (e.g., repeatedly searching the same failing query) if the model lacks the reasoning capacity to realize an action is failing.
+    **4. ToT vs Self-Consistency — key architectural difference?**
+    Self-Consistency generates N complete independent reasoning chains in parallel and aggregates final answers. There is no communication between chains and no backtracking. Tree-of-Thought generates reasoning *step-by-step*, evaluating intermediate steps and *pruning dead-end branches before completing them*. ToT is sequential and adaptive; Self-Consistency is parallel and independent. ToT is superior for tasks with clear intermediate checkpoints (planning, puzzles); Self-Consistency is superior for tasks with a definitive final answer (math, factual Q&A).
+
+    **5. Preventing tool hallucination in ReAct?**
+    Three strategies: (a) **Strict tool schema** — provide the model with a precise JSON schema of available tools and their parameter types. The orchestrator validates every tool call against the schema before executing. Invalid calls return an error observation. (b) **System prompt enforcement** — explicitly list every available tool name. "You may ONLY call these tools: [Search, Calculator, ReadFile]. Any other action is invalid." (c) **Output parsing with retry** — if the model outputs a malformed tool call, feed the parse error back as an observation and ask it to retry.
+
+    **6. When Generated Knowledge fails vs RAG?**
+    Generated Knowledge fails when: (a) The required facts are post-training-cutoff (the model literally doesn't know them). (b) The task requires precise, verifiable figures (e.g., "What was the exact revenue in Q3 2024?") — the model may generate plausible but incorrect numbers. (c) The knowledge domain is highly specialized (rare medical conditions, niche regulatory details) where pre-training data was sparse. In all these cases, RAG wins because it retrieves ground-truth documents instead of relying on the model's parameterized memory.
+
+    **7. Zero-shot CoT?**
+    Discovered by Kojima et al. (2022) in the paper "Large Language Models are Zero-Shot Reasoners." They found that simply appending the phrase **"Let's think step by step."** to any zero-shot prompt dramatically improved performance on arithmetic, logic, and commonsense reasoning benchmarks — without any few-shot examples. This works because the phrase activates the model's learned "reasoning mode" — it has seen countless step-by-step explanations during pre-training and the phrase triggers that pattern.
 
 ---
 
