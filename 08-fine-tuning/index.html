@@ -1135,6 +1135,223 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q7-deep-dive-what-is-the-mathematics-behind-lora-qlora-dora-relora-and-autolora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q7. Deep-dive: what is the mathematics behind LoRA, QLoRA, DoRA, ReLoRA, and AutoLoRA?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q7. Deep-dive: what is the mathematics behind LoRA, QLoRA, DoRA, ReLoRA, and AutoLoRA?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#foundation-standard-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Foundation: Standard LoRA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-qlora-quantized-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. QLoRA — Quantized LoRA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. QLoRA — Quantized LoRA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nf4-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NF4 Quantization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dora-weight-decomposed-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. DoRA — Weight-Decomposed LoRA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. DoRA — Weight-Decomposed LoRA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-polar-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Polar Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doras-trainable-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DoRA's Trainable Form
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-decoupling-helps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Decoupling Helps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-relora-restart-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ReLoRA — Restart LoRA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ReLoRA — Restart LoRA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-merge-and-restart-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Merge-and-Restart Cycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective-rank-after-k-cycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effective Rank After \(K\) Cycles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-rate-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Rate Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-autolora-automatic-rank-and-placement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AutoLoRA — Automatic Rank and Placement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. AutoLoRA — Automatic Rank and Placement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importance Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rank-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rank Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svd-based-adapter-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SVD-Based Adapter Initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-Side Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5097,6 +5314,209 @@ ReLoRA's periodic merge-and-restart gives each subsequent LoRA phase a richer st
 <p><strong>4. AutoLoRA vs Rank Sweep?</strong>
 A manual rank sweep trains one full run per candidate rank and picks the best. AutoLoRA runs once and learns the rank allocation jointly with the adapter weights, using differentiable importance scores. This means it can discover that layer 8 needs rank 32 while layer 2 only needs rank 4 — a result that would require <span class="arithmatex">\(O(N)\)</span> separate manual experiments to find.</p>
 </details>
+<hr>
+<h2 id="q7-deep-dive-what-is-the-mathematics-behind-lora-qlora-dora-relora-and-autolora">Q7. Deep-dive: what is the mathematics behind LoRA, QLoRA, DoRA, ReLoRA, and AutoLoRA?<a class="headerlink" href="#q7-deep-dive-what-is-the-mathematics-behind-lora-qlora-dora-relora-and-autolora" title="Permanent link">¶</a></h2>
+<h3 id="foundation-standard-lora">Foundation: Standard LoRA<a class="headerlink" href="#foundation-standard-lora" title="Permanent link">¶</a></h3>
+<p>For a pretrained weight matrix <span class="arithmatex">\(W_0 \in \mathbb{R}^{m \times n}\)</span>, LoRA adds a low-rank residual instead of updating <span class="arithmatex">\(W_0\)</span> directly:</p>
+<div class="arithmatex">\[W' = W_0 + \Delta W = W_0 + \underbrace{B}_{m \times r}\underbrace{A}_{r \times n}, \quad r \ll \min(m, n)\]</div>
+<p><strong>Initialization:</strong> <span class="arithmatex">\(B = \mathbf{0}\)</span>, <span class="arithmatex">\(A \sim \mathcal{N}(0, \sigma^2)\)</span>, so <span class="arithmatex">\(\Delta W = BA = \mathbf{0}\)</span> at step zero — the adapter is a no-op at the start, preserving the pretrained model's behaviour.</p>
+<p><strong>Forward pass with scaling:</strong></p>
+<div class="arithmatex">\[h = W'x = W_0 x + \frac{\alpha}{r}\, BAx\]</div>
+<p>The <span class="arithmatex">\(\alpha/r\)</span> factor prevents adapter output from growing with rank. Without it, a higher-rank adapter would produce proportionally larger activations before any learning — not because it has learned more, but simply because it has more parameters. Setting <span class="arithmatex">\(\alpha = r\)</span> makes the scaling factor 1.</p>
+<p><strong>Trainable parameter count:</strong></p>
+<div class="arithmatex">\[r(m + n) \quad \text{vs} \quad mn \text{ (full fine-tuning)}\]</div>
+<p>At <span class="arithmatex">\(r=8\)</span>, <span class="arithmatex">\(m=n=4096\)</span>: <span class="arithmatex">\(65{,}536\)</span> vs <span class="arithmatex">\(16{,}777{,}216\)</span> — a <strong>256× reduction</strong>.</p>
+<hr>
+<h3 id="1-qlora-quantized-lora">1. QLoRA — Quantized LoRA<a class="headerlink" href="#1-qlora-quantized-lora" title="Permanent link">¶</a></h3>
+<p><strong>Problem it solves:</strong> LoRA reduces optimizer and gradient memory, but the base model weights still require full precision for the forward/backward pass. A 65B model in float16 needs ~130 GB — more than any single GPU.</p>
+<h4 id="nf4-quantization">NF4 Quantization<a class="headerlink" href="#nf4-quantization" title="Permanent link">¶</a></h4>
+<p>Neural network weights are empirically near-Gaussian: <span class="arithmatex">\(w \sim \mathcal{N}(0, \sigma^2)\)</span>. NF4 exploits this by deriving quantization levels from the quantiles of <span class="arithmatex">\(\mathcal{N}(0,1)\)</span>, placing more levels where weights are densest (near zero) and fewer where they are sparse (large values).</p>
+<p><strong>Step 1 — Block normalization:</strong> Partition <span class="arithmatex">\(W_0\)</span> into blocks of 64 values. For each block compute <span class="arithmatex">\(c = \max_i |w_i|\)</span> and normalize: <span class="arithmatex">\(\hat{w}_i = w_i / c\)</span>, giving <span class="arithmatex">\(\hat{w}_i \in [-1, 1]\)</span>.</p>
+<p><strong>Step 2 — Derive 16 levels from <span class="arithmatex">\(\mathcal{N}(0,1)\)</span> quantiles:</strong></p>
+<div class="arithmatex">\[q_i = \Phi^{-1}\!\left(\frac{i + 0.5}{16}\right), \quad i = 0, \ldots, 15\]</div>
+<p>Renormalize levels to <span class="arithmatex">\([-1, 1]\)</span>. This concentrates levels in the high-density center, unlike uniform INT4 which wastes half its levels on rarely-occurring large values.</p>
+<p><strong>Step 3 — Quantize:</strong> <span class="arithmatex">\(\hat{w}_i \mapsto \arg\min_j |q_j - \hat{w}_i|\)</span>, store as a 4-bit index.</p>
+<p><strong>Double quantization:</strong> Each block constant <span class="arithmatex">\(c\)</span> costs 32 bits per 64 weights = 0.5 extra bits/param. QLoRA quantizes these constants from FP32 → FP8, reducing constant overhead to ~0.127 bits/param, saving ~0.4 GB on a 7B model.</p>
+<p><strong>Forward pass:</strong></p>
+<div class="arithmatex">\[h = \left(\text{dequantize}(W_0^{\text{NF4}}) + \frac{\alpha}{r}BA\right)x\]</div>
+<p>Dequantization is: <span class="arithmatex">\(w_i = q_{\text{idx}_i} \cdot c\)</span>, computed on the fly in BFloat16. The NF4 weights are never expanded to float permanently — they live in 4-bit storage and are dequantized once per layer per forward/backward step.</p>
+<p><strong>Paged optimizers:</strong> Adam stores two moment vectors the same size as the parameters. For large adapter runs these overflow GPU VRAM. QLoRA uses NVIDIA unified memory — optimizer states live in CPU RAM and are paged to GPU only during the parameter update step.</p>
+<p><strong>Memory comparison for a 65B model:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Precision</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float32</td>
+<td>260 GB</td>
+</tr>
+<tr>
+<td>float16</td>
+<td>130 GB</td>
+</tr>
+<tr>
+<td>NF4 (QLoRA)</td>
+<td>32.5 GB</td>
+</tr>
+<tr>
+<td>NF4 + double quantization</td>
+<td>~27 GB</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="2-dora-weight-decomposed-lora">2. DoRA — Weight-Decomposed LoRA<a class="headerlink" href="#2-dora-weight-decomposed-lora" title="Permanent link">¶</a></h3>
+<p><strong>Problem it solves:</strong> The LoRA update <span class="arithmatex">\(\Delta W = BA\)</span> is a single low-rank matrix that must simultaneously encode both <em>how much</em> to scale each weight direction and <em>which direction</em> to move. These two adjustments interfere in the gradient signal, making convergence harder when a task requires significant weight rescaling.</p>
+<h4 id="the-polar-decomposition">The Polar Decomposition<a class="headerlink" href="#the-polar-decomposition" title="Permanent link">¶</a></h4>
+<p>Any weight matrix can be decomposed column-wise into a magnitude and a direction. DoRA makes this explicit and trainable:</p>
+<div class="arithmatex">\[W_0 = \underbrace{m}_{1 \times n} \cdot \underbrace{\frac{W_0}{\|W_0\|_c}}_{\text{unit-column-norm direction}}\]</div>
+<p>where <span class="arithmatex">\(m \in \mathbb{R}^{1 \times n}\)</span> is the vector of column-wise <span class="arithmatex">\(\ell_2\)</span> norms and <span class="arithmatex">\(\|\cdot\|_c\)</span> normalizes each column to unit length.</p>
+<h4 id="doras-trainable-form">DoRA's Trainable Form<a class="headerlink" href="#doras-trainable-form" title="Permanent link">¶</a></h4>
+<div class="arithmatex">\[W' = \underbrace{m}_{\text{trainable}} \cdot \frac{W_0 + BA}{\|W_0 + BA\|_c}\]</div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Initialized to</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(m \in \mathbb{R}^{1 \times n}\)</span></td>
+<td><span class="arithmatex">\(\|W_0\|_c\)</span></td>
+<td>Magnitude scaling per output dimension</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(B \in \mathbb{R}^{m \times r}\)</span>, <span class="arithmatex">\(A \in \mathbb{R}^{r \times n}\)</span></td>
+<td><span class="arithmatex">\(B=\mathbf{0}\)</span>, <span class="arithmatex">\(A \sim \mathcal{N}\)</span></td>
+<td>Direction update (low-rank)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(W_0\)</span></td>
+<td>—</td>
+<td>Frozen</td>
+</tr>
+</tbody>
+</table>
+<p><strong>At initialization:</strong> <span class="arithmatex">\(BA = \mathbf{0}\)</span>, so <span class="arithmatex">\(W' = \|W_0\|_c \cdot W_0/\|W_0\|_c = W_0\)</span>. The adapter is a no-op, identical to standard LoRA's starting point.</p>
+<h4 id="why-decoupling-helps">Why Decoupling Helps<a class="headerlink" href="#why-decoupling-helps" title="Permanent link">¶</a></h4>
+<p>In standard LoRA, <span class="arithmatex">\(\nabla_B \mathcal{L}\)</span> and <span class="arithmatex">\(\nabla_A \mathcal{L}\)</span> must carry both magnitude and direction signals simultaneously. With DoRA:</p>
+<div class="arithmatex">\[\frac{\partial \mathcal{L}}{\partial m} \text{ controls only scale}, \qquad \frac{\partial \mathcal{L}}{\partial A},\, \frac{\partial \mathbf{L}}{\partial B} \text{ control only direction}\]</div>
+<p>Tasks that require large magnitude rescaling (e.g., adapting a general model to a domain with very different activation norms) benefit most. DoRA consistently outperforms LoRA at identical parameter counts on instruction tuning and code generation benchmarks.</p>
+<p><strong>Extra parameters:</strong> <span class="arithmatex">\(n\)</span> scalars for <span class="arithmatex">\(m\)</span> on top of LoRA's <span class="arithmatex">\(r(m+n)\)</span> — negligible since <span class="arithmatex">\(n \ll r(m+n)\)</span>.</p>
+<hr>
+<h3 id="3-relora-restart-lora">3. ReLoRA — Restart LoRA<a class="headerlink" href="#3-relora-restart-lora" title="Permanent link">¶</a></h3>
+<p><strong>Problem it solves:</strong> A rank-<span class="arithmatex">\(r\)</span> LoRA adapter spans a subspace of dimension at most <span class="arithmatex">\(r\)</span>. If the task requires updates spanning a larger subspace, no amount of training time can escape this constraint — the low-rank bottleneck is structural.</p>
+<h4 id="the-merge-and-restart-cycle">The Merge-and-Restart Cycle<a class="headerlink" href="#the-merge-and-restart-cycle" title="Permanent link">¶</a></h4>
+<p>At each merge checkpoint (every <span class="arithmatex">\(T\)</span> steps):</p>
+<p><strong>Step 1 — Merge into base:</strong>
+$<span class="arithmatex">\(W_0^{(k+1)} = W_0^{(k)} + \frac{\alpha}{r}\, B^{(k)} A^{(k)}\)</span>$</p>
+<p><strong>Step 2 — Reset adapters:</strong>
+$<span class="arithmatex">\(B^{(k+1)} = \mathbf{0}, \quad A^{(k+1)} \sim \mathcal{N}(0, \sigma^2)\)</span>$</p>
+<p><strong>Step 3 — Reset optimizer states</strong> (Adam moments <span class="arithmatex">\(m_t = v_t = 0\)</span>) to prevent stale gradient estimates from the previous phase from biasing the new adapters toward the same subspace.</p>
+<h4 id="effective-rank-after-k-cycles">Effective Rank After <span class="arithmatex">\(K\)</span> Cycles<a class="headerlink" href="#effective-rank-after-k-cycles" title="Permanent link">¶</a></h4>
+<p>After <span class="arithmatex">\(K\)</span> merge cycles, the total weight is:</p>
+<div class="arithmatex">\[W^{(K)} = W_0 + \frac{\alpha}{r}\sum_{k=1}^{K} B^{(k)} A^{(k)}\]</div>
+<p>Each <span class="arithmatex">\(B^{(k)} A^{(k)}\)</span> is rank <span class="arithmatex">\(r\)</span>. The sum of <span class="arithmatex">\(K\)</span> independent rank-<span class="arithmatex">\(r\)</span> matrices satisfies:</p>
+<div class="arithmatex">\[\text{rank}\!\left(\sum_{k=1}^K B^{(k)} A^{(k)}\right) \leq K \cdot r\]</div>
+<p>In practice, adapters trained from successively richer bases explore different subspaces, so effective rank grows roughly as <span class="arithmatex">\(K \cdot r\)</span> — a rank-160 cumulative update using only rank-32 parameters at any one time.</p>
+<h4 id="learning-rate-schedule">Learning Rate Schedule<a class="headerlink" href="#learning-rate-schedule" title="Permanent link">¶</a></h4>
+<p>Each phase uses <strong>jagged cosine annealing</strong> — a warm restart from a non-zero LR to explore the new base:</p>
+<div class="arithmatex">\[\eta(t) = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})\!\left(1 + \cos\!\left(\frac{\pi t}{T}\right)\right)\]</div>
+<p>where <span class="arithmatex">\(t\)</span> resets to 0 at each merge. The warm restart prevents adapters from immediately converging into a tight neighborhood of the new base without exploring.</p>
+<p><strong>Best for:</strong> pre-training or continued pre-training (tens of thousands of steps). For standard SFT (a few epochs), the merge overhead adds complexity without proportional benefit.</p>
+<hr>
+<h3 id="4-autolora-automatic-rank-and-placement">4. AutoLoRA — Automatic Rank and Placement<a class="headerlink" href="#4-autolora-automatic-rank-and-placement" title="Permanent link">¶</a></h3>
+<p><strong>Problem it solves:</strong> Uniform rank allocation (<span class="arithmatex">\(r\)</span> the same for every layer) wastes budget on unimportant layers and underfits important ones. Early layers often need little adaptation; middle transformer layers typically drive most task-specific behavior.</p>
+<h4 id="importance-scoring">Importance Scoring<a class="headerlink" href="#importance-scoring" title="Permanent link">¶</a></h4>
+<p>For each candidate layer <span class="arithmatex">\(l\)</span>, AutoLoRA estimates sensitivity using the <strong>expected squared gradient</strong> — a Fisher information proxy:</p>
+<div class="arithmatex">\[s_l = \mathbb{E}_{\mathcal{D}}\!\left[\left\|\nabla_{W_l} \mathcal{L}\right\|_F^2\right] \approx \frac{1}{N} \sum_{i=1}^{N} \left\|\nabla_{W_l} \mathcal{L}(x_i)\right\|_F^2\]</div>
+<p>Computed over a small calibration set (a few hundred examples) before the main training run. Layers with large gradient norms are sensitive to the loss and benefit most from high adapter capacity.</p>
+<h4 id="rank-allocation">Rank Allocation<a class="headerlink" href="#rank-allocation" title="Permanent link">¶</a></h4>
+<p>Given a total rank budget <span class="arithmatex">\(R\)</span> distributed across <span class="arithmatex">\(L\)</span> layers:</p>
+<div class="arithmatex">\[r_l = \left\lfloor R \cdot \frac{s_l}{\displaystyle\sum_{j=1}^{L} s_j} + 0.5 \right\rfloor, \quad \text{with } \sum_l r_l \leq R\]</div>
+<p>Layers where <span class="arithmatex">\(r_l &lt; r_{\min}\)</span> receive no adapter. Budget concentrates on high-sensitivity layers automatically.</p>
+<p><strong>Example:</strong> <span class="arithmatex">\(R=128\)</span> over 32 layers. Uniform LoRA assigns <span class="arithmatex">\(r=4\)</span> everywhere. AutoLoRA might assign <span class="arithmatex">\(r=16\)</span> to layers 12–20 (peak gradient sensitivity), <span class="arithmatex">\(r=4\)</span> to layers 1–8, and <span class="arithmatex">\(r=0\)</span> to layers 28–32 — concentrating 75% of the budget on 28% of the layers.</p>
+<h4 id="svd-based-adapter-initialization">SVD-Based Adapter Initialization<a class="headerlink" href="#svd-based-adapter-initialization" title="Permanent link">¶</a></h4>
+<p>Instead of <span class="arithmatex">\(B = \mathbf{0}\)</span>, <span class="arithmatex">\(A \sim \mathcal{N}\)</span>, AutoLoRA initializes adapters in the direction of the top-<span class="arithmatex">\(r\)</span> singular vectors of the gradient matrix:</p>
+<div class="arithmatex">\[\nabla_{W_l} \mathcal{L} \approx U_r \Sigma_r V_r^\top \quad \text{(truncated SVD, top-}r\text{)}\]</div>
+<div class="arithmatex">\[B_l^{(0)} = U_r \Sigma_r^{1/2}, \qquad A_l^{(0)} = \Sigma_r^{1/2} V_r^\top\]</div>
+<p>Adapters start aligned with the most important update directions — they begin learning from a position already close to the optimum rather than discovering the relevant subspace from a random initialization.</p>
+<hr>
+<h3 id="side-by-side-comparison">Side-by-Side Comparison<a class="headerlink" href="#side-by-side-comparison" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    BASE["Base Model W₀\nfrozen in all variants"]
+    BASE --&gt;|"+ BA"| L["LoRA\nr×(m+n) params\nuniform rank"]
+    BASE --&gt;|"NF4 compress\n+ BA"| Q["QLoRA\n4-bit base\npaged optimizers"]
+    BASE --&gt;|"m · (W₀+BA)/norm"| D["DoRA\n+ n magnitude scalars\nseparate scale + direction"]
+    BASE --&gt;|"merge → reset → repeat"| R["ReLoRA\neffective rank = K×r\nfor long training"]
+    BASE --&gt;|"score → allocate → SVD-init"| A["AutoLoRA\nper-layer ranks\nauto-allocated"]
+
+    style BASE fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style L fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style Q fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style R fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF</code></pre>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>LoRA</th>
+<th>QLoRA</th>
+<th>DoRA</th>
+<th>ReLoRA</th>
+<th>AutoLoRA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base model precision</td>
+<td>fp16/fp32</td>
+<td>NF4 4-bit</td>
+<td>fp16/fp32</td>
+<td>fp16/fp32</td>
+<td>fp16/fp32</td>
+</tr>
+<tr>
+<td>Adapter update</td>
+<td><span class="arithmatex">\(\frac{\alpha}{r}BA\)</span></td>
+<td><span class="arithmatex">\(\frac{\alpha}{r}BA\)</span></td>
+<td><span class="arithmatex">\(m \cdot \frac{W_0+BA}{\|W_0+BA\|_c}\)</span></td>
+<td><span class="arithmatex">\(\frac{\alpha}{r}\sum_k B_k A_k\)</span></td>
+<td><span class="arithmatex">\(\frac{\alpha}{r_l}B_l A_l\)</span></td>
+</tr>
+<tr>
+<td>Effective rank</td>
+<td><span class="arithmatex">\(r\)</span></td>
+<td><span class="arithmatex">\(r\)</span></td>
+<td><span class="arithmatex">\(r + n\)</span> scalars</td>
+<td><span class="arithmatex">\(\leq K \cdot r\)</span></td>
+<td>varies per layer</td>
+</tr>
+<tr>
+<td>Main benefit</td>
+<td>Baseline PEFT</td>
+<td>Huge models on small GPU</td>
+<td>Better accuracy, same cost</td>
+<td>Escapes rank bottleneck</td>
+<td>Optimal budget allocation</td>
+</tr>
+<tr>
+<td>Best use case</td>
+<td>General SFT</td>
+<td>Large model, limited VRAM</td>
+<td>Quality-critical SFT</td>
+<td>Pre-training / long runs</td>
+<td>Heterogeneous task demands</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <p><em>Interview Questions: <a href="interview-questions/">Fine-Tuning Interview Q&amp;A →</a></em></p>
 <p><em>Next: <a href="../09-preference-alignment/">Preference Alignment →</a></em></p>
