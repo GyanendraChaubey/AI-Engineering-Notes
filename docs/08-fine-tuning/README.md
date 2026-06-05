@@ -293,6 +293,208 @@ flowchart TD
 
 ---
 
+## Q7. Deep-dive: what is the mathematics behind LoRA, QLoRA, DoRA, ReLoRA, and AutoLoRA?
+
+### Foundation: Standard LoRA
+
+For a pretrained weight matrix $W_0 \in \mathbb{R}^{m \times n}$, LoRA adds a low-rank residual instead of updating $W_0$ directly:
+
+$$W' = W_0 + \Delta W = W_0 + \underbrace{B}_{m \times r}\underbrace{A}_{r \times n}, \quad r \ll \min(m, n)$$
+
+**Initialization:** $B = \mathbf{0}$, $A \sim \mathcal{N}(0, \sigma^2)$, so $\Delta W = BA = \mathbf{0}$ at step zero — the adapter is a no-op at the start, preserving the pretrained model's behaviour.
+
+**Forward pass with scaling:**
+
+$$h = W'x = W_0 x + \frac{\alpha}{r}\, BAx$$
+
+The $\alpha/r$ factor prevents adapter output from growing with rank. Without it, a higher-rank adapter would produce proportionally larger activations before any learning — not because it has learned more, but simply because it has more parameters. Setting $\alpha = r$ makes the scaling factor 1.
+
+**Trainable parameter count:**
+
+$$r(m + n) \quad \text{vs} \quad mn \text{ (full fine-tuning)}$$
+
+At $r=8$, $m=n=4096$: $65{,}536$ vs $16{,}777{,}216$ — a **256× reduction**.
+
+---
+
+### 1. QLoRA — Quantized LoRA
+
+**Problem it solves:** LoRA reduces optimizer and gradient memory, but the base model weights still require full precision for the forward/backward pass. A 65B model in float16 needs ~130 GB — more than any single GPU.
+
+#### NF4 Quantization
+
+Neural network weights are empirically near-Gaussian: $w \sim \mathcal{N}(0, \sigma^2)$. NF4 exploits this by deriving quantization levels from the quantiles of $\mathcal{N}(0,1)$, placing more levels where weights are densest (near zero) and fewer where they are sparse (large values).
+
+**Step 1 — Block normalization:** Partition $W_0$ into blocks of 64 values. For each block compute $c = \max_i |w_i|$ and normalize: $\hat{w}_i = w_i / c$, giving $\hat{w}_i \in [-1, 1]$.
+
+**Step 2 — Derive 16 levels from $\mathcal{N}(0,1)$ quantiles:**
+
+$$q_i = \Phi^{-1}\!\left(\frac{i + 0.5}{16}\right), \quad i = 0, \ldots, 15$$
+
+Renormalize levels to $[-1, 1]$. This concentrates levels in the high-density center, unlike uniform INT4 which wastes half its levels on rarely-occurring large values.
+
+**Step 3 — Quantize:** $\hat{w}_i \mapsto \arg\min_j |q_j - \hat{w}_i|$, store as a 4-bit index.
+
+**Double quantization:** Each block constant $c$ costs 32 bits per 64 weights = 0.5 extra bits/param. QLoRA quantizes these constants from FP32 → FP8, reducing constant overhead to ~0.127 bits/param, saving ~0.4 GB on a 7B model.
+
+**Forward pass:**
+
+$$h = \left(\text{dequantize}(W_0^{\text{NF4}}) + \frac{\alpha}{r}BA\right)x$$
+
+Dequantization is: $w_i = q_{\text{idx}_i} \cdot c$, computed on the fly in BFloat16. The NF4 weights are never expanded to float permanently — they live in 4-bit storage and are dequantized once per layer per forward/backward step.
+
+**Paged optimizers:** Adam stores two moment vectors the same size as the parameters. For large adapter runs these overflow GPU VRAM. QLoRA uses NVIDIA unified memory — optimizer states live in CPU RAM and are paged to GPU only during the parameter update step.
+
+**Memory comparison for a 65B model:**
+
+| Precision | Storage |
+|-----------|---------|
+| float32 | 260 GB |
+| float16 | 130 GB |
+| NF4 (QLoRA) | 32.5 GB |
+| NF4 + double quantization | ~27 GB |
+
+---
+
+### 2. DoRA — Weight-Decomposed LoRA
+
+**Problem it solves:** The LoRA update $\Delta W = BA$ is a single low-rank matrix that must simultaneously encode both *how much* to scale each weight direction and *which direction* to move. These two adjustments interfere in the gradient signal, making convergence harder when a task requires significant weight rescaling.
+
+#### The Polar Decomposition
+
+Any weight matrix can be decomposed column-wise into a magnitude and a direction. DoRA makes this explicit and trainable:
+
+$$W_0 = \underbrace{m}_{1 \times n} \cdot \underbrace{\frac{W_0}{\|W_0\|_c}}_{\text{unit-column-norm direction}}$$
+
+where $m \in \mathbb{R}^{1 \times n}$ is the vector of column-wise $\ell_2$ norms and $\|\cdot\|_c$ normalizes each column to unit length.
+
+#### DoRA's Trainable Form
+
+$$W' = \underbrace{m}_{\text{trainable}} \cdot \frac{W_0 + BA}{\|W_0 + BA\|_c}$$
+
+| Component | Initialized to | What it controls |
+|-----------|----------------|-----------------|
+| $m \in \mathbb{R}^{1 \times n}$ | $\|W_0\|_c$ | Magnitude scaling per output dimension |
+| $B \in \mathbb{R}^{m \times r}$, $A \in \mathbb{R}^{r \times n}$ | $B=\mathbf{0}$, $A \sim \mathcal{N}$ | Direction update (low-rank) |
+| $W_0$ | — | Frozen |
+
+**At initialization:** $BA = \mathbf{0}$, so $W' = \|W_0\|_c \cdot W_0/\|W_0\|_c = W_0$. The adapter is a no-op, identical to standard LoRA's starting point.
+
+#### Why Decoupling Helps
+
+In standard LoRA, $\nabla_B \mathcal{L}$ and $\nabla_A \mathcal{L}$ must carry both magnitude and direction signals simultaneously. With DoRA:
+
+$$\frac{\partial \mathcal{L}}{\partial m} \text{ controls only scale}, \qquad \frac{\partial \mathcal{L}}{\partial A},\, \frac{\partial \mathbf{L}}{\partial B} \text{ control only direction}$$
+
+Tasks that require large magnitude rescaling (e.g., adapting a general model to a domain with very different activation norms) benefit most. DoRA consistently outperforms LoRA at identical parameter counts on instruction tuning and code generation benchmarks.
+
+**Extra parameters:** $n$ scalars for $m$ on top of LoRA's $r(m+n)$ — negligible since $n \ll r(m+n)$.
+
+---
+
+### 3. ReLoRA — Restart LoRA
+
+**Problem it solves:** A rank-$r$ LoRA adapter spans a subspace of dimension at most $r$. If the task requires updates spanning a larger subspace, no amount of training time can escape this constraint — the low-rank bottleneck is structural.
+
+#### The Merge-and-Restart Cycle
+
+At each merge checkpoint (every $T$ steps):
+
+**Step 1 — Merge into base:**
+$$W_0^{(k+1)} = W_0^{(k)} + \frac{\alpha}{r}\, B^{(k)} A^{(k)}$$
+
+**Step 2 — Reset adapters:**
+$$B^{(k+1)} = \mathbf{0}, \quad A^{(k+1)} \sim \mathcal{N}(0, \sigma^2)$$
+
+**Step 3 — Reset optimizer states** (Adam moments $m_t = v_t = 0$) to prevent stale gradient estimates from the previous phase from biasing the new adapters toward the same subspace.
+
+#### Effective Rank After $K$ Cycles
+
+After $K$ merge cycles, the total weight is:
+
+$$W^{(K)} = W_0 + \frac{\alpha}{r}\sum_{k=1}^{K} B^{(k)} A^{(k)}$$
+
+Each $B^{(k)} A^{(k)}$ is rank $r$. The sum of $K$ independent rank-$r$ matrices satisfies:
+
+$$\text{rank}\!\left(\sum_{k=1}^K B^{(k)} A^{(k)}\right) \leq K \cdot r$$
+
+In practice, adapters trained from successively richer bases explore different subspaces, so effective rank grows roughly as $K \cdot r$ — a rank-160 cumulative update using only rank-32 parameters at any one time.
+
+#### Learning Rate Schedule
+
+Each phase uses **jagged cosine annealing** — a warm restart from a non-zero LR to explore the new base:
+
+$$\eta(t) = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})\!\left(1 + \cos\!\left(\frac{\pi t}{T}\right)\right)$$
+
+where $t$ resets to 0 at each merge. The warm restart prevents adapters from immediately converging into a tight neighborhood of the new base without exploring.
+
+**Best for:** pre-training or continued pre-training (tens of thousands of steps). For standard SFT (a few epochs), the merge overhead adds complexity without proportional benefit.
+
+---
+
+### 4. AutoLoRA — Automatic Rank and Placement
+
+**Problem it solves:** Uniform rank allocation ($r$ the same for every layer) wastes budget on unimportant layers and underfits important ones. Early layers often need little adaptation; middle transformer layers typically drive most task-specific behavior.
+
+#### Importance Scoring
+
+For each candidate layer $l$, AutoLoRA estimates sensitivity using the **expected squared gradient** — a Fisher information proxy:
+
+$$s_l = \mathbb{E}_{\mathcal{D}}\!\left[\left\|\nabla_{W_l} \mathcal{L}\right\|_F^2\right] \approx \frac{1}{N} \sum_{i=1}^{N} \left\|\nabla_{W_l} \mathcal{L}(x_i)\right\|_F^2$$
+
+Computed over a small calibration set (a few hundred examples) before the main training run. Layers with large gradient norms are sensitive to the loss and benefit most from high adapter capacity.
+
+#### Rank Allocation
+
+Given a total rank budget $R$ distributed across $L$ layers:
+
+$$r_l = \left\lfloor R \cdot \frac{s_l}{\displaystyle\sum_{j=1}^{L} s_j} + 0.5 \right\rfloor, \quad \text{with } \sum_l r_l \leq R$$
+
+Layers where $r_l < r_{\min}$ receive no adapter. Budget concentrates on high-sensitivity layers automatically.
+
+**Example:** $R=128$ over 32 layers. Uniform LoRA assigns $r=4$ everywhere. AutoLoRA might assign $r=16$ to layers 12–20 (peak gradient sensitivity), $r=4$ to layers 1–8, and $r=0$ to layers 28–32 — concentrating 75% of the budget on 28% of the layers.
+
+#### SVD-Based Adapter Initialization
+
+Instead of $B = \mathbf{0}$, $A \sim \mathcal{N}$, AutoLoRA initializes adapters in the direction of the top-$r$ singular vectors of the gradient matrix:
+
+$$\nabla_{W_l} \mathcal{L} \approx U_r \Sigma_r V_r^\top \quad \text{(truncated SVD, top-}r\text{)}$$
+
+$$B_l^{(0)} = U_r \Sigma_r^{1/2}, \qquad A_l^{(0)} = \Sigma_r^{1/2} V_r^\top$$
+
+Adapters start aligned with the most important update directions — they begin learning from a position already close to the optimum rather than discovering the relevant subspace from a random initialization.
+
+---
+
+### Side-by-Side Comparison
+
+```mermaid
+flowchart TD
+    BASE["Base Model W₀\nfrozen in all variants"]
+    BASE -->|"+ BA"| L["LoRA\nr×(m+n) params\nuniform rank"]
+    BASE -->|"NF4 compress\n+ BA"| Q["QLoRA\n4-bit base\npaged optimizers"]
+    BASE -->|"m · (W₀+BA)/norm"| D["DoRA\n+ n magnitude scalars\nseparate scale + direction"]
+    BASE -->|"merge → reset → repeat"| R["ReLoRA\neffective rank = K×r\nfor long training"]
+    BASE -->|"score → allocate → SVD-init"| A["AutoLoRA\nper-layer ranks\nauto-allocated"]
+
+    style BASE fill:#2980B9,stroke:#1A5276,stroke-width:2px,color:#FFFFFF
+    style L fill:#27AE60,stroke:#1E8449,stroke-width:2px,color:#FFFFFF
+    style Q fill:#E67E22,stroke:#CA6F1E,stroke-width:2px,color:#FFFFFF
+    style D fill:#8E44AD,stroke:#6C3483,stroke-width:2px,color:#FFFFFF
+    style R fill:#C0392B,stroke:#922B21,stroke-width:2px,color:#FFFFFF
+    style A fill:#5D6D7E,stroke:#2E4057,stroke-width:2px,color:#FFFFFF
+```
+
+| Property | LoRA | QLoRA | DoRA | ReLoRA | AutoLoRA |
+|----------|------|-------|------|--------|----------|
+| Base model precision | fp16/fp32 | NF4 4-bit | fp16/fp32 | fp16/fp32 | fp16/fp32 |
+| Adapter update | $\frac{\alpha}{r}BA$ | $\frac{\alpha}{r}BA$ | $m \cdot \frac{W_0+BA}{\|W_0+BA\|_c}$ | $\frac{\alpha}{r}\sum_k B_k A_k$ | $\frac{\alpha}{r_l}B_l A_l$ |
+| Effective rank | $r$ | $r$ | $r + n$ scalars | $\leq K \cdot r$ | varies per layer |
+| Main benefit | Baseline PEFT | Huge models on small GPU | Better accuracy, same cost | Escapes rank bottleneck | Optimal budget allocation |
+| Best use case | General SFT | Large model, limited VRAM | Quality-critical SFT | Pre-training / long runs | Heterogeneous task demands |
+
+---
+
 *Interview Questions: [Fine-Tuning Interview Q&A →](interview-questions.md)*
 
 *Next: [Preference Alignment →](../09-preference-alignment/README.md)*
