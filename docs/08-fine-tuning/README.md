@@ -293,4 +293,6 @@ flowchart TD
 
 ---
 
+*Interview Questions: [Fine-Tuning Interview Q&A →](interview-questions.md)*
+
 *Next: [Preference Alignment →](../09-preference-alignment/README.md)*

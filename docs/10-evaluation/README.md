@@ -172,4 +172,6 @@ Instead of generating one answer, the system generates 10 answers in parallel us
 
 ---
 
+*Interview Questions: [Evaluation Interview Q&A →](interview-questions.md)*
+
 *Next: [Hallucination Control →](../11-hallucination/README.md)*

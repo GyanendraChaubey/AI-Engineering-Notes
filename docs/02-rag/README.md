@@ -644,4 +644,6 @@ $$\text{TTFT} = T_{\text{prefill}} + T_{\text{KV cache setup}}$$
 
 ---
 
+*Interview Questions: [RAG Interview Q&A →](interview-questions.md)*
+
 *Next: [Document Digitization & Chunking →](../03-chunking/README.md)*

@@ -183,4 +183,6 @@ flowchart TD
 
 ---
 
+*Interview Questions: [Agents Interview Q&A →](interview-questions.md)*
+
 *Next: [Prompt Hacking →](../14-prompt-hacking/README.md)*

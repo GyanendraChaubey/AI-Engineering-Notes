@@ -159,4 +159,6 @@ When LLMs can invoke tools, a successful prompt injection means the attacker can
 
 ---
 
+*Interview Questions: [Prompt Hacking Interview Q&A →](interview-questions.md)*
+
 *Next: [Miscellaneous Topics →](../15-miscellaneous/README.md)*

@@ -938,4 +938,6 @@ async def stream_answer(req: QueryRequest) -> StreamingResponse:
 
 ---
 
+*Interview Questions: [Miscellaneous Interview Q&A →](interview-questions.md)*
+
 *Next: [Case Studies →](../16-case-studies/README.md)*
